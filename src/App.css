@@ -73,6 +73,11 @@ html {
   background-color: #2a2a2a;
 }
 
+#about-section, #locations-section, #leagues-section, #events-section {
+  padding-top: 70px;
+  margin-top: -70px;
+}
+
 /* ========== Info Box ========== */
 .info-box {
   background-color: #3a3a3a;
@@ -208,47 +213,6 @@ html {
   transform: rotate(-10deg) scale(1.05);
 }
 
-/* ========== Accordion Styles (Mobile only) ========== */
-.accordion {
-  background-color: #444;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: background-color 0.4s ease;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  margin-bottom: 5px;
-}
-
-.accordion:hover {
-  background-color: #555;
-}
-
-.accordion:after {
-  content: '\002B'; /* Plus symbol */
-  font-size: 13px;
-  color: white;
-  float: right;
-  margin-left: 5px;
-}
-
-.accordion.active:after {
-  content: '\2212'; /* Minus symbol */
-}
-
-.accordion-content {
-  padding: 18px;
-  background-color: #2a2a2a;
-  color: white;
-  display: none;
-  border-radius: 8px;
-}
-
 /* ========== Tab Navigation ========== */
 .tab-navigation {
   display: flex;
@@ -283,6 +247,10 @@ html {
   border: 1px solid #555;
   border-radius: 0 8px 8px 8px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 50vh; /* Adjust this value as necessary to ensure proper sizing */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align the content to the top */
 }
 
 /* ========== Player Stat Search ========== */
@@ -315,30 +283,41 @@ html {
   background-color: #999;
 }
 
-/* Universal Table Styling for Both Desktop and Mobile */
-.player-stat-search {
+/* ========== Player Stat Search Table Styles ========== */
+.table-container {
   width: 100%;
-  overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
-}
-
-.player-stat-search table {
   margin-top: 20px;
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #555;
+  overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
 }
 
-.player-stat-search th, .player-stat-search td {
+.table-container table {
+  width: 100%;
+  border-collapse: collapse; /* Ensure no space between cells */
+  background-color: #2a2a2a; /* Dark background for the table */
+  border: 1px solid #555; /* Border around the entire table */
+}
+
+.table-container th,
+.table-container td {
   padding: 10px;
-  border: 1px solid #555;
+  border: 1px solid #555; /* Borders for each cell */
   text-align: left;
   font-size: 14px;
-  color: white;
+  color: white; /* Text color */
 }
 
-.player-stat-search th {
-  background-color: #444; /* Background color for header */
+.table-container th {
+  background-color: #444; /* Darker background for header */
   font-weight: bold;
+}
+
+.table-container td {
+  background-color: #333; /* Lighter background for table data */
+}
+
+/* Optional hover effect for table rows */
+.table-container table tr:hover td {
+  background-color: #444;
 }
 
 /* ========== Info Window Styling (Google Maps) ========== */
@@ -465,7 +444,6 @@ html {
   }
 }
 
-
 /* ========== Mobile-Specific Styles ========== */
 @media (max-width: 768px) {
   .App-nav {
@@ -476,7 +454,7 @@ html {
   .mobile-nav-icon {
     position: fixed;
     top: 10px;
-    left: 10px;
+    right: 10px; /* Move the hamburger icon to the right */
     width: 50px;
     height: 50px; /* Keep it square */
     font-size: 50px; /* Maximize the size of the icon */
@@ -495,17 +473,17 @@ html {
   /* Nudge the text (hamburger icon) up inside the box */
   .mobile-nav-icon::before {
     content: '☰'; /* Hamburger icon */
-	transform: translateY(-3px); /* Nudge the text up by 3px */
+    transform: translateY(-3px); /* Nudge the text up by 3px */
   }
 
-  /* Mobile nav menu that appears from the right side of the hamburger */
+  /* Mobile nav menu that appears to the left of the hamburger */
   .nav-links-mobile {
     display: flex;
     flex-direction: column;
     background-color: #333;
     position: fixed;
     top: 10px; /* Align vertically with the hamburger button */
-    left: 70px; /* Appears to the right of the hamburger menu */
+    right: 70px; /* Appears to the left of the hamburger menu */
     width: 150px; /* Adjust this width as needed */
     border-radius: 8px; /* Rounded edges */
     padding: 10px;
@@ -517,7 +495,7 @@ html {
   .nav-links-mobile a {
     color: white;
     padding: 10px 0;
-	padding-left: 15px;
+    padding-left: 15px;
     text-decoration: none;
     text-align: left; /* Align text to the left */
   }
@@ -533,50 +511,50 @@ html {
   }
 
   /* Accordion for Mobile */
-  .tab-navigation {
-    display: none;
+  .accordion {
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.4s ease;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 5px;
   }
 
-  .accordion {
-    display: block;
+  .accordion:hover {
+    background-color: #555;
+  }
+
+  .accordion:after {
+    content: '\002B'; /* Plus symbol */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+  }
+
+  .accordion.active:after {
+    content: '\2212'; /* Minus symbol */
   }
 
   .accordion-content {
+    padding: 18px;
+    background-color: #2a2a2a;
+    color: white;
     display: none;
-    padding: 0;
+    border-radius: 8px;
+    min-height: calc(100vh - 275px) !important; /* Full viewport height for each section */
+    overflow-y: auto;
   }
 
   .accordion.active + .accordion-content {
     display: block;
-    padding: 10px;
-  }
-
-  /* Fix table overflowing the container and ensure scrolling */
-  .accordion-content .table-container {
-    overflow-x: auto;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .accordion-content .table-container table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow-x: auto;
-  }
-
-  .accordion-content .table-container th, 
-  .accordion-content .table-container td {
-    padding: 8px;
-    font-size: 12px;
-    border: 1px solid #555;
-    text-align: left;
-    background-color: #333;
-    color: white;
-  }
-
-  .accordion-content .table-container th {
-    background-color: #444;
-    font-weight: bold;
   }
 
   /* Player Stat Search Form - Fix the button below the input box */
@@ -610,6 +588,7 @@ html {
     padding: 20px 10px;
   }
 }
+
 
 /* ========== Tablet-Specific Styles ========== */
 @media (min-width: 769px) and (max-width: 1440px) {

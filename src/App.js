@@ -38,13 +38,13 @@ function App() {
       const sections = document.querySelectorAll('.App-section');
       let currentSection = '';
       
-	  const scrollPosition = window.pageYOffset;
+      const scrollPosition = window.pageYOffset;
 
       // Show the back-to-top button if scrolled more than 300px
       setShowBackToTop(scrollPosition > 300);
-	  
-	  // Determine if the user is at the top of the page (above the "About Us" section)
-	  if (scrollPosition < sections[0].offsetTop - 70) {
+      
+      // Determine if the user is at the top of the page (above the "About Us" section)
+      if (scrollPosition < sections[0].offsetTop - 80) {
         setActiveNav(''); // Clear the active nav when above the "About Us" section
         return;
       }
@@ -52,7 +52,7 @@ function App() {
       // Determine active section based on scroll position
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
-        if (scrollPosition >= sectionTop - 70) {
+        if (scrollPosition >= sectionTop - 80) {
           currentSection = section.getAttribute('id');
         }
       });
@@ -94,14 +94,24 @@ function App() {
   const handleTabClick = (tab) => setActiveTab(tab);
 
   const toggleAccordion = (tab) => {
-    setAccordionOpen((prevAccordionOpen) => ({
-      ...prevAccordionOpen,
-      [tab]: !prevAccordionOpen[tab],
-    }));
+    setAccordionOpen((prevAccordionOpen) => {
+      const newAccordionState = {};
+
+      // Close all sections
+      Object.keys(prevAccordionOpen).forEach((key) => {
+        newAccordionState[key] = false;
+      });
+
+      // Toggle the clicked section (open it)
+      newAccordionState[tab] = !prevAccordionOpen[tab];
+
+      return newAccordionState;
+    });
   };
 
   // Handle mobile nav click - close the menu after clicking
-  const handleMobileNavClick = (section) => {
+  const handleMobileNavClick = (section, event) => {
+    event.preventDefault(); // Prevent default anchor behavior
     setActiveNav(section);
     setMobileNavOpen(false);
     document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
@@ -114,22 +124,22 @@ function App() {
 
   return (
     <div className="App">
-	
+    
       {/* Mobile Navigation */}
       <span className="mobile-nav-icon" onClick={() => setMobileNavOpen(!mobileNavOpen)} />
-	  
+      
       {mobileNavOpen && (
         <div className="nav-links-mobile">
-          <a href="#about-section" className={activeNav === 'about' ? 'active' : ''} onClick={() => handleMobileNavClick('about')}>
+          <a href="#about-section" className={activeNav === 'about' ? 'active' : ''} onClick={(e) => handleMobileNavClick('about', e)}>
             About Us
           </a>
-          <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''} onClick={() => handleMobileNavClick('locations')}>
+          <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''} onClick={(e) => handleMobileNavClick('locations', e)}>
             Locations
           </a>
-          <a href="#events-section" className={activeNav === 'events' ? 'active' : ''} onClick={() => handleMobileNavClick('events')}>
+          <a href="#events-section" className={activeNav === 'events' ? 'active' : ''} onClick={(e) => handleMobileNavClick('events', e)}>
             Events
           </a>
-          <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''} onClick={() => handleMobileNavClick('leagues')}>
+          <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''} onClick={(e) => handleMobileNavClick('leagues', e)}>
             Leagues
           </a>
         </div>
@@ -152,19 +162,19 @@ function App() {
       </header>
 
       {/* About Us Section */}
-	  <div id="about-section" style={{ paddingTop: '70px', marginTop: '-70px' }}></div>
+      <div id="about-section"></div>
       <About />
 
       {/* Locations Section */}
-	  <div id="locations-section" style={{ paddingTop: '70px', marginTop: '-70px' }}></div>
+      <div id="locations-section"></div>
       <Locations locations={locations} handleLocationClick={handleLocationClick} />
 
       {/* Events Section */}
-	  <div id="events-section" style={{ paddingTop: '70px', marginTop: '-70px' }}></div>
+      <div id="events-section"></div>
       <Events sortedEvents={sortedEvents} />
 
       {/* Leagues Section */}
-	  <div id="leagues-section" style={{ paddingTop: '70px', marginTop: '-70px' }}></div>
+      <div id="leagues-section"></div>
       <Leagues 
         isMobile={isMobile} 
         accordionOpen={accordionOpen} 
