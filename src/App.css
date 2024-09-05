@@ -479,7 +479,8 @@ html {
     left: 10px;
     width: 50px;
     height: 50px; /* Keep it square */
-    font-size: 30px; /* Adjust the icon size */
+    font-size: 50px; /* Maximize the size of the icon */
+    font-weight: bold; /* Make the icon bold */
     color: white;
     background-color: #333;
     display: flex;
@@ -489,6 +490,12 @@ html {
     cursor: pointer;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Nudge the text (hamburger icon) up inside the box */
+  .mobile-nav-icon::before {
+    content: '☰'; /* Hamburger icon */
+	transform: translateY(-3px); /* Nudge the text up by 3px */
   }
 
   /* Mobile nav menu that appears from the right side of the hamburger */

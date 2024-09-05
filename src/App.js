@@ -116,10 +116,8 @@ function App() {
     <div className="App">
 	
       {/* Mobile Navigation */}
-      <span className="mobile-nav-icon" onClick={() => setMobileNavOpen(!mobileNavOpen)}>
-        ☰
-      </span>
-
+      <span className="mobile-nav-icon" onClick={() => setMobileNavOpen(!mobileNavOpen)} />
+	  
       {mobileNavOpen && (
         <div className="nav-links-mobile">
           <a href="#about-section" className={activeNav === 'about' ? 'active' : ''} onClick={() => handleMobileNavClick('about')}>
