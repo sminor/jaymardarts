@@ -469,48 +469,55 @@ html {
 /* ========== Mobile-Specific Styles ========== */
 @media (max-width: 768px) {
   .App-nav {
-    display: none;
+    display: none; /* Keep the navbar hidden on mobile */
   }
 
-  .mobile-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-
+  /* Style the hamburger menu icon */
   .mobile-nav-icon {
-    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px; /* Keep it square */
+    font-size: 30px; /* Adjust the icon size */
     color: white;
-    font-size: 24px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; /* Slight rounding for consistency */
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
+  /* Mobile nav menu that appears from the right side of the hamburger */
   .nav-links-mobile {
     display: flex;
     flex-direction: column;
     background-color: #333;
     position: fixed;
-    top: 50px;
-    left: 0;
-    width: 100%;
+    top: 10px; /* Align vertically with the hamburger button */
+    left: 70px; /* Appears to the right of the hamburger menu */
+    width: 150px; /* Adjust this width as needed */
+    border-radius: 8px; /* Rounded edges */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 999;
   }
 
+  /* Style for individual nav links */
   .nav-links-mobile a {
-    padding: 15px 20px;
     color: white;
+    padding: 10px 0;
+	padding-left: 15px;
     text-decoration: none;
-    border-bottom: 1px solid #555;
+    text-align: left; /* Align text to the left */
   }
 
+  /* Add hover effect for better UX */
   .nav-links-mobile a:hover {
-    background-color: #555;
+    background-color: #444;
   }
 
   .nav-links-mobile a.active {
