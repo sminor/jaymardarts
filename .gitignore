@@ -31,4 +31,4 @@ yarn-error.log*
 .idea/
 
 # Ignore specific env files
-#.env # Update this in the future to remove this file to protect API keys
+.env

@@ -69,11 +69,11 @@ html {
   justify-content: flex-start;
 }
 
-#about, #locations, #leagues, #events {
+#about, #locations, #leagues, #events, #contact {
   background-color: #2a2a2a;
 }
 
-#about-section, #locations-section, #leagues-section, #events-section {
+#about-section, #locations-section, #leagues-section, #events-section, #contact-section {
   padding-top: 70px;
   margin-top: -70px;
 }
@@ -424,6 +424,80 @@ html {
   }
 }
 
+/* ========== Contact Form Styles ========== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.contact-form label {
+  font-size: 16px;
+  color: #c99f40; /* Golden color for labels */
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-dropdown {
+  padding: 10px;
+  font-size: 16px;
+  color: #f2f2f2;
+  background-color: #2a2a2a; /* Ensure same background color for all elements */
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #999; /* Lighter gray for placeholder text */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-dropdown:focus {
+  outline: none;
+  border-color: #c99f40; /* Highlight border on focus */
+}
+
+.contact-form textarea {
+  resize: vertical; /* Allow resizing vertically only */
+}
+
+.contact-form button {
+  padding: 12px 24px;
+  background-color: #c99f40;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  align-self: flex-start; /* Align button to the left */
+}
+
+.contact-form button:hover {
+  background-color: #b3882d; /* Darker shade on hover */
+}
+
+/* Contact form dropdown styling */
+.contact-dropdown {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.contact-dropdown option {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.contact-dropdown:focus {
+  outline: none;
+  border-color: #c99f40;
+}
+
 /* Mobile Specific Adjustments */
 @media (max-width: 768px) {
   .App-logo {
@@ -587,6 +661,16 @@ html {
   .App-section {
     padding: 20px 10px;
   }
+  
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-form button {
+    width: 100%; /* Button takes full width on mobile */
+    align-self: stretch; /* Make the button fill the width */
+  }
+  
 }
 
 

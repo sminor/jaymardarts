@@ -7,6 +7,7 @@ import About from './components/About';
 import Locations from './components/Locations';
 import Events from './components/Events';
 import Leagues from './components/Leagues';
+import Contact from './components/Contact';  // Import the new Contact component
 
 function App() {
   const [locations, setLocations] = useState([]);
@@ -142,6 +143,9 @@ function App() {
           <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''} onClick={(e) => handleMobileNavClick('leagues', e)}>
             Leagues
           </a>
+          <a href="#contact-section" className={activeNav === 'contact' ? 'active' : ''} onClick={(e) => handleMobileNavClick('contact', e)}>
+            Contact Us
+          </a>
         </div>
       )}
 
@@ -151,6 +155,7 @@ function App() {
         <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''}>Locations</a>
         <a href="#events-section" className={activeNav === 'events' ? 'active' : ''}>Events</a>
         <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''}>Leagues</a>
+        <a href="#contact-section" className={activeNav === 'contact' ? 'active' : ''}>Contact Us</a>
       </nav>
 
       {/* Header with logo and scroll indicator */}
@@ -182,6 +187,10 @@ function App() {
         activeTab={activeTab} 
         handleTabClick={handleTabClick} 
       />
+
+      {/* Contact Us Section */}
+      <div id="contact-section"></div>
+      <Contact />
 
       {/* Back to top button */}
       <a href="#top" className={`back-to-top ${showBackToTop ? 'show' : ''}`} onClick={scrollToTop}>↑</a>

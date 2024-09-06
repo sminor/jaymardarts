@@ -5,3 +5,9 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[functions]
+  node_bundler = "esbuild"  # Use esbuild for bundling
+
+[functions.send-email]
+  included_files = ["netlify/functions/send-email.js"]
