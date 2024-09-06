@@ -29,10 +29,42 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Container for the location name and map icon */
+.location-name {
+  display: flex;
+  justify-content: space-between; /* Align the name on the left and the icon on the right */
+  align-items: center;
+  margin-bottom: 10px; /* Space between name and address */
+}
+
+.location-name h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Map icon styling */
+.map-icon {
+  font-size: 20px;
+  color: var(--highlight-color);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect: change color and scale on hover */
+.location-item:hover .map-icon {
+  color: var(--highlight-hover);
+  transform: scale(1.2);
+}
+
+.location-details, .location-address {
+  font-size: 0.9rem;
+}
+
 .new-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -10px;
+  left: -10px;
   background-color: #e63946;
   color: white;
   padding: 5px 10px;
@@ -42,6 +74,7 @@
   transform: rotate(-15deg);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   border: 2px solid white;
+  z-index: 1;
 }
 
 .location-item:hover .new-badge {
@@ -49,9 +82,9 @@
 }
 
 .info-window {
-  padding: 0px 10px 10px 10px;
+  padding: 0px 10px 0 10px;
   color: black;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .info-window-header {
@@ -66,12 +99,12 @@
   color: black;
 }
 
-.info-window-header a {
+.info-window a {
   color: var(--link-color);
   text-decoration: none;
 }
 
-.info-window-header a:hover {
+.info-window a:hover {
   text-decoration: underline;
 }
 

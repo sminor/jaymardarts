@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { GoogleMap, LoadScript, MarkerF, InfoWindowF } from '@react-google-maps/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRoute } from '@fortawesome/free-solid-svg-icons';
 
 // Declare libraries array as a constant outside the component to avoid re-render issues
 const libraries = ['places'];
@@ -174,15 +176,15 @@ function InteractiveMap({ locations }) {
   <div className="info-window">
     <div className="info-window-header">
       <h3>{selectedLocation.name}</h3>
-      <a
+    </div>
+    <p>{selectedLocation.address}</p>
+	<a
         href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(selectedLocation.address)}`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        Get Directions
+        Get Directions <FontAwesomeIcon icon={faRoute} />
       </a>
-    </div>
-    <p>{selectedLocation.address}</p>
     {selectedLocation.photos && selectedLocation.photos.length > 0 && (
       <img
         src={selectedLocation.photos[0].getUrl({ maxWidth: 300, maxHeight: 150 })}

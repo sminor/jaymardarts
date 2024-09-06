@@ -9,6 +9,8 @@ import Events from './components/Events';
 import Leagues from './components/Leagues';
 import Contact from './components/Contact';  // Import the new Contact component
 
+
+
 function App() {
   const [locations, setLocations] = useState([]);
   const [sortedEvents, setSortedEvents] = useState([]);
