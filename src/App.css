@@ -464,7 +464,6 @@ html {
 .contact-form textarea {
   resize: vertical; /* Allow resizing vertically only */
 }
-
 .contact-form button {
   padding: 12px 24px;
   background-color: #c99f40;
@@ -479,6 +478,23 @@ html {
 }
 
 .contact-form button:hover {
+  background-color: #b3882d; /* Darker shade on hover */
+}
+
+.contact-form-button {
+  padding: 12px 24px;
+  background-color: #c99f40;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  align-self: flex-start; /* Align button to the left */
+}
+
+.contact-form-button:hover {
   background-color: #b3882d; /* Darker shade on hover */
 }
 
