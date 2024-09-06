@@ -1,0 +1,8 @@
+#about {
+  background-color: var(--mid-gray);
+}
+
+#about-section {
+  padding-top: 70px;
+  margin-top: -70px;
+}

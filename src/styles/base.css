@@ -1,0 +1,214 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;	
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.App-logo {
+  max-width: 100%; /* Logo should not exceed 100% of the container’s width */
+  height: auto; /* Keep the aspect ratio intact */
+  max-height: 50vh; /* Maximum height is 50% of the viewport height */
+  margin-top: 10px; /* Adjust margin to prevent overlap with the navbar */
+  padding-top: 10px; /* Extra space from the navbar */
+  object-fit: contain; /* Ensure the logo scales properly within its container */
+}
+
+/* Navigation */
+.App-nav {
+  background-color: var(--nav-bg);
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.App-nav a {
+  color: var(--light-gray);
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 16px;
+}
+
+.App-nav a:hover {
+  background-color: var(--nav-hover-bg);
+  border-radius: 4px;
+}
+
+.App-nav a.active {
+  background-color: var(--highlight-color);
+  border-radius: 4px;
+}
+
+.App-section {
+  padding: 20px;
+  text-align: left;
+  color: var(--light-gray);
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.info-box {
+  background-color: var(--box-bg);
+  color: var(--light-gray);
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--table-border);
+}
+
+.info-box h2 {
+  color: var(--highlight-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.info-box p {
+  line-height: 1.6;
+}
+
+.info-box a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+button:hover {
+  background-color: var(--highlight-hover);
+}
+
+/* Input fields */
+
+input, select {
+  height: 42px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+input, textarea, select {
+  padding: 10px;
+  font-size: 16px;
+  color: var(--light-gray);
+  background-color: var(--mid-gray);
+  border: 1px solid var(--table-border);
+  border-radius: 4px;
+}
+
+textarea::placeholder, input::placeholder {
+  color: #999; /* Lighter gray for placeholder text */
+}
+
+select:focus, textarea:focus, input:focus {
+  outline: none;
+  border-color: var(--highlight-color); /* Highlight border on focus */
+}
+
+/* ========== Back-to-Top Button ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: calc((100% - 50vw) / 2 + 20px);
+  background-color: var(--highlight-color);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.back-to-top.show {
+  display: flex;
+}
+
+.back-to-top:hover {
+  background-color: var(--highlight-hover);
+}
+
+/* Base Scroll Down Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem; /* Large size for both mobile and desktop */
+  color: rgba(0, 0, 0, 0.2); /* Dark shadow */
+  text-align: center;
+  animation: color-fade 3s ease-in-out infinite;
+}
+
+.scroll-indicator .arrows {
+  font-weight: bold;
+  letter-spacing: 0.0em;
+  animation: color-fade 3s ease-in-out infinite, arrow-animation 1.5s infinite;
+}
+
+/* Keyframes for color fading */
+@keyframes color-fade {
+  0%, 100% {
+    color: rgba(0, 0, 0, 0.2); /* Dark shadow */
+  }
+  50% {
+    color: rgba(0, 0, 0, 0.4); /* Slightly brighter */
+  }
+}
+
+/* Arrow bounce animation */
+@keyframes arrow-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}

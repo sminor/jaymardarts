@@ -1,0 +1,12 @@
+:root {
+  --dark-gray: #1e1e1e;
+  --mid-gray: #2a2a2a;
+  --light-gray: #f2f2f2;
+  --highlight-color: #c99f40;
+  --highlight-hover: #b3882d;
+  --box-bg: #3a3a3a;
+  --nav-bg: #333;
+  --nav-hover-bg: #666;
+  --link-color: #007bff;
+  --table-border: #555;
+}

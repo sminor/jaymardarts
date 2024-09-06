@@ -1,0 +1,97 @@
+#leagues {
+  background-color: var(--mid-gray);
+}
+
+#leagues-section {
+  padding-top: 70px;
+  margin-top: -70px;
+}
+
+.tab-navigation {
+  display: flex;
+  margin-bottom: -1px;
+}
+
+.tab-button {
+  background-color: #444;
+  padding: 10px 20px;
+  border: 1px solid #555;
+  border-bottom: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 0px;
+}
+
+.tab-button:hover {
+  background-color: #555;
+}
+
+.tab-button.active {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px;
+  background-color: #333;
+  border: 1px solid var(--table-border);
+  border-radius: 0 4px 4px 4px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.player-search-form {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.player-search-form input {
+  width: 300px; /* Adjust width as needed */
+  margin-right: 15px; /* Space between input and button */
+}
+
+.player-search-form button {
+  margin: 0px;
+}
+
+.table-container {
+  width: 100%;
+  margin-top: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse; /* Ensure no space between cells */
+  background-color: var(--mid-gray); /* Dark background for the table */
+  border: 1px solid var(--table-border); /* Border around the entire table */
+}
+
+.table-container th,
+.table-container td {
+  padding: 10px;
+  border: 1px solid var(--table-border); /* Borders for each cell */
+  text-align: left;
+  font-size: 14px;
+  color: white; /* Text color */
+}
+
+.table-container th {
+  background-color: #444; /* Darker background for header */
+  font-weight: bold;
+}
+
+.table-container td {
+  background-color: var(--nav-bg); /* Lighter background for table data */
+}
+
+/* Optional hover effect for table rows */
+.table-container table tr:hover td {
+  background-color: #444;
+}

@@ -1,0 +1,168 @@
+/* Mobile Specific Adjustments */
+@media (max-width: 768px) {
+  .App-nav {
+    display: none; /* Keep the navbar hidden on mobile */
+  }
+  
+  .App-logo {
+    margin-bottom: 100px; /* Move the logo higher by reducing the margin */
+  }
+
+  .scroll-indicator {
+    bottom: 60px;
+  }
+
+  .locations-grid, .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .back-to-top {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .App-section {
+    padding: 20px 10px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-form button {
+    width: 100%;
+  }
+
+  .mobile-nav-icon {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    background-color: var(--nav-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+	z-index: 1000;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-nav-icon::before {
+    content: '☰';
+    transform: translateY(-3px);
+  }
+
+  .nav-links-mobile {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    position: fixed;
+    top: 10px;
+    right: 70px;
+    width: 150px;
+    border-radius: 4px;
+    padding: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 999;
+  }
+
+  .nav-links-mobile a {
+    color: white;
+    padding: 10px 0;
+    padding-left: 15px;
+	text-decoration: none;
+    text-align: left;
+  }
+  
+  .nav-links-mobile a:hover {
+    background-color: #444;
+  }
+
+  .nav-links-mobile a.active {
+    background-color: var(--highlight-color);
+  }
+
+  /* Accordion adjustments */
+  .accordion {
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+	transition: background-color 0.4s ease;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  
+  .accordion:hover {
+    background-color: var(--table-border);
+  }
+
+  .accordion:after {
+    content: '\002B'; /* Plus symbol */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+  }
+
+  .accordion.active:after {
+    content: '\2212'; /* Minus symbol */
+  }
+
+  .accordion-content {
+	padding: 18px;
+    background-color: var(--mid-gray);
+    color: white;
+    display: none;
+    border-radius: 4px;
+    min-height: calc(100vh - 275px) !important;
+	overflow-y: auto;
+  }
+
+  .accordion.active + .accordion-content {
+    display: block;
+  }
+
+  /* Player Stat Search Form - Fix the button below the input box */
+  .player-search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .player-search-form input {
+    width: 100%;
+    margin-bottom: 10px;
+	background-color: var(--box-bg);
+  }
+  
+  .player-search-form button {
+    width: 100%; /* Button takes full width on mobile */
+  }
+}
+
+/* ========== Tablet-Specific Styles ========== */
+@media (min-width: 769px) and (max-width: 1440px) {
+  .App-section {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+/* Desktop Specific Adjustments */
+@media (min-width: 1441px) {
+  .App-section {
+    width: 50%;
+    margin: auto;
+  }
+}
