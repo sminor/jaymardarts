@@ -121,7 +121,7 @@ button:hover {
   background-color: var(--highlight-hover);
 }
 
-/* Input fields */
+/* Form fields */
 
 input, select {
   height: 45px;
@@ -138,6 +138,16 @@ input, textarea, select {
   background-color: var(--mid-gray);
   border: 1px solid var(--table-border);
   border-radius: 4px;
+}
+
+label {
+  font-size: 16px;
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+option {
+  color: white;
 }
 
 textarea::placeholder, input::placeholder {

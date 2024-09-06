@@ -93,13 +93,13 @@ const Contact = () => {
                 onChange={handleInputChange}
                 required
               >
-                <option value="">--- Please Select ---</option>
+                <option value="" disabled>--- Please Select ---</option>
                 <option value="General questions or comments">General questions or comments</option>
                 <option value="Inquiry about dart board installation">Inquiry about dart board installation</option>
                 <option value="Questions about leagues/league sign ups">Questions about leagues/league sign ups</option>
                 <option value="Website feedback">Website feedback</option>
                 <option value="Report an issue with a dart board">Report an issue with a dart board</option>
-                <option value="Request a Dart Event">Request a Dart Event</option>
+                <option value="Request a dart event">Request a dart event</option>
               </select>
 
               <label htmlFor="message">Message</label>
