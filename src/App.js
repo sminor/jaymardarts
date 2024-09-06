@@ -8,6 +8,8 @@ import Locations from './components/Locations';
 import Events from './components/Events';
 import Leagues from './components/Leagues';
 import Contact from './components/Contact';  // Import the new Contact component
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnglesDown } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -164,7 +166,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="JayMar Darts Logo" />
         <div className="scroll-indicator">
-          <span className="arrows">↓ ↓</span>
+          <span className="arrows"><FontAwesomeIcon icon={faAnglesDown} /></span>
         </div>
       </header>
 

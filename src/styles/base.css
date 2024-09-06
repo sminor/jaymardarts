@@ -189,40 +189,38 @@ select:focus, textarea:focus, input:focus {
   background-color: var(--highlight-hover);
 }
 
-/* Base Scroll Down Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 5rem; /* Large size for both mobile and desktop */
-  color: rgba(0, 0, 0, 0.2); /* Dark shadow */
-  text-align: center;
-  animation: color-fade 3s ease-in-out infinite;
+  transform: translateX(-50%) scaleX(5);
+  width: 100%; /* Full width for centering */
+  text-align: center; /* Center the icon */
 }
 
 .scroll-indicator .arrows {
-  font-weight: bold;
-  letter-spacing: 0.0em;
+  display: inline-block;
+  font-size: 3rem; /* Adjust the height */
+  color: rgba(50, 50, 50, 0.7); /* Darker gray with 70% opacity */
   animation: color-fade 3s ease-in-out infinite, arrow-animation 1.5s infinite;
 }
 
-/* Keyframes for color fading */
 @keyframes color-fade {
   0%, 100% {
-    color: rgba(0, 0, 0, 0.2); /* Dark shadow */
+    color: rgba(50, 50, 50, 0.5); /* Fading between 50% and 70% opacity */
   }
   50% {
-    color: rgba(0, 0, 0, 0.4); /* Slightly brighter */
+    color: rgba(50, 50, 50, 0.8); /* Slightly more noticeable mid-fade */
   }
 }
 
-/* Arrow bounce animation */
 @keyframes arrow-animation {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(10px); /* Subtle bounce */
   }
 }
+
+
