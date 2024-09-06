@@ -148,8 +148,11 @@
   .player-search-form button {
     width: 100%; /* Button takes full width on mobile */
   }
-}
 
+  .arrow-container {
+    bottom: 25vh; 
+  }
+}
 /* ========== Tablet-Specific Styles ========== */
 @media (min-width: 769px) and (max-width: 1440px) {
   .App-section {

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;	
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -25,9 +25,12 @@ a:focus {
 
 .App-header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start; /* Start layout from the top */
   align-items: center;
   height: 100vh;
+  padding-top: 80px; /* Adjust padding to ensure the logo doesn't overlap the navbar */
+  position: relative;
 }
 
 .App-logo {
@@ -189,31 +192,46 @@ select:focus, textarea:focus, input:focus {
   background-color: var(--highlight-hover);
 }
 
-.scroll-indicator {
+.arrow-container {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(5);
-  width: 100%; /* Full width for centering */
-  text-align: center; /* Center the icon */
+  /* bottom: 200px; /* Adjust this value to control how close to the bottom the arrows appear */
+  bottom: 15vh; 
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  height: 120px;
+  overflow: hidden;
 }
 
-.scroll-indicator .arrows {
-  display: inline-block;
-  font-size: 3rem; /* Adjust the height */
-  color: rgba(50, 50, 50, 0.7); /* Darker gray with 70% opacity */
+.arrows {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* Ensure the arrows container is as wide as possible */
+  height: 100px; /* Increase height to prevent clipping */
+}
+
+.arrow-wrapper {
+  transform: scaleX(5); /* Apply scaleX to the wrapper to stretch the arrow */
+}
+
+.arrow-wrapper .fa-angles-down {
+  font-size: 4rem; /* Adjust the size of the arrow */
+  color: rgba(50, 50, 50, 0.7); /* Set the arrow color */
   animation: color-fade 3s ease-in-out infinite, arrow-animation 1.5s infinite;
 }
 
+/* Fading animation */
 @keyframes color-fade {
   0%, 100% {
-    color: rgba(50, 50, 50, 0.5); /* Fading between 50% and 70% opacity */
+    color: rgba(50, 50, 50, 0.5);
   }
   50% {
-    color: rgba(50, 50, 50, 0.8); /* Slightly more noticeable mid-fade */
+    color: rgba(50, 50, 50, 0.8);
   }
 }
 
+/* Bounce effect for the arrow */
 @keyframes arrow-animation {
   0%, 100% {
     transform: translateY(0);
@@ -223,4 +241,8 @@ select:focus, textarea:focus, input:focus {
   }
 }
 
-
+@media (max-width: 768px) {
+  .arrow-container {
+    bottom: 25vh; 
+  }
+}

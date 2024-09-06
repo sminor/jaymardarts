@@ -165,8 +165,14 @@ function App() {
       {/* Header with logo and scroll indicator */}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="JayMar Darts Logo" />
-        <div className="scroll-indicator">
-          <span className="arrows"><FontAwesomeIcon icon={faAnglesDown} /></span>
+        
+        {/* Arrow container */}
+        <div className="arrow-container">
+          <div className="arrows">
+            <div className="arrow-wrapper"> {/* Wrap the icon in a div */}
+              <FontAwesomeIcon icon={faAnglesDown} />
+            </div>
+          </div>
         </div>
       </header>
 
