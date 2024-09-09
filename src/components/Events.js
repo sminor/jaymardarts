@@ -20,18 +20,9 @@ const Events = ({ sortedEvents }) => {
   const pastEvents = sortedEvents.filter(event => new Date(event.formattedDate) < new Date(now));
 
   // Toggle collapsed state
-  const toggleCollapseNewPlayer = (e) => {
-    e.preventDefault(); // Prevent scroll to top
-    setIsCollapsedNewPlayer(!isCollapsedNewPlayer);
-  };
-  const toggleCollapseConduct = (e) => {
-    e.preventDefault(); // Prevent scroll to top
-    setIsCollapsedConduct(!isCollapsedConduct);
-  };
-  const toggleCollapsePastEvents = (e) => {
-    e.preventDefault(); // Prevent scroll to top
-    setIsCollapsedPastEvents(!isCollapsedPastEvents);
-  };
+  const toggleCollapseNewPlayer = () => setIsCollapsedNewPlayer(!isCollapsedNewPlayer);
+  const toggleCollapseConduct = () => setIsCollapsedConduct(!isCollapsedConduct);
+  const toggleCollapsePastEvents = () => setIsCollapsedPastEvents(!isCollapsedPastEvents); // Toggle for past events
 
   return (
     <section id="events" className="App-section">
@@ -46,10 +37,10 @@ const Events = ({ sortedEvents }) => {
 
         {/* Collapsible Section for New Players */}
         <div className="new-player-info">
-          <a href="#" role="button" onClick={toggleCollapseNewPlayer} className="toggle-link">
+          <button onClick={toggleCollapseNewPlayer} className="toggle-link">
             New Player Information
             <FontAwesomeIcon icon={isCollapsedNewPlayer ? faChevronDown : faChevronUp} />
-          </a>
+          </button>
           {!isCollapsedNewPlayer && (
             <div className="new-player-details">
               <p>Please arrive at least 30 minutes before sign-ups start to ensure a smooth experience.</p>
@@ -80,10 +71,10 @@ const Events = ({ sortedEvents }) => {
 
         {/* Collapsible Section for Code of Conduct */}
         <div className="code-of-conduct-info">
-          <a href="#" role="button" onClick={toggleCollapseConduct} className="toggle-link">
+          <button onClick={toggleCollapseConduct} className="toggle-link">
             Code of Conduct & Tournament Etiquette
             <FontAwesomeIcon icon={isCollapsedConduct ? faChevronDown : faChevronUp} />
-          </a>
+          </button>
           {!isCollapsedConduct && (
             <div className="code-of-conduct-details">
               <p>
@@ -135,10 +126,10 @@ const Events = ({ sortedEvents }) => {
         {/* Collapsible Section for Past Events */}
         <div className="past-events-info">
           <h3>
-            <a href="#" role="button" onClick={toggleCollapsePastEvents} className="toggle-link">
+            <button onClick={toggleCollapsePastEvents} className="toggle-button">
               Past Events
               <FontAwesomeIcon icon={isCollapsedPastEvents ? faChevronDown : faChevronUp} />
-            </a>
+            </button>
           </h3>
           {!isCollapsedPastEvents && (
             <div className="events-grid past-events-grid">

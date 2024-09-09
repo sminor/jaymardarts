@@ -1,3 +1,4 @@
+/* Events Section */
 #events {
   background-color: var(--mid-gray);
 }
@@ -24,12 +25,11 @@
   grid-template-columns: 1fr;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-left: 3px solid var(--highlight-color);
-  border-radius: 4px;
 }
 
 .event-item div {
   display: flex;
-  align-items: center; /* Vertically aligns the icon and text */
+  align-items: center;
   margin-bottom: 10px; /* Adds spacing between rows */
 }
 
@@ -52,17 +52,41 @@
 }
 
 .event-icons {
-  margin-right: 8px; /* Adds some space between the icon and text */
+  margin-right: 8px;
   color: var(--highlight-color);
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* General styles for collapsible sections */
-.new-player-info, .code-of-conduct-info {
-  margin-top: 20px;
+/* Past Event Styling */
+.past-event {
+  color: #666;
+  border-left: 3px solid #666;
+  border-radius: 4px;
 }
 
-.new-player-details, .code-of-conduct-details {
+.past-event .event-icons {
+  color: #999; /* Lighten icons */
+}
+
+.past-event:hover {
+  transform: none; /* Disable hover effects */
+  box-shadow: none; /* Remove shadow */
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Collapsible Sections: New Player, Conduct, Past Events */
+.new-player-info,
+.code-of-conduct-info,
+.past-events-info {
+  margin-top: 10px; /* Standard margin for sections */
+}
+
+.new-player-details,
+.code-of-conduct-details {
   margin-top: 10px;
   padding: 10px;
   background-color: var(--box-bg);
@@ -70,64 +94,62 @@
   border-radius: 4px;
 }
 
-.new-player-info a, .code-of-conduct-info a {
-  font-weight: bold;
-  text-decoration: none;
+.toggle-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
   color: var(--link-color);
   cursor: pointer;
-}
-
-.new-player-info a:hover, .code-of-conduct-info a:hover {
-  text-decoration: underline;
-}
-
-.new-player-info svg, .code-of-conduct-info svg {
-  margin-left: 8px;
-}
-
-/* Strikethrough for past event dates */
-.strikethrough {
-  text-decoration: line-through;
-  color: #999; /* Muted gray for the strikethrough to make it less prominent */
-}
-
-/* Subtle styling for past events */
-.past-event {
-  color: #666; /* Slightly desaturated text color */
-  border-left: 3px solid #666;
-  border-radius: 4px;
-}
-
-.past-event .event-icons {
-  color: #999; /* Lighten the icons without changing the background */
-}
-
-.past-event:hover {
-  transform: none; /* Disable hover effects for past events */
-  box-shadow: none; /* Remove any hover shadow */
-}
-
-/* General styles for collapsible sections */
-.past-events-info {
-  margin-top: 20px;
-}
-
-.past-events-info a {
   font-weight: bold;
   text-decoration: none;
-  color: var(--highlight-gray); /* Subtle color for past events section */
+  display: inline;
+}
+
+.toggle-link:hover {
+  text-decoration: underline; /* Underline on hover */
+  background: none;
+}
+
+.toggle-link:focus {
+  outline: none;
+}
+
+.toggle-link svg,
+.past-events-info .toggle-button svg {
+  margin-left: 5px; /* Adds space between the text and the chevron */
+}
+
+/* Specific Past Events Button Styling */
+.past-events-info .toggle-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: bold;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.past-events-info a:hover {
-  text-decoration: underline;
+.past-events-info .toggle-button:hover {
+  text-decoration: none; /* No underline */
+  background: none;
 }
 
-.past-events-info svg {
-  margin-left: 8px;
+.past-events-info h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0;
 }
 
-/* Past Events Grid */
-.past-events-grid {
-  margin-top: 10px;
+/* Adjust spacing between New Player and Etiquette links */
+.new-player-info {
+  margin-bottom: 0; /* Reduce bottom margin to bring links closer */
+}
+
+.code-of-conduct-info {
+  margin-top: 0; /* Remove top margin to reduce space */
 }
