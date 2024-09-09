@@ -72,7 +72,7 @@ const Events = ({ sortedEvents }) => {
         {/* Collapsible Section for Code of Conduct */}
         <div className="code-of-conduct-info">
           <button onClick={toggleCollapseConduct} className="toggle-link">
-            Code of Conduct & Tournament Etiquette
+            Code of Conduct
             <FontAwesomeIcon icon={isCollapsedConduct ? faChevronDown : faChevronUp} />
           </button>
           {!isCollapsedConduct && (
