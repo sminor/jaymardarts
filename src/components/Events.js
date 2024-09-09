@@ -127,7 +127,7 @@ const Events = ({ sortedEvents }) => {
         <div className="past-events-info">
           <h3>
             <button onClick={toggleCollapsePastEvents} className="toggle-button">
-              Past Events
+              Recent Events
               <FontAwesomeIcon icon={isCollapsedPastEvents ? faChevronDown : faChevronUp} />
             </button>
           </h3>
