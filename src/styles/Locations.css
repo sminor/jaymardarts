@@ -22,6 +22,8 @@
   cursor: pointer;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 3px solid var(--highlight-color);
+  border-radius: 4px;
 }
 
 .location-item:hover {
