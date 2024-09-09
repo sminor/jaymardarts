@@ -20,9 +20,18 @@ const Events = ({ sortedEvents }) => {
   const pastEvents = sortedEvents.filter(event => new Date(event.formattedDate) < new Date(now));
 
   // Toggle collapsed state
-  const toggleCollapseNewPlayer = () => setIsCollapsedNewPlayer(!isCollapsedNewPlayer);
-  const toggleCollapseConduct = () => setIsCollapsedConduct(!isCollapsedConduct);
-  const toggleCollapsePastEvents = () => setIsCollapsedPastEvents(!isCollapsedPastEvents); // Toggle for past events
+  const toggleCollapseNewPlayer = (e) => {
+    e.preventDefault(); // Prevent scroll to top
+    setIsCollapsedNewPlayer(!isCollapsedNewPlayer);
+  };
+  const toggleCollapseConduct = (e) => {
+    e.preventDefault(); // Prevent scroll to top
+    setIsCollapsedConduct(!isCollapsedConduct);
+  };
+  const toggleCollapsePastEvents = (e) => {
+    e.preventDefault(); // Prevent scroll to top
+    setIsCollapsedPastEvents(!isCollapsedPastEvents);
+  };
 
   return (
     <section id="events" className="App-section">
@@ -37,7 +46,7 @@ const Events = ({ sortedEvents }) => {
 
         {/* Collapsible Section for New Players */}
         <div className="new-player-info">
-          <a onClick={toggleCollapseNewPlayer}>
+          <a href="#" role="button" onClick={toggleCollapseNewPlayer} className="toggle-link">
             New Player Information
             <FontAwesomeIcon icon={isCollapsedNewPlayer ? faChevronDown : faChevronUp} />
           </a>
@@ -71,7 +80,7 @@ const Events = ({ sortedEvents }) => {
 
         {/* Collapsible Section for Code of Conduct */}
         <div className="code-of-conduct-info">
-          <a onClick={toggleCollapseConduct}>
+          <a href="#" role="button" onClick={toggleCollapseConduct} className="toggle-link">
             Code of Conduct & Tournament Etiquette
             <FontAwesomeIcon icon={isCollapsedConduct ? faChevronDown : faChevronUp} />
           </a>
@@ -126,11 +135,11 @@ const Events = ({ sortedEvents }) => {
         {/* Collapsible Section for Past Events */}
         <div className="past-events-info">
           <h3>
-		    <a onClick={toggleCollapsePastEvents}>
+            <a href="#" role="button" onClick={toggleCollapsePastEvents} className="toggle-link">
               Past Events
               <FontAwesomeIcon icon={isCollapsedPastEvents ? faChevronDown : faChevronUp} />
             </a>
-	      </h3>
+          </h3>
           {!isCollapsedPastEvents && (
             <div className="events-grid past-events-grid">
               {pastEvents.length > 0 ? (
