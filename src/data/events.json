@@ -10,7 +10,7 @@
   {
     "date": "Saturday, September 7th",
     "formattedDate": "2024-09-07",
-    "type": "Gotcha/Cricket/Choice",
+    "type": "Gotcha/Cricket/Choice Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -18,7 +18,7 @@
   {
     "date": "Friday, September 13th",
     "formattedDate": "2024-09-13",
-    "type": "Low Player Pick Cricket/01/Choice",
+    "type": "Low Player Pick Cricket/01/Choice Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -34,7 +34,7 @@
   {
     "date": "Friday, September 20th",
     "formattedDate": "2024-09-20",
-    "type": "MPRT Shoot",
+    "type": "MPRT Shoot A/B Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -58,7 +58,7 @@
   {
     "date": "Saturday, September 28th",
     "formattedDate": "2024-09-28",
-    "type": "20 PT Cap Bring",
+    "type": "20 PT Cap Bring Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$20 per team"
