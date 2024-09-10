@@ -45,7 +45,7 @@ const Events = ({ sortedEvents }) => {
             <div className="new-player-details">
               <p>Please arrive at least 30 minutes before sign-ups start to ensure a smooth experience.</p>
               <p>
-                Make sure to download the Bullshooter app from the{' '}
+                Make sure to download the Bullshooter Live app from the{' '}
                 {isAndroid ? (
                   <a href="https://play.google.com/store/apps/details?id=com.arachnid.bslive" target="_blank" rel="noopener noreferrer">
                     Google Play Store
