@@ -35,7 +35,7 @@ const Contact = () => {
       if (response.ok) {
         setSuccess(true);
       } else {
-        throw new Error(result.error || 'There was an issue submitting the form.');
+        throw new Error(result.message || 'There was an issue submitting the form.');
       }
     } catch (err) {
       setError(err.message);
