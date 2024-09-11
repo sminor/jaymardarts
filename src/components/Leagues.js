@@ -74,7 +74,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           <>
             <h3>Sign-Up Forms</h3>
             <ul>
-              <li><a href="http://jaymardarts.com/files/adl-fall-2024.pdf" target="_blank" rel="noopener noreferrer"><strong>ADL Sign-up Form (PDF)</strong></a></li>
+              <li><a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer"><strong>ADL Sign-up Form (Printable Form)</strong></a></li>
               <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer"><strong>Fall 2024 Sign-up (Google Form)</strong></a></li>
             </ul>
           </>
