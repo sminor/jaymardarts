@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
   const mailOptions = {
     from: process.env.SMTP_USER, // Your email address
     replyTo: email, // Set the reply-to to the user's email
-    to: 'steven.minor@gmail.com', // Your receiving email address
+    to: 'jaymardarts@gmail.com', // Your receiving email address
     subject: `New message from ${name}: ${subject}`, // Email subject
     text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`, // Plain text body
   };
