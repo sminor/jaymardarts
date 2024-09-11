@@ -153,6 +153,11 @@
     bottom: 25vh; 
   }
 }
+
+  select {
+    width: 100%; /* Make the select dropdown take up the full width */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  }
 /* ========== Tablet-Specific Styles ========== */
 @media (min-width: 769px) and (max-width: 1440px) {
   .App-section {
