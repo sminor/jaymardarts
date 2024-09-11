@@ -1,42 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PlayerStatSearch from './PlayerStatSearch'; // Ensure the path is correct
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import rulesSections from './LeagueRules'; // Correct import
 
 const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTabClick }) => {
+  const [currentSection, setCurrentSection] = useState(0);
+
+  const handleNextSection = () => {
+    if (currentSection < rulesSections.length - 1) {
+      setCurrentSection(currentSection + 1);
+    }
+  };
+
+  const handlePreviousSection = () => {
+    if (currentSection > 0) {
+      setCurrentSection(currentSection - 1);
+    }
+  };
+
+  const handleSectionChange = (e) => {
+    setCurrentSection(Number(e.target.value));
+  };
 
   const toggleAccordionWithScroll = (tab) => {
-    // Toggle the accordion first
     toggleAccordion(tab);
-
-    // Update the accordion buttons to switch between + and -
-    const accordionButtons = document.querySelectorAll('.accordion');
-    accordionButtons.forEach((button) => {
-      const dataTab = button.getAttribute('data-tab');
-      if (dataTab === tab && !button.classList.contains('active')) {
-        // If the clicked button isn't active, make it active
-        button.classList.add('active');
-      } else {
-        // Remove active class from all other buttons
-        button.classList.remove('active');
-      }
-    });
-
-    // Delay scrolling slightly to ensure state has updated
     setTimeout(() => {
       const section = document.getElementById(tab);
       if (section) {
-        const yOffset = -70; // Offset to keep the accordion header visible
+        const yOffset = -70;
         const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
-    }, 200); // Slight delay for smooth transition
+    }, 200);
   };
 
-  // Shared content renderer
   const renderContent = (section) => {
     switch (section) {
       case 'news':
         return (
           <>
+            <img 
+              src="/action-dart-logo.png" 
+              alt="Action Dart League Logo" 
+              style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }}
+            />
             <h3>ADL Fall League Sign-Ups Now Open!</h3>
             <p>Get ready for an exciting season! Sign up today and secure your spot in the ADL Fall League.</p>
             <p>Sign-up ends October 5, 2024, and leagues begin October 20.</p>
@@ -57,6 +65,28 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           <>
             <h3>Rules</h3>
             <p>Ensure you're familiar with the official rules of the league.</p>
+
+            {/* Section dropdown */}
+            <label htmlFor="sectionSelect">Jump to Section:</label>
+            <select id="sectionSelect" value={currentSection} onChange={handleSectionChange}>
+              {rulesSections.map((section, index) => (
+                <option key={index} value={index}>
+                  {section.title}
+                </option>
+              ))}
+            </select>
+
+            {/* Display the current section with HTML rendering */}
+            <div className="rules-section">
+              <h4>{rulesSections[currentSection].title}</h4>
+              <div dangerouslySetInnerHTML={{ __html: rulesSections[currentSection].content }} />
+            </div>
+
+            {/* Navigation buttons (fixed position) */}
+			<div className="navigation-buttons">
+			  <FontAwesomeIcon icon={faCircleChevronLeft} onClick={handlePreviousSection} disabled={currentSection === 0} />
+			  <FontAwesomeIcon icon={faCircleChevronRight} onClick={handleNextSection} disabled={currentSection === rulesSections.length - 1} />
+			</div>
           </>
         );
       case 'fees':
@@ -92,7 +122,6 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
         <p>Interested in joining a league? We offer competitive and recreational leagues for players of all skill levels.</p>
 
         {isMobile ? (
-          // Accordion for mobile view
           <div>
             <button className="accordion" data-tab="news" onClick={() => toggleAccordionWithScroll('news')}>News & Updates</button>
             <div id="news" className="accordion-content" style={{ display: accordionOpen['news'] ? 'block' : 'none', minHeight: '100vh' }}>
@@ -125,7 +154,6 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             </div>
           </div>
         ) : (
-          // Tabs for desktop view
           <>
             <div className="tab-navigation">
               <button className={`tab-button ${activeTab === 'news' ? 'active' : ''}`} onClick={() => handleTabClick('news')}>News & Updates</button>
@@ -146,4 +174,4 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
   );
 };
 
-export default Leagues;
+export default Leagues

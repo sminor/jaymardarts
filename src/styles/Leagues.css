@@ -95,3 +95,27 @@
 .table-container table tr:hover td {
   background-color: #444;
 }
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.navigation-buttons svg {
+  font-size: 2.0rem; /* Slightly increased size of the chevrons */
+  cursor: pointer;
+  color: var(--highlight-color); /* Match color to the other buttons */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navigation-buttons svg:hover {
+  transform: scale(1.2); /* Slight hover scale, not too big */
+  color: var(--highlight-hover); /* Highlight hover color */
+}
+
+.navigation-buttons svg:disabled {
+  opacity: 0.5; /* Reduce opacity for disabled icons */
+  cursor: not-allowed;
+}
