@@ -7,15 +7,34 @@ import rulesSections from './LeagueRules'; // Correct import
 const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTabClick }) => {
   const [currentSection, setCurrentSection] = useState(0);
 
+  const scrollToContent = () => {
+    const target = document.getElementById('rules-heading');
+    if (target) {
+	  setTimeout(() => {
+      if (isMobile) {
+        // For mobile, scroll directly to the rules heading
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // For desktop, account for the fixed navbar with an offset
+        const yOffset = -70; // Adjust this value to match your navbar height
+        const yPosition = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: yPosition, behavior: 'smooth' });
+      }
+	  }, 50); // Adjust timeout as needed
+    }
+  };
+
   const handleNextSection = () => {
     if (currentSection < rulesSections.length - 1) {
       setCurrentSection(currentSection + 1);
+	  scrollToContent(); 
     }
   };
 
   const handlePreviousSection = () => {
     if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
+	  scrollToContent(); 
     }
   };
 
@@ -63,7 +82,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
       case 'rules':
         return (
           <>
-            <h3>Rules</h3>
+            <h3 id="rules-heading">Rules</h3>
             <p>Ensure you're familiar with the official rules of the league.</p>
 
             {/* Section dropdown */}
@@ -77,6 +96,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             </select>
 
             {/* Display the current section with HTML rendering */}
+			
             <div className="rules-section">
               <h4>{rulesSections[currentSection].title}</h4>
               <div dangerouslySetInnerHTML={{ __html: rulesSections[currentSection].content }} />
