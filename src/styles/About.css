@@ -6,3 +6,13 @@
   padding-top: 70px;
   margin-top: -70px;
 }
+
+.carousel-wrapper {
+  margin-top: 20px;
+}
+
+.carousel .slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
