@@ -119,3 +119,16 @@
   opacity: 0.5; /* Reduce opacity for disabled icons */
   cursor: not-allowed;
 }
+
+.navigation-buttons .disabled {
+  opacity: 0.1; /* Reduce opacity for disabled button */
+  color: var(--light-gray);
+  cursor: not-allowed; /* Disable the pointer on hover */
+  pointer-events: none; /* Disable click events */
+  transform: none; /* Remove any hover transform effects */
+}
+
+.navigation-buttons .disabled:hover {
+  color: inherit; /* Ensure no hover effect */
+  transform: none; /* Ensure no scaling on hover */
+}

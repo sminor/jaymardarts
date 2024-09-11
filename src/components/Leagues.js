@@ -84,8 +84,18 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
 
             {/* Navigation buttons (fixed position) */}
 			<div className="navigation-buttons">
-			  <FontAwesomeIcon icon={faCircleChevronLeft} onClick={handlePreviousSection} disabled={currentSection === 0} />
-			  <FontAwesomeIcon icon={faCircleChevronRight} onClick={handleNextSection} disabled={currentSection === rulesSections.length - 1} />
+			  <FontAwesomeIcon 
+			 	 icon={faCircleChevronLeft} 
+			 	 onClick={handlePreviousSection} 
+			 	 className={currentSection === 0 ? 'disabled' : ''}
+			 	 disabled={currentSection === 0}
+			  />
+			  <FontAwesomeIcon 
+			 	 icon={faCircleChevronRight} 
+			 	 onClick={handleNextSection} 
+			 	 className={currentSection === rulesSections.length - 1 ? 'disabled' : ''}
+			 	 disabled={currentSection === rulesSections.length - 1}
+			  />
 			</div>
           </>
         );
