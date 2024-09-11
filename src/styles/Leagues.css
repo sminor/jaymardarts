@@ -154,7 +154,7 @@
   margin-bottom: 20px; /* Space for the buttons */
 }
 
-.fee-heading {
+.fee-details-heading {
   margin-bottom: 0;
   color: var(--highlight-color);
 }

@@ -87,16 +87,28 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           </>
         );
 
-      case 'signup':
-        return (
-          <>
-            <h3>Sign-Up Forms</h3>
-            <ul>
-              <li><a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer"><strong>ADL Sign-up Form (Printable Form)</strong></a></li>
-              <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer"><strong>Fall 2024 Sign-up (Google Form)</strong></a></li>
-            </ul>
-          </>
-        );
+case 'signup':
+  return (
+    <>
+      <h3 className="sign-up-heading">Sign-Up Forms</h3>
+      <p>Ready to join one of the most exciting dart leagues? Choose your preferred sign-up method below:</p>
+      
+      <ul>
+        <li>
+          <a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer" className="sign-up-link">
+            <strong>ADL Sign-up Form (Printable Form)</strong>
+          </a>
+          <p>Download and fill out the form, then bring it to our next event or email it to <a href="mailto:jaymardarts@gmail.com" className="email-link">jaymardarts@gmail.com</a>.</p>
+        </li>
+        <li>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
+            <strong>Fall 2024 Sign-up (Google Form)</strong>
+          </a>
+          <p>Complete your registration online in just a few minutes.</p>
+        </li>
+      </ul>
+    </>
+  );
       case 'rules':
         return (
           <>
@@ -140,23 +152,23 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
 case 'fees':
   return (
     <>
-      <h3>Fees</h3>
+      <h3 className="fees-heading">Fees</h3>
       <p>Here are the fees associated with joining the league:</p>
 
-      <h4 className="fee-heading">Sign-Up Fees</h4>
+      <h4 className="fee-details-heading">Sign-Up Fees</h4>
       <ul>
         <li>$50 per person for OPEN LEAGUE</li>
         <li>$25 per person for ALL CAPPED LEAGUES</li>
         <li>+ $10 for NDA sanctioning <em>(if you did not play last season)</em></li>
       </ul>
 
-      <h4 className="fee-heading">Payment Methods</h4>
+      <h4 className="fee-details-heading">Payment Methods</h4>
       <ul>
         <li>Venmo: <a href="https://venmo.com/jay-phillips-36" target="_blank" rel="noopener noreferrer"><strong>@jay-phillips-36</strong></a></li>
         <li>Paypal: <a href="https://paypal.me/jayphillips1528" target="_blank" rel="noopener noreferrer"><strong>@jayphillips1528</strong></a> <em>(Friends & Family)</em></li>
       </ul>
 
-      <h4 className="fee-heading">Important</h4>
+      <h4 className="fee-details-heading">Important</h4>
 	  <ul>
       <li>Entire team fees are due at the time of sign-up. Please pay the total amount for both players.</li>
       <li><strong>No refunds after sign-ups close.</strong></li>
