@@ -22,20 +22,18 @@ const Contact = () => {
     setError('');
 
     try {
-      const response = await fetch('/.netlify/functions/send-email', {
+      const form = e.target;
+      // Submitting the form data using Netlify's built-in handling
+      const response = await fetch('/', {
         method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
       });
-
-      const result = await response.json();
 
       if (response.ok) {
         setSuccess(true);
       } else {
-        throw new Error(result.error || 'There was an issue submitting the form.');
+        throw new Error('There was an issue submitting the form.');
       }
     } catch (err) {
       setError(err.message);
@@ -61,7 +59,20 @@ const Contact = () => {
         {!success ? (
           <>
             <p>We'd love to hear from you! Please fill out the form below to get in touch with us.</p>
-            <form className="contact-form" onSubmit={handleSubmit} netlify>
+            <form 
+              className="contact-form" 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              data-netlify-honeypot="bot-field" 
+              onSubmit={handleSubmit}
+            >
+              {/* Hidden input for Netlify form */}
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+              </p>
+
               <label htmlFor="name">Name</label>
               <input
                 type="text"
