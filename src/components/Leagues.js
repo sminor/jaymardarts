@@ -64,11 +64,29 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
               alt="Action Dart League Logo" 
               style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }}
             />
-            <h3>ADL Fall League Sign-Ups Now Open!</h3>
+            <h3 className="league-heading">ADL Fall League Sign-Ups Now Open!</h3>
             <p>Get ready for an exciting season! Sign up today and secure your spot in the ADL Fall League.</p>
-            <p>Sign-up ends October 5, 2024, and leagues begin October 20.</p>
+      
+            <p className="league-dates">
+              <span className="important-date">Sign-up ends October 5, 2024</span>, and <span className="important-date">leagues begin October 20</span>.
+            </p>
+      
+            <p>
+              By playing in our league, you'll qualify for events in organizations such as the 
+              <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer"> Action Dart League (ADL)</a>, 
+              <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer"> National Dart Association (NDA)</a>, and the 
+              <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer"> North American Dart Organization (NADO)</a>. 
+              The league runs for 15 weeks, giving you plenty of time to improve your skills and enjoy the game.
+            </p>
+      
+            <p>
+              As a participant, you'll also have the chance to qualify for <span className="important-event">Team Dart in Las Vegas</span>, one of the most prestigious events in the darting world!
+            </p>
+      
+            <p className="cta">Don't miss your chance to be part of this exciting season—start your journey to Vegas with us!</p>
           </>
         );
+
       case 'signup':
         return (
           <>
@@ -119,13 +137,35 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
 			</div>
           </>
         );
-      case 'fees':
-        return (
-          <>
-            <h3>Fees</h3>
-            <p>Here are the fees associated with joining the league and participating in tournaments.</p>
-          </>
-        );
+case 'fees':
+  return (
+    <>
+      <h3>Fees</h3>
+      <p>Here are the fees associated with joining the league:</p>
+
+      <h4 className="fee-heading">Sign-Up Fees</h4>
+      <ul>
+        <li>$50 per person for OPEN LEAGUE</li>
+        <li>$25 per person for ALL CAPPED LEAGUES</li>
+        <li>+ $10 for NDA sanctioning <em>(if you did not play last season)</em></li>
+      </ul>
+
+      <h4 className="fee-heading">Payment Methods</h4>
+      <ul>
+        <li>Venmo: <a href="https://venmo.com/jay-phillips-36" target="_blank" rel="noopener noreferrer"><strong>@jay-phillips-36</strong></a></li>
+        <li>Paypal: <a href="https://paypal.me/jayphillips1528" target="_blank" rel="noopener noreferrer"><strong>@jayphillips1528</strong></a> <em>(Friends & Family)</em></li>
+      </ul>
+
+      <h4 className="fee-heading">Important</h4>
+	  <ul>
+      <li>Entire team fees are due at the time of sign-up. Please pay the total amount for both players.</li>
+      <li><strong>No refunds after sign-ups close.</strong></li>
+	  </ul>
+    </>
+  );
+
+
+
       case 'schedule':
         return (
           <>
@@ -163,14 +203,14 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
               {renderContent('signup')}
             </div>
 
-            <button className="accordion" data-tab="rules" onClick={() => toggleAccordionWithScroll('rules')}>Rules</button>
-            <div id="rules" className="accordion-content" style={{ display: accordionOpen['rules'] ? 'block' : 'none', minHeight: '100vh' }}>
-              {renderContent('rules')}
-            </div>
-
             <button className="accordion" data-tab="fees" onClick={() => toggleAccordionWithScroll('fees')}>Fees</button>
             <div id="fees" className="accordion-content" style={{ display: accordionOpen['fees'] ? 'block' : 'none', minHeight: '100vh' }}>
               {renderContent('fees')}
+            </div>
+
+            <button className="accordion" data-tab="rules" onClick={() => toggleAccordionWithScroll('rules')}>Rules</button>
+            <div id="rules" className="accordion-content" style={{ display: accordionOpen['rules'] ? 'block' : 'none', minHeight: '100vh' }}>
+              {renderContent('rules')}
             </div>
 
             <button className="accordion" data-tab="schedule" onClick={() => toggleAccordionWithScroll('schedule')}>Schedules</button>
@@ -188,8 +228,8 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             <div className="tab-navigation">
               <button className={`tab-button ${activeTab === 'news' ? 'active' : ''}`} onClick={() => handleTabClick('news')}>News & Updates</button>
               <button className={`tab-button ${activeTab === 'signup' ? 'active' : ''}`} onClick={() => handleTabClick('signup')}>Sign-Up Forms</button>
-              <button className={`tab-button ${activeTab === 'rules' ? 'active' : ''}`} onClick={() => handleTabClick('rules')}>Rules</button>
               <button className={`tab-button ${activeTab === 'fees' ? 'active' : ''}`} onClick={() => handleTabClick('fees')}>Fees</button>
+              <button className={`tab-button ${activeTab === 'rules' ? 'active' : ''}`} onClick={() => handleTabClick('rules')}>Rules</button>
               <button className={`tab-button ${activeTab === 'schedule' ? 'active' : ''}`} onClick={() => handleTabClick('schedule')}>Schedules</button>
               <button className={`tab-button ${activeTab === 'stats' ? 'active' : ''}`} onClick={() => handleTabClick('stats')}>Player Stats</button>
             </div>

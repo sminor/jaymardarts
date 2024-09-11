@@ -154,6 +154,40 @@
   margin-bottom: 20px; /* Space for the buttons */
 }
 
+.fee-heading {
+  margin-bottom: 0;
+  color: var(--highlight-color);
+}
+
+.league-heading {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--light-gray); /* Matches your light gray text color */
+  margin-bottom: 20px;
+}
+
+.important-date {
+  font-weight: bold;
+  color: var(--highlight-color); /* Uses the highlight color */
+}
+
+.qualified-orgs {
+  font-weight: bold;
+  color: var(--link-color); /* Uses the link color for emphasis */
+}
+
+.important-event {
+  font-weight: bold;
+  color: var(--highlight-color);
+}
+
+.cta {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 20px;
+  color: var(--highlight-color);
+}
+
 /* If content is too long, let the buttons flow naturally */
 @media (min-height: 800px) { 
   .navigation-buttons {
@@ -161,3 +195,4 @@
     bottom: unset;
   }
 }
+
