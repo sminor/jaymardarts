@@ -1,4 +1,29 @@
-  // List of sections for the rules from ADL PDF
+/*
+  === Instructions for Updating League Rules ===
+  When new rules are provided for updates, follow these guidelines:
+
+  1. Each rule section is identified by a number (e.g., 1, 1.1, 1.2, etc.).
+  2. Each section should be converted into an object with the following format:
+     {
+       title: 'Section Title', // This should be the exact title from the document.
+       content: `HTML-formatted content here` // Convert the content to valid HTML. Ensure all paragraphs, lists, and formatting are preserved.
+     }
+
+  3. Use the following HTML tags for formatting:
+     - Paragraphs: Use <p> tags for each paragraph.
+     - Lists: Use <ul> and <li> for unordered lists, or <ol> and <li> for ordered lists (adjust type as necessary for 'A', 'a', '1', etc.).
+     - Headers: Use <h4> for smaller headings within a section if needed.
+
+  4. All content should be on a single line for each section's `content`. Ensure proper formatting with backticks (`) for multiline HTML content.
+
+  5. Preserve the structure of each section. Sub-sections should be embedded within the main section content as part of the HTML, unless they are standalone sections with numbers (like 1.1 or 1.2).
+
+  6. When converting, make sure that no content is omitted. Every rule, note, and bullet point should be accurately reflected in HTML.
+
+  7. Once all sections are converted and updated in the `LeagueRules.js` file, ensure to test navigation and rendering in the Leagues section to confirm that everything displays correctly.
+*/
+
+// List of sections for the rules from ADL PDF
 const rulesSections = [
   {title: '1 About Action Dart League',content: `<p>Action Dart League was founded and created by dart players for dart players. In this soft tip dart league program, the players are the #1 priority. Benefits include larger payouts, localized league finals, and online player information (statistics and results). So, step up to the line for some great fun and action – we look forward to seeing you at the boards!</p>`},
   { title: '1.1 Player Guide', content: `<p>This guide is for the players and operators of Action Dart League to use and refer to as needed. These rules and guidelines are solely for the use of Action Dart League. Action Dart League reserves the right to refuse services or play to anyone not following the guidelines set forth.</p><p>It is Action Dart League’s belief that rules are in place to keep the spirit of the game on an even playing field. The rules will not be utilized to simply win a game. All teams are entered with the spirit of fair competition and good sportsmanship. Players not displaying these qualities may be removed from the league at Action Dart League’s discretion. Occasionally, during a season, a situation may arise that our current rules do not directly address. Action Dart League reserves the right to amend the rules during the season to properly address the fairness of competition and continued efficiency of the League.</p>`},
