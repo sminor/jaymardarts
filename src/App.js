@@ -10,6 +10,10 @@ import Leagues from './components/Leagues';
 import Contact from './components/Contact';  // Import the new Contact component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesDown } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-LTMZ8CNWM8');  // Use your Measurement ID here
+ReactGA.send("pageview");
 
 
 
