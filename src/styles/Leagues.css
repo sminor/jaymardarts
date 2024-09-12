@@ -78,20 +78,50 @@
   padding: 10px;
   border: 1px solid var(--table-border); /* Borders for each cell */
   text-align: left;
-  font-size: 14px;
   color: white; /* Text color */
 }
 
+/* Table header */
 .table-container th {
+  cursor: pointer;
   background-color: #444; /* Darker background for header */
   font-weight: bold;
+  position: relative;
 }
 
+.table-container th:hover {
+  background-color: #555;
+}
+
+/* Sort indicator class */
+.sort-indicator {
+  font-size: .7em; /* Adjust this value for the size of the triangle */
+  /*margin-left: 5px; /* Space between text and triangle */
+  display: inline-block;
+  vertical-align: middle; /* Align the triangle with the text */
+}
+
+/* Table row hover effect */
 .table-container td {
   background-color: var(--nav-bg); /* Lighter background for table data */
 }
 
-/* Optional hover effect for table rows */
+/* Hover effect for table rows */
+.table-container table tr:hover td {
+  background-color: #444;
+}
+
+/* Optional: increase padding to avoid text overlap with the triangle */
+.table-container th {
+  /*padding-right: 30px; /* Adjust padding to fit the triangle comfortably */
+}
+
+/* Table row hover effect */
+.table-container td {
+  background-color: var(--nav-bg); /* Lighter background for table data */
+}
+
+/* Hover effect for table rows */
 .table-container table tr:hover td {
   background-color: #444;
 }

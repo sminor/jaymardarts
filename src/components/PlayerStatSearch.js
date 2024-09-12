@@ -5,6 +5,7 @@ const PlayerStatSearch = () => {
   const [searchSource, setSearchSource] = useState('adl'); // Default to 'adl'
   const [playerStats, setPlayerStats] = useState([]);
   const [error, setError] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
   const searchPlayerStats = async (searchTerm) => {
     const response = await fetch('/.netlify/functions/player-stat-search', {
@@ -12,7 +13,7 @@ const PlayerStatSearch = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ searchValue: searchTerm, searchSource }), // Include searchSource in the body
+      body: JSON.stringify({ searchValue: searchTerm, searchSource }),
     });
     const data = await response.json();
 
@@ -33,8 +34,39 @@ const PlayerStatSearch = () => {
   };
 
   const handleSourceChange = (e) => {
-    setSearchSource(e.target.value); // Update search source
-    setPlayerStats([]); // Clear the player stats when switching source
+    setSearchSource(e.target.value);
+    setPlayerStats([]);
+  };
+
+  const handleSort = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedPlayerStats = React.useMemo(() => {
+    if (sortConfig.key) {
+      const sortedData = [...playerStats].sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'asc' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+      return sortedData;
+    }
+    return playerStats;
+  }, [playerStats, sortConfig]);
+
+  const getSortIndicator = (key) => {
+    if (sortConfig.key === key) {
+      return sortConfig.direction === 'asc' ? '▲' : '▼';
+    }
+    return '';
   };
 
   return (
@@ -71,36 +103,68 @@ const PlayerStatSearch = () => {
       </form>
 
       {error && <p>{error}</p>}
-      {playerStats.length > 0 && (
+      {sortedPlayerStats.length > 0 && (
         <div className="table-container">
           <table>
             <thead>
               {searchSource === 'adl' ? (
                 <tr>
-                  <th>Name</th>
-                  <th>Player ID</th>
-                  <th>01 Games</th>
-                  <th>Cricket Games</th>
-                  <th>01 Avg</th>
-                  <th>Cricket Avg</th>
-                  <th>01 Rating</th>
-                  <th>Cricket Rating</th>
-                  <th>Rolling Rating</th>
+                  <th onClick={() => handleSort('name')}>
+                    Name <span className="sort-indicator">{getSortIndicator('name')}</span>
+                  </th>
+                  <th onClick={() => handleSort('playerId')}>
+                    Player ID <span className="sort-indicator">{getSortIndicator('playerId')}</span>
+                  </th>
+                  <th onClick={() => handleSort('games01')}>
+                    01 Games <span className="sort-indicator">{getSortIndicator('games01')}</span>
+                  </th>
+                  <th onClick={() => handleSort('cricketGames')}>
+                    Cricket Games <span className="sort-indicator">{getSortIndicator('cricketGames')}</span>
+                  </th>
+                  <th onClick={() => handleSort('avg01')}>
+                    01 Avg <span className="sort-indicator">{getSortIndicator('avg01')}</span>
+                  </th>
+                  <th onClick={() => handleSort('cricketAvg')}>
+                    Cricket Avg <span className="sort-indicator">{getSortIndicator('cricketAvg')}</span>
+                  </th>
+                  <th onClick={() => handleSort('rating01')}>
+                    01 Rating <span className="sort-indicator">{getSortIndicator('rating01')}</span>
+                  </th>
+                  <th onClick={() => handleSort('cricketRating')}>
+                    Cricket Rating <span className="sort-indicator">{getSortIndicator('cricketRating')}</span>
+                  </th>
+                  <th onClick={() => handleSort('rollingRating')}>
+                    Rolling Rating <span className="sort-indicator">{getSortIndicator('rollingRating')}</span>
+                  </th>
                 </tr>
               ) : (
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Games Played</th>
-                  <th>Marks Per Round</th>
-                  <th>Points Per Dart</th>
-                  <th>Rating</th>
-                  <th>NADO Points</th>
+                  <th onClick={() => handleSort('firstName')}>
+                    First Name <span className="sort-indicator">{getSortIndicator('firstName')}</span>
+                  </th>
+                  <th onClick={() => handleSort('lastName')}>
+                    Last Name <span className="sort-indicator">{getSortIndicator('lastName')}</span>
+                  </th>
+                  <th onClick={() => handleSort('gamesPlayed')}>
+                    Games Played <span className="sort-indicator">{getSortIndicator('gamesPlayed')}</span>
+                  </th>
+                  <th onClick={() => handleSort('marksPerRound')}>
+                    Marks Per Round <span className="sort-indicator">{getSortIndicator('marksPerRound')}</span>
+                  </th>
+                  <th onClick={() => handleSort('pointsPerDart')}>
+                    Points Per Dart <span className="sort-indicator">{getSortIndicator('pointsPerDart')}</span>
+                  </th>
+                  <th onClick={() => handleSort('rating')}>
+                    Rating <span className="sort-indicator">{getSortIndicator('rating')}</span>
+                  </th>
+                  <th onClick={() => handleSort('nadoPoints')}>
+                    NADO Points <span className="sort-indicator">{getSortIndicator('nadoPoints')}</span>
+                  </th>
                 </tr>
               )}
             </thead>
             <tbody>
-              {playerStats.map((player, index) => (
+              {sortedPlayerStats.map((player, index) => (
                 <tr key={index}>
                   {searchSource === 'adl' ? (
                     <>
