@@ -93,6 +93,15 @@
   background-color: #555;
 }
 
+#schedule.table-container th {
+  cursor: default; /* Disable pointer cursor */
+  background-color: #444; /* Keep background consistent */
+}
+
+#schedule.table-container th:hover {
+  background-color: #444; /* Disable hover effect */
+}
+
 /* Sort indicator class */
 .sort-indicator {
   font-size: .7em; /* Adjust this value for the size of the triangle */

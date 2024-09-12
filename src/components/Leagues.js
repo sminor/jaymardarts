@@ -177,13 +177,40 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           </>
         );
 
-      case 'schedule':
-        return (
-          <>
-            <h3>Schedules</h3>
-            <p>Here you can find the schedule for the upcoming league matches.</p>
-          </>
-        );
+	  case 'schedule':
+	  return (
+		  <>
+		  <h3 id="schedules-heading">Schedules</h3>
+		  <p>Here you can find the schedule for the upcoming league matches.</p>
+		  <div id="schedule" className="table-container">
+			  <table>
+			  <thead>
+				  <tr>
+				  <th>League</th>
+				  <th>Info</th>
+				  <th>Day</th>
+				  <th>Time</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  <tr><td>Open Doubles</td><td>No Cap</td><td>TBD</td><td>TBD</td></tr>
+				  <tr><td>Elite Doubles</td><td>26 Point Team Cap / No Individual Cap</td><td>Thursday</td><td>7:00 PM</td></tr>
+				  <tr><td>A Doubles</td><td>22 Point Team Cap / No Individual Cap</td><td>Sunday</td><td>6:00 PM</td></tr>
+				  <tr><td>A Doubles</td><td>22 Point Team Cap / No Individual Cap</td><td>Sunday</td><td>2:30 PM</td></tr>
+				  <tr><td>BB Doubles</td><td>18 Point Team Cap / No Individual Cap</td><td>Tuesday</td><td>7:00 PM</td></tr>
+				  <tr><td>BB Doubles</td><td>18 Point Team Cap / No Individual Cap</td><td>Wednesday</td><td>7:00 PM</td></tr>
+				  <tr><td>B Doubles</td><td>15 Point Team Cap / 10 pt. Individual Cap</td><td>Monday</td><td>7:00 PM</td></tr>
+				  <tr><td>CC Doubles</td><td>12 Point Team Cap / 7 pt. Individual Cap</td><td>Sunday</td><td>6:00 PM</td></tr>
+				  <tr><td>CC Doubles</td><td>12 Point Team Cap / 7 pt. Individual Cap</td><td>Sunday</td><td>2:30 PM</td></tr>
+				  <tr><td>CC Doubles</td><td>12 Point Team Cap / 7 pt. Individual Cap</td><td>Thursday</td><td>7:00 PM</td></tr>
+				  <tr><td>C Doubles</td><td>8 Pt. Team Cap / 5 pt. Indiv. Cap / HDCP Flight</td><td>Sunday</td><td>6:00 PM</td></tr>
+				  <tr><td>C Doubles</td><td>8 Pt. Team Cap / 5 pt. Indiv. Cap / HDCP Flight</td><td>Thursday</td><td>6:00 PM</td></tr>
+			  </tbody>
+			  </table>
+		  </div>
+		  </>
+	  );
+	  
 
       case 'stats':
         return (
