@@ -96,13 +96,12 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
 		  <ul>
 			  <li>
 			  <a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer" className="sign-up-link">
-				  <strong>ADL Sign-up Form (Printable Form)</strong>
+				  <strong>Fall 2024 ADL Sign-up Form (Printable Form)</strong>
 			  </a>
-			  <p>Download and fill out the form, then bring it to our next event or email it to <a href="mailto:jaymardarts@gmail.com" className="email-link">jaymardarts@gmail.com</a>.</p>
 			  </li>
 			  <li>
 			  <a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
-				  <strong>Fall 2024 Sign-up (Google Form)</strong>
+				  <strong>Fall 2024 ADL Sign-up (Google Form)</strong>
 			  </a>
 			  <p>Complete your registration online in just a few minutes.</p>
 			  </li>
