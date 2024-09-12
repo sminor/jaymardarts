@@ -19,7 +19,7 @@ exports.handler = async function (event, context) {
 
   const urls = {
     adl: 'http://actiondartl.web709.discountasp.net/Player/StatisticSearch',
-    nado: `https://api.nado.net/v2/franchiseePlayers/JayMar-Entertainment?seasonId=7`,
+    nado: `https://api.nado.net/v2/franchiseePlayers/JayMar-Entertainment`,
   };
 
   try {
@@ -84,7 +84,7 @@ exports.handler = async function (event, context) {
         gamesPlayed: player.gamesPlayed,
         marksPerRound: player.marksPerRound,
         pointsPerDart: player.pointsPerDart,
-        rating: player.rating,
+        rating: player.actualRating,
         nadoPoints: player.points.cappedPoints,
       }));
     }
