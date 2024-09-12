@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import logo from './jaymar-logo.png';
-import locationsData from './data/locations.json'; 
+import locationsData from './data/locations.json';
 import eventsData from './data/events.json';
 import About from './components/About';
 import Locations from './components/Locations';
 import Events from './components/Events';
 import Leagues from './components/Leagues';
-import Contact from './components/Contact';  // Import the new Contact component
+import Contact from './components/Contact';
+import NotFound from './components/NotFound'; // Import the 404 page component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesDown } from '@fortawesome/free-solid-svg-icons';
 import ReactGA from 'react-ga4';
 
-ReactGA.initialize('G-LTMZ8CNWM8');  // Use your Measurement ID here
+ReactGA.initialize('G-LTMZ8CNWM8'); // Your GA ID
 ReactGA.send("pageview");
-
-
 
 function App() {
   const [locations, setLocations] = useState([]);
   const [sortedEvents, setSortedEvents] = useState([]);
   const [activeTab, setActiveTab] = useState('news');
-  const [showBackToTop, setShowBackToTop] = useState(false); // For back-to-top button
-  const [activeNav, setActiveNav] = useState(''); // Active nav tracking
-  const [mobileNavOpen, setMobileNavOpen] = useState(false); // State for mobile nav
-  const [isMobile, setIsMobile] = useState(false); // State to track if it's mobile view
-  const [accordionOpen, setAccordionOpen] = useState({}); // For managing accordion in mobile view
+  const [showBackToTop, setShowBackToTop] = useState(false); // Back-to-top button visibility
+  const [activeNav, setActiveNav] = useState(''); // Active navigation tracking
+  const [mobileNavOpen, setMobileNavOpen] = useState(false); // Mobile nav open state
+  const [isMobile, setIsMobile] = useState(false); // Mobile view state
+  const [accordionOpen, setAccordionOpen] = useState({}); // Accordion state for mobile view
 
-  // Load locations and events data
   useEffect(() => {
-    setLocations(locationsData); // Load locations from JSON
+    setLocations(locationsData);
     const sortedEventsData = eventsData.sort((a, b) => new Date(a.dateFormatted) - new Date(b.dateFormatted));
-    setSortedEvents(sortedEventsData); // Load sorted events into state
+    setSortedEvents(sortedEventsData);
 
-    // Detect if the screen is mobile
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -41,24 +39,14 @@ function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle scroll behavior to update the active section and show back-to-top button
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('.App-section');
       let currentSection = '';
-      
       const scrollPosition = window.pageYOffset;
 
-      // Show the back-to-top button if scrolled more than 300px
       setShowBackToTop(scrollPosition > 300);
-      
-      // Determine if the user is at the top of the page (above the "About Us" section)
-      if (scrollPosition < sections[0].offsetTop - 80) {
-        setActiveNav(''); // Clear the active nav when above the "About Us" section
-        return;
-      }
 
-      // Determine active section based on scroll position
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         if (scrollPosition >= sectionTop - 80) {
@@ -68,25 +56,15 @@ function App() {
 
       setActiveNav(currentSection);
 
-      // Close mobile nav on scroll
       if (mobileNavOpen) {
         setMobileNavOpen(false);
       }
     };
 
-    const handleClickOutside = (event) => {
-      const nav = document.querySelector('.nav-links-mobile');
-      if (nav && !nav.contains(event.target) && mobileNavOpen) {
-        setMobileNavOpen(false); // Close mobile nav if clicked outside
-      }
-    };
-
     window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousedown', handleClickOutside); // Close nav when clicking outside
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [mobileNavOpen]);
 
@@ -106,109 +84,96 @@ function App() {
     setAccordionOpen((prevAccordionOpen) => {
       const newAccordionState = {};
 
-      // Close all sections
       Object.keys(prevAccordionOpen).forEach((key) => {
         newAccordionState[key] = false;
       });
 
-      // Toggle the clicked section (open it)
       newAccordionState[tab] = !prevAccordionOpen[tab];
 
       return newAccordionState;
     });
   };
 
-  // Handle mobile nav click - close the menu after clicking
   const handleMobileNavClick = (section, event) => {
-    event.preventDefault(); // Prevent default anchor behavior
+    event.preventDefault();
     setActiveNav(section);
     setMobileNavOpen(false);
     document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Handle back-to-top button click
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="App">
-    
-      {/* Mobile Navigation */}
-      <span className="mobile-nav-icon" onClick={() => setMobileNavOpen(!mobileNavOpen)} />
-      
-      {mobileNavOpen && (
-        <div className="nav-links-mobile">
-          <a href="#about-section" className={activeNav === 'about' ? 'active' : ''} onClick={(e) => handleMobileNavClick('about', e)}>
-            About Us
-          </a>
-          <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''} onClick={(e) => handleMobileNavClick('locations', e)}>
-            Locations
-          </a>
-          <a href="#events-section" className={activeNav === 'events' ? 'active' : ''} onClick={(e) => handleMobileNavClick('events', e)}>
-            Events
-          </a>
-          <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''} onClick={(e) => handleMobileNavClick('leagues', e)}>
-            Leagues
-          </a>
-          <a href="#contact-section" className={activeNav === 'contact' ? 'active' : ''} onClick={(e) => handleMobileNavClick('contact', e)}>
-            Contact Us
-          </a>
-        </div>
-      )}
+    <Router>
+      <Routes>
+        <Route exact path="/" element={
+          <div className="App">
+            {/* Mobile Navigation */}
+            <span className="mobile-nav-icon" onClick={() => setMobileNavOpen(!mobileNavOpen)} />
+            
+            {mobileNavOpen && (
+              <div className="nav-links-mobile">
+                <a href="#about-section" className={activeNav === 'about' ? 'active' : ''} onClick={(e) => handleMobileNavClick('about', e)}>About Us</a>
+                <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''} onClick={(e) => handleMobileNavClick('locations', e)}>Locations</a>
+                <a href="#events-section" className={activeNav === 'events' ? 'active' : ''} onClick={(e) => handleMobileNavClick('events', e)}>Events</a>
+                <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''} onClick={(e) => handleMobileNavClick('leagues', e)}>Leagues</a>
+                <a href="#contact-section" className={activeNav === 'contact' ? 'active' : ''} onClick={(e) => handleMobileNavClick('contact', e)}>Contact Us</a>
+              </div>
+            )}
 
-      {/* Desktop Navigation */}
-      <nav className="App-nav">
-        <a href="#about-section" className={activeNav === 'about' ? 'active' : ''}>About Us</a>
-        <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''}>Locations</a>
-        <a href="#events-section" className={activeNav === 'events' ? 'active' : ''}>Events</a>
-        <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''}>Leagues</a>
-        <a href="#contact-section" className={activeNav === 'contact' ? 'active' : ''}>Contact Us</a>
-      </nav>
+            {/* Desktop Navigation */}
+            <nav className="App-nav">
+              <a href="#about-section" className={activeNav === 'about' ? 'active' : ''}>About Us</a>
+              <a href="#locations-section" className={activeNav === 'locations' ? 'active' : ''}>Locations</a>
+              <a href="#events-section" className={activeNav === 'events' ? 'active' : ''}>Events</a>
+              <a href="#leagues-section" className={activeNav === 'leagues' ? 'active' : ''}>Leagues</a>
+              <a href="#contact-section" className={activeNav === 'contact' ? 'active' : ''}>Contact Us</a>
+            </nav>
 
-      {/* Header with logo and scroll indicator */}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="JayMar Darts Logo" />
-        
-        {/* Arrow container */}
-        <div className="arrow-container">
-          <div className="arrows">
-            <div className="arrow-wrapper"> {/* Wrap the icon in a div */}
-              <FontAwesomeIcon icon={faAnglesDown} />
-            </div>
+            {/* Header with logo */}
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="JayMar Darts Logo" />
+              <div className="arrow-container">
+                <div className="arrows">
+                  <div className="arrow-wrapper">
+                    <FontAwesomeIcon icon={faAnglesDown} />
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            {/* Main Page Sections */}
+            <div id="about-section"></div>
+            <About />
+
+            <div id="locations-section"></div>
+            <Locations locations={locations} handleLocationClick={handleLocationClick} />
+
+            <div id="events-section"></div>
+            <Events sortedEvents={sortedEvents} />
+
+            <div id="leagues-section"></div>
+            <Leagues
+              isMobile={isMobile}
+              accordionOpen={accordionOpen}
+              toggleAccordion={toggleAccordion}
+              activeTab={activeTab}
+              handleTabClick={handleTabClick}
+            />
+
+            <div id="contact-section"></div>
+            <Contact />
+
+            <a href="#top" className={`back-to-top ${showBackToTop ? 'show' : ''}`} onClick={scrollToTop}>↑</a>
           </div>
-        </div>
-      </header>
+        }/>
 
-      {/* About Us Section */}
-      <div id="about-section"></div>
-      <About />
-
-      {/* Locations Section */}
-      <div id="locations-section"></div>
-      <Locations locations={locations} handleLocationClick={handleLocationClick} />
-
-      {/* Events Section */}
-      <div id="events-section"></div>
-      <Events sortedEvents={sortedEvents} />
-
-      {/* Leagues Section */}
-      <div id="leagues-section"></div>
-      <Leagues 
-        isMobile={isMobile} 
-        accordionOpen={accordionOpen} 
-        toggleAccordion={toggleAccordion} 
-        activeTab={activeTab} 
-        handleTabClick={handleTabClick} 
-      />
-
-      {/* Contact Us Section */}
-      <div id="contact-section"></div>
-      <Contact />
-
-      {/* Back to top button */}
-      <a href="#top" className={`back-to-top ${showBackToTop ? 'show' : ''}`} onClick={scrollToTop}>↑</a>
-    </div>
+        {/* NotFound Route without other components */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
