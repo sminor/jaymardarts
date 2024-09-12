@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { GoogleMap, LoadScript, MarkerF, InfoWindowF } from '@react-google-maps/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRoute } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from 'react-ga4';
 
 // Declare libraries array as a constant outside the component to avoid re-render issues
 const libraries = ['places'];
@@ -83,6 +84,13 @@ function InteractiveMap({ locations }) {
   }, []);
 
   const findClosestLocation = useCallback(() => {
+	// Google Analytics Event
+    ReactGA.event({
+      category: 'Button', // Category (e.g., 'Button')
+      action: 'click', // Action (e.g., 'click')
+      label: 'Find Closest Location', // Optional label
+    });  
+	  
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const userLat = position.coords.latitude;

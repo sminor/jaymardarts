@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesDown } from '@fortawesome/free-solid-svg-icons';
 import ReactGA from 'react-ga4';
 
-ReactGA.initialize('G-LTMZ8CNWM8'); // Your GA ID
+ReactGA.initialize('G-LTMZ8CNWM8', { debug: true }); // Your GA ID
 ReactGA.send("pageview");
 
 function App() {
