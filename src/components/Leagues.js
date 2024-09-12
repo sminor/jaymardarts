@@ -10,31 +10,31 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
   const scrollToContent = () => {
     const target = document.getElementById('rules-heading');
     if (target) {
-	  setTimeout(() => {
-      if (isMobile) {
-        // For mobile, scroll directly to the rules heading
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        // For desktop, account for the fixed navbar with an offset
-        const yOffset = -70; // Adjust this value to match your navbar height
-        const yPosition = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: yPosition, behavior: 'smooth' });
-      }
-	  }, 50); // Adjust timeout as needed
+      setTimeout(() => {
+        if (isMobile) {
+          // For mobile, scroll directly to the rules heading
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // For desktop, account for the fixed navbar with an offset
+          const yOffset = -70; // Adjust this value to match your navbar height
+          const yPosition = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: yPosition, behavior: 'smooth' });
+        }
+      }, 50); // Adjust timeout as needed
     }
   };
 
   const handleNextSection = () => {
     if (currentSection < rulesSections.length - 1) {
       setCurrentSection(currentSection + 1);
-	  scrollToContent(); 
+      scrollToContent();
     }
   };
 
   const handlePreviousSection = () => {
     if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
-	  scrollToContent(); 
+      scrollToContent();
     }
   };
 
@@ -87,54 +87,54 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           </>
         );
 
-	  case 'signup':
-	  return (
-		  <>
-		  <h3 className="sign-up-heading">Sign-Up Forms</h3>
-		  <p>Ready to join one of the most exciting dart leagues? Choose your preferred sign-up method below:</p>
-		  
-		  <ul>
-			  <li>
-			  <a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer" className="sign-up-link">
-				  <strong>Fall 2024 ADL Sign-up Form (Printable Form)</strong>
-			  </a>
-			  </li>
-			  <li>
-			  <a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
-				  <strong>Fall 2024 ADL Sign-up (Google Form)</strong>
-			  </a>
-			  <p>Complete your registration online in just a few minutes.</p>
-			  </li>
-		  </ul>
-		  </>
-	  );
-	  
-	  case 'fees':
-	  return (
-		  <>
-		  <h3 className="fees-heading">Fees</h3>
-		  <p>Here are the fees associated with joining the league:</p>
-	  
-		  <h4 className="fee-details-heading">Sign-Up Fees</h4>
-		  <ul>
-			  <li>$50 per person for OPEN LEAGUE</li>
-			  <li>$25 per person for ALL CAPPED LEAGUES</li>
-			  <li>+ $10 for NDA sanctioning <em>(if you did not play last season)</em></li>
-		  </ul>
-	  
-		  <h4 className="fee-details-heading">Payment Methods</h4>
-		  <ul>
-			  <li>Venmo: <a href="https://venmo.com/jay-phillips-36" target="_blank" rel="noopener noreferrer"><strong>@jay-phillips-36</strong></a></li>
-			  <li>Paypal: <a href="https://paypal.me/jayphillips1528" target="_blank" rel="noopener noreferrer"><strong>@jayphillips1528</strong></a> <em>(Friends & Family)</em></li>
-		  </ul>
-	  
-		  <h4 className="fee-details-heading">Important</h4>
-		  <ul>
-		  <li>Entire team fees are due at the time of sign-up. Please pay the total amount for both players.</li>
-		  <li><strong>No refunds after sign-ups close.</strong></li>
-		  </ul>
-		  </>
-	  );
+      case 'signup':
+        return (
+          <>
+            <h3 className="sign-up-heading">Sign-Up Forms</h3>
+            <p>Ready to join one of the most exciting dart leagues? Choose your preferred sign-up method below:</p>
+          
+            <ul>
+              <li>
+                <a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer" className="sign-up-link">
+                  <strong>Fall 2024 ADL Sign-up Form (Printable Form)</strong>
+                </a>
+              </li>
+              <li>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
+                  <strong>Fall 2024 ADL Sign-up (Google Form)</strong>
+                </a>
+                <p>Complete your registration online in just a few minutes.</p>
+              </li>
+            </ul>
+          </>
+        );
+
+      case 'fees':
+        return (
+          <>
+            <h3 className="fees-heading">Fees</h3>
+            <p>Here are the fees associated with joining the league:</p>
+        
+            <h4 className="fee-details-heading">Sign-Up Fees</h4>
+            <ul>
+              <li>$50 per person for OPEN LEAGUE</li>
+              <li>$25 per person for ALL CAPPED LEAGUES</li>
+              <li>+ $10 for NDA sanctioning <em>(if you did not play last season)</em></li>
+            </ul>
+        
+            <h4 className="fee-details-heading">Payment Methods</h4>
+            <ul>
+              <li>Venmo: <a href="https://venmo.com/jay-phillips-36" target="_blank" rel="noopener noreferrer"><strong>@jay-phillips-36</strong></a></li>
+              <li>Paypal: <a href="https://paypal.me/jayphillips1528" target="_blank" rel="noopener noreferrer"><strong>@jayphillips1528</strong></a> <em>(Friends & Family)</em></li>
+            </ul>
+        
+            <h4 className="fee-details-heading">Important</h4>
+            <ul>
+              <li>Entire team fees are due at the time of sign-up. Please pay the total amount for both players.</li>
+              <li><strong>No refunds after sign-ups close.</strong></li>
+            </ul>
+          </>
+        );
 
       case 'rules':
         return (
@@ -153,27 +153,27 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             </select>
 
             {/* Display the current section with HTML rendering */}
-			
+            
             <div className="rules-section">
               <h4>{rulesSections[currentSection].title}</h4>
               <div dangerouslySetInnerHTML={{ __html: rulesSections[currentSection].content }} />
             </div>
 
             {/* Navigation buttons (fixed position) */}
-			<div className="navigation-buttons">
-			  <FontAwesomeIcon 
-			 	 icon={faCircleChevronLeft} 
-			 	 onClick={handlePreviousSection} 
-			 	 className={currentSection === 0 ? 'disabled' : ''}
-			 	 disabled={currentSection === 0}
-			  />
-			  <FontAwesomeIcon 
-			 	 icon={faCircleChevronRight} 
-			 	 onClick={handleNextSection} 
-			 	 className={currentSection === rulesSections.length - 1 ? 'disabled' : ''}
-			 	 disabled={currentSection === rulesSections.length - 1}
-			  />
-			</div>
+            <div className="navigation-buttons">
+              <FontAwesomeIcon 
+                 icon={faCircleChevronLeft} 
+                 onClick={handlePreviousSection} 
+                 className={currentSection === 0 ? 'disabled' : ''} 
+                 disabled={currentSection === 0}
+              />
+              <FontAwesomeIcon 
+                 icon={faCircleChevronRight} 
+                 onClick={handleNextSection} 
+                 className={currentSection === rulesSections.length - 1 ? 'disabled' : ''} 
+                 disabled={currentSection === rulesSections.length - 1}
+              />
+            </div>
           </>
         );
 
@@ -184,6 +184,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             <p>Here you can find the schedule for the upcoming league matches.</p>
           </>
         );
+
       case 'stats':
         return (
           <>
@@ -191,6 +192,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             <PlayerStatSearch />
           </>
         );
+
       default:
         return null;
     }
@@ -255,4 +257,4 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
   );
 };
 
-export default Leagues
+export default Leagues;
