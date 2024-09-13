@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -56,19 +57,20 @@ a:focus {
   gap: 20px;
 }
 
-.App-nav a {
+.App-nav span {
   color: var(--text-primary);
   text-decoration: none;
   font-size: 18px;
   padding: 8px 16px;
+  cursor: pointer;
 }
 
-.App-nav a:hover {
+.App-nav span:hover {
   background-color: var(--nav-hover-bg);
   border-radius: 4px;
 }
 
-.App-nav a.active {
+.App-nav span.active {
   background-color: var(--highlight-color);
   border-radius: 4px;
 }
@@ -166,11 +168,23 @@ select:focus, textarea:focus, input:focus {
   border-color: var(--highlight-color); /* Highlight border on focus */
 }
 
+.mobile-nav-button {
+  display: none;
+}
+
+.fade-button {
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for fade */
+  opacity: 1; /* Default visible state */
+}
+
+.fade-button.fade-out {
+  opacity: 0.3; /* Partially faded out */
+}
+
 /* ========== Back-to-Top Button ========== */
 .back-to-top {
   position: fixed;
-  bottom: 20px;
-  right: calc((100% - 50vw) / 2 + 20px);
+  bottom: 20px; /* Keep the vertical position fixed */
   background-color: var(--highlight-color);
   color: var(--button-text);
   width: 50px;
@@ -178,10 +192,10 @@ select:focus, textarea:focus, input:focus {
   border-radius: 4px;
   text-decoration: none;
   font-size: 24px;
-  display: none;
+  display: none; /* It will be displayed via JavaScript */
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* Keep it above other elements */
 }
 
 .back-to-top.show {
@@ -219,6 +233,18 @@ select:focus, textarea:focus, input:focus {
   font-size: 4rem; /* Adjust the size of the arrow */
   color: rgba(50, 50, 50, 0.7); /* Set the arrow color */
   animation: color-fade 3s ease-in-out infinite, arrow-animation 1.5s infinite;
+}
+
+footer {
+  background-color: var(--nav-bg);
+  color: var(--text-primary);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  bottom: 0;
+  width: 100%;
+  position: relative;
+  z-index: 1000; /* Ensures it appears above other elements if needed */
 }
 
 /* Fading animation */
