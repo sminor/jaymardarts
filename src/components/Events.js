@@ -12,12 +12,25 @@ const Events = ({ sortedEvents }) => {
   const isAndroid = /android/i.test(userAgent);
   const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
-  // Get current date in Portland timezone
-  const now = new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
-
-  // Split events into upcoming and past
-  const upcomingEvents = sortedEvents.filter(event => new Date(event.formattedDate) >= new Date(now));
-  const pastEvents = sortedEvents.filter(event => new Date(event.formattedDate) < new Date(now));
+  // Get current date in Portland timezone without time portion
+  const now = new Date(new Date().toLocaleDateString("en-US", { timeZone: "America/Los_Angeles" }));
+  
+  // Helper function to parse YYYY-MM-DD formatted dates as local dates
+  const parseLocalDate = (dateString) => {
+    const [year, month, day] = dateString.split('-');
+    return new Date(year, month - 1, day); // month is zero-indexed in JS Date
+  };
+  
+  // Split events into upcoming and past, based on date comparison
+  const upcomingEvents = sortedEvents.filter(event => {
+    const eventDate = parseLocalDate(event.formattedDate); // Parse event date as local date
+    return eventDate >= now; // Compare event date with current date
+  });
+  
+  const pastEvents = sortedEvents.filter(event => {
+    const eventDate = parseLocalDate(event.formattedDate); // Parse event date as local date
+    return eventDate < now; // Compare event date with current date
+  });
 
   // Toggle collapsed state
   const toggleCollapseNewPlayer = () => setIsCollapsedNewPlayer(!isCollapsedNewPlayer);
