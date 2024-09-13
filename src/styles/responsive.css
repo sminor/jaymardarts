@@ -1,11 +1,11 @@
 /* Mobile Specific Adjustments */
 @media (max-width: 768px) {
   .App-nav {
-    display: none; /* Keep the navbar hidden on mobile */
+    display: none;
   }
   
   .App-logo {
-    margin-bottom: 100px; /* Move the logo higher by reducing the margin */
+    margin-bottom: 100px;
   }
 
   .scroll-indicator {
@@ -146,7 +146,7 @@
   }
   
   .player-search-form button {
-    width: 100%; /* Button takes full width on mobile */
+    width: 100%;
   }
 
   .arrow-container {
@@ -155,8 +155,8 @@
 }
 
   select {
-    width: 100%; /* Make the select dropdown take up the full width */
-    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+    width: 100%;
+    box-sizing: border-box;
   }
 /* ========== Tablet-Specific Styles ========== */
 @media (min-width: 769px) and (max-width: 1440px) {

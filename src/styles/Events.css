@@ -1,6 +1,6 @@
 /* Events Section */
 #events {
-  background-color: var(--mid-gray);
+  background-color: var(--secondary-bg);
 }
 
 #events-section {
@@ -89,7 +89,7 @@
 .code-of-conduct-details {
   margin-top: 10px;
   padding: 10px;
-  background-color: var(--box-bg);
+  background-color: var(--tertiary-bg);
   border-left: 3px solid var(--highlight-color);
   border-radius: 4px;
 }

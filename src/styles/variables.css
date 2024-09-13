@@ -1,12 +1,73 @@
 :root {
-  --dark-gray: #1e1e1e;
-  --mid-gray: #2a2a2a;
-  --light-gray: #f2f2f2;
-  --highlight-color: #c99f40;
-  --highlight-hover: #b3882d;
-  --box-bg: #3a3a3a;
-  --nav-bg: #333;
-  --nav-hover-bg: #666;
-  --link-color: #007bff;
-  --table-border: #555;
+  /* Generic Colors */
+  --color1: #1e1e1e;
+  --color2: #2a2a2a;
+  --color3: #3a3a3a;
+  --color4: #444444;
+  --color5: #333333;
+  --color6: #666666;
+  --color7: #f2f2f2;
+  --color8: #999999;
+  --color9: #666666;
+  --color10: #007bff;
+  --color11: #0056b3;
+  --color12: #555555;
+  --color13: #e63946;
+  --color14: #4caf50;
+  --color15: #c99f40;
+  --color16: #b3882d;
+  --color17: #ffffff;
+  
+
+
+  /* Backgrounds */
+  --primary-bg: var(--color1); /* Main background */
+  --secondary-bg: var(--color2); /* Secondary background */
+  --tertiary-bg: var(--color3); /* Tertiary background */
+  --quaternary-bg: var(--color4); /* Quaternary background */
+  
+  /* Navigation */
+  --nav-bg: var(--color5); /* Navigation background */
+  --nav-hover-bg: var(--color6); /* Navigation hover background */
+
+  /* Text */
+  --text-primary: var(--color7); /* Primary text */
+  --text-secondary: var(--color8); /* Secondary text */
+  --text-muted: var(--color9); /* Muted text */
+  --text-strikethrough: var(--color8); /* Strikethrough text */
+  
+  /* Links */
+  --link-color: var(--color10); /* Default link */
+  --link-hover: var(--color11); /* Link hover */
+
+  /* Tables */
+  --table-border: var(--color12); /* Table border */
+  --table-header-bg: var(--color4); /* Table header */
+  --table-row-hover: var(--color12); /* Row hover */
+
+  /* Buttons */
+  --button-bg: var(--color15); /* Button background */
+  --button-hover-bg: var(--color16); /* Button hover background */
+  --button-text: var(--color17); /* Button text */
+  
+  /* Inputs */
+  --input-bg: var(--color5); /* Input background */
+  --input-border: var(--color12); /* Input border */
+  --input-focus-border: var(--color15); /* Input border on focus */
+  --input-placeholder: var(--color8); /* Placeholder text */
+
+  /* Borders */
+  --border-primary: var(--color12); /* General border */
+  
+  /* Badges and Icons */
+  --badge-new: var(--color13); /* Badge for new items */
+  --icon-muted: var(--color8); /* Muted icons */
+
+  /* Special States */
+  --error-color: var(--color13); /* Error state */
+  --success-color: var(--color14); /* Success state */
+  
+  /* Highlights */
+  --highlight-color: var(--color15); /* Primary highlight */
+  --highlight-hover: var(--color16); /* Hover highlight */
 }

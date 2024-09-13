@@ -1,8 +1,10 @@
 @import './styles/variables.css';
 @import './styles/base.css';
+@import './styles/responsive.css';
 @import './styles/About.css';
 @import './styles/Locations.css';
 @import './styles/Events.css';
 @import './styles/Leagues.css';
 @import './styles/Contact.css';
-@import './styles/responsive.css';
+@import './styles/NotFound.css';
+

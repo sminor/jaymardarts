@@ -4,20 +4,20 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--mid-gray); /* Use your existing color scheme */
+  background-color: var(--secondary-bg);
   text-align: center;
-  color: var(--light-gray);
+  color: var(--text-primary);
 }
 
 .not-found-logo {
-  width: 200px;
+  width: 25%;
   margin-bottom: 20px;
 }
 
 .not-found-container h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: var(--highlight-color); /* Matches your branding */
+  color: var(--highlight-color);
 }
 
 .not-found-container p {
@@ -27,7 +27,7 @@
 
 .home-button {
   background-color: var(--highlight-color);
-  color: var(--dark-gray);
+  color: var(--primary-bg);
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;

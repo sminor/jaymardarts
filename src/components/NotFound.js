@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../jaymar-logo.png'; // Update this path if your logo is elsewhere
-import '../styles/NotFound.css';
+
 
 const NotFound = () => {
   return (
