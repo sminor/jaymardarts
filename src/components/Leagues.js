@@ -80,7 +80,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             </p>
       
             <p>
-              As a participant, you'll also have the chance to qualify for <span className="important-event">Team Dart in Las Vegas</span>, one of the most prestigious events in the darting world!
+              As a participant, you'll also qualify for <span className="important-event">Team Dart in Las Vegas</span>, one of the most prestigious events in the darting world!
             </p>
       
             <p className="cta">Don't miss your chance to be part of this exciting season—start your journey to Vegas with us!</p>
