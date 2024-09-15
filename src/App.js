@@ -9,6 +9,7 @@ import Locations from './components/Locations';
 import Events from './components/Events';
 import Leagues from './components/Leagues';
 import Contact from './components/Contact';
+import OperatorTools from './components/OperatorTools';
 import NotFound from './components/NotFound'; // Import the 404 page component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesDown, faBars } from '@fortawesome/free-solid-svg-icons'; // Import hamburger icon
@@ -238,6 +239,9 @@ return (
               </button>
             </>
           }/>
+		  
+		  {/* Hidden route for the Operator Tools page */}
+          <Route path="/operator-tools" element={<OperatorTools />} />
 
           {/* NotFound Route */}
           <Route path="*" element={<NotFound />} />
