@@ -12,17 +12,25 @@ const OperatorTools = () => {
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
 
-  // Load tournament players from local storage on mount
+  // Check for existing authentication status in sessionStorage on component mount
   useEffect(() => {
-    const savedPlayers = localStorage.getItem('tournamentPlayers');
+    const authStatus = sessionStorage.getItem('authenticated');
+    if (authStatus === 'true') {
+      setAuthenticated(true);
+    }
+  }, []);
+
+  // Load tournament players from sessionStorage on mount
+  useEffect(() => {
+    const savedPlayers = sessionStorage.getItem('tournamentPlayers');
     if (savedPlayers) {
       setTournamentPlayers(JSON.parse(savedPlayers));
     }
   }, []);
 
-  // Save tournament players to local storage whenever they change
+  // Save tournament players to sessionStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
+    sessionStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
   }, [tournamentPlayers]);
 
   // Function to fetch and parse the player stats
@@ -75,6 +83,7 @@ const OperatorTools = () => {
     e.preventDefault();
     if (password === process.env.REACT_APP_OPERATOR_PASSWORD) {
       setAuthenticated(true);
+      sessionStorage.setItem('authenticated', 'true');
     } else {
       alert('Incorrect password. Please try again.');
     }
