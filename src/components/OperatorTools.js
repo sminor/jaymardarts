@@ -1,64 +1,135 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import DataUpload from './DataUpload';
+import TournamentMoney from './TournamentMoney';
+import PlayerRoster from './PlayerRoster';
+import TournamentPlayers from './TournamentPlayers';
+import TournamentSettings from './TournamentSettings';
 
 const OperatorTools = () => {
-  const [file, setFile] = useState(null);
-  const [message, setMessage] = useState('');
+  const [players, setPlayers] = useState([]);
+  const [tournamentPlayers, setTournamentPlayers] = useState([]);
+  const [generatedDate, setGeneratedDate] = useState('N/A');
+  const [password, setPassword] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
 
-  // Handle file input change
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  // Handle file upload
-  const handleFileUpload = async () => {
-    if (!file) {
-      setMessage('Please select a file to upload.');
-      return;
+  // Load tournament players from local storage on mount
+  useEffect(() => {
+    const savedPlayers = localStorage.getItem('tournamentPlayers');
+    if (savedPlayers) {
+      setTournamentPlayers(JSON.parse(savedPlayers));
     }
+  }, []);
 
-    // Read the file content
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async () => {
-      const fileContent = reader.result.split(',')[1]; // Extract base64 data
-      const fileName = file.name;
+  // Save tournament players to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
+  }, [tournamentPlayers]);
 
-      try {
-        // Send a POST request to the serverless function
-        const response = await fetch('/.netlify/functions/upload-to-drive', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ fileContent, fileName }),
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-          setMessage(`File uploaded successfully: ${result.fileId}`);
-        } else {
-          setMessage(`Error uploading file: ${result.error}`);
-        }
-      } catch (error) {
-        console.error('Error uploading file:', error);
-        setMessage('An error occurred during the upload.');
+  // Function to fetch and parse the player stats
+  const fetchPlayerStats = async () => {
+    try {
+      const response = await fetch('/.netlify/functions/parse-player-stats');
+      const result = await response.json();
+      if (response.ok) {
+        setPlayers(result.players);
+        setGeneratedDate(result.generatedDate || 'N/A');
+      } else {
+        console.error('Error fetching player stats:', result.error);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching player stats:', error);
+    }
   };
+
+  // Handle adding a player to the tournament
+  const addPlayerToTournament = (player) => {
+    if (!tournamentPlayers.some(p => p.name === player.name)) {
+      setTournamentPlayers([...tournamentPlayers, { ...player, paid: false }]);
+    }
+  };
+
+  // Handle adding a new player directly
+  const onAddNewPlayer = (newPlayer) => {
+    setTournamentPlayers([...tournamentPlayers, newPlayer]);
+  };
+
+  // Handle removing a player from the tournament
+  const removePlayerFromTournament = (player) => {
+    setTournamentPlayers(tournamentPlayers.filter(p => p.name !== player.name));
+  };
+
+  // Toggle player's paid status
+  const togglePaidStatus = (player) => {
+    setTournamentPlayers(tournamentPlayers.map(p =>
+      p.name === player.name ? { ...p, paid: !p.paid } : p
+    ));
+  };
+
+  // Fetch player stats on component mount
+  useEffect(() => {
+    fetchPlayerStats();
+  }, []);
+
+  // Handle password submission
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    if (password === process.env.REACT_APP_OPERATOR_PASSWORD) {
+      setAuthenticated(true);
+    } else {
+      alert('Incorrect password. Please try again.');
+    }
+  };
+
+  if (!authenticated) {
+    return (
+      <div className="auth-container">
+        <h2>Please enter the password to access this page</h2>
+        <form onSubmit={handlePasswordSubmit}>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h2>Tournament Operator Tools</h2>
-      <p>This page contains helpful tools and resources for running tournaments.</p>
-      
-      {/* File upload section */}
-      <div>
-        <input type="file" onChange={handleFileChange} />
-        <button onClick={handleFileUpload}>Upload to Google Drive</button>
+    <div className="operator-tools-container">
+      <h1>JayMar Tournament Operator Tools</h1>
+  
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        {/* Data Upload Section */}
+        <DataUpload generatedDate={generatedDate} onFileUpload={fetchPlayerStats} />
+  
+        {/* Tournament Money Section */}
+        <TournamentMoney tournamentPlayers={tournamentPlayers} />
       </div>
-
-      {/* Display upload message */}
-      {message && <p>{message}</p>}
+  
+      <div className="operator-tools-sections">
+        {/* Player Roster Section */}
+        <div className="section-container">
+          <PlayerRoster players={players} onAddPlayer={addPlayerToTournament} />
+        </div>
+  
+        {/* Tournament Players Section */}
+        <div className="section-container">
+          <TournamentPlayers
+            players={tournamentPlayers}
+            onRemovePlayer={removePlayerFromTournament}
+            onTogglePaid={togglePaidStatus}
+            onAddNewPlayer={onAddNewPlayer}
+          />
+        </div>
+  
+        {/* Tournament Settings Section */}
+        <div className="section-container">
+          <TournamentSettings tournamentPlayers={tournamentPlayers} />
+        </div>
+      </div>
     </div>
   );
 };

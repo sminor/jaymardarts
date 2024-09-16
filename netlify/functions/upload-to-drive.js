@@ -1,9 +1,24 @@
 // netlify/functions/upload-to-drive.js
 const { google } = require('googleapis');
 const stream = require('stream');
+const fs = require('fs');
 
-const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
-console.log(serviceAccountKey.private_key);
+let serviceAccountKey;
+
+try {
+  if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH) {
+    // If the path is provided, read the key file
+    const keyPath = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH;
+    serviceAccountKey = JSON.parse(fs.readFileSync(keyPath, 'utf8'));
+  } else if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+    // If the key is provided directly, parse it
+    serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
+  } else {
+    throw new Error('Google service account key not provided');
+  }
+} catch (error) {
+  console.error("Error reading or parsing the service account key:", error);
+}
 
 const auth = new google.auth.GoogleAuth({
   credentials: serviceAccountKey,
@@ -15,17 +30,32 @@ const drive = google.drive({ version: 'v3', auth });
 
 exports.handler = async (event) => {
   try {
-    const { fileContent, fileName } = JSON.parse(event.body);
+    const { fileContent } = JSON.parse(event.body);
     const buffer = Buffer.from(fileContent, 'base64');
 
     // Create a readable stream from the buffer
     const bufferStream = new stream.PassThrough();
     bufferStream.end(buffer);
 
-    // Create file metadata
+    const folderId = '1OYVqAn7HK65xncTxMu2Unj3ErS5W95Qg'; // Replace with your folder ID
+    const fixedFileName = 'TournamentData.xlsx'; // Define the fixed file name here
+
+    // Step 1: Check for existing file with the same name in the folder
+    const existingFiles = await drive.files.list({
+      q: `'${folderId}' in parents and name='${fixedFileName}' and trashed=false`,
+      fields: 'files(id, name)',
+    });
+
+    // Step 2: If file exists, delete it
+    if (existingFiles.data.files.length > 0) {
+      const fileId = existingFiles.data.files[0].id;
+      await drive.files.delete({ fileId });
+    }
+
+    // Step 3: Create file metadata with the fixed file name
     const fileMetadata = {
-      name: fileName,
-      parents: ['1OYVqAn7HK65xncTxMu2Unj3ErS5W95Qg'], // Replace with the actual folder ID
+      name: fixedFileName,
+      parents: [folderId],
     };
 
     // Media (file content)
@@ -34,7 +64,7 @@ exports.handler = async (event) => {
       body: bufferStream, // Use the stream here
     };
 
-    // Upload the file to Google Drive
+    // Step 4: Upload the new file to Google Drive
     const file = await drive.files.create({
       resource: fileMetadata,
       media: media,

@@ -30,5 +30,8 @@ yarn-error.log*
 /.vscode
 .idea/
 
+# Ignore keys
+/keys/service-account-key.json
+
 # Ignore specific env files
 .env
