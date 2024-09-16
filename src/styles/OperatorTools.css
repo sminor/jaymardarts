@@ -1,185 +1,64 @@
 /* OperatorTools.css */
 
-/* Set the main container to fill the viewport */
+/* General Container Styles */
 .operator-tools-container {
-  min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Make sure the content stays at the top */
 .operator-tools-container > h1,
 .operator-tools-container > div {
-  flex-shrink: 0; /* Prevent the content from stretching */
+  flex-shrink: 0;
 }
 
 .operator-tools-container > div {
-  margin-top: 20px; /* Add some spacing below the heading */
+  margin-top: 10px;
 }
 
-/* Flex container adjustments for the sections */
-.operator-tools-sections {
-  display: flex;
-  flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+.operator-tools-container > .footer-placeholder {
+  flex-grow: 1;
 }
 
-/* Section widths for smaller resolutions */
+/* Section Containers */
 .section-container {
-  flex: 1; /* Allow sections to grow and take equal space */
-  min-width: 300px; /* Ensure sections don't get too narrow */
+  flex: 1;
+  min-width: 300px;
   margin: 10px;
   display: flex;
-  flex-direction: column; /* Ensure elements stack vertically */
-  box-sizing: border-box; /* Include padding and border in the element's width */
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid var(--table-border);
+  border-radius: 5px;
+  background-color: var(--secondary-bg);
 }
 
-/* Adjust widths for larger screens */
+/* Layout Adjustments for Larger Screens */
 @media (min-width: 900px) {
   .section-container {
-    width: calc(33.33% - 20px); /* Adjust to fit three sections with margin */
+    width: calc(33.33% - 20px);
   }
 }
 
-/* Make sure tables and other block elements take full width */
-.section-container {
-  width: 100%; /* Full width */
-}
-
-/* Ensure input elements fill their containers */
-.input-container {
+/* Flex Container Adjustments */
+.operator-tools-sections {
   display: flex;
-  align-items: center; /* Vertically center items */
-  gap: 10px;
-  width: 100%; /* Make sure the container uses full width */
+  flex-wrap: wrap;
 }
 
-.input-container input,
-.input-container select,
-.input-container button {
-  flex: 1; /* Allow input elements to grow to fill available space */
-
-  max-width: none; /* Remove max-width restrictions */
+/* Top row should take up more space if there are only two sections */
+.operator-tools-sections.top-row .section-container {
+  flex: 1; /* Allow sections to grow and take equal space */
+  min-width: 45%; /* Ensure sections don't get too narrow */
 }
 
-/* Push footer to the bottom while keeping content at the top */
-.operator-tools-container > .footer-placeholder {
-  flex-grow: 1; /* Push the footer to the bottom */
-}
-
-/* Adjust the input box width for consistency */
-.add-player-input {
-  flex: 1; /* Allow it to grow and fill the space */
-}
-
-/* Set a fixed width for small inputs */
-.add-player-input-small {
-  width: 60px; /* Adjust this value for desired width */
-}
-
-/* Button styling */
-.add-player-container button,
-.input-container button {
-  padding: 5px 10px;
-  height: 45px; /* Match the input height */
-}
-
-/* Table styling to match leagues.css */
-.section-container table {
-  width: 100%; /* Full width */
-  border-collapse: collapse; /* Ensure no space between cells */
-  background-color: var(--secondary-bg); /* Dark background for the table */
-  border: 1px solid var(--table-border); /* Border around the entire table */
-  margin-top: 10px; /* Add spacing above the table */
-  box-sizing: border-box; /* Include padding and border in the element's total width */
-}
-
-.section-container th,
-.section-container td {
-  padding: 10px;
-  border: 1px solid var(--table-border); /* Borders for each cell */
-  text-align: left;
-  color: var(--text-primary); /* Text color */
-}
-
-/* Table header */
-.section-container th {
-  cursor: pointer;
-  background-color: var(--quaternary-bg); /* Darker background for header */
-  font-weight: bold;
-  position: relative;
-}
-
-/* Hover effect for table rows */
-.section-container table tr:hover td {
-  background-color: var(--quaternary-bg);
-}
-
-/* Optional: increase padding to avoid text overlap with the triangle */
-.section-container th {
-  padding-right: 30px; /* Adjust padding to fit the triangle comfortably */
-}
-
-/* Table row hover effect */
-.section-container td {
-  background-color: var(--nav-bg); /* Lighter background for table data */
-}
-
-/* Increase the size of the checkbox */
-.input-container input[type="checkbox"] {
-  width: 20px;  /* Increase width */
-  height: 20px; /* Increase height */
-  margin-right: 5px; /* Space from the search input */
-}
-
-/* Optional: Increase the label font size */
-.input-container label {
-  font-size: 16px; /* Adjust size as needed */
-  display: flex;
-  align-items: center; /* Vertically align the label with the checkbox */
-}
-
-/* Tournament Settings Styles */
-
-/* Select box container */
-.select-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* Radio button container */
-.radio-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-/* Players groups for A and B players */
-.players-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.players-group div {
+/* Bottom row for three sections */
+.operator-tools-sections.bottom-row .section-container {
   flex: 1;
-  margin-right: 10px;
+  min-width: 30%; /* Ensure sections don't get too narrow */
 }
 
-.players-group h4 {
-  margin-bottom: 10px;
-}
-
-.players-group ul {
-  list-style: none;
-  padding: 0;
-}
-
-.players-group ul li {
-  margin-bottom: 5px;
-}
-
-/* Aligning input, select, and buttons */
 .input-container,
 .select-container,
 .radio-container,
@@ -188,48 +67,84 @@ button {
   align-items: center;
 }
 
-/* Adjust widths for buttons */
-.section-container button {
-  max-width: none; /* Remove max-width restrictions */
-  margin: 0;
-}
-
-/* Tournament Money */
-.tournament-money {
-  border: 1px solid var(--table-border);
-  padding: 15px;
-  background-color: var(--secondary-bg);
-  border-radius: 5px;
-  box-sizing: border-box;
+/* Input and Button Styles */
+.input-container {
+  gap: 10px;
   width: 100%;
 }
 
-/* Grid layout for settings and summary */
-.tournament-money-grid {
+.input-container input,
+.input-container select,
+.input-container button {
+  flex: 1;
+}
+
+.add-player-input {
+  flex: 1;
+}
+
+.add-player-input-small {
+  width: 60px;
+}
+
+.section-container button,
+.input-container button {
+  padding: 5px 10px;
+  height: 45px;
+}
+
+/* Checkbox Styling */
+.input-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.input-container label {
+  font-size: 16px;
   display: flex;
-  gap: 20px;
+  align-items: center;
 }
 
-/* Table styling */
-.tournament-money table {
-  border-collapse: collapse;
+/* Table Styles (Common across sections) */
+.section-container table {
   width: 100%;
+  border-collapse: collapse;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--table-border);
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
-.tournament-money th,
-.tournament-money td {
+.section-container th,
+.section-container td {
+  padding: 10px;
   border: 1px solid var(--table-border);
-  padding: 8px;
   text-align: left;
   color: var(--text-primary);
 }
 
-.tournament-money th {
+.section-container th {
+  background-color: var(--quaternary-bg);
+  font-weight: bold;
+}
+
+.section-container tbody tr:nth-child(odd) {
+  background-color: var(--nav-bg);
+}
+
+.section-container table tr:hover td {
   background-color: var(--quaternary-bg);
 }
 
-.tournament-money tbody tr:nth-child(odd) {
-  background-color: var(--nav-bg);
+/* Tournament Money Styles */
+.tournament-money {
+  width: 100%;
+}
+
+.tournament-money-grid {
+  display: flex;
+  gap: 20px;
 }
 
 .tournament-money input[type="number"] {
@@ -237,7 +152,7 @@ button {
   padding: 5px;
 }
 
-/* Red and green text for fee display */
+/* Red and Green Text for Fee Display */
 .tournament-money .red {
   color: red;
 }
@@ -247,13 +162,6 @@ button {
 }
 
 /* DataUpload Styles */
-.data-upload-container {
-  padding: 20px;
-  border: 1px solid var(--table-border);
-  border-radius: 5px;
-  background-color: var(--secondary-bg);
-}
-
 .data-upload-container .instructions {
   font-size: 14px;
   color: var(--text-secondary);
@@ -275,7 +183,7 @@ button {
 }
 
 .data-upload-container a {
-  color: var(--link-color); /* Use the link color variable */
+  color: var(--link-color);
   text-decoration: none;
 }
 
@@ -283,16 +191,15 @@ button {
   text-decoration: underline;
 }
 
-/* Styles for the password container */
+/* Authentication Container Styles */
 .auth-container {
-  min-height: 100vh; 
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-/* Styles for the password form */
 .auth-container form {
   display: flex;
   flex-direction: column;
@@ -308,3 +215,113 @@ button {
 .auth-container button {
   padding: 5px 10px;
 }
+
+/* Player Roster Styles */
+.player-roster-container {
+  background-color: var(--secondary-bg);
+}
+
+/* Tournament Players section styling */
+
+
+/* Adjusting input container to have better spacing */
+.tournament-players-container .input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tournament-players-container .add-player-input {
+  flex: 3; /* Allow the Name input to take more space */
+}
+
+.tournament-players-container .add-player-input-small {
+  flex: 1; /* Smaller inputs take less space */
+}
+
+.tournament-players-container button {
+  flex: 0 0 auto; /* Prevent the button from growing */
+  padding: 5px 10px;
+  height: 45px;
+  margin: 0;
+}
+
+/* Table styling */
+.tournament-players-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tournament-players-container th,
+.tournament-players-container td {
+  border: 1px solid var(--table-border);
+  padding: 8px;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.tournament-players-container th {
+  background-color: var(--quaternary-bg);
+}
+
+.tournament-players-container tbody tr:nth-child(odd) {
+  background-color: var(--nav-bg);
+}
+
+/* Tournament Settings Styles */
+.tournament-settings-container .select-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tournament-settings-container .select-container label {
+  flex-shrink: 0; /* Prevent the label from growing */
+}
+
+.tournament-settings-container .select-container select {
+  flex-grow: 1; /* Allow the select box to take up the remaining space */
+}
+
+.tournament-settings-container .radio-container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Reduce space between the radio buttons */
+  margin-bottom: 10px;
+}
+
+.tournament-settings-container .divide-players-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Move the 'Divide Players' button to the right */
+  margin-bottom: 10px;
+}
+
+/* Add spacing between the label and radio buttons */
+.tournament-settings-container .radio-container label {
+  margin-right: 10px; /* Space between 'Stat to Use:' and radio buttons */
+}
+
+.tournament-settings-container .players-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tournament-settings-container .players-group div {
+  width: 30%;
+}
+
+.tournament-settings-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tournament-settings-container ul li {
+  background-color: var(--nav-bg);
+  border: 1px solid var(--table-border);
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+

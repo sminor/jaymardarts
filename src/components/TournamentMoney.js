@@ -112,7 +112,7 @@ const TournamentMoney = ({ tournamentPlayers }) => {
   };
 
   return (
-    <div className="tournament-money section-container">
+    <div className="tournament-money">
       <h3>Tournament Money</h3>
 
       <div className="tournament-money-grid">

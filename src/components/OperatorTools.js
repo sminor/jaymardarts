@@ -110,15 +110,21 @@ const OperatorTools = () => {
     <div className="operator-tools-container">
       <h1>JayMar Tournament Operator Tools</h1>
   
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      {/* Top Row: DataUpload and TournamentMoney */}
+      <div className="operator-tools-sections top-row">
         {/* Data Upload Section */}
-        <DataUpload generatedDate={generatedDate} onFileUpload={fetchPlayerStats} />
+        <div className="section-container">
+          <DataUpload generatedDate={generatedDate} onFileUpload={fetchPlayerStats} />
+        </div>
   
         {/* Tournament Money Section */}
-        <TournamentMoney tournamentPlayers={tournamentPlayers} />
+        <div className="section-container">
+          <TournamentMoney tournamentPlayers={tournamentPlayers} />
+        </div>
       </div>
   
-      <div className="operator-tools-sections">
+      {/* Bottom Row: Player Roster, Tournament Players, and Tournament Settings */}
+      <div className="operator-tools-sections bottom-row">
         {/* Player Roster Section */}
         <div className="section-container">
           <PlayerRoster players={players} onAddPlayer={addPlayerToTournament} />

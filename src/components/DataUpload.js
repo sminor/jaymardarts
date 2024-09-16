@@ -45,7 +45,7 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
   };
 
   return (
-    <div className="data-upload-container section-container">
+    <div className="data-upload-container">
       <h3>Data Upload</h3>
       {/* Instructions */}
       <p className="instructions">

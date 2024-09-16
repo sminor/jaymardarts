@@ -46,7 +46,7 @@ const TournamentSettings = ({ tournamentPlayers }) => {
   };
 
   return (
-    <div className="section-container">
+    <div className="tournament-settings-container">
       <h3>Tournament Settings</h3>
 
       {/* Select tournament type */}
@@ -58,27 +58,27 @@ const TournamentSettings = ({ tournamentPlayers }) => {
         </select>
       </div>
 
-      {/* Radio buttons to select the stat */}
-      <div className="radio-container">
-        <label>Stat to Use:</label>
-        <input
-          type="radio"
-          name="stat"
-          value="ppd"
-          checked={selectedStat === 'ppd'}
-          onChange={() => setSelectedStat('ppd')}
-        /> PPD
-        <input
-          type="radio"
-          name="stat"
-          value="mpr"
-          checked={selectedStat === 'mpr'}
-          onChange={() => setSelectedStat('mpr')}
-        /> MPR
+      {/* Radio buttons to select the stat and 'Divide Players' button */}
+      <div className="divide-players-container">
+        <div className="radio-container">
+          <label>Stat to Use:</label>
+          <input
+            type="radio"
+            name="stat"
+            value="ppd"
+            checked={selectedStat === 'ppd'}
+            onChange={() => setSelectedStat('ppd')}
+          /> PPD
+          <input
+            type="radio"
+            name="stat"
+            value="mpr"
+            checked={selectedStat === 'mpr'}
+            onChange={() => setSelectedStat('mpr')}
+          /> MPR
+        </div>
+        <button onClick={dividePlayers}>Divide Players</button>
       </div>
-
-      {/* Divide players into A and B groups */}
-      <button onClick={dividePlayers}>Divide Players</button>
 
       {/* Display A, B groups and Team Names */}
       <div className="players-group">

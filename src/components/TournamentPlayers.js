@@ -23,7 +23,7 @@ const TournamentPlayers = ({ players, onRemovePlayer, onTogglePaid, onAddNewPlay
   };
 
   return (
-    <div className="section-container">
+    <div className="tournament-players-container">
       <h3>Tournament Players</h3>
 
       {/* Flex container to align inputs in a single row */}

@@ -13,7 +13,7 @@ const PlayerRoster = ({ players, onAddPlayer }) => {
   const playersToDisplay = showAll || searchTerm ? filteredPlayers : [];
 
   return (
-    <div className="section-container">
+    <div className="player-roster-container">
       <h3>Player Roster</h3>
 
       {/* Flex container to align the search input and checkbox */}
