@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import DataUpload from './DataUpload';
 import TournamentMoney from './TournamentMoney';
 import PlayerRoster from './PlayerRoster';
@@ -12,7 +12,6 @@ const OperatorTools = () => {
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState(null); // For displaying errors
-  const hasFetchedData = useRef(false); // Ref to track if data has been fetched
 
   // Number of retries and delay between them
   const MAX_RETRIES = 3;
@@ -81,18 +80,19 @@ const OperatorTools = () => {
       setAuthenticated(true);
     }
 
-    // Fetch player stats only once on component mount
-    if (!hasFetchedData.current) {
-      fetchPlayerStats();
-      hasFetchedData.current = true;
-    }
+    // Fetch player stats after checking authentication
+    const fetchInitialPlayerStats = async () => {
+      await fetchPlayerStats();
+    };
+
+    fetchInitialPlayerStats();
 
     // Load tournamentPlayers from local storage
     const storedTournamentPlayers = localStorage.getItem('tournamentPlayers');
     if (storedTournamentPlayers) {
       setTournamentPlayers(JSON.parse(storedTournamentPlayers));
     }
-  }, []); // Empty dependency array ensures this runs only once
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Save tournamentPlayers to local storage whenever it changes
   useEffect(() => {
