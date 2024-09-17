@@ -17,8 +17,17 @@ const TournamentPlayers = ({ players, onRemovePlayer, onAddNewPlayer, onTogglePa
         name: newPlayer.name,
         ppd: parseFloat(newPlayer.ppd),
         mpr: parseFloat(newPlayer.mpr),
+        paid: false, // Initialize new players with paid set to false
       });
       setNewPlayer({ name: '', ppd: '', mpr: '' });
+    }
+  };
+
+  const handleRemovePlayer = (player) => {
+    if (!player.paid) {
+      onRemovePlayer(player);
+    } else {
+      alert("Cannot remove a player who has paid.");
     }
   };
 
@@ -67,9 +76,11 @@ const TournamentPlayers = ({ players, onRemovePlayer, onAddNewPlayer, onTogglePa
           </tr>
         </thead>
         <tbody>
-          {players.map((player, index) => (
-            <tr key={index}>
-              <td onClick={() => onRemovePlayer(player)}>{player.name}</td>
+          {players.map((player) => (
+            <tr key={player.name}>
+              <td onClick={() => handleRemovePlayer(player)} style={{ cursor: 'pointer' }}>
+                {player.name}
+              </td>
               <td>{player.ppd}</td>
               <td>{player.mpr}</td>
               <td>
