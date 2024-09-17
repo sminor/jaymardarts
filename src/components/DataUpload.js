@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import validateFile from './validate-player-stats-file';
 
-const uploadEnabled = true; // Set this to false to disable file uploads
+const uploadEnabled = true;
 
 const DataUpload = ({ generatedDate, onFileUpload }) => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
 
-  // Handle file input change
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+    setMessage(''); // Clear any previous messages
   };
 
-  // Function to wait for a specified amount of time
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  // Function to attempt to fetch the file, retrying if necessary
   const fetchFileWithRetry = async (retries) => {
     try {
       const response = await fetch('/.netlify/functions/parse-player-stats?dateOnly=true');
@@ -26,7 +24,7 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
       return await response.json();
     } catch (error) {
       if (retries > 0) {
-        await wait(2000); // Wait for 2000ms before retrying
+        await wait(2000);
         return await fetchFileWithRetry(retries - 1);
       } else {
         throw new Error('Error fetching file after upload.');
@@ -34,7 +32,6 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
     }
   };
 
-  // Handle file upload
   const handleFileUpload = async () => {
     if (!file) {
       setMessage('Please select a file to upload.');
@@ -46,8 +43,6 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
     reader.readAsText(file);
     reader.onload = async () => {
       const fileContent = reader.result;
-
-      // Pass both file name and content to validateFile
       const validationResult = validateFile(file.name, fileContent);
 
       if (!validationResult.valid) {
@@ -60,11 +55,12 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
         return;
       }
 
-      setLoading(true); // Start loading
+      setLoading(true);
+      setMessage(''); // Clear previous messages
 
       try {
-        const fileContentBase64 = btoa(fileContent); // Convert file content to base64
-        const uploadResponse = await fetch('/.netlify/functions/upload-player-stats', {
+        const fileContentBase64 = btoa(fileContent);
+        const uploadResponse = await fetch('/.netlify/functions/upload-to-drive', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -75,11 +71,8 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
         const result = await uploadResponse.json();
         if (uploadResponse.ok) {
           setMessage('File uploaded successfully.');
-
-          // Unset localStorage modified date to force a re-download
           localStorage.removeItem('fileModifiedDate');
 
-          // Retry fetching the file up to 3 times with a delay
           try {
             await fetchFileWithRetry(3);
             onFileUpload(); // Re-fetch player stats after upload
@@ -87,7 +80,6 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
             setMessage('Error fetching file after upload.');
             console.error('Error fetching file after upload:', error);
           }
-
         } else {
           setMessage(`Error uploading file: ${result.error}`);
           console.error('Error uploading file:', result.error);
@@ -96,7 +88,7 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
         console.error('Error uploading file:', error);
         setMessage('An error occurred during the upload.');
       } finally {
-        setLoading(false); // End loading
+        setLoading(false);
       }
     };
   };
@@ -113,7 +105,6 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
         </div>
       )}
       <h3>Data Upload</h3>
-      {/* Instructions */}
       <p className="instructions">
         Use this section to upload player data before the start of each tournament. 
         You can download the player data file from <a href="https://leagueleader.net/" target="_blank" rel="noopener noreferrer">leagueleader.net</a>. 
@@ -125,7 +116,6 @@ const DataUpload = ({ generatedDate, onFileUpload }) => {
           {loading ? 'Uploading...' : 'Upload Player Data'}
         </button>
       </div>
-      {/* Display the generated date */}
       <p>Current Report Date: {generatedDate}</p>
       {message && <p>{message}</p>}
     </div>

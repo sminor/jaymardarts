@@ -24,7 +24,6 @@ const OperatorTools = () => {
   // Function to fetch and parse the player stats with retries
   const fetchPlayerStats = useCallback(async (retryCount = 0) => {
     try {
-      // Fetch only the modified date first
       const modifiedDateResponse = await fetch('/.netlify/functions/parse-player-stats?dateOnly=true');
       const modifiedDateResult = await modifiedDateResponse.json();
       
@@ -32,7 +31,6 @@ const OperatorTools = () => {
         const modifiedDate = modifiedDateResult.modifiedDate;
         const storedModifiedDate = localStorage.getItem('fileModifiedDate');
   
-        // Check if the file on Google Drive is newer
         if (storedModifiedDate !== modifiedDate) {
           // File is newer, fetch the full file
           const response = await fetch('/.netlify/functions/parse-player-stats');
@@ -41,9 +39,10 @@ const OperatorTools = () => {
           if (response.ok) {
             setPlayers(result.players);
             setGeneratedDate(result.generatedDate || 'N/A');
-            localStorage.setItem('fileModifiedDate', modifiedDate); // Store the new modified date
-            localStorage.setItem('players', JSON.stringify(result.players)); // Store players data
-            localStorage.setItem('generatedDate', result.generatedDate || 'N/A'); // Store the generated date
+            setError(null); // Clear error if fetch is successful
+            localStorage.setItem('fileModifiedDate', modifiedDate);
+            localStorage.setItem('players', JSON.stringify(result.players));
+            localStorage.setItem('generatedDate', result.generatedDate || 'N/A');
           } else {
             console.error('Error fetching player stats:', result.error);
             setError('Error fetching player stats');
@@ -64,7 +63,6 @@ const OperatorTools = () => {
     } catch (error) {
       console.error('Error fetching player stats:', error);
       if (retryCount < MAX_RETRIES) {
-        // Retry fetching after a delay
         console.log(`Retrying fetch (${retryCount + 1}/${MAX_RETRIES})...`);
         await delay(RETRY_DELAY);
         await fetchPlayerStats(retryCount + 1);
@@ -72,7 +70,7 @@ const OperatorTools = () => {
         setError('An error occurred while fetching player stats');
       }
     }
-  }, []); // Use useCallback to prevent infinite loops
+  }, []);
 
   // Check for existing authentication status and load tournamentPlayers from local storage
   useEffect(() => {
