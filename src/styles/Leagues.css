@@ -105,9 +105,10 @@
 /* Sort indicator class */
 .sort-indicator {
   font-size: .7em; /* Adjust this value for the size of the triangle */
-  /*margin-left: 5px; /* Space between text and triangle */
+  margin-left: 3px; /* Space between text and triangle */
   display: inline-block;
-  vertical-align: middle; /* Align the triangle with the text */
+  vertical-align: center; /* Align the triangle with the text */
+  color: var(--highlight-color);
 }
 
 /* Table row hover effect */
@@ -118,11 +119,6 @@
 /* Hover effect for table rows */
 .table-container table tr:hover td {
   background-color: var(--quaternary-bg);
-}
-
-/* Optional: increase padding to avoid text overlap with the triangle */
-.table-container th {
-  /*padding-right: 30px; /* Adjust padding to fit the triangle comfortably */
 }
 
 /* Table row hover effect */
