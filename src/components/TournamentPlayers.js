@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TournamentPlayers = ({ players, onRemovePlayer, onTogglePaid, onAddNewPlayer }) => {
+const TournamentPlayers = ({ players, onRemovePlayer, onAddNewPlayer, onTogglePaid }) => {
   const [newPlayer, setNewPlayer] = useState({ name: '', ppd: '', mpr: '' });
 
   const handleInputChange = (e) => {

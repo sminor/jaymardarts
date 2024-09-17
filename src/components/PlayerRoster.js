@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const PlayerRoster = ({ players, onAddPlayer }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showAll, setShowAll] = useState(false); // State to track the checkbox
+
+  // Load search term and show all state from sessionStorage on mount
+  useEffect(() => {
+    const savedSearchTerm = sessionStorage.getItem('playerRosterSearchTerm');
+    const savedShowAll = sessionStorage.getItem('playerRosterShowAll');
+
+    if (savedSearchTerm) {
+      setSearchTerm(savedSearchTerm);
+    }
+
+    if (savedShowAll) {
+      setShowAll(JSON.parse(savedShowAll));
+    }
+  }, []);
+
+  // Save search term and show all state to sessionStorage whenever they change
+  useEffect(() => {
+    sessionStorage.setItem('playerRosterSearchTerm', searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    sessionStorage.setItem('playerRosterShowAll', showAll);
+  }, [showAll]);
 
   // Filter players based on search term
   const filteredPlayers = players.filter(player =>

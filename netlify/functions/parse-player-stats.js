@@ -24,14 +24,14 @@ const auth = new google.auth.GoogleAuth({
 
 const drive = google.drive({ version: 'v3', auth });
 
-exports.handler = async () => {
+exports.handler = async (event) => {
   try {
     const folderId = '1OYVqAn7HK65xncTxMu2Unj3ErS5W95Qg'; // Replace with your folder ID
     const fileName = 'TournamentData.xlsx';
 
     const fileList = await drive.files.list({
       q: `'${folderId}' in parents and name='${fileName}' and trashed=false`,
-      fields: 'files(id, name)',
+      fields: 'files(id, name, modifiedTime)', // Include modifiedTime in the file list query
     });
 
     if (fileList.data.files.length === 0) {
@@ -39,7 +39,17 @@ exports.handler = async () => {
     }
 
     const fileId = fileList.data.files[0].id;
+    const modifiedDate = fileList.data.files[0].modifiedTime;
 
+    // If only the modified date is requested
+    if (event.queryStringParameters && event.queryStringParameters.dateOnly === 'true') {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ modifiedDate }),
+      };
+    }
+
+    // Continue with fetching the file if the full data is requested
     const fileBuffer = await drive.files.get(
       { fileId, alt: 'media' },
       { responseType: 'arraybuffer' }
@@ -83,7 +93,7 @@ exports.handler = async () => {
     console.log('Extracted Date:', generatedDate);
     return {
       statusCode: 200,
-      body: JSON.stringify({ generatedDate, players }), // Update the key to 'generatedDate'
+      body: JSON.stringify({ generatedDate, players, modifiedDate }), // Include the modifiedDate
     };
   } catch (error) {
     console.error('Error parsing player stats:', error);

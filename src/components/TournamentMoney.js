@@ -1,10 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const TournamentMoney = ({ tournamentPlayers }) => {
   const [entryFee, setEntryFee] = useState(10); // Default to $10
   const [barContribution, setBarContribution] = useState(6); // Default to $6
   const [potBonus, setPotBonus] = useState(0); // Default to $0
   const [payoutSpots, setPayoutSpots] = useState(3); // Default to 3 places
+
+  // Load values from localStorage on mount
+  useEffect(() => {
+    const storedEntryFee = localStorage.getItem('entryFee');
+    const storedBarContribution = localStorage.getItem('barContribution');
+    const storedPotBonus = localStorage.getItem('potBonus');
+    const storedPayoutSpots = localStorage.getItem('payoutSpots');
+
+    if (storedEntryFee) setEntryFee(parseFloat(storedEntryFee));
+    if (storedBarContribution) setBarContribution(parseFloat(storedBarContribution));
+    if (storedPotBonus) setPotBonus(parseFloat(storedPotBonus));
+    if (storedPayoutSpots) setPayoutSpots(parseInt(storedPayoutSpots, 10));
+  }, []);
+
+  // Save values to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('entryFee', entryFee);
+  }, [entryFee]);
+
+  useEffect(() => {
+    localStorage.setItem('barContribution', barContribution);
+  }, [barContribution]);
+
+  useEffect(() => {
+    localStorage.setItem('potBonus', potBonus);
+  }, [potBonus]);
+
+  useEffect(() => {
+    localStorage.setItem('payoutSpots', payoutSpots);
+  }, [payoutSpots]);
 
   // Calculate the expected total fees based on the number of players
   const totalExpectedFees = tournamentPlayers.length * entryFee;
