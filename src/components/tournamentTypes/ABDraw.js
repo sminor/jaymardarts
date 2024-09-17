@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faShuffle, faEraser } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faShuffle, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const ItemType = 'PLAYER';
 
@@ -223,7 +223,7 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
           </ul>
           {/* Eraser Icon */}
           <FontAwesomeIcon 
-            icon={faEraser}
+            icon={faTrash}
             onClick={clearTeams}
             className="shuffle-icon" // Using shuffle-icon class for consistent styling
             title="Clear Teams"
