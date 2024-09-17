@@ -225,6 +225,27 @@ button {
   background-color: var(--secondary-bg);
 }
 
+.player-roster-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.player-roster-container th,
+.player-roster-container td {
+  border: 1px solid var(--table-border);
+  padding: 8px;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.player-roster-container th {
+  background-color: var(--quaternary-bg);
+}
+
+.player-roster-container tbody tr:nth-child(odd) {
+  background-color: var(--nav-bg);
+}
+
 /* Tournament Players section styling */
 
 
