@@ -29,14 +29,30 @@ const PlayerCard = ({ player, index, swapPlayers, statValue }) => {
 };
 
 const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc }) => {
-  const [aPlayers, setAPlayers] = useState([]);
-  const [bPlayers, setBPlayers] = useState([]);
-  const [teamNames, setTeamNames] = useState([]);
+  const [aPlayers, setAPlayers] = useState(() => {
+    const saved = localStorage.getItem('aPlayers');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [bPlayers, setBPlayers] = useState(() => {
+    const saved = localStorage.getItem('bPlayers');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [teamNames, setTeamNames] = useState(() => {
+    const saved = localStorage.getItem('teamNames');
+    return saved ? JSON.parse(saved) : [];
+  });
   const [copySuccess, setCopySuccess] = useState(null);
   const [activeShuffle, setActiveShuffle] = useState(null); // Tracks which shuffle icon is active
 
+  // Save state to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('aPlayers', JSON.stringify(aPlayers));
+    localStorage.setItem('bPlayers', JSON.stringify(bPlayers));
+    localStorage.setItem('teamNames', JSON.stringify(teamNames));
+  }, [aPlayers, bPlayers, teamNames]);
+
   // Calculate the stat value based on the selected stat
-  const getPlayerStat = (player) => {
+  const getPlayerStat = useCallback((player) => {
     switch (selectedStat) {
       case 'combo':
         return player.ppd + player.mpr * 10;
@@ -47,7 +63,7 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc }) => {
       default:
         return player.ppd; // Default to PPD
     }
-  };
+  }, [selectedStat]);
 
   // Divide players into A and B groups based on the selected stat
   const dividePlayers = useCallback(() => {
@@ -64,7 +80,7 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc }) => {
     setAPlayers(newAPlayers);
     setBPlayers(newBPlayers);
     generateTeamNames(newAPlayers, newBPlayers);
-  }, [tournamentPlayers, selectedStat]);
+  }, [tournamentPlayers, getPlayerStat]);
 
   // Generate team names by taking the first name from each player in A and B groups
   const generateTeamNames = (aPlayersList, bPlayersList) => {

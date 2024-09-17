@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DataUpload from './DataUpload';
 import TournamentMoney from './TournamentMoney';
 import PlayerRoster from './PlayerRoster';
@@ -12,6 +12,7 @@ const OperatorTools = () => {
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState(null); // For displaying errors
+  const hasFetchedData = useRef(false); // Ref to track if data has been fetched
 
   // Number of retries and delay between them
   const MAX_RETRIES = 3;
@@ -21,7 +22,7 @@ const OperatorTools = () => {
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
   // Function to fetch and parse the player stats with retries
-  const fetchPlayerStats = useCallback(async (retryCount = 0) => {
+  const fetchPlayerStats = async (retryCount = 0) => {
     try {
       // Fetch only the modified date first
       const modifiedDateResponse = await fetch('/.netlify/functions/parse-player-stats?dateOnly=true');
@@ -71,16 +72,32 @@ const OperatorTools = () => {
         setError('An error occurred while fetching player stats');
       }
     }
-  }, []); // The empty dependency array ensures fetchPlayerStats doesn't change
+  };
 
-  // Check for existing authentication status in sessionStorage on component mount
+  // Check for existing authentication status and load tournamentPlayers from local storage
   useEffect(() => {
     const authStatus = sessionStorage.getItem('authenticated');
     if (authStatus === 'true') {
       setAuthenticated(true);
     }
-    fetchPlayerStats(); // Fetch player stats after checking authentication
-  }, [fetchPlayerStats]); // Include fetchPlayerStats in the dependency array
+
+    // Fetch player stats only once on component mount
+    if (!hasFetchedData.current) {
+      fetchPlayerStats();
+      hasFetchedData.current = true;
+    }
+
+    // Load tournamentPlayers from local storage
+    const storedTournamentPlayers = localStorage.getItem('tournamentPlayers');
+    if (storedTournamentPlayers) {
+      setTournamentPlayers(JSON.parse(storedTournamentPlayers));
+    }
+  }, []); // Empty dependency array ensures this runs only once
+
+  // Save tournamentPlayers to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
+  }, [tournamentPlayers]);
 
   // Handle password submission
   const handlePasswordSubmit = (e) => {
@@ -103,6 +120,18 @@ const OperatorTools = () => {
   // Remove player from tournamentPlayers
   const removePlayerFromTournament = (player) => {
     setTournamentPlayers(tournamentPlayers.filter(p => p.name !== player.name));
+  };
+
+  // Toggle player's paid status
+  const togglePaidStatus = (player) => {
+    setTournamentPlayers(tournamentPlayers.map(p =>
+      p.name === player.name ? { ...p, paid: !p.paid } : p
+    ));
+  };
+
+  // Add new player directly
+  const addNewPlayer = (newPlayer) => {
+    setTournamentPlayers([...tournamentPlayers, newPlayer]);
   };
 
   // Clear all localStorage settings and refetch player stats
@@ -171,6 +200,8 @@ const OperatorTools = () => {
           <TournamentPlayers 
             players={tournamentPlayers}
             onRemovePlayer={removePlayerFromTournament}
+            onAddNewPlayer={addNewPlayer}
+            onTogglePaid={togglePaidStatus}
           />
         </div>
   
