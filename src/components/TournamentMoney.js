@@ -74,59 +74,69 @@ const TournamentMoney = ({ tournamentPlayers }) => {
     );
   }
 
+
   // Updated calculatePayouts function
-  const calculatePayouts = () => {
+const calculatePayouts = () => {
     const spots = Math.max(payoutSpots, 1);
     let remainingPool = totalPrizePool;
     let payouts = [];
+    const minPayout = entryFee * 2;
 
-    // Step 1: Allocate initial amounts with adjusted percentages
-    const percentages = [0.35, 0.30, 0.20]; // Adjusted percentages for the first 3 places
+    // Step 1: Ensure each payout is at least entryFee * 2
+    payouts = new Array(spots).fill(minPayout);
+    remainingPool -= minPayout * spots;
+
+    // Step 2: Apply Golden Ratio Distribution for the remaining pool
+    const goldenRatio = 1.618;
+    let sumOfRatios = 0;
+    let ratioList = [];
+
+    // Calculate the ratios for each spot based on the golden ratio
     for (let i = 0; i < spots; i++) {
-      const percentage = percentages[i] || (percentages[percentages.length - 1] / 2);
-      let payout = remainingPool * percentage;
-      payouts.push(payout);
-      remainingPool -= payout;
+        let ratio = Math.pow(1 / goldenRatio, i);
+        ratioList.push(ratio);
+        sumOfRatios += ratio;
     }
 
-    // Step 2: Ensure each payout is at least entryFee * 2
-    payouts = payouts.map((payout, index) => {
-      const minimumPayout = entryFee * 2;
-      if (payout < minimumPayout) {
-        remainingPool -= (minimumPayout - payout);
-        return minimumPayout;
-      }
-      return payout;
-    });
+    // Step 3: Determine the allocation based on these ratios
+    let adjustedRatios = ratioList.map(r => r / sumOfRatios); // Normalize to sum to 1
+    let extraPool = remainingPool;
 
-    // Step 3: Round each payout to the nearest $10
-    payouts = payouts.map(payout => Math.round(payout / 10) * 10);
+    for (let i = 0; i < spots; i++) {
+        // Calculate additional amount using the normalized ratio
+        let additionalAmount = Math.round((extraPool * adjustedRatios[i]) / 10) * 10;
+        payouts[i] += additionalAmount;
+        remainingPool -= additionalAmount;
+    }
 
-    // Step 4: Calculate total after rounding
+    // Step 4: Handle paired spots (5th/6th, 7th/8th, etc.) to ensure they are equal
+    for (let i = 4; i < spots; i += 2) {
+        if (i + 1 < spots) {
+            let maxPayout = Math.max(payouts[i], payouts[i + 1]);
+            maxPayout = Math.round(maxPayout / 10) * 10;
+            payouts[i] = payouts[i + 1] = maxPayout;
+        }
+    }
+
+    // Step 5: Distribute any remaining pool to the 1st place
+    if (remainingPool > 0) {
+        payouts[0] += Math.round(remainingPool / 10) * 10;
+        remainingPool = 0;
+    }
+
+    // Step 6: Adjust the payouts to not exceed the total prize pool
     let totalPayouts = payouts.reduce((sum, payout) => sum + payout, 0);
-    let discrepancy = totalPrizePool - totalPayouts;
+    let discrepancy = totalPayouts - totalPrizePool;
 
-    // Step 5: Distribute the remaining pool starting from the lowest place
-    let index = payouts.length - 1;
-    while (Math.abs(discrepancy) >= 10) {
-      const adjustment = discrepancy > 0 ? 10 : -10;
-      if (index > 0 && payouts[index] + adjustment > payouts[index - 1]) {
-        index--;
-        continue;
-      }
-      payouts[index] += adjustment;
-      discrepancy -= adjustment;
-      payouts[index] = Math.round(payouts[index] / 10) * 10;
-      index = index > 0 ? index - 1 : payouts.length - 1;
-    }
-
-    // Step 6: Handle any small remaining discrepancy (less than $10)
-    if (Math.abs(discrepancy) > 0) {
-      payouts[payouts.length - 1] += discrepancy;
+    let index = 0;
+    while (discrepancy > 0) {
+        payouts[index] -= 10;
+        discrepancy -= 10;
+        index = (index + 1) % spots; // Move to the next place to take from
     }
 
     return payouts;
-  };
+};
 
   const roundedPayouts = calculatePayouts();
 
