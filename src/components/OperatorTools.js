@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import DataUpload from './DataUpload';
 import TournamentMoney from './TournamentMoney';
 import PlayerRoster from './PlayerRoster';
@@ -12,6 +12,7 @@ const OperatorTools = () => {
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState(null); // For displaying errors
+  const [resetABDraw, setResetABDraw] = useState(() => () => {}); // Initialize with a no-op function
 
   // Number of retries and delay between them
   const MAX_RETRIES = 3;
@@ -21,7 +22,7 @@ const OperatorTools = () => {
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
   // Function to fetch and parse the player stats with retries
-  const fetchPlayerStats = async (retryCount = 0) => {
+  const fetchPlayerStats = useCallback(async (retryCount = 0) => {
     try {
       // Fetch only the modified date first
       const modifiedDateResponse = await fetch('/.netlify/functions/parse-player-stats?dateOnly=true');
@@ -71,7 +72,7 @@ const OperatorTools = () => {
         setError('An error occurred while fetching player stats');
       }
     }
-  };
+  }, []); // Use useCallback to prevent infinite loops
 
   // Check for existing authentication status and load tournamentPlayers from local storage
   useEffect(() => {
@@ -81,18 +82,14 @@ const OperatorTools = () => {
     }
 
     // Fetch player stats after checking authentication
-    const fetchInitialPlayerStats = async () => {
-      await fetchPlayerStats();
-    };
-
-    fetchInitialPlayerStats();
+    fetchPlayerStats();
 
     // Load tournamentPlayers from local storage
     const storedTournamentPlayers = localStorage.getItem('tournamentPlayers');
     if (storedTournamentPlayers) {
       setTournamentPlayers(JSON.parse(storedTournamentPlayers));
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [fetchPlayerStats]); // Add fetchPlayerStats to dependencies
 
   // Save tournamentPlayers to local storage whenever it changes
   useEffect(() => {
@@ -141,6 +138,7 @@ const OperatorTools = () => {
       setTournamentPlayers([]); // Clear the tournament players in state
       setPlayers([]); // Clear the players in state
       setGeneratedDate('N/A'); // Reset the generated date
+      resetABDraw(); // Call the reset function to clear ABDraw state
       fetchPlayerStats(); // Refetch player stats
       alert('All settings have been cleared and data has been reloaded.');
     }
@@ -207,7 +205,10 @@ const OperatorTools = () => {
   
         {/* Tournament Settings Section */}
         <div className="section-container">
-          <TournamentSettings tournamentPlayers={tournamentPlayers} />
+          <TournamentSettings 
+            tournamentPlayers={tournamentPlayers} 
+            setResetABDraw={setResetABDraw} // Pass the reset function to the settings
+          />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +28,7 @@ const PlayerCard = ({ player, index, swapPlayers, statValue }) => {
   );
 };
 
-const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc }) => {
+const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setResetABDraw }) => {
   const [aPlayers, setAPlayers] = useState(() => {
     const saved = localStorage.getItem('aPlayers');
     return saved ? JSON.parse(saved) : [];
@@ -137,12 +137,15 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc }) => {
 
   // Clear all players and teams
   const clearTeams = () => {
-    if (window.confirm('This will clear all names and teams. Are you sure?')) {
-      setAPlayers([]);
-      setBPlayers([]);
-      setTeamNames([]);
-    }
+    setAPlayers([]);
+    setBPlayers([]);
+    setTeamNames([]);
   };
+
+  // Pass the clear function up to the parent component
+  useEffect(() => {
+    setResetABDraw(() => clearTeams);
+  }, [setResetABDraw]);
 
   // Copy team name to clipboard
   const copyToClipboard = (text) => {

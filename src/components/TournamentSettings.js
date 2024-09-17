@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ABDraw from './tournamentTypes/ABDraw';
 
-const TournamentSettings = ({ tournamentPlayers }) => {
+const TournamentSettings = ({ tournamentPlayers, setResetABDraw }) => {
   const [selectedStat, setSelectedStat] = useState('combo'); // Default to combo
   const [selectedTournamentType, setSelectedTournamentType] = useState('abDraw');
   const [dividePlayersFunc, setDividePlayersFunc] = useState(null); // Store the divide function
@@ -30,6 +30,7 @@ const TournamentSettings = ({ tournamentPlayers }) => {
             tournamentPlayers={tournamentPlayers}
             selectedStat={selectedStat}
             setDividePlayersFunc={setDividePlayersFunc} // Pass the setter function
+            setResetABDraw={setResetABDraw} // Pass the reset function for AB Draw
           />
         );
       // Add cases for other tournament types as needed
