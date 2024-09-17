@@ -6,17 +6,17 @@ import { faCopy, faShuffle, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const ItemType = 'PLAYER';
 
-const PlayerCard = ({ player, index, swapPlayers, statValue }) => {
+const PlayerCard = ({ player, index, swapPlayers, listType, statValue }) => {
   const [, ref] = useDrag({
     type: ItemType,
-    item: { index },
+    item: { index, listType }, // Add listType to track which list the player belongs to
   });
 
   const [, drop] = useDrop({
     accept: ItemType,
     drop(item) {
-      if (item.index !== index) {
-        swapPlayers(item.index, index);
+      if (item.index !== index || item.listType !== listType) {
+        swapPlayers(item.index, index, item.listType, listType); // Pass the original and target list types
       }
     },
   });
@@ -98,21 +98,43 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
   }, [setDividePlayersFunc, dividePlayers]);
 
   // Function to swap players directly
-  const swapPlayers = (listSetter, players, fromIndex, toIndex) => {
-    const updatedPlayers = [...players];
-    [updatedPlayers[fromIndex], updatedPlayers[toIndex]] = [updatedPlayers[toIndex], updatedPlayers[fromIndex]];
-    listSetter(updatedPlayers);
-    generateTeamNames(
-      listSetter === setAPlayers ? updatedPlayers : aPlayers,
-      listSetter === setBPlayers ? updatedPlayers : bPlayers
-    );
+  const swapPlayers = (fromIndex, toIndex, fromListType, toListType) => {
+    if (fromListType === toListType) {
+      // Swapping within the same list
+      const listSetter = fromListType === 'aPlayers' ? setAPlayers : setBPlayers;
+      const players = fromListType === 'aPlayers' ? aPlayers : bPlayers;
+      const updatedPlayers = [...players];
+      [updatedPlayers[fromIndex], updatedPlayers[toIndex]] = [updatedPlayers[toIndex], updatedPlayers[fromIndex]];
+      listSetter(updatedPlayers);
+    } else {
+      // Swapping between different lists
+      const fromPlayers = fromListType === 'aPlayers' ? aPlayers : bPlayers;
+      const toPlayers = toListType === 'aPlayers' ? aPlayers : bPlayers;
+      const setFromPlayers = fromListType === 'aPlayers' ? setAPlayers : setBPlayers;
+      const setToPlayers = toListType === 'aPlayers' ? setAPlayers : setBPlayers;
+
+      // Swap the players between lists
+      const updatedFromPlayers = [...fromPlayers];
+      const updatedToPlayers = [...toPlayers];
+
+      // Perform the swap
+      const [movedPlayer] = updatedFromPlayers.splice(fromIndex, 1, toPlayers[toIndex]);
+      updatedToPlayers.splice(toIndex, 1, movedPlayer);
+
+      // Update both lists
+      setFromPlayers(updatedFromPlayers);
+      setToPlayers(updatedToPlayers);
+    }
+
+    // Update team names
+    generateTeamNames(aPlayers, bPlayers);
   };
 
   // Function to shuffle players with animation
   const shufflePlayers = (groupSetter, players, groupType) => {
     setActiveShuffle(groupType); // Set the active shuffle icon
-    const shuffleTimes = 10; // Number of shuffles
-    const intervalTime = 300; // Time per shuffle
+    const shuffleTimes = 20; // Number of shuffles
+    const intervalTime = 50; // Time per shuffle
     let shuffleCount = 0;
     let shuffled = [...players];
 
@@ -170,7 +192,8 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
                 key={player.name}
                 player={player}
                 index={index}
-                swapPlayers={(fromIndex, toIndex) => swapPlayers(setAPlayers, aPlayers, fromIndex, toIndex)}
+                swapPlayers={swapPlayers}
+                listType="aPlayers" // Specify list type for A players
                 statValue={getPlayerStat(player)} // Pass the calculated stat value
               />
             ))}
@@ -192,7 +215,8 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
                 key={player.name}
                 player={player}
                 index={index}
-                swapPlayers={(fromIndex, toIndex) => swapPlayers(setBPlayers, bPlayers, fromIndex, toIndex)}
+                swapPlayers={swapPlayers}
+                listType="bPlayers" // Specify list type for B players
                 statValue={getPlayerStat(player)} // Pass the calculated stat value
               />
             ))}
