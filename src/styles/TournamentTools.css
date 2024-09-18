@@ -162,40 +162,6 @@ button {
   color: green;
 }
 
-/* DataUpload Styles */
-.data-upload-container .instructions {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 15px;
-}
-
-.data-upload-controls {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.data-upload-controls input[type="file"] {
-  flex: 1;
-}
-
-.data-upload-controls button {
-  padding: 5px 10px;
-}
-
-.data-upload-container a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-.data-upload-container a:hover {
-  text-decoration: underline;
-}
-
-.data-upload-container button {
-  margin: 0;
-}
-
 /* Authentication Container Styles */
 .auth-container {
   min-height: 100vh;
