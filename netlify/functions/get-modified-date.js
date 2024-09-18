@@ -1,20 +1,7 @@
 const { google } = require('googleapis');
-const fs = require('fs');
 
-let serviceAccountKey;
-
-try {
-  if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH) {
-    const keyPath = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH;
-    serviceAccountKey = JSON.parse(fs.readFileSync(keyPath, 'utf8'));
-  } else if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
-    serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
-  } else {
-    throw new Error('Google service account key not provided');
-  }
-} catch (error) {
-  console.error("Error reading or parsing the service account key:", error);
-}
+// Directly read the Google service account key from the environment variable
+const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
 
 const auth = new google.auth.GoogleAuth({
   credentials: serviceAccountKey,
