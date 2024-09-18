@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import logo from './jaymar-logo.png';
-import locationsData from './data/locations.json';
-import eventsData from './data/events.json';
-import About from './components/About';
-import Locations from './components/Locations';
-import Events from './components/Events';
-import Leagues from './components/Leagues';
-import Contact from './components/Contact';
-import OperatorTools from './components/OperatorTools';
+import './App.css'; // Import the main CSS file
+import logo from './jaymar-logo.png'; // Import the JayMar Darts logo
+import locationsData from './data/locations.json'; // Import the locations data
+import eventsData from './data/events.json'; // Import the events data
+import About from './components/About'; // Import the About component
+import Locations from './components/Locations'; // Import the Locations component
+import Events from './components/Events'; // Import the Events component
+import Leagues from './components/Leagues'; // Import the Leagues component
+import Contact from './components/Contact'; // Import the Contact component
+import TournamentTools from './components/TournamentTools'; // Import the Tournament Tools component
 import NotFound from './components/NotFound'; // Import the 404 page component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesDown, faBars } from '@fortawesome/free-solid-svg-icons'; // Import hamburger icon
@@ -240,8 +240,8 @@ return (
             </>
           }/>
 		  
-		  {/* Hidden route for the Operator Tools page */}
-          <Route path="/operator-tools" element={<OperatorTools />} />
+		  {/* Hidden route for the Tournament Tools page */}
+          <Route path="/tournament-tools" element={<TournamentTools />} />
 
           {/* NotFound Route */}
           <Route path="*" element={<NotFound />} />
