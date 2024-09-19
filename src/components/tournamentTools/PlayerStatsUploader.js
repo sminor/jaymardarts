@@ -139,8 +139,9 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
 
         // Update the lastParsedDate state to the new parsed date
         setLastParsedDate(new Date(currentDateTime));
-
+        
         handleMessage('File uploaded successfully.', 'success');
+        window.location.reload()
       } catch (error) {
         handleMessage(error.message, 'error');
       } finally {
@@ -148,6 +149,38 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
         setStatusMessage(''); // Clear status message
       }
     };
+  };
+
+  const handleResync = async () => {
+    setLoadingState(true); // Show loading overlay
+    setStatusMessage('Parsing the report file...');
+    try {
+      // Call parse-report-file function to parse the uploaded file
+      const parseResponse = await fetch('/.netlify/functions/parse-report-file');
+      if (!parseResponse.ok) {
+        throw new Error('Error parsing the report file.');
+      }
+      const parseResultData = await parseResponse.json();
+
+      if (parseResultData.error) {
+        throw new Error(parseResultData.error);
+      }
+
+      localStorage.setItem('parseResult', JSON.stringify(parseResultData));
+      const currentDateTime = new Date().toISOString();
+      localStorage.setItem('parseDate', currentDateTime);
+
+      // Update the lastParsedDate state to the new parsed date
+      setLastParsedDate(new Date(currentDateTime));
+
+      handleMessage('File synced successfully.', 'success');
+      window.location.reload()
+    } catch (error) {
+      handleMessage(error.message, 'error');
+    } finally {
+      setLoadingState(false); // Hide loading overlay
+      setStatusMessage(''); // Clear status message
+    }
   };
 
   return (
@@ -165,6 +198,7 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
           <div className="file-upload">
             <input type="file" onChange={handleFileChange} />
             <button onClick={handleFileUpload}>Upload</button>
+            <button onClick={handleResync}>Resync</button>
           </div>
           {(uploadTime || parseResult) && (
             <table>
