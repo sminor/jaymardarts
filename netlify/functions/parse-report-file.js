@@ -1,21 +1,8 @@
 const { google } = require('googleapis');
-const fs = require('fs');
 const cheerio = require('cheerio');
 
-let serviceAccountKey;
-
-try {
-  if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH) {
-    const keyPath = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH;
-    serviceAccountKey = JSON.parse(fs.readFileSync(keyPath, 'utf8'));
-  } else if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
-    serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
-  } else {
-    throw new Error('Google service account key not provided');
-  }
-} catch (error) {
-  console.error("Error reading or parsing the service account key:", error);
-}
+// Directly read the Google service account key from the environment variable
+const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
 
 const auth = new google.auth.GoogleAuth({
   credentials: serviceAccountKey,
@@ -39,17 +26,7 @@ exports.handler = async (event) => {
     }
 
     const fileId = fileList.data.files[0].id;
-    const modifiedDate = fileList.data.files[0].modifiedTime;
 
-    // If only the modified date is requested
-    if (event.queryStringParameters && event.queryStringParameters.dateOnly === 'true') {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ modifiedDate }),
-      };
-    }
-
-    // Continue with fetching the file if the full data is requested
     const fileBuffer = await drive.files.get(
       { fileId, alt: 'media' },
       { responseType: 'arraybuffer' }
@@ -60,18 +37,12 @@ exports.handler = async (event) => {
     const $ = cheerio.load(fileContent);
 
     // Extract the date
-    let generatedDate = 'Date not found';
-    const reportHeader = $('h2.report').next().text().trim();
-    if (reportHeader.includes('Report Date:')) {
-      generatedDate = reportHeader.split('Report Date:')[1].trim();
-    } else {
-      // Try finding the text node directly after the h2
-      const reportDateNode = $('h2.report')[0].next;
-      if (reportDateNode && reportDateNode.type === 'text') {
-        const dateMatch = reportDateNode.data.trim().match(/Report Date:\s*(.*)/);
-        if (dateMatch && dateMatch[1]) {
+    let generatedDate = null;
+    const reportDateNode = $('h2.report')[0].next;
+    if (reportDateNode && reportDateNode.type === 'text') {
+      const dateMatch = reportDateNode.data.trim().match(/Report Date:\s*(.*)/);
+      if (dateMatch && dateMatch[1]) {
           generatedDate = dateMatch[1].trim();
-        }
       }
     }
 
@@ -90,13 +61,11 @@ exports.handler = async (event) => {
       }
     });
 
-    console.log('Extracted Date:', generatedDate);
     return {
       statusCode: 200,
-      body: JSON.stringify({ generatedDate, players, modifiedDate }), // Include the modifiedDate
+      body: JSON.stringify({ generatedDate, players }),
     };
   } catch (error) {
-    console.error('Error parsing player stats:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
