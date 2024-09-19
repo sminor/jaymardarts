@@ -363,13 +363,21 @@ button {
   z-index: 9999; /* Ensure it is on top of other elements */
 }
 
-.loading-overlay p {
+.loading-overlay .loading-box {
+  background-color: var(--primary-bg);
+  padding: 20px;
+  border-radius: 4px;
+  display: inline-block;
+  min-width: 20%;
+}
+
+.loading-overlay .loading-box p {
   color: var(--text-primary);
   font-size: 2em;
   font-weight: bold;
 }
 
-.loading-overlay p.status-message {
+.loading-overlay .loading-box p.status-message {
   font-size: 1.3em; /* Smaller font size */
   margin-top: 5px;
   color: var(--text-secondary);
@@ -412,8 +420,13 @@ button {
   margin-bottom: 20px;
 }
 
+.file-upload button {
+  flex-shrink: 0;
+}
+
 .file-upload input[type="file"] {
   margin-right: 10px;
+  flex-grow: 1;
 }
 
 .data-upload-container table {
@@ -425,7 +438,8 @@ button {
 
 .data-upload-container table td {
   padding: 5px;
-  border: 0;
+  border: 0px;
+  
 }
 
 /* Player List Styles */
@@ -504,5 +518,9 @@ button {
 
 .tournament-money-container table tr:hover td {
   background-color: var(--quaternary-bg);
+}
+
+.test {
+  background-color: red;
 }
 

@@ -3,6 +3,7 @@ import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faShuffle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import LeagueManagementWindow from '../LeagueManagementWindow'; // Import LeagueManagementWindow
 
 const ItemType = 'PLAYER';
 
@@ -30,7 +31,6 @@ const PlayerCard = ({ player, index, swapPlayers, listType, statValue }) => {
 
 const ABDraw = ({ tournamentPlayers }) => {
   const [selectedStat, setSelectedStat] = useState(() => {
-    // Load selectedStat from localStorage on component mount
     const savedStat = localStorage.getItem('selectedStat');
     return savedStat || 'combo';
   });
@@ -50,8 +50,10 @@ const ABDraw = ({ tournamentPlayers }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [pairedPlayers, setPairedPlayers] = useState([]); // New state for player pairs
   const [copySuccess, setCopySuccess] = useState(null);
   const [activeShuffle, setActiveShuffle] = useState(null);
+  const [showLeagueWindow, setShowLeagueWindow] = useState(false); // New state for the LeagueManagementWindow
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
@@ -93,6 +95,8 @@ const ABDraw = ({ tournamentPlayers }) => {
     setAPlayers(newAPlayers);
     setBPlayers(newBPlayers);
     generateTeamNames(newAPlayers, newBPlayers);
+    generatePairedPlayers(newAPlayers, newBPlayers); // Generate player pairs
+    setShowLeagueWindow(true); // Show the league window after players are divided
   }, [tournamentPlayers, getPlayerStat]);
 
   // Generate team names by taking the first name from each player in A and B groups
@@ -100,49 +104,50 @@ const ABDraw = ({ tournamentPlayers }) => {
     const teams = aPlayersList.map((aPlayer, index) => {
       const aFirstName = aPlayer.name.split(' ')[0];
       const bFirstName = bPlayersList[index]?.name.split(' ')[0] || '';
-      return `${aFirstName} & ${bFirstName}`.trim();
+      return `${aFirstName} and ${bFirstName}`.trim();
     });
     setTeamNames(teams);
   };
 
-  // Function to swap players directly
-  const swapPlayers = (fromIndex, toIndex, fromListType, toListType) => {
-    if (fromListType === toListType) {
-      // Swapping within the same list
-      const listSetter = fromListType === 'aPlayers' ? setAPlayers : setBPlayers;
-      const players = fromListType === 'aPlayers' ? aPlayers : bPlayers;
-      const updatedPlayers = [...players];
-      [updatedPlayers[fromIndex], updatedPlayers[toIndex]] = [updatedPlayers[toIndex], updatedPlayers[fromIndex]];
-      listSetter(updatedPlayers);
-    } else {
-      // Swapping between different lists
-      const fromPlayers = fromListType === 'aPlayers' ? aPlayers : bPlayers;
-      const toPlayers = toListType === 'aPlayers' ? aPlayers : bPlayers;
-      const setFromPlayers = fromListType === 'aPlayers' ? setAPlayers : setBPlayers;
-      const setToPlayers = toListType === 'aPlayers' ? setAPlayers : setBPlayers;
-
-      // Swap the players between lists
-      const updatedFromPlayers = [...fromPlayers];
-      const updatedToPlayers = [...toPlayers];
-
-      // Perform the swap
-      const [movedPlayer] = updatedFromPlayers.splice(fromIndex, 1, toPlayers[toIndex]);
-      updatedToPlayers.splice(toIndex, 1, movedPlayer);
-
-      // Update both lists
-      setFromPlayers(updatedFromPlayers);
-      setToPlayers(updatedToPlayers);
-    }
-
-    // Update team names
-    generateTeamNames(aPlayers, bPlayers);
+  // Generate paired player names from A and B groups
+  const generatePairedPlayers = (aPlayersList, bPlayersList) => {
+    const pairs = aPlayersList.map((aPlayer, index) => {
+      const bPlayer = bPlayersList[index] || { name: '' };
+      return [aPlayer.name, bPlayer.name];
+    });
+    setPairedPlayers(pairs); // Store pairs in state
   };
 
-  // Function to shuffle players with animation
+  // Swap players between the lists and update team names and paired players immediately
+  const swapPlayers = (fromIndex, toIndex, fromListType, toListType) => {
+    let updatedAPlayers = [...aPlayers];
+    let updatedBPlayers = [...bPlayers];
+
+    if (fromListType === toListType) {
+      const listSetter = fromListType === 'aPlayers' ? setAPlayers : setBPlayers;
+      const players = fromListType === 'aPlayers' ? updatedAPlayers : updatedBPlayers;
+      [players[fromIndex], players[toIndex]] = [players[toIndex], players[fromIndex]];
+      listSetter([...players]);
+    } else {
+      // Swap between A and B lists
+      const fromPlayers = fromListType === 'aPlayers' ? updatedAPlayers : updatedBPlayers;
+      const toPlayers = toListType === 'aPlayers' ? updatedAPlayers : updatedBPlayers;
+
+      [fromPlayers[fromIndex], toPlayers[toIndex]] = [toPlayers[toIndex], fromPlayers[fromIndex]];
+
+      setAPlayers([...updatedAPlayers]);
+      setBPlayers([...updatedBPlayers]);
+    }
+
+    // Immediately update team names and paired players after swapping
+    generateTeamNames(updatedAPlayers, updatedBPlayers);
+    generatePairedPlayers(updatedAPlayers, updatedBPlayers);
+  };
+
   const shufflePlayers = (groupSetter, players, groupType) => {
-    setActiveShuffle(groupType); // Set the active shuffle icon
-    const shuffleTimes = 20; // Number of shuffles
-    const intervalTime = 50; // Time per shuffle
+    setActiveShuffle(groupType);
+    const shuffleTimes = 20;
+    const intervalTime = 50;
     let shuffleCount = 0;
     let shuffled = [...players];
 
@@ -156,8 +161,12 @@ const ABDraw = ({ tournamentPlayers }) => {
 
       if (shuffleCount >= shuffleTimes) {
         clearInterval(shuffleInterval);
-        setActiveShuffle(null); // Reset the active shuffle icon
+        setActiveShuffle(null);
         generateTeamNames(
+          groupType === 'aPlayers' ? shuffled : aPlayers,
+          groupType === 'bPlayers' ? shuffled : bPlayers
+        );
+        generatePairedPlayers(
           groupType === 'aPlayers' ? shuffled : aPlayers,
           groupType === 'bPlayers' ? shuffled : bPlayers
         );
@@ -165,14 +174,13 @@ const ABDraw = ({ tournamentPlayers }) => {
     }, intervalTime);
   };
 
-  // Clear all players and teams
   const clearTeams = () => {
     setAPlayers([]);
     setBPlayers([]);
     setTeamNames([]);
+    setPairedPlayers([]);
   };
 
-  // Copy team name to clipboard
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(
       () => {
@@ -277,7 +285,6 @@ const ABDraw = ({ tournamentPlayers }) => {
               </li>
             ))}
           </ul>
-          {/* Eraser Icon */}
           <FontAwesomeIcon 
             icon={faTrash}
             onClick={clearTeams}
@@ -286,6 +293,16 @@ const ABDraw = ({ tournamentPlayers }) => {
           />
         </div>
       </div>
+
+      {/* Conditionally show LeagueManagementWindow after teams are generated */}
+      {showLeagueWindow && (
+        <LeagueManagementWindow 
+          teamData={{ 
+            teams: teamNames, 
+            players: pairedPlayers // Pass paired players here
+          }} 
+        />
+      )}
     </DndProvider>
   );
 };

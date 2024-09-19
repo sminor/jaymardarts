@@ -204,11 +204,11 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
             <table>
               <tbody>
                 <tr>
-                  <td>File Generated Date:</td>
+                  <td>File Date:</td>
                   <td>{parseResult?.generatedDate || 'Unknown'}</td>
                 </tr>
                 <tr>
-                  <td>Last Modified Date:</td>
+                  <td>File Upload Date:</td>
                   <td>
                     {uploadTime ? uploadTime.toLocaleString(undefined, { 
                       year: 'numeric', 
@@ -238,8 +238,10 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
       </div>
       {loading && (
         <div className="loading-overlay">
-          <p>Loading ...</p>
-          <p className='status-message'>{statusMessage}</p>
+          <div className='loading-box'>
+            <p>Loading ...</p>
+            <p className='status-message'>{statusMessage}</p>
+          </div>
         </div>
       )}
     </div>

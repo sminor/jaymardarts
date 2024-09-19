@@ -46,12 +46,10 @@ const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
 
       {/* Render selected tournament type */}
       {selectedType === 'abDraw' && (
-        <ABDraw
-          tournamentPlayers={tournamentPlayers}
-        />
+        <ABDraw tournamentPlayers={tournamentPlayers} />
       )}
 
-      {/* Add other tournament types here */}
+      {/* Add future tournament types as needed */}
     </div>
   );
 };
