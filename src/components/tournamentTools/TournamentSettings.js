@@ -1,88 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ABDraw from './tournamentTypes/ABDraw';
 
-const TournamentSettings = ({ tournamentPlayers, setResetABDraw }) => {
-  const [selectedStat, setSelectedStat] = useState('combo'); // Default to combo
-  const [selectedTournamentType, setSelectedTournamentType] = useState('abDraw');
-  const [dividePlayersFunc, setDividePlayersFunc] = useState(null); // Store the divide function
+const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
+  const [selectedType, setSelectedType] = useState('');
 
-  // Load settings from sessionStorage on component mount
-  useEffect(() => {
-    const savedStat = sessionStorage.getItem('selectedStat');
-    const savedTournamentType = sessionStorage.getItem('selectedTournamentType');
-    
-    if (savedStat) setSelectedStat(savedStat);
-    if (savedTournamentType) setSelectedTournamentType(savedTournamentType);
+  const reset = useCallback(() => {
+    setSelectedType('');
   }, []);
 
-  // Save settings to sessionStorage whenever they change
   useEffect(() => {
-    sessionStorage.setItem('selectedStat', selectedStat);
-    sessionStorage.setItem('selectedTournamentType', selectedTournamentType);
-  }, [selectedStat, selectedTournamentType]);
+    registerResetFunction(reset);
+  }, [registerResetFunction, reset]);
 
-  // Render the appropriate tournament type component
-  const renderTournamentType = () => {
-    switch (selectedTournamentType) {
-      case 'abDraw':
-        return (
-          <ABDraw
-            tournamentPlayers={tournamentPlayers}
-            selectedStat={selectedStat}
-            setDividePlayersFunc={setDividePlayersFunc} // Pass the setter function
-            setResetABDraw={setResetABDraw} // Pass the reset function for AB Draw
-          />
-        );
-      // Add cases for other tournament types as needed
-      default:
-        return null;
+  // Load selectedType from localStorage on component mount
+  useEffect(() => {
+    const savedType = localStorage.getItem('selectedTournamentType');
+    if (savedType) {
+      setSelectedType(savedType);
     }
+  }, []);
+
+  // Save selectedType to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('selectedTournamentType', selectedType);
+  }, [selectedType]);
+
+  // Handle the change in tournament type selection
+  const handleTypeChange = (e) => {
+    setSelectedType(e.target.value);
   };
 
   return (
     <div className="tournament-settings-container">
-      <h3>Tournament Settings</h3>
+      <h2>Tournament Settings</h2>
 
       {/* Select tournament type */}
       <div className="select-container">
         <label>Tournament Type:</label>
-        <select value={selectedTournamentType} onChange={(e) => setSelectedTournamentType(e.target.value)}>
+        <select onChange={handleTypeChange} value={selectedType}>
+          <option value="">--- Please Select ---</option>
           <option value="abDraw">A/B Draw</option>
           {/* Add other tournament types here */}
         </select>
       </div>
 
-      {/* Radio buttons to select the stat */}
-      <div className="radio-container">
-        <label>Stat to Use:</label>
-        <input
-          type="radio"
-          name="stat"
-          value="combo"
-          checked={selectedStat === 'combo'}
-          onChange={() => setSelectedStat('combo')}
-        /> Combo
-        <input
-          type="radio"
-          name="stat"
-          value="ppd"
-          checked={selectedStat === 'ppd'}
-          onChange={() => setSelectedStat('ppd')}
-        /> PPD
-        <input
-          type="radio"
-          name="stat"
-          value="mpr"
-          checked={selectedStat === 'mpr'}
-          onChange={() => setSelectedStat('mpr')}
-        /> MPR
-      </div>
-
-      {/* Divide Players Button */}
-      <button onClick={dividePlayersFunc}>Divide Players</button>
-
       {/* Render selected tournament type */}
-      {renderTournamentType()}
+      {selectedType === 'abDraw' && (
+        <ABDraw
+          tournamentPlayers={tournamentPlayers}
+        />
+      )}
+
+      {/* Add other tournament types here */}
     </div>
   );
 };

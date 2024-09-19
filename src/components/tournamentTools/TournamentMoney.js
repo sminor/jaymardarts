@@ -1,10 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
-const TournamentMoney = ({ tournamentPlayers }) => {
+const TournamentMoney = ({ tournamentPlayers, registerResetFunction }) => {
   const [entryFee, setEntryFee] = useState(10); // Default to $10
   const [barContribution, setBarContribution] = useState(6); // Default to $6
   const [potBonus, setPotBonus] = useState(0); // Default to $0
   const [payoutSpots, setPayoutSpots] = useState(3); // Default to 3 places
+
+  const reset = useCallback(() => {
+    setEntryFee(10);
+    setBarContribution(6);
+    setPotBonus(0);
+    setPayoutSpots(3);
+  }, []);
+
+  useEffect(() => {
+    registerResetFunction(reset);
+  }, [registerResetFunction, reset]);
 
   // Load values from localStorage on mount
   useEffect(() => {
@@ -74,69 +85,73 @@ const TournamentMoney = ({ tournamentPlayers }) => {
     );
   }
 
-
-  // Updated calculatePayouts function
-const calculatePayouts = () => {
-    const spots = Math.max(payoutSpots, 1);
-    let remainingPool = totalPrizePool;
-    let payouts = [];
-    const minPayout = entryFee * 2;
-
-    // Step 1: Ensure each payout is at least entryFee * 2
-    payouts = new Array(spots).fill(minPayout);
-    remainingPool -= minPayout * spots;
-
-    // Step 2: Apply Golden Ratio Distribution for the remaining pool
-    const goldenRatio = 1.618;
-    let sumOfRatios = 0;
-    let ratioList = [];
-
-    // Calculate the ratios for each spot based on the golden ratio
-    for (let i = 0; i < spots; i++) {
-        let ratio = Math.pow(1 / goldenRatio, i);
-        ratioList.push(ratio);
-        sumOfRatios += ratio;
-    }
-
-    // Step 3: Determine the allocation based on these ratios
-    let adjustedRatios = ratioList.map(r => r / sumOfRatios); // Normalize to sum to 1
-    let extraPool = remainingPool;
-
-    for (let i = 0; i < spots; i++) {
-        // Calculate additional amount using the normalized ratio
-        let additionalAmount = Math.round((extraPool * adjustedRatios[i]) / 10) * 10;
-        payouts[i] += additionalAmount;
-        remainingPool -= additionalAmount;
-    }
-
-    // Step 4: Handle paired spots (5th/6th, 7th/8th, etc.) to ensure they are equal
-    for (let i = 4; i < spots; i += 2) {
-        if (i + 1 < spots) {
-            let maxPayout = Math.max(payouts[i], payouts[i + 1]);
-            maxPayout = Math.round(maxPayout / 10) * 10;
-            payouts[i] = payouts[i + 1] = maxPayout;
-        }
-    }
-
-    // Step 5: Distribute any remaining pool to the 1st place
-    if (remainingPool > 0) {
-        payouts[0] += Math.round(remainingPool / 10) * 10;
-        remainingPool = 0;
-    }
-
-    // Step 6: Adjust the payouts to not exceed the total prize pool
-    let totalPayouts = payouts.reduce((sum, payout) => sum + payout, 0);
-    let discrepancy = totalPayouts - totalPrizePool;
-
-    let index = 0;
-    while (discrepancy > 0) {
-        payouts[index] -= 10;
-        discrepancy -= 10;
-        index = (index + 1) % spots; // Move to the next place to take from
-    }
-
-    return payouts;
-};
+    // CalculatePayouts function
+  const calculatePayouts = () => {
+      // Check if the total prize pool is $0
+      if (totalPrizePool === 0) {
+          return new Array(payoutSpots).fill(0);
+      }
+  
+      const spots = Math.max(payoutSpots, 1);
+      let remainingPool = totalPrizePool;
+      let payouts = [];
+      const minPayout = entryFee * 2;
+  
+      // Step 1: Ensure each payout is at least entryFee * 2
+      payouts = new Array(spots).fill(minPayout);
+      remainingPool -= minPayout * spots;
+  
+      // Step 2: Apply Golden Ratio Distribution for the remaining pool
+      const goldenRatio = 1.618;
+      let sumOfRatios = 0;
+      let ratioList = [];
+  
+      // Calculate the ratios for each spot based on the golden ratio
+      for (let i = 0; i < spots; i++) {
+          let ratio = Math.pow(1 / goldenRatio, i);
+          ratioList.push(ratio);
+          sumOfRatios += ratio;
+      }
+  
+      // Step 3: Determine the allocation based on these ratios
+      let adjustedRatios = ratioList.map(r => r / sumOfRatios); // Normalize to sum to 1
+      let extraPool = remainingPool;
+  
+      for (let i = 0; i < spots; i++) {
+          // Calculate additional amount using the normalized ratio
+          let additionalAmount = Math.round((extraPool * adjustedRatios[i]) / 10) * 10;
+          payouts[i] += additionalAmount;
+          remainingPool -= additionalAmount;
+      }
+  
+      // Step 4: Handle paired spots (5th/6th, 7th/8th, etc.) to ensure they are equal
+      for (let i = 4; i < spots; i += 2) {
+          if (i + 1 < spots) {
+              let maxPayout = Math.max(payouts[i], payouts[i + 1]);
+              maxPayout = Math.round(maxPayout / 10) * 10;
+              payouts[i] = payouts[i + 1] = maxPayout;
+          }
+      }
+  
+      // Step 5: Distribute any remaining pool to the 1st place
+      if (remainingPool > 0) {
+          payouts[0] += Math.round(remainingPool / 10) * 10;
+          remainingPool = 0;
+      }
+  
+      // Step 6: Adjust the payouts to not exceed the total prize pool
+      let totalPayouts = payouts.reduce((sum, payout) => sum + payout, 0);
+      let discrepancy = totalPayouts - totalPrizePool;
+  
+      let index = 0;
+      while (discrepancy > 0) {
+          payouts[index] -= 10;
+          discrepancy -= 10;
+          index = (index + 1) % spots; // Move to the next place to take from
+      }
+  
+      return payouts;
+  };
 
   const roundedPayouts = calculatePayouts();
 
@@ -152,8 +167,8 @@ const calculatePayouts = () => {
   };
 
   return (
-    <div className="tournament-money">
-      <h3>Tournament Money</h3>
+    <div className="tournament-money-container">
+      <h2>Tournament Money</h2>
 
       <div className="tournament-money-grid">
         {/* Settings Table */}

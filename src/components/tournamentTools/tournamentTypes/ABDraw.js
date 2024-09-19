@@ -9,42 +9,55 @@ const ItemType = 'PLAYER';
 const PlayerCard = ({ player, index, swapPlayers, listType, statValue }) => {
   const [, ref] = useDrag({
     type: ItemType,
-    item: { index, listType }, // Add listType to track which list the player belongs to
+    item: { index, listType },
   });
 
   const [, drop] = useDrop({
     accept: ItemType,
     drop(item) {
       if (item.index !== index || item.listType !== listType) {
-        swapPlayers(item.index, index, item.listType, listType); // Pass the original and target list types
+        swapPlayers(item.index, index, item.listType, listType);
       }
     },
   });
 
   return (
     <li ref={(node) => ref(drop(node))} className="player-card">
-      {player.name} ({statValue.toFixed(2)}) {/* Display stat value */}
+      {player.name} ({statValue.toFixed(2)})
     </li>
   );
 };
 
-const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setResetABDraw }) => {
+const ABDraw = ({ tournamentPlayers }) => {
+  const [selectedStat, setSelectedStat] = useState(() => {
+    // Load selectedStat from localStorage on component mount
+    const savedStat = localStorage.getItem('selectedStat');
+    return savedStat || 'combo';
+  });
+
   const [aPlayers, setAPlayers] = useState(() => {
     const saved = localStorage.getItem('aPlayers');
     return saved ? JSON.parse(saved) : [];
   });
+
   const [bPlayers, setBPlayers] = useState(() => {
     const saved = localStorage.getItem('bPlayers');
     return saved ? JSON.parse(saved) : [];
   });
+
   const [teamNames, setTeamNames] = useState(() => {
     const saved = localStorage.getItem('teamNames');
     return saved ? JSON.parse(saved) : [];
   });
-  const [copySuccess, setCopySuccess] = useState(null);
-  const [activeShuffle, setActiveShuffle] = useState(null); // Tracks which shuffle icon is active
 
-  // Save state to local storage whenever it changes
+  const [copySuccess, setCopySuccess] = useState(null);
+  const [activeShuffle, setActiveShuffle] = useState(null);
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('selectedStat', selectedStat);
+  }, [selectedStat]);
+
   useEffect(() => {
     localStorage.setItem('aPlayers', JSON.stringify(aPlayers));
     localStorage.setItem('bPlayers', JSON.stringify(bPlayers));
@@ -61,7 +74,7 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
       case 'mpr':
         return player.mpr;
       default:
-        return player.ppd; // Default to PPD
+        return player.ppd + player.mpr * 10;
     }
   }, [selectedStat]);
 
@@ -91,11 +104,6 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
     });
     setTeamNames(teams);
   };
-
-  // Use useEffect to set the dividePlayers function when the component mounts
-  useEffect(() => {
-    setDividePlayersFunc(() => dividePlayers);
-  }, [setDividePlayersFunc, dividePlayers]);
 
   // Function to swap players directly
   const swapPlayers = (fromIndex, toIndex, fromListType, toListType) => {
@@ -164,11 +172,6 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
     setTeamNames([]);
   };
 
-  // Pass the clear function up to the parent component
-  useEffect(() => {
-    setResetABDraw(() => clearTeams);
-  }, [setResetABDraw]);
-
   // Copy team name to clipboard
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(
@@ -182,6 +185,35 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
 
   return (
     <DndProvider backend={HTML5Backend}>
+      {/* Stat selection and divide button */}
+      <div className="radio-container">
+        <label>Stat to Use:</label>
+        <input
+          type="radio"
+          name="stat"
+          value="combo"
+          checked={selectedStat === 'combo'}
+          onChange={(e) => setSelectedStat(e.target.value)}
+        /> Combo
+        <input
+          type="radio"
+          name="stat"
+          value="ppd"
+          checked={selectedStat === 'ppd'}
+          onChange={(e) => setSelectedStat(e.target.value)}
+        /> PPD
+        <input
+          type="radio"
+          name="stat"
+          value="mpr"
+          checked={selectedStat === 'mpr'}
+          onChange={(e) => setSelectedStat(e.target.value)}
+        /> MPR
+      </div>
+      <button onClick={dividePlayers}>
+        Divide Players
+      </button>
+
       <div className="players-group">
         {/* A Players List */}
         <div>
@@ -193,15 +225,15 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
                 player={player}
                 index={index}
                 swapPlayers={swapPlayers}
-                listType="aPlayers" // Specify list type for A players
-                statValue={getPlayerStat(player)} // Pass the calculated stat value
+                listType="aPlayers"
+                statValue={getPlayerStat(player)}
               />
             ))}
           </ul>
           <FontAwesomeIcon 
             icon={faShuffle} 
             onClick={() => shufflePlayers(setAPlayers, aPlayers, 'aPlayers')} 
-            className={`shuffle-icon ${activeShuffle === 'aPlayers' ? 'shuffling' : ''}`} // Apply shaking class if active
+            className={`shuffle-icon ${activeShuffle === 'aPlayers' ? 'shuffling' : ''}`}
             title="Shuffle"
           />
         </div>
@@ -216,15 +248,15 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
                 player={player}
                 index={index}
                 swapPlayers={swapPlayers}
-                listType="bPlayers" // Specify list type for B players
-                statValue={getPlayerStat(player)} // Pass the calculated stat value
+                listType="bPlayers"
+                statValue={getPlayerStat(player)}
               />
             ))}
           </ul>
           <FontAwesomeIcon 
             icon={faShuffle} 
             onClick={() => shufflePlayers(setBPlayers, bPlayers, 'bPlayers')} 
-            className={`shuffle-icon ${activeShuffle === 'bPlayers' ? 'shuffling' : ''}`} // Apply shaking class if active
+            className={`shuffle-icon ${activeShuffle === 'bPlayers' ? 'shuffling' : ''}`}
             title="Shuffle"
           />
         </div>
@@ -249,7 +281,7 @@ const ABDraw = ({ tournamentPlayers, selectedStat, setDividePlayersFunc, setRese
           <FontAwesomeIcon 
             icon={faTrash}
             onClick={clearTeams}
-            className="shuffle-icon" // Using shuffle-icon class for consistent styling
+            className="shuffle-icon"
             title="Clear Teams"
           />
         </div>

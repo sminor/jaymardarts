@@ -1,30 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import validateFile from './validateReportFile';
 
 const uploadEnabled = true;
 
-const PlayerStatsUploader = ({ handleMessage }) => {
+const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
   const [file, setFile] = useState(null);
   const [uploadTime, setUploadTime] = useState(null);
+  const [lastParsedDate, setLastParsedDate] = useState(null);
   const [loading, setLoadingState] = useState(false); // Local loading state
+  const [statusMessage, setStatusMessage] = useState(''); // Status message state
+  
+  const messageSentRef = useRef(false);
 
   useEffect(() => {
     const fetchModifiedDate = async () => {
-      try {
-        const response = await fetch('/.netlify/functions/get-modified-date');
-        if (!response.ok) {
-          throw new Error('Error fetching modified date');
+        try {
+            const response = await fetch('/.netlify/functions/get-modified-date');
+            if (!response.ok) {
+                throw new Error('Error fetching modified date');
+            }
+            const data = await response.json();
+            const modifiedDate = new Date(data.modifiedDate);
+            setUploadTime(modifiedDate);
+
+            // Fetch the last parsed date from localStorage and convert it to a Date object
+            const savedParseDate = localStorage.getItem('parseDate');
+            if (savedParseDate) {
+                const parsedDate = new Date(savedParseDate);
+                setLastParsedDate(parsedDate);
+
+                // Compare the dates
+                if (modifiedDate > parsedDate && !messageSentRef.current) {
+                    handleMessage('Warning: The data file has been modified since the last import. Consider importing the new data.', 'warning');
+                    messageSentRef.current = true;
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching modified date:', error);
         }
-        const data = await response.json();
-        const modifiedDate = new Date(data.modifiedDate);
-        setUploadTime(modifiedDate);
-      } catch (error) {
-        console.error('Error fetching modified date:', error);
-      }
     };
 
     fetchModifiedDate();
-  }, []);
+  }, [handleMessage])
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -82,10 +99,11 @@ const PlayerStatsUploader = ({ handleMessage }) => {
       }
 
       setLoadingState(true); // Show loading overlay
+      setStatusMessage('Uploading file');
 
       try {
         const fileContentBase64 = btoa(fileContent);
-        const uploadResponse = await fetch('/.netlify/functions/upload-to-drive', {
+        const uploadResponse = await fetch('/.netlify/functions/upload-report-file', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -96,16 +114,38 @@ const PlayerStatsUploader = ({ handleMessage }) => {
         if (!uploadResponse.ok) {
           throw new Error('Error uploading file.');
         }
-  
+
+        setStatusMessage('Waiting for server to process the file');
         await wait(3000); // Wait for 3 seconds before attempting to fetch the modified date
+
+        setStatusMessage('Fetching modified date');
         await fetchFileWithRetry(3, 2000); // 3 retries with initial 2 seconds delay
 
-        setLoadingState(false); // Hide loading overlay
-        handleMessage('File uploaded successfully.', 'success');
+        setStatusMessage('Parsing the report file');
+        // Call parse-report-file function to parse the uploaded file
+        const parseResponse = await fetch('/.netlify/functions/parse-report-file');
+        if (!parseResponse.ok) {
+          throw new Error('Error parsing the report file.');
+        }
+        const parseResultData = await parseResponse.json();
 
+        if (parseResultData.error) {
+          throw new Error(parseResultData.error);
+        }
+
+        localStorage.setItem('parseResult', JSON.stringify(parseResultData));
+        const currentDateTime = new Date().toISOString();
+        localStorage.setItem('parseDate', currentDateTime);
+
+        // Update the lastParsedDate state to the new parsed date
+        setLastParsedDate(new Date(currentDateTime));
+
+        handleMessage('File uploaded successfully.', 'success');
       } catch (error) {
-        setLoadingState(false); // Hide loading overlay
         handleMessage(error.message, 'error');
+      } finally {
+        setLoadingState(false); // Hide loading overlay
+        setStatusMessage(''); // Clear status message
       }
     };
   };
@@ -126,12 +166,36 @@ const PlayerStatsUploader = ({ handleMessage }) => {
             <input type="file" onChange={handleFileChange} />
             <button onClick={handleFileUpload}>Upload</button>
           </div>
-          {uploadTime && (
+          {(uploadTime || parseResult) && (
             <table>
               <tbody>
                 <tr>
-                  <td>Last Uploaded:</td>
-                  <td>{uploadTime.toLocaleString()}</td>
+                  <td>File Generated Date:</td>
+                  <td>{parseResult?.generatedDate || 'Unknown'}</td>
+                </tr>
+                <tr>
+                  <td>Last Modified Date:</td>
+                  <td>
+                    {uploadTime ? uploadTime.toLocaleString(undefined, { 
+                      year: 'numeric', 
+                      month: 'numeric', 
+                      day: 'numeric', 
+                      hour: 'numeric', 
+                      minute: 'numeric' 
+                    }) : 'Unknown'}
+                  </td>
+                </tr>  
+                <tr>  
+                  <td>Last Sync Date:</td>
+                  <td>
+                    {lastParsedDate ? lastParsedDate.toLocaleString(undefined, { 
+                      year: 'numeric', 
+                      month: 'numeric', 
+                      day: 'numeric', 
+                      hour: 'numeric', 
+                      minute: 'numeric' 
+                    }) : 'Unknown'}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -140,7 +204,8 @@ const PlayerStatsUploader = ({ handleMessage }) => {
       </div>
       {loading && (
         <div className="loading-overlay">
-          <p>Loading...</p>
+          <p>Loading ...</p>
+          <p className='status-message'>{statusMessage}</p>
         </div>
       )}
     </div>

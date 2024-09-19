@@ -107,61 +107,6 @@ button {
   align-items: center;
 }
 
-/* Table Styles (Common across sections) */
-.section-container table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--secondary-bg);
-  border: 1px solid var(--table-border);
-  margin-top: 10px;
-  box-sizing: border-box;
-}
-
-.section-container th,
-.section-container td {
-  padding: 10px;
-  border: 1px solid var(--table-border);
-  text-align: left;
-  color: var(--text-primary);
-}
-
-.section-container th {
-  background-color: var(--quaternary-bg);
-  font-weight: bold;
-}
-
-.section-container tbody tr:nth-child(odd) {
-  background-color: var(--nav-bg);
-}
-
-.section-container table tr:hover td {
-  background-color: var(--quaternary-bg);
-}
-
-/* Tournament Money Styles */
-.tournament-money {
-  width: 100%;
-}
-
-.tournament-money-grid {
-  display: flex;
-  gap: 20px;
-}
-
-.tournament-money input[type="number"] {
-  width: 80px;
-  padding: 5px;
-}
-
-/* Red and Green Text for Fee Display */
-.tournament-money .red {
-  color: red;
-}
-
-.tournament-money .green {
-  color: green;
-}
-
 /* Authentication Container Styles */
 .auth-container {
   min-height: 100vh;
@@ -185,32 +130,6 @@ button {
 
 .auth-container button {
   padding: 5px 10px;
-}
-
-/* Player Roster Styles */
-.player-roster-container {
-  background-color: var(--secondary-bg);
-}
-
-.player-roster-container table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.player-roster-container th,
-.player-roster-container td {
-  border: 1px solid var(--table-border);
-  padding: 8px;
-  text-align: left;
-  color: var(--text-primary);
-}
-
-.player-roster-container th {
-  background-color: var(--quaternary-bg);
-}
-
-.player-roster-container tbody tr:nth-child(odd) {
-  background-color: var(--nav-bg);
 }
 
 /* Tournament Players section styling */
@@ -242,6 +161,7 @@ button {
 .tournament-players-container table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 15px;
 }
 
 .tournament-players-container th,
@@ -436,15 +356,22 @@ button {
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999; /* Ensure it is on top of other elements */
 }
 
 .loading-overlay p {
-  color: white;
+  color: var(--text-primary);
   font-size: 2em;
   font-weight: bold;
+}
+
+.loading-overlay p.status-message {
+  font-size: 1.3em; /* Smaller font size */
+  margin-top: 5px;
+  color: var(--text-secondary);
 }
 
 .data-upload-container {
@@ -491,9 +418,90 @@ button {
 .data-upload-container table {
   width: 100%;
   border-collapse: collapse;
+  border: 0;
+  text-align: left;
 }
 
 .data-upload-container table td {
   padding: 5px;
-  border: 1px solid #ddd;
+  border: 0;
 }
+
+/* Player List Styles */
+
+.player-list-container table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.player-list-container th,
+.player-list-container td {
+  border: 1px solid var(--table-border);
+  padding: 8px;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.player-list-container th {
+  background-color: var(--quaternary-bg);
+}
+
+.player-list-container tbody tr:nth-child(odd) {
+  background-color: var(--nav-bg);
+}
+
+/* Tournament Money Styles */
+.tournament-money-container {
+  width: 100%;
+}
+
+.tournament-money-grid {
+  display: flex;;
+  gap: 20px;
+}
+
+.tournament-money-container input[type="number"] {
+  width: 80px;
+  padding: 5px;
+}
+
+/* Red and Green Text for Fee Display */
+.tournament-money-container .red {
+  color: red;
+}
+
+.tournament-money-container .green {
+  color: green;
+}
+
+.tournament-money-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--table-border);
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.tournament-money-container th,
+.tournament-money-container td {
+  padding: 10px;
+  border: 1px solid var(--table-border);
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.tournament-money-container th {
+  background-color: var(--quaternary-bg);
+  font-weight: bold;
+}
+
+.tournament-money-container tbody tr:nth-child(odd) {
+  background-color: var(--nav-bg);
+}
+
+.tournament-money-container table tr:hover td {
+  background-color: var(--quaternary-bg);
+}
+
