@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faShuffle, faTrash } from '@fortawesome/free-solid-svg-icons';
-import LeagueManagementWindow from '../LeagueManagementWindow'; // Import LeagueManagementWindow
+import { faShuffle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import TournamentHelper from '../TournamentHelper';
 
 const ItemType = 'PLAYER';
 
@@ -23,8 +23,8 @@ const PlayerCard = ({ player, index, swapPlayers, listType, statValue }) => {
   });
 
   return (
-    <li ref={(node) => ref(drop(node))} className="player-card">
-      {player.name} ({statValue.toFixed(2)})
+    <li ref={(node) => ref(drop(node))} className="player-card" title={statValue.toFixed(2)}>
+      {player.name}
     </li>
   );
 };
@@ -50,20 +50,21 @@ const ABDraw = ({ tournamentPlayers }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  const [pairedPlayers, setPairedPlayers] = useState([]); // New state for player pairs
-  const [copySuccess, setCopySuccess] = useState(null);
+  const [pairedPlayers, setPairedPlayers] = useState(() => {
+    const saved = localStorage.getItem('pairedPlayers');
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [activeShuffle, setActiveShuffle] = useState(null);
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('selectedStat', selectedStat);
-  }, [selectedStat]);
-
-  useEffect(() => {
     localStorage.setItem('aPlayers', JSON.stringify(aPlayers));
     localStorage.setItem('bPlayers', JSON.stringify(bPlayers));
     localStorage.setItem('teamNames', JSON.stringify(teamNames));
-  }, [aPlayers, bPlayers, teamNames]);
+    localStorage.setItem('pairedPlayers', JSON.stringify(pairedPlayers)); // Save paired players
+  }, [selectedStat, aPlayers, bPlayers, teamNames, pairedPlayers]);
 
   // Calculate the stat value based on the selected stat
   const getPlayerStat = useCallback((player) => {
@@ -179,16 +180,6 @@ const ABDraw = ({ tournamentPlayers }) => {
     setPairedPlayers([]);
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text).then(
-      () => {
-        setCopySuccess(text);
-        setTimeout(() => setCopySuccess(null), 2000);
-      },
-      () => alert('Failed to copy!')
-    );
-  };
-
   return (
     <DndProvider backend={HTML5Backend}>
       {/* Stat selection and divide button */}
@@ -216,9 +207,10 @@ const ABDraw = ({ tournamentPlayers }) => {
           onChange={(e) => setSelectedStat(e.target.value)}
         /> MPR
       </div>
-      <button onClick={dividePlayers}>
-        Divide Players
-      </button>
+
+        <button onClick={dividePlayers}>
+          Split Into Teams
+        </button>
 
       <div className="players-group">
         {/* A Players List */}
@@ -274,12 +266,6 @@ const ABDraw = ({ tournamentPlayers }) => {
             {teamNames.map((team, index) => (
               <li key={index} className="team-card">
                 {team}
-                <FontAwesomeIcon 
-                  icon={faCopy} 
-                  onClick={() => copyToClipboard(team)} 
-                  className="copy-icon"
-                  title={copySuccess === team ? 'Copied!' : 'Copy'}
-                />
               </li>
             ))}
           </ul>
@@ -292,8 +278,7 @@ const ABDraw = ({ tournamentPlayers }) => {
         </div>
       </div>
 
-      {/* Conditionally show LeagueManagementWindow after teams are generated */}
-        <LeagueManagementWindow 
+        <TournamentHelper 
           teamData={{ 
             teams: teamNames, 
             players: pairedPlayers // Pass paired players here

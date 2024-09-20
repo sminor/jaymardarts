@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTurnDown, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faSortUp, faSortDown, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTournamentPlayer, registerResetFunction, handleMessage }) => {
   const [newPlayer, setNewPlayer] = useState(() => {
@@ -147,7 +147,7 @@ const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTour
           onChange={handleInputChange}
         />
         <button onClick={addPlayer} aria-label="Add Player">
-          <FontAwesomeIcon icon={faTurnDown} />
+          <FontAwesomeIcon icon={faUserPlus} />
         </button>
       </div>
 

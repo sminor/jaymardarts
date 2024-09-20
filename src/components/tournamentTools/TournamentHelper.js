@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 
-const LeagueManagementWindow = ({ teamData }) => {
-  const leagueWindowRef = useRef(null);
+const TournamentHelper = ({ teamData }) => {
+  const leagueleaderWindowRef = useRef(null);
   const toolbarWindowRef = useRef(null);
 
-  const leagueWindowWidth = 800;
+  const leagueleaderWindowWidth = 800;
   const toolbarWindowWidth = 400;
   const windowHeight = 600;
 
@@ -16,26 +16,26 @@ const LeagueManagementWindow = ({ teamData }) => {
     const screenWidth = window.screen.availWidth;
 
     // Total width of both windows
-    const totalWidth = leagueWindowWidth + toolbarWindowWidth;
+    const totalWidth = leagueleaderWindowWidth + toolbarWindowWidth;
 
-    // Calculate the starting position for the league window (centered)
+    // Calculate the starting position for the leagueleader window (centered)
     const leftPosition = (screenWidth - totalWidth) / 2;
 
     return {
-      leagueLeft: leftPosition,
-      toolbarLeft: leftPosition + leagueWindowWidth,
+      leagueleaderLeft: leftPosition,
+      toolbarLeft: leftPosition + leagueleaderWindowWidth,
     };
   };
 
-  // Open or focus the league window
-  const openOrFocusLeagueWindow = (left) => {
-    if (leagueWindowRef.current && !leagueWindowRef.current.closed) {
-      leagueWindowRef.current.focus();
+  // Open or focus the leagueleader window
+  const openOrFocusLeagueleaderWindow = (left) => {
+    if (leagueleaderWindowRef.current && !leagueleaderWindowRef.current.closed) {
+      leagueleaderWindowRef.current.focus();
     } else {
-      leagueWindowRef.current = window.open(
+      leagueleaderWindowRef.current = window.open(
         'https://leagueleader.net',
-        'leagueManagementWindow',
-        `width=${leagueWindowWidth},height=${windowHeight},resizable=yes,scrollbars=yes,left=${left},top=100`
+        'leagueleaderWindow',
+        `width=${leagueleaderWindowWidth},height=${windowHeight},resizable=yes,scrollbars=yes,left=${left},top=100`
       );
     }
   };
@@ -150,23 +150,20 @@ const LeagueManagementWindow = ({ teamData }) => {
 
   // Combined function to handle both windows with an extended delay for Edge
   const handleWindows = () => {
-    const { leagueLeft, toolbarLeft } = calculatePositions();
+    const { leagueleaderLeft, toolbarLeft } = calculatePositions();
 
-    // Open or focus the league window
-    openOrFocusLeagueWindow(leagueLeft);
+    // Open both windows
+    openOrFocusLeagueleaderWindow(leagueleaderLeft);
+    openOrFocusToolbarWindow(toolbarLeft);
 
-    // Delay opening or focusing the toolbar window to avoid conflicts
-    setTimeout(() => {
-      openOrFocusToolbarWindow(toolbarLeft);
-    }, 300); // 300ms delay to ensure both windows open correctly
   };
 
   return (
     <div>
       {/* Button to open both pop-up windows */}
-      <button onClick={handleWindows}>Open Tournament Setup</button>
+      <button onClick={handleWindows}>Open Tournament Helper</button>
     </div>
   );
 };
 
-export default LeagueManagementWindow;
+export default TournamentHelper;
