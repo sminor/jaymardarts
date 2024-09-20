@@ -18,7 +18,7 @@ const TournamentTools = () => {
     e.preventDefault();
     clearMessages();
 
-    if (password === process.env.REACT_APP_OPERATOR_PASSWORD) {
+    if (password === process.env.REACT_APP_TOOLS_PASSWORD) {
       setAuthenticated(true);
       sessionStorage.setItem('authenticated', 'true');
       handleMessage('Login successful!', 'success');
@@ -66,7 +66,7 @@ const TournamentTools = () => {
       const timer = setTimeout(() => {
         setFadeOut(true);
         setTimeout(clearMessages, 1000);
-      }, 10000);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, [error, warning, info, success]);
