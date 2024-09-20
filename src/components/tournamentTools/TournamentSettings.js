@@ -2,30 +2,28 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ABDraw from './tournamentTypes/ABDraw';
 
 const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
-  const [selectedType, setSelectedType] = useState('');
+  // Initialize selectedType from localStorage or fallback to an empty string
+  const [selectedType, setSelectedType] = useState(() => {
+    const savedType = localStorage.getItem('selectedTournamentType');
+    return savedType ? savedType : ''; // If no saved type, set to empty string
+  });
 
+  // Reset function to reset selectedType
   const reset = useCallback(() => {
-    setSelectedType('');
+    setSelectedType(''); // Reset the selection
   }, []);
 
+  // Register the reset function on component mount
   useEffect(() => {
     registerResetFunction(reset);
   }, [registerResetFunction, reset]);
-
-  // Load selectedType from localStorage on component mount
-  useEffect(() => {
-    const savedType = localStorage.getItem('selectedTournamentType');
-    if (savedType) {
-      setSelectedType(savedType);
-    }
-  }, []);
 
   // Save selectedType to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('selectedTournamentType', selectedType);
   }, [selectedType]);
 
-  // Handle the change in tournament type selection
+  // Handle change in tournament type
   const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
   };

@@ -1,11 +1,28 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 const TournamentMoney = ({ tournamentPlayers, registerResetFunction }) => {
-  const [entryFee, setEntryFee] = useState(10); // Default to $10
-  const [barContribution, setBarContribution] = useState(6); // Default to $6
-  const [potBonus, setPotBonus] = useState(0); // Default to $0
-  const [payoutSpots, setPayoutSpots] = useState(3); // Default to 3 places
+  // Initialize state from localStorage or fallback to defaults
+  const [entryFee, setEntryFee] = useState(() => {
+    const savedEntryFee = localStorage.getItem('entryFee');
+    return savedEntryFee ? parseFloat(savedEntryFee) : 10; // Default to $10
+  });
 
+  const [barContribution, setBarContribution] = useState(() => {
+    const savedBarContribution = localStorage.getItem('barContribution');
+    return savedBarContribution ? parseFloat(savedBarContribution) : 6; // Default to $6
+  });
+
+  const [potBonus, setPotBonus] = useState(() => {
+    const savedPotBonus = localStorage.getItem('potBonus');
+    return savedPotBonus ? parseFloat(savedPotBonus) : 0; // Default to $0
+  });
+
+  const [payoutSpots, setPayoutSpots] = useState(() => {
+    const savedPayoutSpots = localStorage.getItem('payoutSpots');
+    return savedPayoutSpots ? parseInt(savedPayoutSpots, 10) : 3; // Default to 3 places
+  });
+
+  // Reset function to revert to default values
   const reset = useCallback(() => {
     setEntryFee(10);
     setBarContribution(6);
@@ -16,19 +33,6 @@ const TournamentMoney = ({ tournamentPlayers, registerResetFunction }) => {
   useEffect(() => {
     registerResetFunction(reset);
   }, [registerResetFunction, reset]);
-
-  // Load values from localStorage on mount
-  useEffect(() => {
-    const storedEntryFee = localStorage.getItem('entryFee');
-    const storedBarContribution = localStorage.getItem('barContribution');
-    const storedPotBonus = localStorage.getItem('potBonus');
-    const storedPayoutSpots = localStorage.getItem('payoutSpots');
-
-    if (storedEntryFee) setEntryFee(parseFloat(storedEntryFee));
-    if (storedBarContribution) setBarContribution(parseFloat(storedBarContribution));
-    if (storedPotBonus) setPotBonus(parseFloat(storedPotBonus));
-    if (storedPayoutSpots) setPayoutSpots(parseInt(storedPayoutSpots, 10));
-  }, []);
 
   // Save values to localStorage whenever they change
   useEffect(() => {
@@ -85,79 +89,77 @@ const TournamentMoney = ({ tournamentPlayers, registerResetFunction }) => {
     );
   }
 
-    // CalculatePayouts function
+  // CalculatePayouts function
   const calculatePayouts = () => {
-      // Check if the total prize pool is $0
-      if (totalPrizePool === 0) {
-          return new Array(payoutSpots).fill(0);
-      }
-  
-      const spots = Math.max(payoutSpots, 1);
-      let remainingPool = totalPrizePool;
-      let payouts = [];
-      const minPayout = entryFee * 2;
-  
-      // Step 1: Ensure each payout is at least entryFee * 2
-      payouts = new Array(spots).fill(minPayout);
-      remainingPool -= minPayout * spots;
-  
-      // Step 2: Apply Golden Ratio Distribution for the remaining pool
-      const goldenRatio = 1.618;
-      let sumOfRatios = 0;
-      let ratioList = [];
-  
-      // Calculate the ratios for each spot based on the golden ratio
-      for (let i = 0; i < spots; i++) {
-          let ratio = Math.pow(1 / goldenRatio, i);
-          ratioList.push(ratio);
-          sumOfRatios += ratio;
-      }
-  
-      // Step 3: Determine the allocation based on these ratios
-      let adjustedRatios = ratioList.map(r => r / sumOfRatios); // Normalize to sum to 1
-      let extraPool = remainingPool;
-  
-      for (let i = 0; i < spots; i++) {
-          // Calculate additional amount using the normalized ratio
-          let additionalAmount = Math.round((extraPool * adjustedRatios[i]) / 10) * 10;
-          payouts[i] += additionalAmount;
-          remainingPool -= additionalAmount;
-      }
-  
-      // Step 4: Handle paired spots (5th/6th, 7th/8th, etc.) to ensure they are equal
-      for (let i = 4; i < spots; i += 2) {
-          if (i + 1 < spots) {
-              let maxPayout = Math.max(payouts[i], payouts[i + 1]);
-              maxPayout = Math.round(maxPayout / 10) * 10;
-              payouts[i] = payouts[i + 1] = maxPayout;
-          }
-      }
-  
-      // Step 5: Distribute any remaining pool to the 1st place
-      if (remainingPool > 0) {
-          payouts[0] += Math.round(remainingPool / 10) * 10;
-          remainingPool = 0;
-      }
-  
-      // Step 6: Adjust the payouts to not exceed the total prize pool
-      let totalPayouts = payouts.reduce((sum, payout) => sum + payout, 0);
-      let discrepancy = totalPayouts - totalPrizePool;
-  
-      let index = 0;
-      while (discrepancy > 0) {
-          payouts[index] -= 10;
-          discrepancy -= 10;
-          index = (index + 1) % spots; // Move to the next place to take from
-      }
-  
-      return payouts;
-  };
+    if (totalPrizePool === 0) {
+      return new Array(payoutSpots).fill(0);
+    }
+
+    const spots = Math.max(payoutSpots, 1);
+    let remainingPool = totalPrizePool;
+    let payouts = [];
+    const minPayout = entryFee * 2;
+
+    // Step 1: Ensure each payout is at least entryFee * 2
+    payouts = new Array(spots).fill(minPayout);
+    remainingPool -= minPayout * spots;
+
+    // Step 2: Apply Golden Ratio Distribution for the remaining pool
+    const goldenRatio = 1.618;
+    let sumOfRatios = 0;
+    let ratioList = [];
+
+    // Calculate the ratios for each spot based on the golden ratio
+    for (let i = 0; i < spots; i++) {
+        let ratio = Math.pow(1 / goldenRatio, i);
+        ratioList.push(ratio);
+        sumOfRatios += ratio;
+    }
+
+    // Step 3: Determine the allocation based on these ratios
+    let adjustedRatios = ratioList.map(r => r / sumOfRatios); // Normalize to sum to 1
+    let extraPool = remainingPool;
+
+    for (let i = 0; i < spots; i++) {
+        // Calculate additional amount using the normalized ratio
+        let additionalAmount = Math.round((extraPool * adjustedRatios[i]) / 10) * 10;
+        payouts[i] += additionalAmount;
+        remainingPool -= additionalAmount;
+    }
+
+    // Step 4: Handle paired spots (5th/6th, 7th/8th, etc.) to ensure they are equal
+    for (let i = 4; i < spots; i += 2) {
+        if (i + 1 < spots) {
+            let maxPayout = Math.max(payouts[i], payouts[i + 1]);
+            maxPayout = Math.round(maxPayout / 10) * 10;
+            payouts[i] = payouts[i + 1] = maxPayout;
+        }
+    }
+
+    // Step 5: Distribute any remaining pool to the 1st place
+    if (remainingPool > 0) {
+        payouts[0] += Math.round(remainingPool / 10) * 10;
+        remainingPool = 0;
+    }
+
+    // Step 6: Adjust the payouts to not exceed the total prize pool
+    let totalPayouts = payouts.reduce((sum, payout) => sum + payout, 0);
+    let discrepancy = totalPayouts - totalPrizePool;
+
+    let index = 0;
+    while (discrepancy > 0) {
+        payouts[index] -= 10;
+        discrepancy -= 10;
+        index = (index + 1) % spots; // Move to the next place to take from
+    }
+
+    return payouts;
+};
 
   const roundedPayouts = calculatePayouts();
 
-  // Function to get the ordinal suffix for a number (1st, 2nd, 3rd, etc.)
   const getOrdinalSuffix = (num) => {
-    if (num > 3 && num < 21) return 'th'; // catch 11th to 20th
+    if (num > 3 && num < 21) return 'th';
     switch (num % 10) {
       case 1: return 'st';
       case 2: return 'nd';
@@ -223,7 +225,10 @@ const TournamentMoney = ({ tournamentPlayers, registerResetFunction }) => {
                   type="number"
                   min="1"
                   value={payoutSpots}
-                  onChange={(e) => setPayoutSpots(parseInt(e.target.value, 10))}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setPayoutSpots(value === '' ? 1 : Math.max(1, parseInt(value, 10)));
+                  }}
                 />
               </td>
             </tr>

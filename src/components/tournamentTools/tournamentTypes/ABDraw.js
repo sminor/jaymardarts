@@ -53,7 +53,6 @@ const ABDraw = ({ tournamentPlayers }) => {
   const [pairedPlayers, setPairedPlayers] = useState([]); // New state for player pairs
   const [copySuccess, setCopySuccess] = useState(null);
   const [activeShuffle, setActiveShuffle] = useState(null);
-  const [showLeagueWindow, setShowLeagueWindow] = useState(false); // New state for the LeagueManagementWindow
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
@@ -96,7 +95,6 @@ const ABDraw = ({ tournamentPlayers }) => {
     setBPlayers(newBPlayers);
     generateTeamNames(newAPlayers, newBPlayers);
     generatePairedPlayers(newAPlayers, newBPlayers); // Generate player pairs
-    setShowLeagueWindow(true); // Show the league window after players are divided
   }, [tournamentPlayers, getPlayerStat]);
 
   // Generate team names by taking the first name from each player in A and B groups
@@ -295,14 +293,12 @@ const ABDraw = ({ tournamentPlayers }) => {
       </div>
 
       {/* Conditionally show LeagueManagementWindow after teams are generated */}
-      {showLeagueWindow && (
         <LeagueManagementWindow 
           teamData={{ 
             teams: teamNames, 
             players: pairedPlayers // Pass paired players here
           }} 
         />
-      )}
     </DndProvider>
   );
 };

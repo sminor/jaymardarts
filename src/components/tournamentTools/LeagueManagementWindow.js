@@ -8,6 +8,9 @@ const LeagueManagementWindow = ({ teamData }) => {
   const toolbarWindowWidth = 400;
   const windowHeight = 600;
 
+  // Store team data in localStorage
+  localStorage.setItem('teamData', JSON.stringify(teamData));
+
   // Function to calculate positions for centering the windows side by side
   const calculatePositions = () => {
     const screenWidth = window.screen.availWidth;
@@ -18,20 +21,17 @@ const LeagueManagementWindow = ({ teamData }) => {
     // Calculate the starting position for the league window (centered)
     const leftPosition = (screenWidth - totalWidth) / 2;
 
-    // Positions for the league and toolbar windows
     return {
       leagueLeft: leftPosition,
       toolbarLeft: leftPosition + leagueWindowWidth,
     };
   };
 
-  // Function to open the external leagueleader window or focus if it's already open
+  // Open or focus the league window
   const openOrFocusLeagueWindow = (left) => {
     if (leagueWindowRef.current && !leagueWindowRef.current.closed) {
-      // Focus the existing window if already open
       leagueWindowRef.current.focus();
     } else {
-      // Open the window if it's not already open
       leagueWindowRef.current = window.open(
         'https://leagueleader.net',
         'leagueManagementWindow',
@@ -40,40 +40,72 @@ const LeagueManagementWindow = ({ teamData }) => {
     }
   };
 
-// Function to open the toolbar window or focus if it's already open
-const openOrFocusToolbarWindow = (left) => {
+  // Open or focus the toolbar window
+  const openOrFocusToolbarWindow = (left) => {
     if (toolbarWindowRef.current && !toolbarWindowRef.current.closed) {
-      // Focus the existing window if already open
       toolbarWindowRef.current.focus();
+      // Refresh content without closing the window
+      populateToolbarContent();
     } else {
-      // Generate the HTML content for the toolbar window
+      // Check if teamData is valid before proceeding
+      if (!teamData || !teamData.teams || !teamData.players) {
+        alert('Invalid team data.');
+        return;
+      }
+
       const toolbarContent = `
-        <html>
-          <head>
-            <title>Team and Player Info</title>
-          </head>
-          <body>
-            <h3>Team Information</h3>
-            <table className="test">
-              <thead>
-                <tr>
-                  <th>Team Name</th>
-                  <th>Players</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${teamData.teams.map((team, index) => {
-                  const [player1, player2] = teamData.players[index];
-                  return `
+      <html>
+        <head>
+          <title>JayMar Tournament Helper</title>
+          <link rel="stylesheet" type="text/css" href="/styles/toolbar.css">
+        </head>
+        <body>
+          <h2>JayMar Tournament Helper</h2>
+          <div id="team-info"></div>
+      
+          <div id="footer">
+            &copy; 2024 JayMar Entertainment
+          </div>
+      
+          <a href="#" id="refresh-link">Refresh</a>
+      
+          <script>
+            function populateTeamData() {
+              const teamData = JSON.parse(localStorage.getItem('teamData'));
+              const teamHTML = \`
+                <table>
+                  <thead>
                     <tr>
-                      <td><span class="copyable" data-name="${team}">${team}</span></td>
-                      <td><span class="copyable" data-name="${player1}">${player1}</span> | <span class="copyable" data-name="${player2}">${player2}</span></td>
+                      <th>Team Name</th>
+                      <th colspan="2">Players</th>
                     </tr>
-                  `;
-                }).join('')}
-              </tbody>
-            </table>
-            <script>
+                  </thead>
+                  <tbody>
+                    \${teamData.teams.map((team, index) => {
+                      const players = teamData.players[index] || ['', ''];
+                      const [player1FirstName, player1LastName] = players[0].split(' ');
+                      const [player2FirstName, player2LastName] = players[1].split(' ');
+      
+                      return \`
+                        <tr>
+                          <td><span class="copyable" data-name="\${team}">\${team}</span></td>
+                          <td>
+                            <span class="copyable" data-name="\${player1FirstName}">\${player1FirstName}</span> 
+                            <span class="copyable" data-name="\${player1LastName}">\${player1LastName}</span>
+                          </td>
+                          <td>
+                            <span class="copyable" data-name="\${player2FirstName}">\${player2FirstName}</span> 
+                            <span class="copyable" data-name="\${player2LastName}">\${player2LastName}</span>
+                          </td>
+                        </tr>
+                      \`;
+                    }).join('')}
+                  </tbody>
+                </table>
+              \`;
+              document.getElementById('team-info').innerHTML = teamHTML;
+      
+              // Reapply copy functionality after refresh
               document.querySelectorAll('.copyable').forEach((item) => {
                 item.addEventListener('click', () => {
                   const textToCopy = item.getAttribute('data-name');
@@ -83,38 +115,47 @@ const openOrFocusToolbarWindow = (left) => {
                   });
                 });
               });
-            </script>
-          </body>
-        </html>
+            }
+      
+            populateTeamData();
+      
+            document.getElementById('refresh-link').addEventListener('click', function(event) {
+              event.preventDefault();
+              populateTeamData(); // Refresh the content
+            });
+          </script>
+        </body>
+      </html>
       `;
-  
-      // Create a Blob from the HTML content
-      const blob = new Blob([toolbarContent], { type: 'text/html' });
-      const toolbarURL = URL.createObjectURL(blob);
-  
-      // Open the toolbar window with the blob URL
+
+      // Open a new toolbar window with content
       toolbarWindowRef.current = window.open(
-        toolbarURL,
+        '',
         'toolbarWindow',
         `width=${toolbarWindowWidth},height=${windowHeight},resizable=yes,scrollbars=yes,left=${left},top=100`
       );
-  
-      // Revoke the blob URL once the window is loaded
-      toolbarWindowRef.current.onload = () => {
-        URL.revokeObjectURL(toolbarURL);
-      };
+
+      // Write the content to the toolbar window
+      toolbarWindowRef.current.document.write(toolbarContent);
+      toolbarWindowRef.current.document.close(); // Important to close document stream
     }
   };
-  
+
+  // Populate toolbar content (for refresh)
+  const populateToolbarContent = () => {
+    if (toolbarWindowRef.current && !toolbarWindowRef.current.closed) {
+      toolbarWindowRef.current.document.getElementById('refresh-link').click(); // Trigger refresh
+    }
+  };
 
   // Combined function to handle both windows with an extended delay for Edge
   const handleWindows = () => {
-    const { leagueLeft, toolbarLeft } = calculatePositions(); // Calculate the positions
+    const { leagueLeft, toolbarLeft } = calculatePositions();
 
     // Open or focus the league window
     openOrFocusLeagueWindow(leagueLeft);
 
-    // Delay opening or focusing the toolbar window to avoid conflicts (extended delay for Edge)
+    // Delay opening or focusing the toolbar window to avoid conflicts
     setTimeout(() => {
       openOrFocusToolbarWindow(toolbarLeft);
     }, 300); // 300ms delay to ensure both windows open correctly
@@ -123,7 +164,7 @@ const openOrFocusToolbarWindow = (left) => {
   return (
     <div>
       {/* Button to open both pop-up windows */}
-      <button onClick={handleWindows}>Open/Focus Tournament Setup</button>
+      <button onClick={handleWindows}>Open Tournament Setup</button>
     </div>
   );
 };

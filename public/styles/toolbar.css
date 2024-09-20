@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, Tahoma, Verdana, sans-serif;
+    background-color: white;
+    margin: 20px;
+    padding: 0;
+    color: #333;
+  }
+  
+  /* Header */
+  h2 {
+    color: #ffffff;
+    background-color: #00009f;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th {
+    background-color: #c9daf5;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #606060;
+  }
+  
+  td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  /* Alternating row colors */
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+  /* Hover effect for rows */
+  tr:hover {
+    background-color: #aaaaaa;
+  }
+  
+  /* Copyable Text */
+  .copyable {
+    cursor: pointer;
+    color: #0000aa;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .copied {
+    background-color: yellow;
+  }
+  
+  /* Footer */
+  #footer {
+    text-align: right;
+    font-size: 10px;
+    color: #000066;
+    margin-top: 20px;
+  }
+  
+  /* Refresh Link */
+  #refresh-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  #refresh-link:hover {
+    text-decoration: none;
+  }
+  

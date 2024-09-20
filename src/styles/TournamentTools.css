@@ -407,6 +407,9 @@ button {
   margin-top: 0;
 }
 
+.instructions li {
+  margin: 5px;
+}
 .upload-controls {
   flex: 1;
   display: flex;
@@ -520,7 +523,7 @@ button {
   background-color: var(--quaternary-bg);
 }
 
-.test {
-  background-color: red;
+.hover-info {
+  text-decoration: underline dotted var(--text-secondary); /* Faint dashed underline */
+  cursor: help; /* Changes the cursor to a help icon on hover */
 }
-

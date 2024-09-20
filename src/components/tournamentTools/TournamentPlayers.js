@@ -1,70 +1,124 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTurnDown, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
-const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTournamentPlayer, registerResetFunction }) => {
-  const [newPlayer, setNewPlayer] = useState({ name: '', ppd: '', mpr: '', paid: false });
+const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTournamentPlayer, registerResetFunction, handleMessage }) => {
+  const [newPlayer, setNewPlayer] = useState(() => {
+    const savedNewPlayer = localStorage.getItem('newPlayer');
+    return savedNewPlayer ? JSON.parse(savedNewPlayer) : { name: '', ppd: '', mpr: '', paid: false };
+  });
+
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+
+  useEffect(() => {
+    const savedPlayers = localStorage.getItem('tournamentPlayers');
+    if (savedPlayers && savedPlayers !== '[]') {
+      setTournamentPlayers(JSON.parse(savedPlayers));
+    }
+  }, [setTournamentPlayers]);
+
+  useEffect(() => {
+    if (tournamentPlayers.length > 0) {
+      localStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
+    }
+  }, [tournamentPlayers]);
+
+  useEffect(() => {
+    localStorage.setItem('newPlayer', JSON.stringify(newPlayer));
+  }, [newPlayer]);
 
   const reset = useCallback(() => {
     setNewPlayer({ name: '', ppd: '', mpr: '', paid: false });
     setTournamentPlayers([]);
+    localStorage.setItem('tournamentPlayers', JSON.stringify([]));
   }, [setTournamentPlayers]);
 
   useEffect(() => {
     registerResetFunction(reset);
   }, [registerResetFunction, reset]);
 
-  // Load tournamentPlayers from localStorage on component mount
-  useEffect(() => {
-    const savedPlayers = localStorage.getItem('tournamentPlayers');
-    if (savedPlayers) setTournamentPlayers(JSON.parse(savedPlayers));
-  }, [setTournamentPlayers]); // Added setTournamentPlayers to the dependency array
-
-  // Save tournamentPlayers to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
-  }, [tournamentPlayers]);
-
-  // Save newPlayer to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('newPlayer', JSON.stringify(newPlayer));
-  }, [newPlayer]);
-
-  // Handle input change for the new player
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewPlayer(prevState => ({
+    setNewPlayer((prevState) => ({
       ...prevState,
       [name]: value
     }));
   };
 
-  // Add a new player to the tournament list
   const addPlayer = () => {
     if (newPlayer.name && newPlayer.ppd && newPlayer.mpr) {
-      setTournamentPlayers(prevPlayers => [
-        ...prevPlayers, 
-        { 
-          ...newPlayer, 
-          ppd: parseFloat(newPlayer.ppd), // Convert ppd to a number
-          mpr: parseFloat(newPlayer.mpr), // Convert mpr to a number
-          paid: false 
-        }
-      ]);
+      setTournamentPlayers((prevPlayers) => {
+        const updatedPlayers = [
+          ...prevPlayers,
+          {
+            ...newPlayer,
+            ppd: parseFloat(newPlayer.ppd),
+            mpr: parseFloat(newPlayer.mpr),
+            paid: false
+          }
+        ];
+        localStorage.setItem('tournamentPlayers', JSON.stringify(updatedPlayers));
+        return updatedPlayers;
+      });
       setNewPlayer({ name: '', ppd: '', mpr: '', paid: false });
     }
   };
 
-  // Toggle the paid status of a player
-  const togglePaidStatus = (index) => {
-    const updatedPlayers = [...tournamentPlayers];
-    updatedPlayers[index].paid = !updatedPlayers[index].paid;
+  const togglePaidStatus = (name) => {
+    const updatedPlayers = tournamentPlayers.map((player) =>
+      player.name === name ? { ...player, paid: !player.paid } : player
+    );
     setTournamentPlayers(updatedPlayers);
+    localStorage.setItem('tournamentPlayers', JSON.stringify(updatedPlayers));
+  };
+
+  const handleRemovePlayer = (player) => {
+    if (player.paid) {
+      handleMessage(`${player.name} cannot be removed because they have been marked as paid.`, 'warning');
+    } else {
+      removeTournamentPlayer(player);
+    }
+  };
+
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key) {
+      if (sortConfig.direction === 'ascending') {
+        direction = 'descending';
+      } else if (sortConfig.direction === 'descending') {
+        key = null; // Unsorted state
+        direction = null;
+      }
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedPlayers = [...tournamentPlayers].sort((a, b) => {
+    if (!sortConfig.key) return 0; // No sorting
+    if (a[sortConfig.key] < b[sortConfig.key]) {
+      return sortConfig.direction === 'ascending' ? -1 : 1;
+    }
+    if (a[sortConfig.key] > b[sortConfig.key]) {
+      return sortConfig.direction === 'ascending' ? 1 : -1;
+    }
+    return 0;
+  });
+
+  const getSortIcon = (key) => {
+    if (sortConfig.key === key) {
+      if (sortConfig.direction === 'ascending') {
+        return <FontAwesomeIcon icon={faSortUp} />;
+      } else if (sortConfig.direction === 'descending') {
+        return <FontAwesomeIcon icon={faSortDown} />;
+      }
+    }
+    return null;
   };
 
   return (
     <div className="tournament-players-container">
       <h2>Tournament Players</h2>
 
-      {/* Input fields to add a new player */}
       <div className="input-container">
         <input
           type="text"
@@ -92,29 +146,37 @@ const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTour
           value={newPlayer.mpr}
           onChange={handleInputChange}
         />
-        <button onClick={addPlayer}>Add</button>
+        <button onClick={addPlayer} aria-label="Add Player">
+          <FontAwesomeIcon icon={faTurnDown} />
+        </button>
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>PPD</th>
-            <th>MPR</th>
+            <th onClick={() => requestSort('name')}>
+              Name {getSortIcon('name')}
+            </th>
+            <th onClick={() => requestSort('ppd')}>
+              PPD {getSortIcon('ppd')}
+            </th>
+            <th onClick={() => requestSort('mpr')}>
+              MPR {getSortIcon('mpr')}
+            </th>
             <th>Paid</th>
           </tr>
         </thead>
         <tbody>
-          {tournamentPlayers.map((player, index) => (
+          {sortedPlayers.map((player, index) => (
             <tr key={index}>
-              <td onClick={() => removeTournamentPlayer(player)}>{player.name}</td>
+              <td onClick={() => handleRemovePlayer(player)}>{player.name}</td>
               <td>{parseFloat(player.ppd).toFixed(2)}</td>
               <td>{parseFloat(player.mpr).toFixed(2)}</td>
               <td>
                 <input
                   type="checkbox"
                   checked={player.paid || false}
-                  onChange={() => togglePaidStatus(index)}
+                  onChange={() => togglePaidStatus(player.name)}
                 />
               </td>
             </tr>
