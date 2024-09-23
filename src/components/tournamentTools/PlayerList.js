@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
-const PlayerList = ({ addTournamentPlayer, registerResetFunction }) => {
+const PlayerList = ({ addTournamentPlayer, registerResetFunction, tournamentPlayers }) => {
   const [searchTerm, setSearchTerm] = useState(() => {
     return localStorage.getItem('playerListSearchTerm') || '';
   });
@@ -59,8 +59,13 @@ const PlayerList = ({ addTournamentPlayer, registerResetFunction }) => {
     return player.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  // Filter out players already in the tournament
+  const availablePlayers = filteredPlayers.filter(
+    (player) => !tournamentPlayers.some((tPlayer) => tPlayer.name === player.name)
+  );
+
   // Decide which players to display based on the showAll checkbox
-  const playersToDisplay = showAll ? filteredPlayers : (searchTerm ? filteredPlayers : []);
+  const playersToDisplay = showAll ? availablePlayers : (searchTerm ? availablePlayers : []);
 
   const handleSort = (key) => {
     let direction = 'ascending';
@@ -80,6 +85,10 @@ const PlayerList = ({ addTournamentPlayer, registerResetFunction }) => {
         addTournamentPlayer(playersToDisplay[selectedIndex]);
       }
     }
+  };
+
+  const handlePlayerClick = (player) => {
+    addTournamentPlayer(player);
   };
 
   return (
@@ -122,37 +131,17 @@ const PlayerList = ({ addTournamentPlayer, registerResetFunction }) => {
           </tr>
         </thead>
         <tbody>
-          {playersToDisplay.map((player, index) => (
-            <tr
-              key={player.name}
-              onClick={() => addTournamentPlayer(player)} // Click to add player
-              style={{
-                cursor: 'pointer',
-              }}
-            >
-              <td
-                style={{
-                  color: index === selectedIndex ? 'var(--highlight-color)' : '',
-                }}
-              >
-                {player.name}
-              </td>
-              <td
-                style={{
-                  color: index === selectedIndex ? 'var(--highlight-color)' : '',
-                }}
-              >
-                {player.ppd.toFixed(2)}
-              </td>
-              <td
-                style={{
-                  color: index === selectedIndex ? 'var(--highlight-color)' : '',
-                }}
-              >
-                {player.mpr.toFixed(2)}
-              </td>
-            </tr>
-          ))}
+          {playersToDisplay.map((player, index) => {
+            const isSelected = index === selectedIndex && searchTerm;
+
+            return (
+              <tr key={player.name} onClick={() => handlePlayerClick(player)}>
+                <td className={isSelected ? 'highlighted' : ''}>{player.name}</td>
+                <td className={isSelected ? 'highlighted' : ''}>{player.ppd.toFixed(2)}</td>
+                <td className={isSelected ? 'highlighted' : ''}>{player.mpr.toFixed(2)}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

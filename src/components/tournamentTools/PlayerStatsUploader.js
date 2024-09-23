@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import validateFile from './validateReportFile';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileImport, faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 
 const uploadEnabled = true;
 
@@ -184,24 +186,15 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
 
   return (
     <div className="data-upload-container">
-      <h2 style={{ textAlign: 'center' }}>Upload Player Stats</h2>
+      <h2>Upload Player Stats</h2>
       <div className="upload-section">
-        <div className="instructions">
-          <h3>Instructions</h3>
-          <ol>
-            <li>Upload player data before the tournament begins.</li>
-            <li>Generate the report file from <a href='http://leagueleader.net'>leagueleader.net</a></li>
-            <li>Ensure the file is in the correct format before uploading.</li>
-            <li>Once uploaded, the data will be parsed and ready for use.</li>
-            <li>Click "Resync" to re-parse the file without re-uploading it.</li>
-          </ol>
-          <p style={{marginLeft: 40,}}><strong>Note:</strong> Uploading a new file will overwrite existing data.</p>
-        </div>
         <div className="upload-controls">
           <div className="file-upload">
             <input type="file" onChange={handleFileChange} />
-            <button onClick={handleFileUpload}>Upload</button>
-            <button onClick={handleResync}>Resync</button>
+            <div className='upload-buttons'>
+              <button onClick={handleFileUpload}><FontAwesomeIcon icon={faFileImport} /></button>
+              <button onClick={handleResync}><FontAwesomeIcon icon={faArrowsRotate} /></button>
+            </div>
           </div>
           {(uploadTime || parseResult) && (
             <table>
@@ -221,6 +214,17 @@ const PlayerStatsUploader = ({ handleMessage, parseResult }) => {
               </tbody>
             </table>
           )}
+        </div>
+        <div className="instructions">
+          <h3>Instructions</h3>
+          <ol>
+            <li>Upload player data before the tournament begins.</li>
+            <li>Generate the report file from <a href='http://leagueleader.net'>leagueleader.net</a></li>
+            <li>Ensure the file is in the correct format before uploading.</li>
+            <li>Once uploaded, the data will be parsed and ready for use.</li>
+            <li>Click "Resync" to re-parse the file without re-uploading it.</li>
+          </ol>
+          <p><strong>Note:</strong> Uploading a new file will overwrite existing data.</p>
         </div>
       </div>
       {loading && (

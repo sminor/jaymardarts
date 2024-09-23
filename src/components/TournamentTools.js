@@ -8,17 +8,18 @@ import TournamentMoney from './tournamentTools/TournamentMoney';
 const TournamentTools = () => {
   const resetFunctionsRef = useRef([]);
 
-  // ** AUTHENTICATION ** //
-  const [authenticated, setAuthenticated] = useState(() => {
-    return sessionStorage.getItem('authenticated') === 'true';
-  });
+  const isTesting = true;
+  const [authenticated, setAuthenticated] = useState(() => isTesting || sessionStorage.getItem('authenticated') === 'true');
   const [password, setPassword] = useState('');
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
     clearMessages();
-
-    if (password === process.env.REACT_APP_TOOLS_PASSWORD) {
+    if (isTesting) {
+      setAuthenticated(true);
+      sessionStorage.setItem('authenticated', 'true');
+      handleMessage('Authentication bypassed for testing.', 'success');
+    } else if (password === 'your-password') {
       setAuthenticated(true);
       sessionStorage.setItem('authenticated', 'true');
       handleMessage('Login successful!', 'success');
@@ -27,7 +28,6 @@ const TournamentTools = () => {
     }
   };
 
-  // ** MESSAGE HANDLING ** //
   const [error, setError] = useState(null);
   const [warning, setWarning] = useState(null);
   const [info, setInfo] = useState(null);
@@ -71,7 +71,6 @@ const TournamentTools = () => {
     }
   }, [error, warning, info, success]);
 
-  // ** TOURNAMENT PLAYERS MANAGEMENT ** //
   const [tournamentPlayers, setTournamentPlayers] = useState(() => {
     const savedPlayers = localStorage.getItem('tournamentPlayers');
     return savedPlayers ? JSON.parse(savedPlayers) : [];
@@ -100,7 +99,6 @@ const TournamentTools = () => {
     localStorage.setItem('tournamentPlayers', JSON.stringify(tournamentPlayers));
   }, [tournamentPlayers]);
 
-  // ** LOCAL STORAGE AND RESET HANDLING ** //
   const [parseResult, setParseResult] = useState(() => {
     const savedData = localStorage.getItem('parseResult');
     return savedData ? JSON.parse(savedData) : null;
@@ -108,18 +106,11 @@ const TournamentTools = () => {
 
   const clearLocalStorage = () => {
     clearMessages();
-
-    // Retrieve critical data
     const parseResultData = localStorage.getItem('parseResult');
     const parseDateData = localStorage.getItem('parseDate');
-
-    // Clear local storage
     localStorage.clear();
-
-    // Reset each section
     resetFunctionsRef.current.forEach(reset => reset());
 
-    // Restore important data
     if (parseResultData) {
       localStorage.setItem('parseResult', parseResultData);
       setParseResult(JSON.parse(parseResultData));
@@ -135,7 +126,6 @@ const TournamentTools = () => {
     resetFunctionsRef.current.push(resetFunction);
   };
 
-  // ** RENDER FUNCTIONS ** //
   const renderAuthForm = () => (
     <div className="auth-container">
       <h2>Please enter the password to access this page</h2>
@@ -160,49 +150,27 @@ const TournamentTools = () => {
         Clear All Settings
       </button>
 
-      <div className="tournament-tools-sections top-row">
+      <div className="tournament-tools-sections">
         <div className="section-container">
           <PlayerStatsUploader handleMessage={handleMessage} parseResult={parseResult} />
         </div>
         <div className="section-container">
-          <TournamentMoney
-            handleMessage={handleMessage}
-            tournamentPlayers={tournamentPlayers}
-            registerResetFunction={registerResetFunction}
-          />
+          <TournamentMoney handleMessage={handleMessage} tournamentPlayers={tournamentPlayers} registerResetFunction={registerResetFunction} />
         </div>
-      </div>
 
-      <div className="tournament-tools-sections bottom-row">
         <div className="section-container">
-          <PlayerList
-            handleMessage={handleMessage}
-            addTournamentPlayer={addTournamentPlayer}
-            registerResetFunction={registerResetFunction}
-          />
+          <PlayerList handleMessage={handleMessage} addTournamentPlayer={addTournamentPlayer} tournamentPlayers={tournamentPlayers} registerResetFunction={registerResetFunction} />
         </div>
         <div className="section-container">
-          <TournamentPlayers
-            handleMessage={handleMessage}
-            tournamentPlayers={tournamentPlayers}
-            setTournamentPlayers={setTournamentPlayers}
-            addTournamentPlayer={addTournamentPlayer}
-            removeTournamentPlayer={removeTournamentPlayer}
-            registerResetFunction={registerResetFunction}
-          />
+          <TournamentPlayers handleMessage={handleMessage} tournamentPlayers={tournamentPlayers} setTournamentPlayers={setTournamentPlayers} addTournamentPlayer={addTournamentPlayer} removeTournamentPlayer={removeTournamentPlayer} registerResetFunction={registerResetFunction} />
         </div>
         <div className="section-container">
-          <TournamentSettings
-            handleMessage={handleMessage}
-            tournamentPlayers={tournamentPlayers}
-            registerResetFunction={registerResetFunction}
-          />
+          <TournamentSettings handleMessage={handleMessage} tournamentPlayers={tournamentPlayers} registerResetFunction={registerResetFunction} />
         </div>
       </div>
     </>
   );
 
-  // ** MAIN RENDER ** //
   return (
     <div className="tournament-tools-container">
       <h1>JayMar Tournament Tools</h1>

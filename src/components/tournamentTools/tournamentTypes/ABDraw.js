@@ -277,8 +277,7 @@ const ABDraw = ({ tournamentPlayers }) => {
           />
         </div>
       </div>
-
-        <TournamentHelper 
+      <TournamentHelper 
           teamData={{ 
             teams: teamNames, 
             players: pairedPlayers // Pass paired players here

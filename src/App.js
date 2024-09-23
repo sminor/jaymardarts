@@ -250,7 +250,7 @@ return (
 
       {/* Footer is now outside of the App wrapper */}
       <footer>
-        <p>© 2024 JayMar Darts. All rights reserved.</p>
+        <p>© 2024 JayMar Entertainment. All rights reserved.</p>
       </footer>
     </>
   </Router>

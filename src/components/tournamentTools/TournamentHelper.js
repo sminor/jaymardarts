@@ -159,10 +159,7 @@ const TournamentHelper = ({ teamData }) => {
   };
 
   return (
-    <div>
-      {/* Button to open both pop-up windows */}
       <button onClick={handleWindows}>Open Tournament Helper</button>
-    </div>
   );
 };
 

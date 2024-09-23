@@ -72,23 +72,10 @@ const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTour
     localStorage.setItem('tournamentPlayers', JSON.stringify(updatedPlayers));
   };
 
-  const handleRemovePlayer = (player) => {
-    if (player.paid) {
-      handleMessage(`${player.name} cannot be removed because they have been marked as paid.`, 'warning');
-    } else {
-      removeTournamentPlayer(player);
-    }
-  };
-
   const requestSort = (key) => {
     let direction = 'ascending';
-    if (sortConfig.key === key) {
-      if (sortConfig.direction === 'ascending') {
-        direction = 'descending';
-      } else if (sortConfig.direction === 'descending') {
-        key = null; // Unsorted state
-        direction = null;
-      }
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
     }
     setSortConfig({ key, direction });
   };
@@ -106,11 +93,11 @@ const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTour
 
   const getSortIcon = (key) => {
     if (sortConfig.key === key) {
-      if (sortConfig.direction === 'ascending') {
-        return <FontAwesomeIcon icon={faSortUp} />;
-      } else if (sortConfig.direction === 'descending') {
-        return <FontAwesomeIcon icon={faSortDown} />;
-      }
+      return sortConfig.direction === 'ascending' ? (
+        <FontAwesomeIcon icon={faSortUp} />
+      ) : (
+        <FontAwesomeIcon icon={faSortDown} />
+      );
     }
     return null;
   };
@@ -167,9 +154,9 @@ const TournamentPlayers = ({ tournamentPlayers, setTournamentPlayers, removeTour
           </tr>
         </thead>
         <tbody>
-          {sortedPlayers.map((player, index) => (
+          {[...sortedPlayers].reverse().map((player, index) => (
             <tr key={index}>
-              <td onClick={() => handleRemovePlayer(player)}>{player.name}</td>
+              <td onClick={() => removeTournamentPlayer(player)}>{player.name}</td>
               <td>{parseFloat(player.ppd).toFixed(2)}</td>
               <td>{parseFloat(player.mpr).toFixed(2)}</td>
               <td>
