@@ -3,7 +3,7 @@ import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import TournamentHelper from './TournamentHelper'; // Add this line
+import TournamentHelper from '../TournamentHelper';
 
 
 const ItemType = 'PLAYER';
