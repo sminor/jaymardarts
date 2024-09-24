@@ -8,7 +8,7 @@ import TournamentMoney from './tournamentTools/TournamentMoney';
 const TournamentTools = () => {
   const resetFunctionsRef = useRef([]);
 
-  const isTesting = true;
+  const isTesting = false;
   const [authenticated, setAuthenticated] = useState(() => isTesting || sessionStorage.getItem('authenticated') === 'true');
   const [password, setPassword] = useState('');
 
