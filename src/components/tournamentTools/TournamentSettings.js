@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ABDraw from './tournamentTypes/ABDraw';
+import BlindDraw from './tournamentTypes/BlindDraw';
 
 const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
   // Initialize selectedType from localStorage or fallback to an empty string
@@ -38,6 +39,7 @@ const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
         <select onChange={handleTypeChange} value={selectedType}>
           <option value="">--- Please Select ---</option>
           <option value="abDraw">A/B Draw</option>
+          <option value="blindDraw">Blind Draw</option> 
           {/* Add other tournament types here */}
         </select>
       </div>
@@ -45,6 +47,9 @@ const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
       {/* Render selected tournament type */}
       {selectedType === 'abDraw' && (
         <ABDraw tournamentPlayers={tournamentPlayers} />
+      )}
+      {selectedType === 'blindDraw' && (
+        <BlindDraw tournamentPlayers={tournamentPlayers} />
       )}
 
       {/* Add future tournament types as needed */}

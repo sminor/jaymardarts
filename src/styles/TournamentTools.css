@@ -417,16 +417,13 @@ input:focus {
   padding: 5px;
   margin-bottom: 5px;
   border-radius: 4px;
-}
-
-.tournament-settings-container button {
-  justify-content: flex-start;
+  margin-left: 0;
 }
 
 .player-card,
 .team-card {
   padding: 10px;
-  margin: 5px 0;
+  margin: .5rem 0;
   background-color: var(--secondary-bg);
   border: 1px solid var(--table-border);
   border-radius: 4px;

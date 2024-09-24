@@ -208,9 +208,9 @@ const ABDraw = ({ tournamentPlayers }) => {
         /> MPR
       </div>
 
-        <button onClick={dividePlayers}>
-          Split Into Teams
-        </button>
+      <button onClick={dividePlayers}>
+        Split Into Teams
+      </button>
 
       <div className="players-group">
         {/* A Players List */}
@@ -261,7 +261,7 @@ const ABDraw = ({ tournamentPlayers }) => {
 
         {/* Team Names */}
         <div>
-          <h4>Team Names</h4>
+          <h4>Teams</h4>
           <ul>
             {teamNames.map((team, index) => (
               <li key={index} className="team-card">
