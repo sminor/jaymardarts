@@ -62,5 +62,77 @@
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$20 per team"
+  },
+  {
+    "date": "Saturday, October 5th",
+    "formattedDate": "2024-10-05",
+    "type": "Blind Draw Handicapped",
+    "location": "Coach's Bar & Grill",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, October 12th",
+    "formattedDate": "2024-10-12",
+    "type": "18 PT Cap Bring Handicapped",
+    "location": "Coach's Bar & Grill",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$20 per team"
+  },
+  {
+    "date": "Saturday, October 19th",
+    "formattedDate": "2024-10-19",
+    "type": "NADO Invitation Event",
+    "location": "Coach's Bar & Grill",
+    "signupTime": "Invite only",
+    "entryFee": ""
+  },
+  {
+    "date": "Saturday, October 26th",
+    "formattedDate": "2024-10-26",
+    "type": "A/B/C Trios Handicapped",
+    "location": "Coach's Bar & Grill",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, October 4th",
+    "formattedDate": "2024-09-20",
+    "type": "Low Player Pick Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, October 4th",
+    "formattedDate": "2024-10-04",
+    "type": "Low Player Pick Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, October 11th",
+    "formattedDate": "2024-10-11",
+    "type": "WaCKy ShOot! Gotcha/Crazy Cricket Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, October 18th",
+    "formattedDate": "2024-10-18",
+    "type": "A/B Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, October 25th",
+    "formattedDate": "2024-10-25",
+    "type": "21 PT Cap Bring Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
   }
 ]
