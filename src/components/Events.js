@@ -20,14 +20,21 @@ const Events = ({ sortedEvents }) => {
     const [year, month, day] = dateString.split('-');
     return new Date(year, month - 1, day); // month is zero-indexed in JS Date
   };
-  
+
+  // Sort events by date
+  const sortedByDateEvents = [...sortedEvents].sort((a, b) => {
+    const dateA = parseLocalDate(a.formattedDate);
+    const dateB = parseLocalDate(b.formattedDate);
+    return dateA - dateB;
+  });
+
   // Split events into upcoming and past, based on date comparison
-  const upcomingEvents = sortedEvents.filter(event => {
+  const upcomingEvents = sortedByDateEvents.filter(event => {
     const eventDate = parseLocalDate(event.formattedDate); // Parse event date as local date
     return eventDate >= now; // Compare event date with current date
   });
   
-  const pastEvents = sortedEvents.filter(event => {
+  const pastEvents = sortedByDateEvents.filter(event => {
     const eventDate = parseLocalDate(event.formattedDate); // Parse event date as local date
     return eventDate < now; // Compare event date with current date
   });
