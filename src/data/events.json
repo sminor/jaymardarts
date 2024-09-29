@@ -85,21 +85,13 @@
     "type": "NADO Invitation Event",
     "location": "Coach's Bar & Grill",
     "signupTime": "Invite only",
-    "entryFee": ""
+    "entryFee": "$10 per person"
   },
   {
     "date": "Saturday, October 26th",
     "formattedDate": "2024-10-26",
     "type": "A/B/C Trios Handicapped",
     "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, October 4th",
-    "formattedDate": "2024-09-20",
-    "type": "Low Player Pick Handicapped",
-    "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
   },
