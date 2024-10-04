@@ -2,17 +2,39 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
   background-color: var(--primary-bg);
   color: var(--text-primary);
+}
+
+footer {
+  background-color: var(--nav-bg);
+  color: var(--text-primary);
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  font-size: 14px;
+  bottom: 0;
+  width: 100%;
+  position: relative;
+  z-index: 1000; /* Ensures it appears above other elements if needed */
 }
 
 a:focus {
@@ -29,6 +51,9 @@ a:hover {
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   text-align: center;
   padding: 20px;
 }
@@ -85,6 +110,7 @@ a:hover {
 }
 
 .App-section {
+  flex-grow: 1;
   padding: 20px;
   text-align: left;
   color: var(--text-primary);
@@ -249,17 +275,6 @@ select:focus, textarea:focus, input:focus {
   animation: color-fade 3s ease-in-out infinite, arrow-animation 1.5s infinite;
 }
 
-footer {
-  background-color: var(--nav-bg);
-  color: var(--text-primary);
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-  bottom: 0;
-  width: 100%;
-  position: relative;
-  z-index: 1000; /* Ensures it appears above other elements if needed */
-}
 
 /* Fading animation */
 @keyframes color-fade {
