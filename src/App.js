@@ -10,6 +10,7 @@ import Events from './components/Events'; // Import the Events component
 import Leagues from './components/Leagues'; // Import the Leagues component
 import Contact from './components/Contact'; // Import the Contact component
 import TournamentTools from './components/TournamentTools'; // Import the Tournament Tools component
+import TournamentPage from './components/tournamentTools/TournamentPage'; // Import the page for displaying a specific tournament
 import NotFound from './components/NotFound'; // Import the 404 page component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesDown, faBars } from '@fortawesome/free-solid-svg-icons'; // Import hamburger icon
@@ -240,8 +241,11 @@ return (
             </>
           }/>
 		  
-		  {/* Hidden route for the Tournament Tools page */}
+		      {/* Hidden route for the Tournament Tools page */}
           <Route path="/tournament-tools" element={<TournamentTools />} />
+                    
+          {/* Dynamic Route for individual tournament pages */}
+          <Route path="/tournament-tools/:id" element={<TournamentPage />} />
 
           {/* NotFound Route */}
           <Route path="*" element={<NotFound />} />
