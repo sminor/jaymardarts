@@ -1,0 +1,171 @@
+{
+    "schedules": [
+        {
+            "flight": "A Doubles Flight A",
+            "day": "Sunday",
+            "time": "6:00 PM",
+            "teams": [
+                {
+                    "team_name": "Chain Saw",
+                    "players": ["Scott Marteeny", "Bill Teel"],
+                    "location": "Silver Star"
+                },
+                {
+                    "team_name": "Gentle Giants",
+                    "players": ["Cason Brinson", "Eddie Farness"],
+                    "location": "Yazzie's Bar & Grill"
+                },
+                {
+                    "team_name": "Hot Mess",
+                    "players": ["Chris Knutzen", "Jacki Brinser"],
+                    "location": "Yazzie's Bar & Grill"
+                },
+                {
+                    "team_name": "Play Hard",
+                    "players": ["Jason Merrell", "Robert Bowman"],
+                    "location": "Silver Star"
+                },
+                {
+                    "team_name": "The Wild Stallions",
+                    "players": ["Matthew Walter", "Ron Morris"],
+                    "location": "108 Bar N Grill"
+                },
+                {
+                    "team_name": "Whiskey And Wine",
+                    "players": ["Mike Doty", "Dan Brinser"],
+                    "location": "Yazzie's Bar & Grill"
+                }
+            ],
+            "matches": [
+                {
+                    "week": 1,
+                    "date": "10/20/2024",
+                    "home_team": "The Wild Stallions",
+                    "away_team": "Chain Saw",
+                    "location": "108 Bar N Grill"
+                },
+                {
+                    "week": 1,
+                    "date": "10/20/2024",
+                    "home_team": "Play Hard",
+                    "away_team": "Whiskey And Wine",
+                    "location": "Silver Star"
+                },
+                {
+                    "week": 1,
+                    "date": "10/20/2024",
+                    "home_team": "Gentle Giants",
+                    "away_team": "Hot Mess",
+                    "location": "Yazzie's Bar & Grill"
+                },
+                {
+                    "week": 2,
+                    "date": "10/27/2024",
+                    "home_team": "Chain Saw",
+                    "away_team": "Whiskey And Wine",
+                    "location": "Silver Star"
+                },
+                {
+                    "week": 2,
+                    "date": "10/27/2024",
+                    "home_team": "Play Hard",
+                    "away_team": "Gentle Giants",
+                    "location": "Silver Star"
+                },
+                {
+                    "week": 2,
+                    "date": "10/27/2024",
+                    "home_team": "The Wild Stallions",
+                    "away_team": "Hot Mess",
+                    "location": "108 Bar N Grill"
+                }
+            ]
+        },
+        {
+            "flight": "A Doubles Flight B",
+            "day": "Sunday",
+            "time": "6:00 PM",
+            "teams": [
+                {
+                    "team_name": "Febreeze Brothers",
+                    "players": ["Tim Engebretson", "Mike Rand"],
+                    "location": "Coach's Bar & Grill"
+                },
+                {
+                    "team_name": "Mining For Gold",
+                    "players": ["Jay Phillips", "Edward Dachtler"],
+                    "location": "Coach's Bar & Grill"
+                },
+                {
+                    "team_name": "Off In Church",
+                    "players": ["Brian Eder", "Cody Stauffer"],
+                    "location": "Dr Feelgood's Pub"
+                },
+                {
+                    "team_name": "Straight Shots",
+                    "players": ["Blake Ferguson", "Brian Hartford"],
+                    "location": "The Last Lap"
+                },
+                {
+                    "team_name": "Sworn Js",
+                    "players": ["Justin Hampton", "Jerry Clemmer"],
+                    "location": "Ice House"
+                },
+                {
+                    "team_name": "The Pretty Ones",
+                    "players": ["Jeff Post", "Bill Schultz"],
+                    "location": "Pub 181"
+                },
+                {
+                    "team_name": "We Are Back",
+                    "players": ["Dave Windell", "Nick Travis"],
+                    "location": "Coach's Bar & Grill"
+                }
+            ],
+            "matches": [
+                {
+                    "week": 1,
+                    "date": "10/20/2024",
+                    "home_team": "Febreeze Brothers",
+                    "away_team": "Sworn Js",
+                    "location": "Coach's Bar & Grill"
+                },
+                {
+                    "week": 1,
+                    "date": "10/20/2024",
+                    "home_team": "We Are Back",
+                    "away_team": "The Pretty Ones",
+                    "location": "Coach's Bar & Grill"
+                },
+                {
+                    "week": 1,
+                    "date": "10/20/2024",
+                    "home_team": "Mining For Gold",
+                    "away_team": "Off In Church",
+                    "location": "Coach's Bar & Grill"
+                },
+                {
+                    "week": 2,
+                    "date": "10/27/2024",
+                    "home_team": "Straight Shots",
+                    "away_team": "We Are Back",
+                    "location": "The Last Lap"
+                },
+                {
+                    "week": 2,
+                    "date": "10/27/2024",
+                    "home_team": "The Pretty Ones",
+                    "away_team": "Sworn Js",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 2,
+                    "date": "10/27/2024",
+                    "home_team": "Off In Church",
+                    "away_team": "Febreeze Brothers",
+                    "location": "Dr Feelgood's Pub"
+                }
+            ]
+        }
+    ]
+}

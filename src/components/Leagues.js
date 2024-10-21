@@ -1,40 +1,165 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PlayerStatSearch from './PlayerStatSearch'; // Ensure the path is correct
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import rulesSections from './LeagueRules'; // Correct import
+import leagueScheduleData from '../data/leagueSchedule.json'; //
 
 const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTabClick }) => {
   const [currentSection, setCurrentSection] = useState(0);
+  const [selectedFlight, setSelectedFlight] = useState('');
+  const [selectedWeek, setSelectedWeek] = useState('');
+  const [selectedTeam, setSelectedTeam] = useState('');
+  const [scheduleData, setScheduleData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const scrollToContent = () => {
-    const target = document.getElementById('rules-heading');
-    if (target) {
-      setTimeout(() => {
-        if (isMobile) {
-          // For mobile, scroll directly to the rules heading
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          // For desktop, account for the fixed navbar with an offset
-          const yOffset = -70; // Adjust this value to match your navbar height
-          const yPosition = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: yPosition, behavior: 'smooth' });
-        }
-      }, 50); // Adjust timeout as needed
+  // Fetch the JSON for League Schedules
+  useEffect(() => {
+    if (activeTab === 'schedule') {
+      setScheduleData(leagueScheduleData);
+      setLoading(false);
     }
+  }, [activeTab]);
+
+  const handleFlightChange = (event) => {
+    setSelectedFlight(event.target.value);
+    setSelectedWeek(''); // Reset week filter when flight changes
+    setSelectedTeam(''); // Reset team filter when flight changes
+  };
+
+  const handleWeekChange = (event) => {
+    setSelectedWeek(event.target.value);
+  };
+
+  const handleTeamChange = (event) => {
+    setSelectedTeam(event.target.value);
+  };
+
+  const renderFlightData = () => {
+    if (!selectedFlight || !scheduleData) return null;
+
+    const flight = scheduleData.schedules.find(f => f.flight === selectedFlight);
+    if (!flight) return null;
+
+    // Group matches by week
+    const matchesByWeek = flight.matches.reduce((acc, match) => {
+      acc[match.week] = acc[match.week] || [];
+      acc[match.week].push(match);
+      return acc;
+    }, {});
+
+    // Filter matches by selected week and team
+    const filteredMatches = Object.keys(matchesByWeek).reduce((acc, week) => {
+      if (selectedWeek && week !== selectedWeek) return acc;
+
+      const filteredWeekMatches = matchesByWeek[week].filter(match => {
+        if (selectedTeam && match.home_team !== selectedTeam && match.away_team !== selectedTeam) {
+          return false;
+        }
+        return true;
+      });
+
+      if (filteredWeekMatches.length > 0) {
+        acc[week] = filteredWeekMatches;
+      }
+
+      return acc;
+    }, {});
+
+    return (
+      <>
+        {/* Flight name, day, and time */}
+        <h3>{flight.flight} - {flight.day} {flight.time}</h3>
+
+        {/* Dropdowns for filtering */}
+        <div>
+          <label htmlFor="weekSelect">Filter by Week:</label>
+          <select id="weekSelect" value={selectedWeek} onChange={handleWeekChange}>
+            <option value="">All Weeks</option>
+            {Object.keys(matchesByWeek).map(week => (
+              <option key={week} value={week}>Week {week}</option>
+            ))}
+          </select>
+
+          <label htmlFor="teamSelect">Filter by Team:</label>
+          <select id="teamSelect" value={selectedTeam} onChange={handleTeamChange}>
+            <option value="">All Teams</option>
+            {flight.teams.map((team, index) => (
+              <option key={index} value={team.team_name}>{team.team_name}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Teams Section */}
+        <div className="table-container">
+          <h4>Teams</h4>
+          <table className="teams-table">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Players</th>
+              </tr>
+            </thead>
+            <tbody>
+              {flight.teams.map((team, index) => (
+                <tr key={index}>
+                  <td>{team.team_name}</td>
+                  <td>{team.players.join(', ')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Schedule Section */}
+          <h4>Schedule</h4>
+          <table className="schedule-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(filteredMatches).length === 0 ? (
+                <tr>
+                  <td colSpan="4">No matches found for the selected filters</td>
+                </tr>
+              ) : (
+                Object.keys(filteredMatches).map(week => (
+                  <React.Fragment key={week}>
+                    {/* Row that spans the whole table for the week label */}
+                    <tr>
+                      <td colSpan="4"><strong>Week {week}</strong></td>
+                    </tr>
+                    {filteredMatches[week].map((match, index) => (
+                      <tr key={index}>
+                        <td>{match.date}</td>
+                        <td>{match.home_team}</td>
+                        <td>{match.away_team}</td>
+                        <td>{match.location}</td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
   };
 
   const handleNextSection = () => {
     if (currentSection < rulesSections.length - 1) {
       setCurrentSection(currentSection + 1);
-      scrollToContent();
     }
   };
 
   const handlePreviousSection = () => {
     if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
-      scrollToContent();
     }
   };
 
@@ -42,12 +167,13 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
     setCurrentSection(Number(e.target.value));
   };
 
+  // Smooth scrolling when opening accordion sections
   const toggleAccordionWithScroll = (tab) => {
     toggleAccordion(tab);
     setTimeout(() => {
       const section = document.getElementById(tab);
       if (section) {
-        const yOffset = -70;
+        const yOffset = -70;  // Adjust for fixed navbar if needed
         const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -56,34 +182,42 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
 
   const renderContent = (section) => {
     switch (section) {
+      case 'schedule':
+        return (
+          <>
+            <h3>League Schedules</h3>
+            {loading ? (
+              <p>Loading schedule...</p>
+            ) : (
+              <>
+                <label htmlFor="flightSelect">Select a Flight:</label>
+                <select id="flightSelect" value={selectedFlight} onChange={handleFlightChange}>
+                  <option value="">-- Select a Flight --</option>
+                  {scheduleData.schedules.map((flight, index) => (
+                    <option key={index} value={flight.flight}>{flight.flight}</option>
+                  ))}
+                </select>
+                {renderFlightData()}
+              </>
+            )}
+          </>
+        );
+
       case 'news':
         return (
           <>
-            <img 
-              src="/action-dart-logo.png" 
-              alt="Action Dart League Logo" 
-              style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }}
-            />
+            <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
             <h3 className="league-heading">ADL Fall League Sign-Ups Now Open!</h3>
             <p>Get ready for an exciting season! Sign up today and secure your spot in the ADL Fall League.</p>
-      
             <p className="league-dates">
               <span className="important-date">Sign-up ends October 5, 2024</span>, and <span className="important-date">leagues begin October 20</span>.
             </p>
-      
             <p>
               By playing in our league, you'll qualify for events in organizations such as the 
-              <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer"> Action Dart League (ADL)</a>, 
-              <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer"> National Dart Association (NDA)</a>, and the 
-              <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer"> North American Dart Organization (NADO)</a>. 
-              The league runs for 15 weeks, giving you plenty of time to improve your skills and enjoy the game.
+              <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>, 
+              <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>, and the 
+              <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>. 
             </p>
-      
-            <p>
-              As a participant, you'll also qualify for <span className="important-event">Team Dart in Las Vegas</span>, one of the most prestigious events in the darting world!
-            </p>
-      
-            <p className="cta">Don't miss your chance to be part of this exciting season—start your journey to Vegas with us!</p>
           </>
         );
 
@@ -92,7 +226,6 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           <>
             <h3 className="sign-up-heading">Sign-Up Forms</h3>
             <p>Ready to join one of the most exciting dart leagues? Choose your preferred sign-up method below:</p>
-          
             <ul>
               <li>
                 <a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer" className="sign-up-link">
@@ -103,7 +236,6 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
                   <strong>Fall 2024 ADL Sign-up (Google Form)</strong>
                 </a>
-                <p>Complete your registration online in just a few minutes.</p>
               </li>
             </ul>
           </>
@@ -114,20 +246,17 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           <>
             <h3 className="fees-heading">Fees</h3>
             <p>Here are the fees associated with joining the league:</p>
-        
             <h4 className="fee-details-heading">Sign-Up Fees</h4>
             <ul>
               <li>$50 per person for OPEN LEAGUE</li>
               <li>$25 per person for ALL CAPPED LEAGUES</li>
               <li>+ $10 for NDA sanctioning <em>(if you did not play last season)</em></li>
             </ul>
-        
             <h4 className="fee-details-heading">Payment Methods</h4>
             <ul>
               <li>Venmo: <a href="https://venmo.com/jay-phillips-36" target="_blank" rel="noopener noreferrer"><strong>@jay-phillips-36</strong></a></li>
               <li>Paypal: <a href="https://paypal.me/jayphillips1528" target="_blank" rel="noopener noreferrer"><strong>@jayphillips1528</strong></a> <em>(Friends & Family)</em></li>
             </ul>
-        
             <h4 className="fee-details-heading">Important</h4>
             <ul>
               <li>Entire team fees are due at the time of sign-up. Please pay the total amount for both players.</li>
@@ -141,76 +270,22 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           <>
             <h3 id="rules-heading">Rules</h3>
             <p>Ensure you're familiar with the official rules of the league.</p>
-
-            {/* Section dropdown */}
             <label htmlFor="sectionSelect">Jump to Section:</label>
             <select id="sectionSelect" value={currentSection} onChange={handleSectionChange}>
               {rulesSections.map((section, index) => (
-                <option key={index} value={index}>
-                  {section.title}
-                </option>
+                <option key={index} value={index}>{section.title}</option>
               ))}
             </select>
-
-            {/* Display the current section with HTML rendering */}
-            
             <div className="rules-section">
               <h4>{rulesSections[currentSection].title}</h4>
               <div dangerouslySetInnerHTML={{ __html: rulesSections[currentSection].content }} />
             </div>
-
-            {/* Navigation buttons (fixed position) */}
             <div className="navigation-buttons">
-              <FontAwesomeIcon 
-                 icon={faCircleChevronLeft} 
-                 onClick={handlePreviousSection} 
-                 className={currentSection === 0 ? 'disabled' : ''} 
-                 disabled={currentSection === 0}
-              />
-              <FontAwesomeIcon 
-                 icon={faCircleChevronRight} 
-                 onClick={handleNextSection} 
-                 className={currentSection === rulesSections.length - 1 ? 'disabled' : ''} 
-                 disabled={currentSection === rulesSections.length - 1}
-              />
+              <FontAwesomeIcon icon={faCircleChevronLeft} onClick={handlePreviousSection} className={currentSection === 0 ? 'disabled' : ''} />
+              <FontAwesomeIcon icon={faCircleChevronRight} onClick={handleNextSection} className={currentSection === rulesSections.length - 1 ? 'disabled' : ''} />
             </div>
           </>
         );
-
-	  case 'schedule':
-	  return (
-		  <>
-		  <h3 id="schedules-heading">Schedules</h3>
-		  <p>Here you can find the schedule for the upcoming league matches.</p>
-		  <div id="schedule" className="table-container">
-			  <table>
-			  <thead>
-				  <tr>
-				  <th>League</th>
-				  <th>Info</th>
-				  <th>Day</th>
-				  <th>Time</th>
-				  </tr>
-			  </thead>
-			  <tbody>
-				  <tr><td>Open Doubles</td><td>No Cap</td><td>TBD</td><td>TBD</td></tr>
-				  <tr><td>Elite Doubles</td><td>26 Point Team Cap / No Individual Cap</td><td>Thursday</td><td>7:00 PM</td></tr>
-				  <tr><td>A Doubles</td><td>22 Point Team Cap / No Individual Cap</td><td>Sunday</td><td>6:00 PM</td></tr>
-				  <tr><td>A Doubles</td><td>22 Point Team Cap / No Individual Cap</td><td>Sunday</td><td>2:30 PM</td></tr>
-				  <tr><td>BB Doubles</td><td>18 Point Team Cap / No Individual Cap</td><td>Tuesday</td><td>7:00 PM</td></tr>
-				  <tr><td>BB Doubles</td><td>18 Point Team Cap / No Individual Cap</td><td>Wednesday</td><td>7:00 PM</td></tr>
-				  <tr><td>B Doubles</td><td>15 Point Team Cap / 10 pt. Individual Cap</td><td>Monday</td><td>7:00 PM</td></tr>
-				  <tr><td>CC Doubles</td><td>12 Point Team Cap / 7 pt. Individual Cap</td><td>Sunday</td><td>6:00 PM</td></tr>
-				  <tr><td>CC Doubles</td><td>12 Point Team Cap / 7 pt. Individual Cap</td><td>Sunday</td><td>2:30 PM</td></tr>
-				  <tr><td>CC Doubles</td><td>12 Point Team Cap / 7 pt. Individual Cap</td><td>Thursday</td><td>7:00 PM</td></tr>
-				  <tr><td>C Doubles</td><td>8 Pt. Team Cap / 5 pt. Indiv. Cap / HDCP Flight</td><td>Sunday</td><td>6:00 PM</td></tr>
-				  <tr><td>C Doubles</td><td>8 Pt. Team Cap / 5 pt. Indiv. Cap / HDCP Flight</td><td>Thursday</td><td>6:00 PM</td></tr>
-			  </tbody>
-			  </table>
-		  </div>
-		  </>
-	  );
-	  
 
       case 'stats':
         return (
