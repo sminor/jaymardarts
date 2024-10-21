@@ -13,13 +13,12 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
   const [scheduleData, setScheduleData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch the JSON for League Schedules
-  useEffect(() => {
-    if (activeTab === 'schedule') {
-      setScheduleData(leagueScheduleData);
-      setLoading(false);
-    }
-  }, [activeTab]);
+
+// Fetch the JSON for League Schedules when the component mounts
+useEffect(() => {
+  setScheduleData(leagueScheduleData);
+  setLoading(false);
+}, []);  // Empty dependency array to run only once on mount
 
   const handleFlightChange = (event) => {
     setSelectedFlight(event.target.value);
