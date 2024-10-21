@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate for redire
 import { supabase } from '../../supabaseClient';
 
 const CreateTournament = () => {
-  const [tournamentType, setTournamentType] = useState('');
   const [tournamentDate, setTournamentDate] = useState(new Date().toLocaleDateString('en-CA')); // Local date in YYYY-MM-DD format
   const [locationId, setLocationId] = useState('');
   const [organizerName, setOrganizerName] = useState('');
@@ -12,7 +11,6 @@ const CreateTournament = () => {
   const [barContribution, setBarContribution] = useState(6);
   const [tournamentFee, setTournamentFee] = useState(1);
   const [extraPrizeMoney, setExtraPrizeMoney] = useState(0);
-  const [payoutSpots, setPayoutSpots] = useState(3);
   const [locations, setLocations] = useState([]);
   const [locationName, setLocationName] = useState(''); // Store the selected location name for the tournament name
   const navigate = useNavigate(); // Initialize navigate hook
@@ -51,12 +49,11 @@ const CreateTournament = () => {
     const tournamentId = uuidv4(); // Generate a unique UUID for the tournament
 
     try {
-      // Insert the new tournament into the database
+      // Insert the new tournament into the database, but exclude tournament_type and payout_spots
       const { data, error } = await supabase.from('tournaments').insert([
         {
           id: tournamentId, // Use UUID as the ID
           name: tournamentName, // Tournament name based on date and location
-          tournament_type: tournamentType,
           created_at: createdAt, // Actual time the tournament is created
           location_id: locationId,
           organizer_name: organizerName,
@@ -64,8 +61,8 @@ const CreateTournament = () => {
           bar_contribution: barContribution,
           tournament_fees: tournamentFee,
           extra_prize_money: extraPrizeMoney,
-          payout_spots: payoutSpots,
           is_active: true,
+          // `tournament_type` and `payout_spots` are left unset or null
         },
       ]);
 
@@ -110,17 +107,6 @@ const CreateTournament = () => {
                       {location.name}
                     </option>
                   ))}
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Tournament Type:</td>
-              <td>
-                <select value={tournamentType} onChange={(e) => setTournamentType(e.target.value)} required>
-                  <option value="">Select tournament type...</option>
-                  <option value="A/B Draw">A/B Draw</option>
-                  <option value="Blind Draw">Blind Draw</option>
-                  <option value="Player Pick">Player Pick</option>
                 </select>
               </td>
             </tr>
@@ -175,17 +161,6 @@ const CreateTournament = () => {
                   type="number"
                   value={extraPrizeMoney}
                   onChange={(e) => setExtraPrizeMoney(Number(e.target.value))}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Payout Spots:</td>
-              <td>
-                <input
-                  type="number"
-                  value={payoutSpots}
-                  onChange={(e) => setPayoutSpots(Number(e.target.value))}
                   required
                 />
               </td>
