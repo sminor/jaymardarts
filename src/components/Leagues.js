@@ -36,40 +36,49 @@ useEffect(() => {
 
   const renderFlightData = () => {
     if (!selectedFlight || !scheduleData) return null;
-
+  
     const flight = scheduleData.schedules.find(f => f.flight === selectedFlight);
     if (!flight) return null;
-
+  
     // Group matches by week
     const matchesByWeek = flight.matches.reduce((acc, match) => {
       acc[match.week] = acc[match.week] || [];
       acc[match.week].push(match);
       return acc;
     }, {});
-
+  
     // Filter matches by selected week and team
     const filteredMatches = Object.keys(matchesByWeek).reduce((acc, week) => {
       if (selectedWeek && week !== selectedWeek) return acc;
-
+  
       const filteredWeekMatches = matchesByWeek[week].filter(match => {
         if (selectedTeam && match.home_team !== selectedTeam && match.away_team !== selectedTeam) {
           return false;
         }
         return true;
       });
-
+  
       if (filteredWeekMatches.length > 0) {
         acc[week] = filteredWeekMatches;
       }
-
+  
       return acc;
     }, {});
-
+  
     return (
       <>
         {/* Flight name, day, and time */}
         <h3>{flight.flight} - {flight.day} {flight.time}</h3>
-
+  
+        {/* Add Report Link */}
+        {flight.reportlink && (
+          <p>
+            <a href={flight.reportlink} target="_blank" rel="noopener noreferrer">
+              View Stats
+            </a>
+          </p>
+        )}
+  
         {/* Dropdowns for filtering */}
         <div>
           <label htmlFor="weekSelect">Filter by Week:</label>
@@ -79,7 +88,7 @@ useEffect(() => {
               <option key={week} value={week}>Week {week}</option>
             ))}
           </select>
-
+  
           <label htmlFor="teamSelect">Filter by Team:</label>
           <select id="teamSelect" value={selectedTeam} onChange={handleTeamChange}>
             <option value="">All Teams</option>
@@ -88,7 +97,7 @@ useEffect(() => {
             ))}
           </select>
         </div>
-
+  
         {/* Teams Section */}
         <div className="table-container">
           <h4>Teams</h4>
@@ -108,7 +117,7 @@ useEffect(() => {
               ))}
             </tbody>
           </table>
-
+  
           {/* Schedule Section */}
           <h4>Schedule</h4>
           <table className="schedule-table">
@@ -149,6 +158,7 @@ useEffect(() => {
       </>
     );
   };
+  
 
   const handleNextSection = () => {
     if (currentSection < rulesSections.length - 1) {
