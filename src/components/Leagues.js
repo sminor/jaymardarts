@@ -139,7 +139,7 @@ useEffect(() => {
                   <React.Fragment key={week}>
                     {/* Row that spans the whole table for the week label */}
                     <tr>
-                      <td colSpan="4"><strong>Week {week}</strong></td>
+                      <td colSpan="4" className="week-heading"><strong>Week {week}</strong></td>
                     </tr>
                     {filteredMatches[week].map((match, index) => (
                       <tr key={index}>

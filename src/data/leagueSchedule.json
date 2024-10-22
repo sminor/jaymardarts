@@ -360,946 +360,1044 @@
             "flight": "A Doubles - Flight B",
             "day": "Sunday",
             "time": "6:00 PM",
-            "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=5b08e9a6-2b4c-4827-bcc3-513b3d9e7cf1",
+            "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=bf19299b-57f8-4627-964a-deac87c0d821",
             "teams": [
-                {
-                    "team_name": "Febreeze Brothers",
-                    "players": ["Tim Engebretson", "Mike Rand"],
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "team_name": "Mining For Gold",
-                    "players": ["Jay Phillips", "Edward Dachtler"],
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "team_name": "Off In Church",
-                    "players": ["Brian Eder", "Cody Stauffer"],
-                    "location": "Dr Feelgood's Pub"
-                },
-                {
-                    "team_name": "Straight Shots",
-                    "players": ["Blake Ferguson", "Brian Hartford"],
-                    "location": "The Last Lap"
-                },
-                {
-                    "team_name": "Sworn Js",
-                    "players": ["Justin Hampton", "Jerry Clemmer"],
-                    "location": "Ice House"
-                },
-                {
-                    "team_name": "The Pretty Ones",
-                    "players": ["Jeff Post", "Bill Schultz"],
-                    "location": "Pub 181"
-                },
-                {
-                    "team_name": "We Are Back",
-                    "players": ["Dave Windell", "Nick Travis"],
-                    "location": "Coach's Bar & Grill"
-                }
+              {
+                "team_name": "Febreeze Brothers",
+                "players": ["Tim Engebretson", "Mike Rand"],
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "team_name": "Mining For Gold",
+                "players": ["Jay Phillips", "Edward Dachtler"],
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "team_name": "Off In Church",
+                "players": ["Brian Eder", "Cody Stauffer"],
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "team_name": "Straight Shots",
+                "players": ["Blake Ferguson", "Brian Hartford"],
+                "location": "The Last Lap"
+              },
+              {
+                "team_name": "Sworn Js",
+                "players": ["Justin Hampton", "Jerry Clemmer"],
+                "location": "Ice House"
+              },
+              {
+                "team_name": "The Pretty Ones",
+                "players": ["Jeff Post", "Bill Schultz"],
+                "location": "Pub 181"
+              },
+              {
+                "team_name": "We Are Back",
+                "players": ["Dave Windell", "Nick Travis"],
+                "location": "Coach's Bar & Grill"
+              }
             ],
             "matches": [
-                {
-                    "week": 1,
-                    "date": "10/20/2024",
-                    "home_team": "Febreeze Brothers",
-                    "away_team": "Sworn Js",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 1,
-                    "date": "10/20/2024",
-                    "home_team": "We Are Back",
-                    "away_team": "The Pretty Ones",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 1,
-                    "date": "10/20/2024",
-                    "home_team": "Mining For Gold",
-                    "away_team": "Off In Church",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 2,
-                    "date": "10/27/2024",
-                    "home_team": "The Pretty Ones",
-                    "away_team": "Sworn Js",
-                    "location": "Pub 181"
-                },
-                {
-                    "week": 2,
-                    "date": "10/27/2024",
-                    "home_team": "Straight Shots",
-                    "away_team": "We Are Back",
-                    "location": "The Last Lap"
-                },
-                {
-                    "week": 2,
-                    "date": "10/27/2024",
-                    "home_team": "Off In Church",
-                    "away_team": "Febreeze Brothers",
-                    "location": "Dr Feelgoods Pub"
-                },
-                {
-                    "week": 3,
-                    "date": "11/03/2024",
-                    "home_team": "Sworn Js",
-                    "away_team": "Straight Shots",
-                    "location": "Ice House"
-                },
-                {
-                    "week": 3,
-                    "date": "11/03/2024",
-                    "home_team": "Febreeze Brothers",
-                    "away_team": "The Pretty Ones",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 3,
-                    "date": "11/03/2024",
-                    "home_team": "Mining For Gold",
-                    "away_team": "We Are Back",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 4,
-                    "date": "11/10/2024",
-                    "home_team": "Straight Shots",
-                    "away_team": "The Pretty Ones",
-                    "location": "The Last Lap"
-                },
-                {
-                    "week": 4,
-                    "date": "11/10/2024",
-                    "home_team": "We Are Back",
-                    "away_team": "Off In Church",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 4,
-                    "date": "11/10/2024",
-                    "home_team": "Sworn Js",
-                    "away_team": "Mining For Gold",
-                    "location": "Ice House"
-                },
-                {
-                    "week": 5,
-                    "date": "11/17/2024",
-                    "home_team": "Febreeze Brothers",
-                    "away_team": "Straight Shots",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 5,
-                    "date": "11/17/2024",
-                    "home_team": "Off In Church",
-                    "away_team": "Sworn Js",
-                    "location": "Dr Feelgoods Pub"
-                },
-                {
-                    "week": 5,
-                    "date": "11/17/2024",
-                    "home_team": "Mining For Gold",
-                    "away_team": "The Pretty Ones",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 6,
-                    "date": "12/01/2024",
-                    "home_team": "Straight Shots",
-                    "away_team": "Mining For Gold",
-                    "location": "The Last Lap"
-                },
-                {
-                    "week": 6,
-                    "date": "12/01/2024",
-                    "home_team": "The Pretty Ones",
-                    "away_team": "Off In Church",
-                    "location": "Pub 181"
-                },
-                {
-                    "week": 6,
-                    "date": "12/01/2024",
-                    "home_team": "We Are Back",
-                    "away_team": "Febreeze Brothers",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 7,
-                    "date": "12/08/2024",
-                    "home_team": "Sworn Js",
-                    "away_team": "We Are Back",
-                    "location": "Ice House"
-                },
-                {
-                    "week": 7,
-                    "date": "12/08/2024",
-                    "home_team": "Off In Church",
-                    "away_team": "Straight Shots",
-                    "location": "Dr Feelgoods Pub"
-                },
-                {
-                    "week": 7,
-                    "date": "12/08/2024",
-                    "home_team": "Febreeze Brothers",
-                    "away_team": "Mining For Gold",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 8,
-                    "date": "01/05/2025",
-                    "home_team": "Sworn Js",
-                    "away_team": "Febreeze Brothers",
-                    "location": "Ice House"
-                },
-                {
-                    "week": 8,
-                    "date": "01/05/2025",
-                    "home_team": "The Pretty Ones",
-                    "away_team": "We Are Back",
-                    "location": "Pub 181"
-                },
-                {
-                    "week": 8,
-                    "date": "01/05/2025",
-                    "home_team": "Off In Church",
-                    "away_team": "Mining For Gold",
-                    "location": "Dr Feelgoods Pub"
-                },
-                {
-                    "week": 9,
-                    "date": "01/12/2025",
-                    "home_team": "Sworn Js",
-                    "away_team": "The Pretty Ones",
-                    "location": "Ice House"
-                },
-                {
-                    "week": 9,
-                    "date": "01/12/2025",
-                    "home_team": "We Are Back",
-                    "away_team": "Straight Shots",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 9,
-                    "date": "01/12/2025",
-                    "home_team": "Febreeze Brothers",
-                    "away_team": "Off In Church",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 10,
-                    "date": "01/19/2025",
-                    "home_team": "Straight Shots",
-                    "away_team": "Sworn Js",
-                    "location": "The Last Lap"
-                },
-                {
-                    "week": 10,
-                    "date": "01/19/2025",
-                    "home_team": "The Pretty Ones",
-                    "away_team": "Febreeze Brothers",
-                    "location": "Pub 181"
-                },
-                {
-                    "week": 10,
-                    "date": "01/19/2025",
-                    "home_team": "We Are Back",
-                    "away_team": "Mining For Gold",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 11,
-                    "date": "01/26/2025",
-                    "home_team": "The Pretty Ones",
-                    "away_team": "Straight Shots",
-                    "location": "Pub 181"
-                },
-                {
-                    "week": 11,
-                    "date": "01/26/2025",
-                    "home_team": "Off In Church",
-                    "away_team": "We Are Back",
-                    "location": "Dr Feelgoods Pub"
-                },
-                {
-                    "week": 11,
-                    "date": "01/26/2025",
-                    "home_team": "Mining For Gold",
-                    "away_team": "Sworn Js",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 12,
-                    "date": "02/02/2025",
-                    "home_team": "Straight Shots",
-                    "away_team": "Febreeze Brothers",
-                    "location": "The Last Lap"
-                },
-                {
-                    "week": 12,
-                    "date": "02/02/2025",
-                    "home_team": "Sworn Js",
-                    "away_team": "Off In Church",
-                    "location": "Ice House"
-                },
-                {
-                    "week": 12,
-                    "date": "02/02/2025",
-                    "home_team": "The Pretty Ones",
-                    "away_team": "Mining For Gold",
-                    "location": "Pub 181"
-                },
-                {
-                    "week": 13,
-                    "date": "02/09/2025",
-                    "home_team": "Mining For Gold",
-                    "away_team": "Straight Shots",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 13,
-                    "date": "02/09/2025",
-                    "home_team": "Off In Church",
-                    "away_team": "The Pretty Ones",
-                    "location": "Dr Feelgoods Pub"
-                },
-                {
-                    "week": 13,
-                    "date": "02/09/2025",
-                    "home_team": "Febreeze Brothers",
-                    "away_team": "We Are Back",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 14,
-                    "date": "02/16/2025",
-                    "home_team": "We Are Back",
-                    "away_team": "Sworn Js",
-                    "location": "Coach's Bar & Grill"
-                },
-                {
-                    "week": 14,
-                    "date": "02/16/2025",
-                    "home_team": "Straight Shots",
-                    "away_team": "Off In Church",
-                    "location": "The Last Lap"
-                },
-                {
-                    "week": 14,
-                    "date": "02/16/2025",
-                    "home_team": "Mining For Gold",
-                    "away_team": "Febreeze Brothers",
-                    "location": "Coach's Bar & Grill"
-                }
+              {
+                "week": 1,
+                "date": "10/20/2024",
+                "home_team": "Straight Shots",
+                "away_team": "BYE",
+                "location": "BYE"
+              },
+              {
+                "week": 1,
+                "date": "10/20/2024",
+                "home_team": "Febreeze Brothers",
+                "away_team": "Sworn Js",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 1,
+                "date": "10/20/2024",
+                "home_team": "We Are Back",
+                "away_team": "The Pretty Ones",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 1,
+                "date": "10/20/2024",
+                "home_team": "Mining For Gold",
+                "away_team": "Off In Church",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 2,
+                "date": "10/27/2024",
+                "home_team": "BYE",
+                "away_team": "Mining For Gold",
+                "location": "BYE"
+              },
+              {
+                "week": 2,
+                "date": "10/27/2024",
+                "home_team": "The Pretty Ones",
+                "away_team": "Sworn Js",
+                "location": "Pub 181"
+              },
+              {
+                "week": 2,
+                "date": "10/27/2024",
+                "home_team": "Straight Shots",
+                "away_team": "We Are Back",
+                "location": "The Last Lap"
+              },
+              {
+                "week": 2,
+                "date": "10/27/2024",
+                "home_team": "Off In Church",
+                "away_team": "Febreeze Brothers",
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "week": 3,
+                "date": "11/03/2024",
+                "home_team": "Sworn Js",
+                "away_team": "Straight Shots",
+                "location": "Ice House"
+              },
+              {
+                "week": 3,
+                "date": "11/03/2024",
+                "home_team": "Febreeze Brothers",
+                "away_team": "The Pretty Ones",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 3,
+                "date": "11/03/2024",
+                "home_team": "Off In Church",
+                "away_team": "BYE",
+                "location": "BYE"
+              },
+              {
+                "week": 3,
+                "date": "11/03/2024",
+                "home_team": "Mining For Gold",
+                "away_team": "We Are Back",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 4,
+                "date": "11/10/2024",
+                "home_team": "Straight Shots",
+                "away_team": "The Pretty Ones",
+                "location": "The Last Lap"
+              },
+              {
+                "week": 4,
+                "date": "11/10/2024",
+                "home_team": "We Are Back",
+                "away_team": "Off In Church",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 4,
+                "date": "11/10/2024",
+                "home_team": "BYE",
+                "away_team": "Febreeze Brothers",
+                "location": "BYE"
+              },
+              {
+                "week": 4,
+                "date": "11/10/2024",
+                "home_team": "Sworn Js",
+                "away_team": "Mining For Gold",
+                "location": "Ice House"
+              },
+              {
+                "week": 5,
+                "date": "11/17/2024",
+                "home_team": "Febreeze Brothers",
+                "away_team": "Straight Shots",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 5,
+                "date": "11/17/2024",
+                "home_team": "BYE",
+                "away_team": "We Are Back",
+                "location": "BYE"
+              },
+              {
+                "week": 5,
+                "date": "11/17/2024",
+                "home_team": "Off In Church",
+                "away_team": "Sworn Js",
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "week": 5,
+                "date": "11/17/2024",
+                "home_team": "Mining For Gold",
+                "away_team": "The Pretty Ones",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 6,
+                "date": "12/01/2024",
+                "home_team": "Straight Shots",
+                "away_team": "Mining For Gold",
+                "location": "The Last Lap"
+              },
+              {
+                "week": 6,
+                "date": "12/01/2024",
+                "home_team": "The Pretty Ones",
+                "away_team": "Off In Church",
+                "location": "Pub 181"
+              },
+              {
+                "week": 6,
+                "date": "12/01/2024",
+                "home_team": "We Are Back",
+                "away_team": "Febreeze Brothers",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 6,
+                "date": "12/01/2024",
+                "home_team": "Sworn Js",
+                "away_team": "BYE",
+                "location": "BYE"
+              },
+              {
+                "week": 7,
+                "date": "12/08/2024",
+                "home_team": "Sworn Js",
+                "away_team": "We Are Back",
+                "location": "Ice House"
+              },
+              {
+                "week": 7,
+                "date": "12/08/2024",
+                "home_team": "Off In Church",
+                "away_team": "Straight Shots",
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "week": 7,
+                "date": "12/08/2024",
+                "home_team": "BYE",
+                "away_team": "The Pretty Ones",
+                "location": "BYE"
+              },
+              {
+                "week": 7,
+                "date": "12/08/2024",
+                "home_team": "Febreeze Brothers",
+                "away_team": "Mining For Gold",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 8,
+                "date": "01/05/2025",
+                "home_team": "BYE",
+                "away_team": "Straight Shots",
+                "location": "BYE"
+              },
+              {
+                "week": 8,
+                "date": "01/05/2025",
+                "home_team": "Sworn Js",
+                "away_team": "Febreeze Brothers",
+                "location": "Ice House"
+              },
+              {
+                "week": 8,
+                "date": "01/05/2025",
+                "home_team": "The Pretty Ones",
+                "away_team": "We Are Back",
+                "location": "Pub 181"
+              },
+              {
+                "week": 8,
+                "date": "01/05/2025",
+                "home_team": "Off In Church",
+                "away_team": "Mining For Gold",
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "week": 9,
+                "date": "01/12/2025",
+                "home_team": "Mining For Gold",
+                "away_team": "BYE",
+                "location": "BYE"
+              },
+              {
+                "week": 9,
+                "date": "01/12/2025",
+                "home_team": "Sworn Js",
+                "away_team": "The Pretty Ones",
+                "location": "Ice House"
+              },
+              {
+                "week": 9,
+                "date": "01/12/2025",
+                "home_team": "We Are Back",
+                "away_team": "Straight Shots",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 9,
+                "date": "01/12/2025",
+                "home_team": "Febreeze Brothers",
+                "away_team": "Off In Church",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 10,
+                "date": "01/19/2025",
+                "home_team": "Straight Shots",
+                "away_team": "Sworn Js",
+                "location": "The Last Lap"
+              },
+              {
+                "week": 10,
+                "date": "01/19/2025",
+                "home_team": "The Pretty Ones",
+                "away_team": "Febreeze Brothers",
+                "location": "Pub 181"
+              },
+              {
+                "week": 10,
+                "date": "01/19/2025",
+                "home_team": "BYE",
+                "away_team": "Off In Church",
+                "location": "BYE"
+              },
+              {
+                "week": 10,
+                "date": "01/19/2025",
+                "home_team": "We Are Back",
+                "away_team": "Mining For Gold",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 11,
+                "date": "01/26/2025",
+                "home_team": "The Pretty Ones",
+                "away_team": "Straight Shots",
+                "location": "Pub 181"
+              },
+              {
+                "week": 11,
+                "date": "01/26/2025",
+                "home_team": "Off In Church",
+                "away_team": "We Are Back",
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "week": 11,
+                "date": "01/26/2025",
+                "home_team": "Febreeze Brothers",
+                "away_team": "BYE",
+                "location": "BYE"
+              },
+              {
+                "week": 11,
+                "date": "01/26/2025",
+                "home_team": "Mining For Gold",
+                "away_team": "Sworn Js",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 12,
+                "date": "02/02/2025",
+                "home_team": "Straight Shots",
+                "away_team": "Febreeze Brothers",
+                "location": "The Last Lap"
+              },
+              {
+                "week": 12,
+                "date": "02/02/2025",
+                "home_team": "We Are Back",
+                "away_team": "BYE",
+                "location": "BYE"
+              },
+              {
+                "week": 12,
+                "date": "02/02/2025",
+                "home_team": "Sworn Js",
+                "away_team": "Off In Church",
+                "location": "Ice House"
+              },
+              {
+                "week": 12,
+                "date": "02/02/2025",
+                "home_team": "The Pretty Ones",
+                "away_team": "Mining For Gold",
+                "location": "Pub 181"
+              },
+              {
+                "week": 13,
+                "date": "02/09/2025",
+                "home_team": "Mining For Gold",
+                "away_team": "Straight Shots",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 13,
+                "date": "02/09/2025",
+                "home_team": "Off In Church",
+                "away_team": "The Pretty Ones",
+                "location": "Dr Feelgoods Pub"
+              },
+              {
+                "week": 13,
+                "date": "02/09/2025",
+                "home_team": "Febreeze Brothers",
+                "away_team": "We Are Back",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 13,
+                "date": "02/09/2025",
+                "home_team": "BYE",
+                "away_team": "Sworn Js",
+                "location": "BYE"
+              },
+              {
+                "week": 14,
+                "date": "02/16/2025",
+                "home_team": "We Are Back",
+                "away_team": "Sworn Js",
+                "location": "Coach's Bar & Grill"
+              },
+              {
+                "week": 14,
+                "date": "02/16/2025",
+                "home_team": "Straight Shots",
+                "away_team": "Off In Church",
+                "location": "The Last Lap"
+              },
+              {
+                "week": 14,
+                "date": "02/16/2025",
+                "home_team": "BYE",
+                "away_team": "The Pretty Ones",
+                "location": "BYE"
+              },
+              {
+                "week": 14,
+                "date": "02/16/2025",
+                "home_team": "Mining For Gold",
+                "away_team": "Febreeze Brothers",
+                "location": "Coach's Bar & Grill"
+              }
             ]
-        },
+          },   
         {
             "flight": "B Doubles - Flight A",
             "day": "Monday",
             "time": "7:00 PM",
-            "reportlink": "http://placeholder-link.com",
+            "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=1feed930-486b-477b-9c06-9b421c3a5efb",
             "teams": [
-              {
+            {
                 "team_name": "Big Sexy X 2",
                 "players": ["Joe Hughes", "Brian Bland"],
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "team_name": "Dart Racers",
                 "players": ["Ed Farness", "Eddie Farness"],
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "team_name": "Guess Whos Back",
                 "players": ["Tim Robertson", "Jessica Chastain"],
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "team_name": "Havin Fun",
                 "players": ["Tony Moss", "Lonni Moss"],
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "team_name": "NaySayers",
                 "players": ["AJ Johnson", "Curtis Anderson"],
                 "location": "Pub 181"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/21/2024",
                 "home_team": "NaySayers",
                 "away_team": "Big Sexy X 2",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/21/2024",
                 "home_team": "Dart Racers",
                 "away_team": "Guess Whos Back",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/28/2024",
                 "home_team": "Big Sexy X 2",
                 "away_team": "Havin Fun",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/28/2024",
                 "home_team": "NaySayers",
                 "away_team": "Guess Whos Back",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/04/2024",
                 "home_team": "Guess Whos Back",
                 "away_team": "Big Sexy X 2",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/04/2024",
                 "home_team": "Havin Fun",
                 "away_team": "Dart Racers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/11/2024",
                 "home_team": "Big Sexy X 2",
                 "away_team": "Dart Racers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/11/2024",
                 "home_team": "Havin Fun",
                 "away_team": "NaySayers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/18/2024",
                 "home_team": "Dart Racers",
                 "away_team": "NaySayers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/18/2024",
                 "home_team": "Guess Whos Back",
                 "away_team": "Havin Fun",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/02/2024",
                 "home_team": "Big Sexy X 2",
                 "away_team": "NaySayers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/02/2024",
                 "home_team": "Guess Whos Back",
                 "away_team": "Dart Racers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/09/2024",
                 "home_team": "Havin Fun",
                 "away_team": "Big Sexy X 2",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/09/2024",
                 "home_team": "Guess Whos Back",
                 "away_team": "NaySayers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/16/2024",
                 "home_team": "Big Sexy X 2",
                 "away_team": "Guess Whos Back",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/16/2024",
                 "home_team": "Dart Racers",
                 "away_team": "Havin Fun",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/06/2025",
                 "home_team": "Dart Racers",
                 "away_team": "Big Sexy X 2",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/06/2025",
                 "home_team": "NaySayers",
                 "away_team": "Havin Fun",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/13/2025",
                 "home_team": "NaySayers",
                 "away_team": "Dart Racers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/13/2025",
                 "home_team": "Havin Fun",
                 "away_team": "Guess Whos Back",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/20/2025",
                 "home_team": "NaySayers",
                 "away_team": "Big Sexy X 2",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/20/2025",
                 "home_team": "Dart Racers",
                 "away_team": "Guess Whos Back",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/27/2025",
                 "home_team": "Big Sexy X 2",
                 "away_team": "Havin Fun",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/27/2025",
                 "home_team": "NaySayers",
                 "away_team": "Guess Whos Back",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/03/2025",
                 "home_team": "Guess Whos Back",
                 "away_team": "Big Sexy X 2",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/03/2025",
                 "home_team": "Havin Fun",
                 "away_team": "Dart Racers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/10/2025",
                 "home_team": "Big Sexy X 2",
                 "away_team": "Dart Racers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/10/2025",
                 "home_team": "Havin Fun",
                 "away_team": "NaySayers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/17/2025",
                 "home_team": "Dart Racers",
                 "away_team": "NaySayers",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/17/2025",
                 "home_team": "Guess Whos Back",
                 "away_team": "Havin Fun",
                 "location": "Pub 181"
-              }
+            }
             ]
-          },
-          {
+        },
+        {
             "flight": "B Doubles - Flight B",
             "day": "Monday",
             "time": "7:00 PM",
-            "reportlink": "http://placeholder-link.com",
+            "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=dfa27e67-6576-4a4d-95e0-a7e37658c216",
             "teams": [
-              {
+            {
                 "team_name": "BAMFERS",
                 "players": ["Ron Morris", "Dave Martz"],
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Darters In Crime",
                 "players": ["Tim Engebretson", "Anna Rodman"],
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "team_name": "Gun Slingers",
                 "players": ["Dan Brinser", "Jacki Brinser"],
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Hit Or Miss",
                 "players": ["Ruben Parker", "John Nusom"],
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Jiggly Jellos",
                 "players": ["Jerry Clemmer", "Josh Bulfinch"],
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "team_name": "T And A",
                 "players": ["Tommy Buchanan", "Amy Buchanan"],
                 "location": "Ice House"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/21/2024",
                 "home_team": "T And A",
                 "away_team": "BAMFERS",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/21/2024",
                 "home_team": "Gun Slingers",
                 "away_team": "Jiggly Jellos",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/21/2024",
                 "home_team": "Hit Or Miss",
                 "away_team": "Darters In Crime",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/28/2024",
                 "home_team": "BAMFERS",
                 "away_team": "Jiggly Jellos",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/28/2024",
                 "home_team": "Gun Slingers",
                 "away_team": "Hit Or Miss",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/28/2024",
                 "home_team": "T And A",
                 "away_team": "Darters In Crime",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/04/2024",
                 "home_team": "Darters In Crime",
                 "away_team": "BAMFERS",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/04/2024",
                 "home_team": "Jiggly Jellos",
                 "away_team": "Hit Or Miss",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/04/2024",
                 "home_team": "T And A",
                 "away_team": "Gun Slingers",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/11/2024",
                 "home_team": "BAMFERS",
                 "away_team": "Hit Or Miss",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/11/2024",
                 "home_team": "Darters In Crime",
                 "away_team": "Gun Slingers",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/11/2024",
                 "home_team": "Jiggly Jellos",
                 "away_team": "T And A",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/18/2024",
                 "home_team": "Gun Slingers",
                 "away_team": "BAMFERS",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/18/2024",
                 "home_team": "Hit Or Miss",
                 "away_team": "T And A",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/18/2024",
                 "home_team": "Darters In Crime",
                 "away_team": "Jiggly Jellos",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/02/2024",
                 "home_team": "BAMFERS",
                 "away_team": "T And A",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/02/2024",
                 "home_team": "Jiggly Jellos",
                 "away_team": "Gun Slingers",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/02/2024",
                 "home_team": "Darters In Crime",
                 "away_team": "Hit Or Miss",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/09/2024",
                 "home_team": "Jiggly Jellos",
                 "away_team": "BAMFERS",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/09/2024",
                 "home_team": "Hit Or Miss",
                 "away_team": "Gun Slingers",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/09/2024",
                 "home_team": "Darters In Crime",
                 "away_team": "T And A",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/16/2024",
                 "home_team": "BAMFERS",
                 "away_team": "Darters In Crime",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/16/2024",
                 "home_team": "Hit Or Miss",
                 "away_team": "Jiggly Jellos",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/16/2024",
                 "home_team": "Gun Slingers",
                 "away_team": "T And A",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/06/2025",
                 "home_team": "Hit Or Miss",
                 "away_team": "BAMFERS",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/06/2025",
                 "home_team": "Gun Slingers",
                 "away_team": "Darters In Crime",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/06/2025",
                 "home_team": "T And A",
                 "away_team": "Jiggly Jellos",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/13/2025",
                 "home_team": "BAMFERS",
                 "away_team": "Gun Slingers",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/13/2025",
                 "home_team": "T And A",
                 "away_team": "Hit Or Miss",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/13/2025",
                 "home_team": "Jiggly Jellos",
                 "away_team": "Darters In Crime",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/20/2025",
                 "home_team": "T And A",
                 "away_team": "BAMFERS",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/20/2025",
                 "home_team": "Gun Slingers",
                 "away_team": "Jiggly Jellos",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/20/2025",
                 "home_team": "Hit Or Miss",
                 "away_team": "Darters In Crime",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/27/2025",
                 "home_team": "BAMFERS",
                 "away_team": "Jiggly Jellos",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/27/2025",
                 "home_team": "Gun Slingers",
                 "away_team": "Hit Or Miss",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/27/2025",
                 "home_team": "T And A",
                 "away_team": "Darters In Crime",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/03/2025",
                 "home_team": "Darters In Crime",
                 "away_team": "BAMFERS",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/03/2025",
                 "home_team": "Jiggly Jellos",
                 "away_team": "Hit Or Miss",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/03/2025",
                 "home_team": "T And A",
                 "away_team": "Gun Slingers",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/10/2025",
                 "home_team": "BAMFERS",
                 "away_team": "Hit Or Miss",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/10/2025",
                 "home_team": "Darters In Crime",
                 "away_team": "Gun Slingers",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/10/2025",
                 "home_team": "Jiggly Jellos",
                 "away_team": "T And A",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/17/2025",
                 "home_team": "Gun Slingers",
                 "away_team": "BAMFERS",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/17/2025",
                 "home_team": "Hit Or Miss",
                 "away_team": "T And A",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/17/2025",
                 "home_team": "Darters In Crime",
                 "away_team": "Jiggly Jellos",
                 "location": "Ice House"
-              }
+            }
             ]
-          },
-          {
+        },
+        {
             "flight": "B Doubles - Flight C",
             "day": "Monday",
             "time": "7:00 PM",
-            "reportlink": "http://placeholder-link.com", 
+            "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=30e4e653-c3ca-42cf-a423-380cb983da8e", 
             "teams": [
                 {
                     "team_name": "Chris Cross",
@@ -2006,241 +2104,241 @@
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
             "teams": [
-              {
+            {
                 "team_name": "Jackelopes",
                 "players": ["Jake Scott", "Jefferson Peters"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Micd Up",
                 "players": ["Mike Minor", "Mike Rand"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "White Heads",
                 "players": ["Joe Bowen", "Ken Texley"],
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "team_name": "Who Are These Guys",
                 "players": ["Bill Teel", "Josh Bulfinch"],
                 "location": "Silver Star"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/23/2024",
                 "home_team": "White Heads",
                 "away_team": "Micd Up",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/23/2024",
                 "home_team": "Who Are These Guys",
                 "away_team": "Jackelopes",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/30/2024",
                 "home_team": "Jackelopes",
                 "away_team": "White Heads",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/30/2024",
                 "home_team": "Micd Up",
                 "away_team": "Who Are These Guys",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/06/2024",
                 "home_team": "White Heads",
                 "away_team": "Who Are These Guys",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/06/2024",
                 "home_team": "Micd Up",
                 "away_team": "Jackelopes",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/13/2024",
                 "home_team": "Micd Up",
                 "away_team": "White Heads",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/13/2024",
                 "home_team": "Jackelopes",
                 "away_team": "Who Are These Guys",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/20/2024",
                 "home_team": "White Heads",
                 "away_team": "Jackelopes",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/20/2024",
                 "home_team": "Who Are These Guys",
                 "away_team": "Micd Up",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/04/2024",
                 "home_team": "Who Are These Guys",
                 "away_team": "White Heads",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/04/2024",
                 "home_team": "Jackelopes",
                 "away_team": "Micd Up",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/11/2024",
                 "home_team": "White Heads",
                 "away_team": "Micd Up",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/11/2024",
                 "home_team": "Who Are These Guys",
                 "away_team": "Jackelopes",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/18/2024",
                 "home_team": "Jackelopes",
                 "away_team": "White Heads",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/18/2024",
                 "home_team": "Micd Up",
                 "away_team": "Who Are These Guys",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/08/2025",
                 "home_team": "White Heads",
                 "away_team": "Who Are These Guys",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/08/2025",
                 "home_team": "Micd Up",
                 "away_team": "Jackelopes",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/15/2025",
                 "home_team": "Micd Up",
                 "away_team": "White Heads",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/15/2025",
                 "home_team": "Jackelopes",
                 "away_team": "Who Are These Guys",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/22/2025",
                 "home_team": "White Heads",
                 "away_team": "Jackelopes",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/22/2025",
                 "home_team": "Who Are These Guys",
                 "away_team": "Micd Up",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/29/2025",
                 "home_team": "Who Are These Guys",
                 "away_team": "White Heads",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/29/2025",
                 "home_team": "Jackelopes",
                 "away_team": "Micd Up",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/05/2025",
                 "home_team": "White Heads",
                 "away_team": "Micd Up",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/05/2025",
                 "home_team": "Who Are These Guys",
                 "away_team": "Jackelopes",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/12/2025",
                 "home_team": "Jackelopes",
                 "away_team": "White Heads",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/12/2025",
                 "home_team": "Micd Up",
                 "away_team": "Who Are These Guys",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/19/2025",
                 "home_team": "White Heads",
                 "away_team": "Who Are These Guys",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/19/2025",
                 "home_team": "Micd Up",
                 "away_team": "Jackelopes",
                 "location": "Coach's Bar & Grill"
-              }
+            }
             ]
-          },
-          {
+        },
+        {
             "flight": "BB Doubles - Flight C",
             "day": "Wednesday",
             "time": "7:00 PM",
@@ -2486,241 +2584,241 @@
             "time": "6:00 PM",
             "reportlink": "https://leagueleader.net/sharedreport.php?operatorid=1635&code=a78a2938-4db2-407a-81e1-057666758e1e",
             "teams": [
-              {
+            {
                 "team_name": "Dead Men Walking",
                 "players": ["Mike Hollada", "Don Baylie"],
                 "location": "Silver Star"
-              },
-              {
-                "team_name": "Half A Leg Short",
-                "players": ["Matthew Wilson", "Toni Oberding"],
+            },
+            {
+                "team_name": "Just for fun",
+                "players": ["Chris Slusher", "Toni Oberding"],
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "team_name": "S N M",
                 "players": ["Samantha Rand", "Marla Phillips"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Sassy Sweethearts",
                 "players": ["Jessica Clemmer", "Anna Rodman"],
                 "location": "Ice House"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/20/2024",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "Dead Men Walking",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/20/2024",
                 "home_team": "S N M",
                 "away_team": "Half A Leg Short",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/27/2024",
                 "home_team": "Half A Leg Short",
                 "away_team": "Sassy Sweethearts",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/27/2024",
                 "home_team": "Dead Men Walking",
                 "away_team": "S N M",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/03/2024",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "S N M",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/03/2024",
                 "home_team": "Dead Men Walking",
                 "away_team": "Half A Leg Short",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/10/2024",
                 "home_team": "Dead Men Walking",
                 "away_team": "Sassy Sweethearts",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/10/2024",
                 "home_team": "Half A Leg Short",
                 "away_team": "S N M",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/17/2024",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "Half A Leg Short",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/17/2024",
                 "home_team": "S N M",
                 "away_team": "Dead Men Walking",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/01/2024",
                 "home_team": "S N M",
                 "away_team": "Sassy Sweethearts",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/01/2024",
                 "home_team": "Half A Leg Short",
                 "away_team": "Dead Men Walking",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/08/2024",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "Dead Men Walking",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/08/2024",
                 "home_team": "S N M",
                 "away_team": "Half A Leg Short",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/15/2024",
                 "home_team": "Half A Leg Short",
                 "away_team": "Sassy Sweethearts",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/15/2024",
                 "home_team": "Dead Men Walking",
                 "away_team": "S N M",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/05/2025",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "S N M",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/05/2025",
                 "home_team": "Dead Men Walking",
                 "away_team": "Half A Leg Short",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/12/2025",
                 "home_team": "Dead Men Walking",
                 "away_team": "Sassy Sweethearts",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/12/2025",
                 "home_team": "Half A Leg Short",
                 "away_team": "S N M",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/19/2025",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "Half A Leg Short",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/19/2025",
                 "home_team": "S N M",
                 "away_team": "Dead Men Walking",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/26/2025",
                 "home_team": "S N M",
                 "away_team": "Sassy Sweethearts",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/26/2025",
                 "home_team": "Half A Leg Short",
                 "away_team": "Dead Men Walking",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/02/2025",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "Dead Men Walking",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/02/2025",
                 "home_team": "S N M",
                 "away_team": "Half A Leg Short",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/09/2025",
                 "home_team": "Half A Leg Short",
                 "away_team": "Sassy Sweethearts",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/09/2025",
                 "home_team": "Dead Men Walking",
                 "away_team": "S N M",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/16/2025",
                 "home_team": "Sassy Sweethearts",
                 "away_team": "S N M",
                 "location": "Ice House"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/16/2025",
                 "home_team": "Dead Men Walking",
                 "away_team": "Half A Leg Short",
                 "location": "Silver Star"
-              }
+            }
             ]
-          },
-          {
+        },
+        {
             "flight": "C Doubles - Flight B",
             "day": "Thursday",
             "time": "6:00 PM",
@@ -3075,341 +3173,341 @@
                 }
             ]
         },
-          {
+        {
             "flight": "CC Doubles - Flight A",
             "day": "Sunday",
             "time": "2:30 PM",
             "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=832d3937-f9ed-48e4-bd45-59d3771d85f0",
             "teams": [
-              {
+            {
                 "team_name": "BFFs",
                 "players": ["Sharon Pankratz", "Patty Loop"],
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "team_name": "CRGR N WLF",
                 "players": ["Jason Wolfe", "Craig Herrmann"],
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Double Trouble",
                 "players": ["Labarry Sr Harris", "Labarry Harris"],
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Friends WO Benefits",
                 "players": ["Dan Brinser", "Jessica Chastain"],
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Sugar And Spice",
                 "players": ["Jacki Brinser", "Chris Nusom"],
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Youre Stupid",
                 "players": ["Ed Farness", "Wendy Atkins"],
                 "location": "Pub 181"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/20/2024",
                 "home_team": "CRGR N WLF",
                 "away_team": "Youre Stupid",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/20/2024",
                 "home_team": "Double Trouble",
                 "away_team": "BFFs",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/20/2024",
                 "home_team": "Friends WO Benefits",
                 "away_team": "Sugar And Spice",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/27/2024",
                 "home_team": "Youre Stupid",
                 "away_team": "BFFs",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/27/2024",
                 "home_team": "Double Trouble",
                 "away_team": "Friends WO Benefits",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/27/2024",
                 "home_team": "CRGR N WLF",
                 "away_team": "Sugar And Spice",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/03/2024",
                 "home_team": "Sugar And Spice",
                 "away_team": "Youre Stupid",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/03/2024",
                 "home_team": "BFFs",
                 "away_team": "Friends WO Benefits",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/03/2024",
                 "home_team": "CRGR N WLF",
                 "away_team": "Double Trouble",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/10/2024",
                 "home_team": "Youre Stupid",
                 "away_team": "Friends WO Benefits",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/10/2024",
                 "home_team": "Sugar And Spice",
                 "away_team": "Double Trouble",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/10/2024",
                 "home_team": "BFFs",
                 "away_team": "CRGR N WLF",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/17/2024",
                 "home_team": "Double Trouble",
                 "away_team": "Youre Stupid",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/17/2024",
                 "home_team": "Friends WO Benefits",
                 "away_team": "CRGR N WLF",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/17/2024",
                 "home_team": "Sugar And Spice",
                 "away_team": "BFFs",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/01/2024",
                 "home_team": "Youre Stupid",
                 "away_team": "CRGR N WLF",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/01/2024",
                 "home_team": "BFFs",
                 "away_team": "Double Trouble",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/01/2024",
                 "home_team": "Sugar And Spice",
                 "away_team": "Friends WO Benefits",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/08/2024",
                 "home_team": "BFFs",
                 "away_team": "Youre Stupid",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/08/2024",
                 "home_team": "Friends WO Benefits",
                 "away_team": "Double Trouble",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/08/2024",
                 "home_team": "Sugar And Spice",
                 "away_team": "CRGR N WLF",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "01/05/2025",
                 "home_team": "Youre Stupid",
                 "away_team": "Sugar And Spice",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "01/05/2025",
                 "home_team": "Friends WO Benefits",
                 "away_team": "BFFs",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "01/05/2025",
                 "home_team": "Double Trouble",
                 "away_team": "CRGR N WLF",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/12/2025",
                 "home_team": "Friends WO Benefits",
                 "away_team": "Youre Stupid",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/12/2025",
                 "home_team": "Double Trouble",
                 "away_team": "Sugar And Spice",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/12/2025",
                 "home_team": "CRGR N WLF",
                 "away_team": "BFFs",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/19/2025",
                 "home_team": "CRGR N WLF",
                 "away_team": "Youre Stupid",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/19/2025",
                 "home_team": "Double Trouble",
                 "away_team": "BFFs",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/19/2025",
                 "home_team": "Friends WO Benefits",
                 "away_team": "Sugar And Spice",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/26/2025",
                 "home_team": "Youre Stupid",
                 "away_team": "BFFs",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/26/2025",
                 "home_team": "Double Trouble",
                 "away_team": "Friends WO Benefits",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/26/2025",
                 "home_team": "CRGR N WLF",
                 "away_team": "Sugar And Spice",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "02/02/2025",
                 "home_team": "Sugar And Spice",
                 "away_team": "Youre Stupid",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "02/02/2025",
                 "home_team": "BFFs",
                 "away_team": "Friends WO Benefits",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "02/02/2025",
                 "home_team": "CRGR N WLF",
                 "away_team": "Double Trouble",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/09/2025",
                 "home_team": "Youre Stupid",
                 "away_team": "Friends WO Benefits",
                 "location": "Pub 181"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/09/2025",
                 "home_team": "Double Trouble",
                 "away_team": "Sugar And Spice",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/09/2025",
                 "home_team": "BFFs",
                 "away_team": "CRGR N WLF",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/16/2025",
                 "home_team": "Double Trouble",
                 "away_team": "Youre Stupid",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/16/2025",
                 "home_team": "Friends WO Benefits",
                 "away_team": "CRGR N WLF",
                 "location": "Yazzie's Bar Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/16/2025",
                 "home_team": "Sugar And Spice",
                 "away_team": "BFFs",
                 "location": "Yazzie's Bar Grill"
-              }
+            }
             ]
-          },
-          {
+        },
+        {
             "flight": "CC Doubles - Flight B",
             "day": "Sunday",
             "time": "6:00 PM",
@@ -3765,704 +3863,704 @@
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
             "teams": [
-              {
+            {
                 "team_name": "Dirty Deeds",
                 "players": ["Bradley McGill", "Anthony Minjarez"],
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "team_name": "Minor Problem",
                 "players": ["Larry Minor", "Tina Bialas"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Raider Nation",
                 "players": ["Keith Ankeny", "Angel Mercado"],
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "team_name": "Slick Chicks",
                 "players": ["Tylene Bowman", "Crystal Morgan"],
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "team_name": "Vicious Vixens",
                 "players": ["Patty Hawes", "Jennifer Gentry"],
                 "location": "108 Bar N Grill"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/24/2024",
                 "home_team": "Vicious Vixens",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/24/2024",
                 "home_team": "Dirty Deeds",
                 "away_team": "Minor Problem",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/24/2024",
                 "home_team": "Raider Nation",
                 "away_team": "Slick Chicks",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/31/2024",
                 "home_team": "BYE",
                 "away_team": "Minor Problem",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/31/2024",
                 "home_team": "Dirty Deeds",
                 "away_team": "Raider Nation",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/31/2024",
                 "home_team": "Vicious Vixens",
                 "away_team": "Slick Chicks",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/07/2024",
                 "home_team": "Slick Chicks",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/07/2024",
                 "home_team": "Minor Problem",
                 "away_team": "Raider Nation",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/07/2024",
                 "home_team": "Vicious Vixens",
                 "away_team": "Dirty Deeds",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/14/2024",
                 "home_team": "BYE",
                 "away_team": "Raider Nation",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/14/2024",
                 "home_team": "Slick Chicks",
                 "away_team": "Dirty Deeds",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/14/2024",
                 "home_team": "Minor Problem",
                 "away_team": "Vicious Vixens",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/21/2024",
                 "home_team": "Dirty Deeds",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/21/2024",
                 "home_team": "Raider Nation",
                 "away_team": "Vicious Vixens",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/21/2024",
                 "home_team": "Slick Chicks",
                 "away_team": "Minor Problem",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/05/2024",
                 "home_team": "BYE",
                 "away_team": "Vicious Vixens",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/05/2024",
                 "home_team": "Minor Problem",
                 "away_team": "Dirty Deeds",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/05/2024",
                 "home_team": "Slick Chicks",
                 "away_team": "Raider Nation",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/12/2024",
                 "home_team": "Minor Problem",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/12/2024",
                 "home_team": "Raider Nation",
                 "away_team": "Dirty Deeds",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/12/2024",
                 "home_team": "Slick Chicks",
                 "away_team": "Vicious Vixens",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/19/2024",
                 "home_team": "BYE",
                 "away_team": "Slick Chicks",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/19/2024",
                 "home_team": "Raider Nation",
                 "away_team": "Minor Problem",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/19/2024",
                 "home_team": "Dirty Deeds",
                 "away_team": "Vicious Vixens",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/09/2025",
                 "home_team": "Raider Nation",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/09/2025",
                 "home_team": "Dirty Deeds",
                 "away_team": "Slick Chicks",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/09/2025",
                 "home_team": "Vicious Vixens",
                 "away_team": "Minor Problem",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/16/2025",
                 "home_team": "BYE",
                 "away_team": "Dirty Deeds",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/16/2025",
                 "home_team": "Vicious Vixens",
                 "away_team": "Raider Nation",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/16/2025",
                 "home_team": "Minor Problem",
                 "away_team": "Slick Chicks",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/23/2025",
                 "home_team": "Vicious Vixens",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/23/2025",
                 "home_team": "Dirty Deeds",
                 "away_team": "Minor Problem",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/23/2025",
                 "home_team": "Raider Nation",
                 "away_team": "Slick Chicks",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "BYE",
                 "away_team": "Minor Problem",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "Dirty Deeds",
                 "away_team": "Raider Nation",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "Vicious Vixens",
                 "away_team": "Slick Chicks",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/06/2025",
                 "home_team": "Slick Chicks",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/06/2025",
                 "home_team": "Minor Problem",
                 "away_team": "Raider Nation",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/06/2025",
                 "home_team": "Vicious Vixens",
                 "away_team": "Dirty Deeds",
                 "location": "108 Bar N Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "BYE",
                 "away_team": "Raider Nation",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "Slick Chicks",
                 "away_team": "Dirty Deeds",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "Minor Problem",
                 "away_team": "Vicious Vixens",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "Dirty Deeds",
                 "away_team": "BYE",
                 "location": "BYE"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "Raider Nation",
                 "away_team": "Vicious Vixens",
                 "location": "Silver Star"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "Slick Chicks",
                 "away_team": "Minor Problem",
                 "location": "Silver Star"
-              }
+            }
             ]
-          },
-          {
+        },
+        {
             "flight": "Elite Doubles",
             "day": "Thursday",
-            "time": "8:00 PM",
+            "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
             "teams": [
-              {
+            {
                 "team_name": "Brodacious",
                 "players": ["Jeff Post", "Rod Harris"],
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Flight Club",
                 "players": ["Cason Brinson", "Ron Morris"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Mischief Managed",
                 "players": ["Nils Nelson", "Mike Minor"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "No Bulls Hit",
                 "players": ["Gary Cruz", "Kent Giard"],
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "team_name": "Projectile Disfunct",
                 "players": ["Jason Snelson", "Doyle Foster"],
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "team_name": "Stupendous",
                 "players": ["Dave Windell", "Jay Phillips"],
                 "location": "Coach's Bar & Grill"
-              }
+            }
             ],
             "matches": [
-              {
+            {
                 "week": 1,
                 "date": "10/24/2024",
                 "home_team": "Projectile Disfunct",
                 "away_team": "Flight Club",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/24/2024",
                 "home_team": "Mischief Managed",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 1,
                 "date": "10/24/2024",
                 "home_team": "No Bulls Hit",
                 "away_team": "Stupendous",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/31/2024",
                 "home_team": "Flight Club",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/31/2024",
                 "home_team": "Mischief Managed",
                 "away_team": "No Bulls Hit",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 2,
                 "date": "10/31/2024",
                 "home_team": "Projectile Disfunct",
                 "away_team": "Stupendous",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/07/2024",
                 "home_team": "Stupendous",
                 "away_team": "Flight Club",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/07/2024",
                 "home_team": "Brodacious",
                 "away_team": "No Bulls Hit",
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 3,
                 "date": "11/07/2024",
                 "home_team": "Projectile Disfunct",
                 "away_team": "Mischief Managed",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/14/2024",
                 "home_team": "Flight Club",
                 "away_team": "No Bulls Hit",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/14/2024",
                 "home_team": "Stupendous",
                 "away_team": "Mischief Managed",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 4,
                 "date": "11/14/2024",
                 "home_team": "Brodacious",
                 "away_team": "Projectile Disfunct",
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/21/2024",
                 "home_team": "Mischief Managed",
                 "away_team": "Flight Club",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/21/2024",
                 "home_team": "No Bulls Hit",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 5,
                 "date": "11/21/2024",
                 "home_team": "Stupendous",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/05/2024",
                 "home_team": "Flight Club",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/05/2024",
                 "home_team": "Brodacious",
                 "away_team": "Mischief Managed",
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 6,
                 "date": "12/05/2024",
                 "home_team": "Stupendous",
                 "away_team": "No Bulls Hit",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/12/2024",
                 "home_team": "Brodacious",
                 "away_team": "Flight Club",
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/12/2024",
                 "home_team": "No Bulls Hit",
                 "away_team": "Mischief Managed",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 7,
                 "date": "12/12/2024",
                 "home_team": "Stupendous",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/19/2024",
                 "home_team": "Flight Club",
                 "away_team": "Stupendous",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/19/2024",
                 "home_team": "No Bulls Hit",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 8,
                 "date": "12/19/2024",
                 "home_team": "Mischief Managed",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/09/2025",
                 "home_team": "No Bulls Hit",
                 "away_team": "Flight Club",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/09/2025",
                 "home_team": "Mischief Managed",
                 "away_team": "Stupendous",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 9,
                 "date": "01/09/2025",
                 "home_team": "Projectile Disfunct",
                 "away_team": "Brodacious",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/16/2025",
                 "home_team": "Flight Club",
                 "away_team": "Mischief Managed",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/16/2025",
                 "home_team": "Projectile Disfunct",
                 "away_team": "No Bulls Hit",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 10,
                 "date": "01/16/2025",
                 "home_team": "Brodacious",
                 "away_team": "Stupendous",
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/23/2025",
                 "home_team": "Stupendous",
                 "away_team": "Flight Club",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/23/2025",
                 "home_team": "No Bulls Hit",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 11,
                 "date": "01/23/2025",
                 "home_team": "Mischief Managed",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "Flight Club",
                 "away_team": "No Bulls Hit",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "Stupendous",
                 "away_team": "Mischief Managed",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "Projectile Disfunct",
                 "away_team": "Brodacious",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/06/2025",
                 "home_team": "No Bulls Hit",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/06/2025",
                 "home_team": "Mischief Managed",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 13,
                 "date": "02/06/2025",
                 "home_team": "Flight Club",
                 "away_team": "Stupendous",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "Brodacious",
                 "away_team": "No Bulls Hit",
                 "location": "Yazzie's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "Stupendous",
                 "away_team": "Projectile Disfunct",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "Flight Club",
                 "away_team": "Mischief Managed",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "Projectile Disfunct",
                 "away_team": "Flight Club",
                 "location": "The Shang Sports Bar"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "Mischief Managed",
                 "away_team": "Brodacious",
                 "location": "Coach's Bar & Grill"
-              },
-              {
+            },
+            {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "No Bulls Hit",
                 "away_team": "Stupendous",
                 "location": "Coach's Bar & Grill"
-              }
+            }
             ]
-          }    
+        }    
     ]
 }
