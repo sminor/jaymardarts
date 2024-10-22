@@ -1,7 +1,7 @@
 {
     "schedules": [
         {
-            "flight": "A Doubles Flight A",
+            "flight": "A Doubles - Flight A",
             "day": "Sunday",
             "time": "6:00 PM",
             "reportlink": "https://leagueleader.net/sharedreport.php?operatorid=1635&code=bf19299b-57f8-4627-964a-deac87c0d821",
@@ -357,7 +357,7 @@
 
         },
         {
-            "flight": "A Doubles Flight B",
+            "flight": "A Doubles - Flight B",
             "day": "Sunday",
             "time": "6:00 PM",
             "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=5b08e9a6-2b4c-4827-bcc3-513b3d9e7cf1",
@@ -696,7 +696,7 @@
             ]
         },
         {
-            "flight": "B Doubles Flight A",
+            "flight": "B Doubles - Flight A",
             "day": "Monday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
@@ -941,7 +941,7 @@
             ]
           },
           {
-            "flight": "B Doubles Flight B",
+            "flight": "B Doubles - Flight B",
             "day": "Monday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
@@ -1296,7 +1296,7 @@
             ]
           },
           {
-            "flight": "B Doubles Flight C",
+            "flight": "B Doubles - Flight C",
             "day": "Monday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com", 
@@ -1651,7 +1651,7 @@
             ]
         },
         {
-            "flight": "BB Doubles Flight A",
+            "flight": "BB Doubles - Flight A",
             "day": "Wednesday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
@@ -2001,7 +2001,7 @@
             ]
         },
         {
-            "flight": "BB Doubles Flight B",
+            "flight": "BB Doubles - Flight B",
             "day": "Wednesday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
@@ -2241,7 +2241,7 @@
             ]
           },
           {
-            "flight": "BB Doubles Flight C",
+            "flight": "BB Doubles - Flight C",
             "day": "Wednesday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
@@ -2481,7 +2481,7 @@
             ]
         },
         {
-            "flight": "C Doubles Flight A",
+            "flight": "C Doubles - Flight A",
             "day": "Sunday",
             "time": "6:00 PM",
             "reportlink": "https://leagueleader.net/sharedreport.php?operatorid=1635&code=a78a2938-4db2-407a-81e1-057666758e1e",
@@ -2721,7 +2721,7 @@
             ]
           },
           {
-            "flight": "C Doubles Flight B",
+            "flight": "C Doubles - Flight B",
             "day": "Thursday",
             "time": "6:00 PM",
             "reportlink": "http://placeholder-link.com",
@@ -3076,7 +3076,7 @@
             ]
         },
           {
-            "flight": "CC Doubles Flight A",
+            "flight": "CC Doubles - Flight A",
             "day": "Sunday",
             "time": "2:30 PM",
             "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=832d3937-f9ed-48e4-bd45-59d3771d85f0",
@@ -3410,7 +3410,7 @@
             ]
           },
           {
-            "flight": "CC Doubles Flight B",
+            "flight": "CC Doubles - Flight B",
             "day": "Sunday",
             "time": "6:00 PM",
             "reportlink": "http://leagueleader.net/sharedreport.php?operatorid=1635&code=832d3937-f9ed-48e4-bd45-59d3771d85f0",
@@ -3760,7 +3760,7 @@
             ]
         },
         {
-            "flight": "CC Doubles Flight C",
+            "flight": "CC Doubles - Flight C",
             "day": "Thursday",
             "time": "7:00 PM",
             "reportlink": "http://placeholder-link.com",
