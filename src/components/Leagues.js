@@ -74,7 +74,7 @@ useEffect(() => {
         {flight.reportlink && (
           <p>
             <a href={flight.reportlink} target="_blank" rel="noopener noreferrer">
-              View Stats
+              View Standings
             </a>
           </p>
         )}
