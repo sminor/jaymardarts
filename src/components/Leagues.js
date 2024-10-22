@@ -212,23 +212,34 @@ useEffect(() => {
           </>
         );
 
-      case 'news':
-        return (
-          <>
-            <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
-            <h3 className="league-heading">ADL Fall League Sign-Ups Now Open!</h3>
-            <p>Get ready for an exciting season! Sign up today and secure your spot in the ADL Fall League.</p>
-            <p className="league-dates">
-              <span className="important-date">Sign-up ends October 5, 2024</span>, and <span className="important-date">leagues begin October 20</span>.
-            </p>
-            <p>
-              By playing in our league, you'll qualify for events in organizations such as the 
-              <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>, 
-              <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>, and the 
-              <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>. 
-            </p>
-          </>
-        );
+        case 'news':
+          return (
+            <>
+              <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
+              <h3 className="league-heading">The Fall 2024 League is Underway!</h3>
+              <p>With the weather outside getting colder, the competition on the dartboards is heating up! We've got 75 teams across 14 flights and 6 divisions battling it out for top honors.</p>
+              <p>Matches are in full swing, and the excitement is building with each passing week. Make sure to stay on top of your game by checking your schedule and standings regularly.</p>
+              <p>
+                Head over to the <strong style={{color: 'var(--highlight-color)'}}>"Schedules"</strong> tab to view your matchups and the latest standings for your flight.
+              </p>
+              <p>Whether you're fighting for the top spot or making your way up the rankings, every match counts. The camaraderie, thrill of competition, and the community spirit make this season truly special.</p>
+        
+              <p>And don't forget, by playing in our league, you'll qualify for events in organizations such as:</p>
+              <ul>
+                <li>
+                  <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>
+                </li>
+                <li>
+                  <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>
+                </li>
+                <li>
+                  <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>
+                </li>
+              </ul>
+        
+              <p>Keep up the energy and let’s make this one of our best seasons yet!</p>
+            </>
+          );
 
       case 'signup':
         return (
