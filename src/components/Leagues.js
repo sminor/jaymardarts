@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PlayerStatSearch from './PlayerStatSearch'; // Ensure the path is correct
+import PlayerStatSearch from './PlayerStatSearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import rulesSections from './LeagueRules'; // Correct import
-import leagueScheduleData from '../data/leagueSchedule.json'; //
+import rulesSections from './LeagueRules';
+import leagueScheduleData from '../data/leagueSchedule.json';
+import StandingsReport from './StandingsReport'; // Import the StandingsReport modal
 
 const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTabClick }) => {
   const [currentSection, setCurrentSection] = useState(0);
@@ -12,13 +13,14 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
   const [selectedTeam, setSelectedTeam] = useState('');
   const [scheduleData, setScheduleData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [modalUrl, setModalUrl] = useState(''); // URL for standings
 
-
-// Fetch the JSON for League Schedules when the component mounts
-useEffect(() => {
-  setScheduleData(leagueScheduleData);
-  setLoading(false);
-}, []);  // Empty dependency array to run only once on mount
+  // Fetch the JSON for League Schedules when the component mounts
+  useEffect(() => {
+    setScheduleData(leagueScheduleData);
+    setLoading(false);
+  }, []);
 
   const handleFlightChange = (event) => {
     setSelectedFlight(event.target.value);
@@ -34,6 +36,31 @@ useEffect(() => {
     setSelectedTeam(event.target.value);
   };
 
+  // Modal handling for Standings with actual content fetch
+  const openModal = (url) => {
+    // Set the URL for the standings report
+    setModalUrl(url);
+    setIsModalOpen(true);
+
+    // Get the width of the scrollbar
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    // Disable scrolling on the body and adjust padding to account for scrollbar width
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+
+    // Clear the modal content (URL)
+    setModalUrl('');
+
+    // Re-enable scrolling on the body and remove the padding adjustment
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  };
+
   const renderFlightData = () => {
     if (!selectedFlight || !scheduleData) return null;
   
@@ -46,39 +73,39 @@ useEffect(() => {
       acc[match.week].push(match);
       return acc;
     }, {});
-  
+
     // Filter matches by selected week and team
     const filteredMatches = Object.keys(matchesByWeek).reduce((acc, week) => {
       if (selectedWeek && week !== selectedWeek) return acc;
-  
+
       const filteredWeekMatches = matchesByWeek[week].filter(match => {
         if (selectedTeam && match.home_team !== selectedTeam && match.away_team !== selectedTeam) {
           return false;
         }
         return true;
       });
-  
+
       if (filteredWeekMatches.length > 0) {
         acc[week] = filteredWeekMatches;
       }
-  
+
       return acc;
     }, {});
-  
+
     return (
       <>
         {/* Flight name, day, and time */}
         <h3>{flight.flight} - {flight.day} {flight.time}</h3>
-  
-        {/* Add Report Link */}
+
+        {/* Add Standings Report Link */}
         {flight.reportlink && (
           <p>
-            <a href={flight.reportlink} target="_blank" rel="noopener noreferrer">
+            <button onClick={() => openModal(flight.reportlink)}>
               View Standings
-            </a>
+            </button>
           </p>
         )}
-  
+
         {/* Dropdowns for filtering */}
         <div>
           <label htmlFor="weekSelect">Filter by Week:</label>
@@ -88,7 +115,7 @@ useEffect(() => {
               <option key={week} value={week}>Week {week}</option>
             ))}
           </select>
-  
+
           <label htmlFor="teamSelect">Filter by Team:</label>
           <select id="teamSelect" value={selectedTeam} onChange={handleTeamChange}>
             <option value="">All Teams</option>
@@ -97,7 +124,7 @@ useEffect(() => {
             ))}
           </select>
         </div>
-  
+
         {/* Teams Section */}
         <div className="table-container">
           <h4>Teams</h4>
@@ -117,7 +144,7 @@ useEffect(() => {
               ))}
             </tbody>
           </table>
-  
+
           {/* Schedule Section */}
           <h4>Schedule</h4>
           <table className="schedule-table">
@@ -158,7 +185,6 @@ useEffect(() => {
       </>
     );
   };
-  
 
   const handleNextSection = () => {
     if (currentSection < rulesSections.length - 1) {
@@ -212,34 +238,34 @@ useEffect(() => {
           </>
         );
 
-        case 'news':
-          return (
-            <>
-              <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
-              <h3 className="league-heading">The Fall 2024 League is Underway!</h3>
-              <p>With the weather outside getting colder, the competition on the dartboards is heating up! We've got 75 teams across 14 flights and 6 divisions battling it out for top honors.</p>
-              <p>Matches are in full swing, and the excitement is building with each passing week. Make sure to stay on top of your game by checking your schedule and standings regularly.</p>
-              <p>
-                Head over to the <strong style={{color: 'var(--highlight-color)'}}>"Schedules"</strong> tab to view your matchups and the latest standings for your flight.
-              </p>
-              <p>Whether you're fighting for the top spot or making your way up the rankings, every match counts. The camaraderie, thrill of competition, and the community spirit make this season truly special.</p>
-        
-              <p>And don't forget, by playing in our league, you'll qualify for events in organizations such as:</p>
-              <ul>
-                <li>
-                  <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>
-                </li>
-                <li>
-                  <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>
-                </li>
-                <li>
-                  <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>
-                </li>
-              </ul>
-        
-              <p>Keep up the energy and let’s make this one of our best seasons yet!</p>
-            </>
-          );
+      case 'news':
+        return (
+          <>
+            <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
+            <h3 className="league-heading">The Fall 2024 League is Underway!</h3>
+            <p>With the weather outside getting colder, the competition on the dartboards is heating up! We've got 75 teams across 14 flights and 6 divisions battling it out for top honors.</p>
+            <p>Matches are in full swing, and the excitement is building with each passing week. Make sure to stay on top of your game by checking your schedule and standings regularly.</p>
+            <p>
+              Head over to the <strong style={{color: 'var(--highlight-color)'}}>"Schedules"</strong> tab to view your matchups and the latest standings for your flight.
+            </p>
+            <p>Whether you're fighting for the top spot or making your way up the rankings, every match counts. The camaraderie, thrill of competition, and the community spirit make this season truly special.</p>
+      
+            <p>And don't forget, by playing in our league, you'll qualify for events in organizations such as:</p>
+            <ul>
+              <li>
+                <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>
+              </li>
+              <li>
+                <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>
+              </li>
+              <li>
+                <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>
+              </li>
+            </ul>
+      
+            <p>Keep up the energy and let’s make this one of our best seasons yet!</p>
+          </>
+        );
 
       case 'signup':
         return (
@@ -374,6 +400,9 @@ useEffect(() => {
             </div>
           </>
         )}
+
+        {/* Modal for Standings Report */}
+        {isModalOpen && <StandingsReport statsUrl={modalUrl} onClose={closeModal} />}
       </div>
     </section>
   );
