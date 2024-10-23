@@ -30,6 +30,8 @@ const StandingsReport = ({ statsUrl, onClose }) => {
   const [topInfo, setTopInfo] = useState(''); // Track top info (league, date, division)
   const [footer, setFooter] = useState(''); // Track footer info
   const [sortConfig, setSortConfig] = useState({}); // For sorting each table independently
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [friendlyError, setFriendlyError] = useState(''); // Friendly error message state
 
   // Disable background scroll on modal open
   useEffect(() => {
@@ -73,7 +75,7 @@ const StandingsReport = ({ statsUrl, onClose }) => {
         });
 
         if (!response.ok) {
-          throw new Error(`Failed to fetch standings: ${response.statusText}`);
+          throw new Error('Could not fetch the report at the moment. Please try again later.');
         }
 
         const rawData = await response.json();
@@ -84,6 +86,10 @@ const StandingsReport = ({ statsUrl, onClose }) => {
         const doc = parser.parseFromString(htmlContent, 'text/html');
         const preElement = doc.querySelector('pre');
         const preText = preElement?.textContent || '';
+
+        if (!preText) {
+          throw new Error('It seems no matches have been played yet, so the report is unavailable.');
+        }
 
         // Extract top info (League, Date, Division)
         let topInfoContent = preText.match(/League:.*\n\nReport Date:.*\n\nDivision .*\n----------/);
@@ -112,9 +118,11 @@ const StandingsReport = ({ statsUrl, onClose }) => {
             &copy; 2024 Arachnid 360, LLC | Created by LeagueLeader with <span style="font-weight: bold;">ARACHNET™</span> processing
           </p>
         `);
+
+        setIsLoading(false); // Set loading to false after fetching data
       } catch (error) {
-        console.error('Error fetching standings:', error);
-        setReportContent([{ title: 'Error', data: [['Error loading report']], id: 'error' }]);
+        setIsLoading(false); // Stop loading
+        setFriendlyError(error.message); // Set a friendly error message
       }
     };
 
@@ -140,52 +148,63 @@ const StandingsReport = ({ statsUrl, onClose }) => {
         {/* Add H2 Heading for JayMar Darts */}
         <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>JayMar Darts</h2>
 
-        {/* Render top information */}
-        {topInfo && <div dangerouslySetInnerHTML={{ __html: topInfo }} />}
+        {/* Display loading message while fetching data */}
+        {isLoading ? (
+          <div style={{ textAlign: 'center', marginTop: '20px' }}>Loading report, please wait...</div>
+        ) : friendlyError ? (
+          <div style={{ textAlign: 'center', marginTop: '20px' }}>
+            {friendlyError}
+          </div>
+        ) : (
+          <>
+            {/* Render top information */}
+            {topInfo && <div dangerouslySetInnerHTML={{ __html: topInfo }} />}
 
-        {/* Render tables */}
-        {reportContent.map((section) => (
-          section.data && (
-            <div key={section.id} className="table-container">
-              <h3>{section.title}</h3>
-              <table className="teams-table schedule-table">
-                <thead>
-                  <tr>
-                    {section.data.headers.map((header, colIndex) => (
-                      <th
-                        key={colIndex}
-                        onClick={() => handleSort(colIndex, section.id)}
-                        style={{ cursor: 'pointer' }}
-                      >
-                        {header} {renderSortIndicator(section.id, colIndex)}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {sortConfig[section.id]
-                    ? sortData(section.data.dataRows, sortConfig[section.id].column, sortConfig[section.id].direction).map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                          {row.map((cell, cellIndex) => (
-                            <td key={cellIndex}>{cell}</td>
+            {/* Render tables */}
+            {reportContent.map((section) => (
+              section.data && (
+                <div key={section.id} className="table-container">
+                  <h3>{section.title}</h3>
+                  <table className="teams-table schedule-table">
+                    <thead>
+                      <tr>
+                        {section.data.headers.map((header, colIndex) => (
+                          <th
+                            key={colIndex}
+                            onClick={() => handleSort(colIndex, section.id)}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            {header} {renderSortIndicator(section.id, colIndex)}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sortConfig[section.id]
+                        ? sortData(section.data.dataRows, sortConfig[section.id].column, sortConfig[section.id].direction).map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                              {row.map((cell, cellIndex) => (
+                                <td key={cellIndex}>{cell}</td>
+                              ))}
+                            </tr>
+                          ))
+                        : section.data.dataRows.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                              {row.map((cell, cellIndex) => (
+                                <td key={cellIndex}>{cell}</td>
+                              ))}
+                            </tr>
                           ))}
-                        </tr>
-                      ))
-                    : section.data.dataRows.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                          {row.map((cell, cellIndex) => (
-                            <td key={cellIndex}>{cell}</td>
-                          ))}
-                        </tr>
-                      ))}
-                </tbody>
-              </table>
-            </div>
-          )
-        ))}
+                    </tbody>
+                  </table>
+                </div>
+              )
+            ))}
 
-        {/* Render footer */}
-        {footer && <div dangerouslySetInnerHTML={{ __html: footer }} />}
+            {/* Render footer */}
+            {footer && <div dangerouslySetInnerHTML={{ __html: footer }} />}
+          </>
+        )}
       </div>
     </div>
   );
