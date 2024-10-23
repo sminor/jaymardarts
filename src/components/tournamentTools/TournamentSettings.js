@@ -1,30 +1,28 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ABDraw from './tournamentTypes/ABDraw';
 import BlindDraw from './tournamentTypes/BlindDraw';
+import ABCTriosDraw from './tournamentTypes/ABCTriosDraw';
+import Bring from './tournamentTypes/Bring';
+import Parity from './tournamentTypes/Parity';
 
 const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
-  // Initialize selectedType from localStorage or fallback to an empty string
   const [selectedType, setSelectedType] = useState(() => {
     const savedType = localStorage.getItem('selectedTournamentType');
-    return savedType ? savedType : ''; // If no saved type, set to empty string
+    return savedType ? savedType : ''; 
   });
 
-  // Reset function to reset selectedType
   const reset = useCallback(() => {
-    setSelectedType(''); // Reset the selection
+    setSelectedType(''); 
   }, []);
 
-  // Register the reset function on component mount
   useEffect(() => {
     registerResetFunction(reset);
   }, [registerResetFunction, reset]);
 
-  // Save selectedType to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('selectedTournamentType', selectedType);
   }, [selectedType]);
 
-  // Handle change in tournament type
   const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
   };
@@ -39,8 +37,10 @@ const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
         <select onChange={handleTypeChange} value={selectedType}>
           <option value="">--- Please Select ---</option>
           <option value="abDraw">A/B Draw</option>
-          <option value="blindDraw">Blind Draw</option> 
-          {/* Add other tournament types here */}
+          <option value="blindDraw">Blind Draw</option>
+          <option value="abcTriosDraw">A/B/C Trios Draw</option>
+          <option value="bring">Partner Bring</option>
+          <option value="parity">Parity/Low Player Pick</option>
         </select>
       </div>
 
@@ -51,8 +51,15 @@ const TournamentSettings = ({ tournamentPlayers, registerResetFunction }) => {
       {selectedType === 'blindDraw' && (
         <BlindDraw tournamentPlayers={tournamentPlayers} />
       )}
-
-      {/* Add future tournament types as needed */}
+      {selectedType === 'abcTriosDraw' && (
+        <ABCTriosDraw tournamentPlayers={tournamentPlayers} />
+      )}
+      {selectedType === 'bring' && (
+        <Bring tournamentPlayers={tournamentPlayers} />
+      )}
+      {selectedType === 'parity' && (
+        <Parity tournamentPlayers={tournamentPlayers} />
+      )}
     </div>
   );
 };

@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import TournamentHelper from '../TournamentHelper';
 
-
 const ItemType = 'PLAYER';
 
 const PlayerCard = ({ player, index, swapPlayers, listType }) => {
@@ -76,19 +75,19 @@ const BlindDraw = ({ tournamentPlayers }) => {
     generateTeamsAndPairs(newPlayer1List, newPlayer2List);
   }, [tournamentPlayers]);
 
-  // Generate team names and paired players
+  // Generate team names and paired players (just like ABDraw)
   const generateTeamsAndPairs = (player1List, player2List) => {
     const teams = [];
     const pairs = [];
-  
+
     for (let i = 0; i < player1List.length; i++) {
-      const player1 = player1List[i]?.name.split(' ')[0] || ''; // Get only the first name
-      const player2 = player2List[i]?.name.split(' ')[0] || ''; // Get only the first name
-  
-      teams.push(`${player1} and ${player2}`);
-      pairs.push([player1, player2]);
+      const player1Name = player1List[i]?.name || ''; // Full name
+      const player2Name = player2List[i]?.name || ''; // Full name
+
+      teams.push(`${player1Name.split(' ')[0]} and ${player2Name.split(' ')[0]}`);
+      pairs.push([player1Name, player2Name]); // Full names
     }
-  
+
     setTeamNames(teams);
     setPairedPlayers(pairs);
   };
@@ -185,7 +184,7 @@ const BlindDraw = ({ tournamentPlayers }) => {
       <TournamentHelper 
         teamData={{ 
           teams: teamNames, 
-          players: pairedPlayers
+          players: pairedPlayers // Pass paired players here
         }} 
       />
     </DndProvider>
