@@ -99,17 +99,19 @@ const StandingsReport = ({ statsUrl, onClose }) => {
         }
 
         // Extract and parse tables
-        const sections = preText.split(/(?:Team Standings, sorted by Percent Wins|All X01 games, sorted by Percent Wins:|Cricket \/ 200 games, sorted by Percent Wins:)/).map(part => part.trim());
+        const sections = preText.split(/(?:Team Standings, sorted by Percent Wins|Last Match Results|All X01 games, sorted by Percent Wins:|All Cricket games, sorted by Percent Wins:)/).map(part => part.trim());
 
         const teamStandings = sections[1] ? parseAsciiTable(sections[1]) : null;
-        const x01Games = sections[2] ? parseAsciiTable(sections[2]) : null;
-        const cricketGames = sections[3] ? parseAsciiTable(sections[3]) : null;
+        const lastMatchResults = sections[2] ? parseAsciiTable(sections[2]) : null;
+        const x01Games = sections[3] ? parseAsciiTable(sections[3]) : null;
+        const cricketGames = sections[4] ? parseAsciiTable(sections[4]) : null;
 
         // Set report content
         setReportContent([
           { title: 'Team Standings, sorted by Percent Wins', data: teamStandings, id: 'teamStandings' },
+          { title: 'Last Match Results', data: lastMatchResults, id: 'lastMatchResults' },
           { title: 'All X01 games, sorted by Percent Wins', data: x01Games, id: 'x01Games' },
-          { title: 'Cricket / 200 games, sorted by Percent Wins', data: cricketGames, id: 'cricketGames' }
+          { title: 'All Cricket games, sorted by Percent Wins', data: cricketGames, id: 'cricketGames' }
         ]);
 
         // Set footer content
