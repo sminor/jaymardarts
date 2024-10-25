@@ -220,7 +220,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
       case 'schedule':
         return (
           <>
-            <h3>League Schedules</h3>
+            <h3>Schedules & Standings</h3>
             {loading ? (
               <p>Loading schedule...</p>
             ) : (
@@ -246,7 +246,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             <p>With the weather outside getting colder, the competition on the dartboards is heating up! We've got 75 teams across 14 flights and 6 divisions battling it out for top honors.</p>
             <p>Matches are in full swing, and the excitement is building with each passing week. Make sure to stay on top of your game by checking your schedule and standings regularly.</p>
             <p>
-              Head over to the <strong style={{color: 'var(--highlight-color)'}}>"Schedules"</strong> tab to view your matchups and the latest standings for your flight.
+              Head over to the <strong style={{color: 'var(--highlight-color)'}}>"Schedules & Standings"</strong> tab to view your matchups and the latest standings for your flight.
             </p>
             <p>Whether you're fighting for the top spot or making your way up the rankings, every match counts. The camaraderie, thrill of competition, and the community spirit make this season truly special.</p>
       
@@ -374,7 +374,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
               {renderContent('rules')}
             </div>
 
-            <button className="accordion" data-tab="schedule" onClick={() => toggleAccordionWithScroll('schedule')}>Schedules</button>
+            <button className="accordion" data-tab="schedule" onClick={() => toggleAccordionWithScroll('schedule')}>Schedules & Standings</button>
             <div id="schedule" className="accordion-content" style={{ display: accordionOpen['schedule'] ? 'block' : 'none', minHeight: '100vh' }}>
               {renderContent('schedule')}
             </div>
@@ -391,7 +391,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
               <button className={`tab-button ${activeTab === 'signup' ? 'active' : ''}`} onClick={() => handleTabClick('signup')}>Sign-Up Forms</button>
               <button className={`tab-button ${activeTab === 'fees' ? 'active' : ''}`} onClick={() => handleTabClick('fees')}>Fees</button>
               <button className={`tab-button ${activeTab === 'rules' ? 'active' : ''}`} onClick={() => handleTabClick('rules')}>Rules</button>
-              <button className={`tab-button ${activeTab === 'schedule' ? 'active' : ''}`} onClick={() => handleTabClick('schedule')}>Schedules</button>
+              <button className={`tab-button ${activeTab === 'schedule' ? 'active' : ''}`} onClick={() => handleTabClick('schedule')}>Schedules & Standings</button>
               <button className={`tab-button ${activeTab === 'stats' ? 'active' : ''}`} onClick={() => handleTabClick('stats')}>Player Stats</button>
             </div>
 
