@@ -126,5 +126,13 @@
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
+  },  
+  {
+    "date": "Friday, November 1st",
+    "formattedDate": "2024-11-01",
+    "type": "A/B Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
   }
 ]
