@@ -5,6 +5,8 @@ import { faCircleChevronRight, faCircleChevronLeft } from '@fortawesome/free-sol
 import rulesSections from './LeagueRules';
 import leagueScheduleData from '../data/leagueSchedule.json';
 import StandingsReport from './StandingsReport'; // Import the StandingsReport modal
+import SubRescheduleForm from './SubRescheduleForm';
+
 
 const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTabClick }) => {
   const [currentSection, setCurrentSection] = useState(0);
@@ -15,6 +17,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [modalUrl, setModalUrl] = useState(''); // URL for standings
+  const [isSubRescheduleModalOpen, setIsSubRescheduleModalOpen] = useState(false); // For Substitute/Reschedule
 
   // Fetch the JSON for League Schedules when the component mounts
   useEffect(() => {
@@ -221,6 +224,17 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
         return (
           <>
             <h3>Schedules & Standings</h3>
+            <p>
+              If you need to substitute a player or reschedule a match, 
+              please <button 
+                        className='button2link'
+                        onClick={() => setIsSubRescheduleModalOpen(true)} 
+                      >
+                        click here
+                      </button> 
+              &nbsp;to provide the necessary details. We will respond as quickly as possible to confirm your request. 
+              Please note that changes are not finalized until you have received a confirmation from us.
+            </p>
             {loading ? (
               <p>Loading schedule...</p>
             ) : (
@@ -235,8 +249,23 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
                 {renderFlightData()}
               </>
             )}
+            
+            {/* Render SubReschduleForm as a modal if isSubRescheduleModalOpen is true */}
+            {isSubRescheduleModalOpen && (
+              <div className="modal-overlay">
+                <SubRescheduleForm onClose={() => setIsSubRescheduleModalOpen(false)} />
+              </div>
+            )}
+            
+            {/* Standings Report Modal */}
+            {isModalOpen && (
+              <div className="modal-overlay">
+                <StandingsReport statsUrl={modalUrl} onClose={() => setIsModalOpen(false)} />
+              </div>
+            )}
           </>
         );
+
 
       case 'news':
         return (

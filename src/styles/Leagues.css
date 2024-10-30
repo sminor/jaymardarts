@@ -285,6 +285,20 @@ td.week-heading {
   cursor: pointer;
 }
 
+.button2link {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button2link:hover {
+  background: none;
+  text-decoration: underline;
+
+}
+
 
 /* If content is too long, let the buttons flow naturally */
 @media (min-height: 800px) { 

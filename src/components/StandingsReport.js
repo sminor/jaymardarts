@@ -26,12 +26,12 @@ const parseAsciiTable = (asciiTable) => {
 };
 
 const StandingsReport = ({ statsUrl, onClose }) => {
-  const [reportContent, setReportContent] = useState([]);
-  const [topInfo, setTopInfo] = useState(''); // Track top info (league, date, division)
-  const [footer, setFooter] = useState(''); // Track footer info
-  const [sortConfig, setSortConfig] = useState({}); // For sorting each table independently
-  const [isLoading, setIsLoading] = useState(true); // Loading state
-  const [friendlyError, setFriendlyError] = useState(''); // Friendly error message state
+const [reportContent, setReportContent] = useState([]);
+const [topInfo, setTopInfo] = useState(''); // Track top info (league, date, division)
+const [footer, setFooter] = useState(''); // Track footer info
+const [sortConfig, setSortConfig] = useState({}); // For sorting each table independently
+const [isLoading, setIsLoading] = useState(true); // Loading state
+const [friendlyError, setFriendlyError] = useState(''); // Friendly error message state
 
   // Disable background scroll on modal open
   useEffect(() => {
