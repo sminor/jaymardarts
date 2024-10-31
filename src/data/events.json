@@ -1,136 +1,10 @@
-[
-  {
-    "date": "Friday, September 6th",
-    "formattedDate": "2024-09-06",
-    "type": "A/B Draw Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, September 7th",
-    "formattedDate": "2024-09-07",
-    "type": "Gotcha/Cricket/Choice Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, September 13th",
-    "formattedDate": "2024-09-13",
-    "type": "Low Player Pick Cricket/01/Choice Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, September 14th",
-    "formattedDate": "2024-09-14",
-    "type": "A/B Draw Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, September 20th",
-    "formattedDate": "2024-09-20",
-    "type": "MPRT Shoot A/B Draw Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, September 21st",
-    "formattedDate": "2024-09-21",
-    "type": "All 501 Freeze A/B Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, September 27th",
-    "formattedDate": "2024-09-27",
-    "type": "Blind Draw Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, September 28th",
-    "formattedDate": "2024-09-28",
-    "type": "20 PT Cap Bring Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$20 per team"
-  },
-  {
-    "date": "Saturday, October 5th",
-    "formattedDate": "2024-10-05",
-    "type": "Blind Draw Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, October 12th",
-    "formattedDate": "2024-10-12",
-    "type": "18 PT Cap Bring Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$20 per team"
-  },
-  {
-    "date": "Saturday, October 19th",
-    "formattedDate": "2024-10-19",
-    "type": "NADO Invitation Event",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "Invite only",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, October 26th",
-    "formattedDate": "2024-10-26",
-    "type": "A/B/C Trios Handicapped",
-    "location": "Coach's Bar & Grill",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, October 4th",
-    "formattedDate": "2024-10-04",
-    "type": "Low Player Pick Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, October 11th",
-    "formattedDate": "2024-10-11",
-    "type": "WaCKy ShOot! Gotcha/Crazy Cricket Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, October 18th",
-    "formattedDate": "2024-10-18",
-    "type": "A/B Draw Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Friday, October 25th",
-    "formattedDate": "2024-10-25",
-    "type": "21 PT Cap Bring Handicapped",
-    "location": "Silver Star Saloon",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },  
+[ 
   {
     "date": "Friday, November 1st",
     "formattedDate": "2024-11-01",
-    "type": "A/B Draw Handicapped",
+    "eventName": "A/B Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -138,15 +12,19 @@
   {
     "date": "Friday, November 8th",
     "formattedDate": "2024-11-08",
-    "type": "17 PT Bring Handicapped",
+    "eventName": "17 Point Bring",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "17 Point Bring Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
+    "entryFee": "$20 per team"
   },
   {
     "date": "Friday, November 15th",
     "formattedDate": "2024-11-15",
-    "type": "Low Player Pick, Diddle and Throws First",
+    "eventName": "Low Player Pick, Diddle and Throws First",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Low Player Pick Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -154,7 +32,9 @@
   {
     "date": "Friday, November 22nd",
     "formattedDate": "2024-11-22",
-    "type": "House Darts (A/B Draw) Handicapped",
+    "eventName": "House Darts",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -162,15 +42,20 @@
   {
     "date": "Friday, November 29th",
     "formattedDate": "2024-11-29",
-    "type": "Parity Draw Handicapped",
+    "eventName": "Parity Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Parity Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
+    "entryFee": "$10 per person",
+    "specialIndicator": "Thanksgiving"
   },
   {
     "date": "Saturday, November 2nd",
     "formattedDate": "2024-11-02",
-    "type": "Blind Draw Handicapped",
+    "eventName": "Blind Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Blind Draw Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -178,7 +63,9 @@
   {
     "date": "Saturday, November 9th",
     "formattedDate": "2024-11-09",
-    "type": "Ladies Pick > A/B Draw",
+    "eventName": "Ladies Pick",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Ladies Pick (Random Order) - Remaining players will be A/B Draw",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -186,15 +73,21 @@
   {
     "date": "Saturday, November 16th",
     "formattedDate": "2024-11-16",
-    "type": "MPRT Shoot A/B Draw Handicapped",
+    "eventName": "MPRT Shoot - Come get NADO Points!",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
+    "entryFee": "$10 per person",
+    "specialIndicator": "MPRT"
+
   },
   {
     "date": "Saturday, November 23rd",
     "formattedDate": "2024-11-23",
-    "type": "Freeze/Cricket (A/B Draw) Handicapped",
+    "eventName": "501 Freeze and Cricket",
+    "eventGames": "501 Freeze/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -202,7 +95,9 @@
   {
     "date": "Saturday, November 30th",
     "formattedDate": "2024-11-30",
-    "type": "A/B Draw Handicapped",
+    "eventName": "A/B Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B/C Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -210,7 +105,9 @@
   {
     "date": "Saturday, December 7th",
     "formattedDate": "2024-12-07",
-    "type": "501 small-board/Cricket regular A/B Draw Handicapped",
+    "eventName": "501 Small Board",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -218,7 +115,9 @@
   {
     "date": "Saturday, December 14th",
     "formattedDate": "2024-12-14",
-    "type": "Crazy Cricket/Choice A/B Draw Handicapped",
+    "eventName": "Crazy Cricket",
+    "eventGames": "501/Crazy Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -226,15 +125,21 @@
   {
     "date": "Saturday, December 21st",
     "formattedDate": "2024-12-21",
-    "type": "Chris's B-Day Shoot! 17 PT Bring with Christmas Bonus!",
+    "eventName": "Chris' Birthday Bring and Christmas Bonus!",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "17 Point Bring Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
+    "entryFee": "$20 per team",
+    "specialIndicator": "Christmas"
+
   },
   {
     "date": "Saturday, December 28th",
     "formattedDate": "2024-12-28",
-    "type": "A/B Draw Handicapped - Master Out",
+    "eventName": "A/B Draw - Master Out",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Coach's Bar & Grill",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -242,7 +147,9 @@
   {
     "date": "Friday, December 6th",
     "formattedDate": "2024-12-06",
-    "type": "A/B Draw Handicapped",
+    "eventName": "A/B Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -250,7 +157,9 @@
   {
     "date": "Friday, December 13th",
     "formattedDate": "2024-12-13",
-    "type": "A/B Draw - Low Player Diddle, and Throws First",
+    "eventName": "Low Player Diddle and Throws First",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -258,7 +167,9 @@
   {
     "date": "Friday, December 20th",
     "formattedDate": "2024-12-20",
-    "type": "Blind Draw Handicapped",
+    "eventName": "Blind Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Blind Draw Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
@@ -266,7 +177,9 @@
   {
     "date": "Friday, December 27th",
     "formattedDate": "2024-12-27",
-    "type": "A/B/C Draw Handicapped",
+    "eventName": "A/B/C Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B/C Handicapped",
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"

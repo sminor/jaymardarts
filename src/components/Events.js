@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBullseye, faLocationDot, faClock, faDollarSign, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faBullseye, faLocationDot, faClock, faDollarSign, faChevronDown, faChevronUp, faCalendarDays, faShuffle, faStar, faCakeCandles, faDrumstickBite, faSnowflake } from '@fortawesome/free-solid-svg-icons';
 
 const Events = ({ sortedEvents }) => {
   const [isCollapsedNewPlayer, setIsCollapsedNewPlayer] = useState(true);
   const [isCollapsedConduct, setIsCollapsedConduct] = useState(true);
   const [isCollapsedPastEvents, setIsCollapsedPastEvents] = useState(true); // State for past events
+
+  const getSpecialIcon = (indicator) => {
+    switch(indicator) {
+      case 'MPRT': return <FontAwesomeIcon icon={faStar} title="MPRT Shoot" />;
+      case 'Birthday': return <FontAwesomeIcon icon={faCakeCandles} title="Birthday Event" />;
+      case 'Thanksgiving': return <FontAwesomeIcon icon={faDrumstickBite} title="Happy Thanksgiving" />;
+      case 'Christmas': return <FontAwesomeIcon icon={faSnowflake} title="Merry Christmas" />;
+      
+      default: return null;
+    }
+  };
 
   // Detect if the user is on iPhone or Android
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -119,10 +130,27 @@ const Events = ({ sortedEvents }) => {
           {upcomingEvents.length > 0 ? (
             upcomingEvents.map((event, index) => (
               <div key={index} className="event-item">
-                <div className="event-date">{event.date}</div>
-                <div className="event-type">
+                {/* MPRT Badge */}
+                {event.specialIndicator === 'MPRT' && (
+                  <span className="mprt-badge">MPRT Event</span>
+                )}
+                <div className="event-name">
+                  <h3>
+                    {event.eventName}&nbsp;
+                    {event.specialIndicator && getSpecialIcon(event.specialIndicator)}
+                  </h3>
+                </div>
+                <div className="event-date">
+                  <FontAwesomeIcon icon={faCalendarDays} className="event-icons" />
+                  <span>{event.date}</span>
+                </div>
+                <div className="event-games">
                   <FontAwesomeIcon icon={faBullseye} className="event-icons" />
-                  <span> Type: {event.type}</span>
+                  <span> Games: {event.eventGames}</span>
+                </div>
+                <div className="event-draw">
+                  <FontAwesomeIcon icon={faShuffle} className="event-icons" />
+                  <span> Draw Type: {event.drawType}</span>
                 </div>
                 <div className="event-location">
                   <FontAwesomeIcon icon={faLocationDot} className="event-icons" />
@@ -156,10 +184,23 @@ const Events = ({ sortedEvents }) => {
               {pastEvents.length > 0 ? (
                 pastEvents.map((event, index) => (
                   <div key={index} className="event-item past-event">
-                    <div className="event-date strikethrough">{event.date}</div>
-                    <div className="event-type">
+                    <div className="event-name">
+                      <h3>
+                        {event.eventName}&nbsp;
+                        {event.specialIndicator && getSpecialIcon(event.specialIndicator)}
+                      </h3>
+                    </div>
+                    <div className="event-date">
+                      <FontAwesomeIcon icon={faCalendarDays} className="event-icons" />
+                      <span className="strikethrough">{event.date}</span>
+                    </div>
+                    <div className="event-games">
                       <FontAwesomeIcon icon={faBullseye} className="event-icons" />
-                      <span> Type: {event.type}</span>
+                      <span> Games: {event.eventGames}</span>
+                    </div>
+                    <div className="event-draw">
+                      <FontAwesomeIcon icon={faShuffle} className="event-icons" />
+                      <span> Draw Type: {event.drawType}</span>
                     </div>
                     <div className="event-location">
                       <FontAwesomeIcon icon={faLocationDot} className="event-icons" />
