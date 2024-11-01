@@ -225,7 +225,7 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
           <>
             <h3>Schedules & Standings</h3>
             <p>
-              If you need to substitute a player or reschedule a match, 
+              If you need to submit a substitute player or reschedule a match, 
               please <button 
                         className='button2link'
                         onClick={() => setIsSubRescheduleModalOpen(true)} 
