@@ -38,9 +38,10 @@ a:hover {
   flex-direction: column;
   justify-content: flex-start; /* Start layout from the top */
   align-items: center;
-  height: 100vh;
-  padding-top: 80px; /* Adjust padding to ensure the logo doesn't overlap the navbar */
+  padding-top: 120px; /* Increased padding to avoid overlap with the fixed navbar */
   position: relative;
+  min-height: 85vh; /* Maintain a consistent space for content while allowing expansion */
+  box-sizing: border-box;
 }
 
 .App-logo {
@@ -48,8 +49,32 @@ a:hover {
   height: auto; /* Keep the aspect ratio intact */
   max-height: 50vh; /* Maximum height is 50% of the viewport height */
   margin-top: 10px; /* Adjust margin to prevent overlap with the navbar */
-  padding-top: 10px; /* Extra space from the navbar */
   object-fit: contain; /* Ensure the logo scales properly within its container */
+}
+
+.info-announcement {
+  background-color: var(--tertiary-bg); /* Light background color to make it noticeable */
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px; /* Adds space below to avoid overlap with arrows */
+  border: 1px solid var(--highlight-color); /* Border to add emphasis */
+  border-radius: 5px;
+  font-size: 1rem; /* Adjust font size as needed */
+  width: 48%;
+  text-align: center;
+}
+
+.info-announcement p {
+  margin: 0;
+  color: var(--text-primary); /* Dark text for readability */
+}
+
+.info-announcement-title {
+  text-align: center;
+}
+
+.info-announcement-body {
+  text-align: left;
 }
 
 /* Navigation */
@@ -221,15 +246,15 @@ select:focus, textarea:focus, input:focus {
 }
 
 .arrow-container {
-  position: absolute;
-  /* bottom: 200px; /* Adjust this value to control how close to the bottom the arrows appear */
-  bottom: 15vh; 
+  position: relative; /* Adjust to prevent overlap with the info announcement */
+  top: 20px; /* Adjust as needed to align properly below the info announcement */
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   height: 120px;
   overflow: hidden;
+  margin-top: 20px; /* Extra space to ensure separation from info announcement */
 }
 
 .arrows {
