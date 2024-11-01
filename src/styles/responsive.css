@@ -167,7 +167,7 @@
   }
 /* ========== Tablet-Specific Styles ========== */
 @media (min-width: 769px) and (max-width: 1440px) {
-  .App-section {
+  .App-section, .info-announcement {
     width: 70%;
     margin: auto;
   }
@@ -175,7 +175,7 @@
 
 /* Desktop Specific Adjustments */
 @media (min-width: 1441px) {
-  .App-section {
+  .App-section, .info-announcement {
     width: 50%;
     margin: auto;
   }
