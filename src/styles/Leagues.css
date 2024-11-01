@@ -293,10 +293,22 @@ td.week-heading {
   text-decoration: none;
   cursor: pointer;
 }
+
 .button2link:hover {
   background: none;
   text-decoration: underline;
+}
 
+.sub-info {
+  background-color: var(--tertiary-bg);
+  padding: 0 .8em;
+  border-radius: 4px;
+  border-width: 1px;
+  border: 1px solid var(--highlight-color);
+}
+
+.sub-info li {
+  font-size: .9em;
 }
 
 

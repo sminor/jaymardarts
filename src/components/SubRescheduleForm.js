@@ -142,6 +142,20 @@ const SubRescheduleForm = ({ onClose }) => {
                 <option value="Substitute Player">Substitute Player</option>
               </select>
 
+              {formData.requestType === 'Substitute Player' && (
+                <>
+                    <div className="sub-info">
+                    <p><strong>Substitute Player Requirements</strong></p>
+                    <ol>
+                        <li>Substitute players cannot be active on any team within the same division.</li>
+                        <li>Substitute players must have an ADL rating equal to or lower than the player they are replacing.</li>
+                        <li>The team is responsible for finding an eligible substitute who meets the above criteria.</li>
+                    </ol>
+                    </div>
+                </>
+              )}
+
+
               <label>Flight</label>
               <select name="flight" value={formData.flight} onChange={handleInputChange} required>
                 <option value="">-- Select a Flight --</option>
