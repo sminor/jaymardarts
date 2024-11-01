@@ -40,7 +40,7 @@ a:hover {
   align-items: center;
   padding-top: 120px; /* Increased padding to avoid overlap with the fixed navbar */
   position: relative;
-  min-height: 85vh; /* Maintain a consistent space for content while allowing expansion */
+  min-height: 100vh; /* Maintain a consistent space for content while allowing expansion */
   box-sizing: border-box;
 }
 
@@ -48,7 +48,6 @@ a:hover {
   max-width: 100%; /* Logo should not exceed 100% of the container’s width */
   height: auto; /* Keep the aspect ratio intact */
   max-height: 50vh; /* Maximum height is 50% of the viewport height */
-  margin-top: 10px; /* Adjust margin to prevent overlap with the navbar */
   object-fit: contain; /* Ensure the logo scales properly within its container */
 }
 
@@ -56,11 +55,9 @@ a:hover {
   background-color: var(--tertiary-bg); /* Light background color to make it noticeable */
   padding: 10px 20px;
   margin-top: 10px;
-  margin-bottom: 20px; /* Adds space below to avoid overlap with arrows */
   border: 1px solid var(--highlight-color); /* Border to add emphasis */
   border-radius: 5px;
   font-size: 1rem; /* Adjust font size as needed */
-  width: 48%;
   text-align: center;
 }
 
@@ -116,6 +113,11 @@ a:hover {
   margin: 0 auto;
   box-sizing: border-box;
   min-height: 100vh;
+}
+
+/* Remove 100vh for specific sections */
+.App-section-no-min-height {
+  min-height: auto; /* Overrides 100vh */
 }
 
 .info-box {

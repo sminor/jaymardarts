@@ -198,6 +198,7 @@ return (
               <header className="App-header">
                 <img src={logo} className="App-logo" alt="JayMar Darts Logo" />
                 {/* Informational Block */}
+                <section id="announcement" className="App-section App-section-no-min-height">
                 <div className="info-announcement">
                   <p className="info-announcement-title">
                     <strong>Important Update for League Players and Tournament Participants:</strong><br /><br />
@@ -210,6 +211,7 @@ return (
                     We’ll notify teams and players as soon as new arrangements are confirmed. Thank you for your patience and understanding, and we look forward to continuing a fantastic league season and tournament lineup!
                   </p>
                 </div>
+                </section>
                 <div className="arrow-container">
                   <div className="arrows">
                     <div className="arrow-wrapper">
