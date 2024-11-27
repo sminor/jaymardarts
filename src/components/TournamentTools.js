@@ -19,7 +19,7 @@ const TournamentTools = () => {
       setAuthenticated(true);
       sessionStorage.setItem('authenticated', 'true');
       handleMessage('Authentication bypassed for testing.', 'success');
-    } else if (password === process.env.REACT_APP_TOOLS_PASSWORD) {
+    } else if (password === process.env.REACT_APP_TOOLS_PASSWORD || password === process.env.REACT_APP_TOOLS_PASSWORD_DEMO) {
       setAuthenticated(true);
       sessionStorage.setItem('authenticated', 'true');
       handleMessage('Login successful!', 'success');
