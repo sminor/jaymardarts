@@ -200,16 +200,6 @@ return (
                 {/* Informational Block */}
                 <section id="announcement" className="App-section App-section-no-min-height">
                 <div className="info-announcement">
-                  <p className="info-announcement-title">
-                    <strong>Important Update for League Players and Tournament Participants:</strong><br /><br />
-                  </p>
-                  <p className="info-announcement-body">  
-                    We regret to announce that Coach’s Bar & Grill has permanently closed. Coach’s has been an incredible venue for our league and tournaments, and we’re grateful for their support over the years.
-                    <br /><br />
-                    We’re actively working to relocate dart boards to nearby locations, so teams that were playing out of Coach’s can continue enjoying league play without interruption. Please note that any tournaments previously scheduled at Coach’s will not take place.
-                    <br /><br />
-                    We’ll notify teams and players as soon as new arrangements are confirmed. Thank you for your patience and understanding, and we look forward to continuing a fantastic league season and tournament lineup!
-                  </p>
                 </div>
                 </section>
                 <div className="arrow-container">
