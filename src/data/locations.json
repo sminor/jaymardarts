@@ -1,8 +1,17 @@
 [
   {
+    "name": "Legends",
+    "address": "6540 SW Fallbrook Pl, Beaverton, OR 97008",
+	  "details": "Number of boards: 4",
+    "lat": 45.472913356713164,
+    "lng": -122.77695782883603,
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.853667965665!2d-122.77694710000002!3d45.472751599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950dd3cbc4e7e7%3A0x779f65590112fd7!2sLegends%20Billiard%20Room!5e0!3m2!1sen!2sus!4v1735837305983!5m2!1sen!2sus",
+    "isNew": true
+  },
+  {
     "name": "Dr. Feelgood's Pub",
     "address": "20419 SW TV Highway, Beaverton, OR 97003",
-	"details": "Number of boards: 3",
+	  "details": "Number of boards: 3",
     "lat": 45.49711629641519,
     "lng": -122.88709327315787,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8477.359813938225!2d-122.88954048707305!3d45.49689607095389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950e49934085d7%3A0xa6a75e0aae14f19c!2sDr.%20Feelgood%27s%20Pub!5e1!3m2!1sen!2sus!4v1725340949997!5m2!1sen!2sus",
@@ -11,7 +20,7 @@
   {
     "name": "Peppermill Lounge",
     "address": "17455 SW Farmington Rd. Aloha, OR 97007",
-	"details": "Number of boards: 4",
+	  "details": "Number of boards: 4",
     "lat": 45.4815,
     "lng": -122.8611,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4239.840159795985!2d-122.86106618707346!3d45.48148017095363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950e6e4796acbf%3A0xf8806efe228169be!2sPeppermill%20Pub!5e1!3m2!1sen!2sus!4v1725338971083!5m2!1sen!2sus",
@@ -20,7 +29,7 @@
   {
     "name": "Eagles No. 4177",
     "address": "424 N 26th Ave Cornelius, OR 97113",
-	"details": "Number of boards: 3",
+	  "details": "Number of boards: 3",
     "lat": 45.52373423866131,
     "lng": -123.03934843117197,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4236.65748643332!2d-123.04190738707199!3d45.52375757095441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54951b7309e145c1%3A0x65cfec12bf23c46a!2sFraternal%20Order%20of%20Eagles!5e1!3m2!1sen!2sus!4v1725339046829!5m2!1sen!2sus",
@@ -29,7 +38,7 @@
   {
     "name": "The Last Lap",
     "address": "1515 N Adair Cornelius, OR 97113",
-	"details": "Number of boards: 4",
+	  "details": "Number of boards: 4",
     "lat": 45.5204,
     "lng": -123.0560,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4236.911749053794!2d-123.05602098707222!3d45.520381170954266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54951a450a6a0661%3A0x7a7c930df64ebddb!2sLast%20Lap!5e1!3m2!1sen!2sus!4v1725339342176!5m2!1sen!2sus",
@@ -38,7 +47,7 @@
   {
     "name": "Ice House",
     "address": "1200 Main St. Oregon City, OR 97045",
-	"details": "Number of boards: 3",
+	  "details": "Number of boards: 3",
     "lat": 45.3608,
     "lng": -122.6054,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8497.83173917803!2d-122.60539128707784!3d45.36075307095178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549576caf6c632ef%3A0x9982906d4a2b4a94!2sIce%20House!5e1!3m2!1sen!2sus!4v1725339162768!5m2!1sen!2sus",
@@ -47,7 +56,7 @@
   {
     "name": "Silver Star Saloon",
     "address": "6718 NW Fourth Plain Vancouver, WA 98661",
-	"details": "Number of boards: 5",
+	  "details": "Number of boards: 5",
     "lat": 45.64500894535735,
     "lng": -122.60308677413718,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4227.519392766458!2d-122.60565868706784!3d45.64497467095695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495afc919911a7b%3A0xf41e33e0cc6d3036!2sSilver%20Star%20Saloon!5e1!3m2!1sen!2sus!4v1725339182235!5m2!1sen!2sus",
@@ -56,7 +65,7 @@
   {
     "name": "Pub 181",
     "address": "18415 SE Division St, Gresham, OR 97030",
-	"details": "Number of boards: 3",
+	  "details": "Number of boards: 3",
     "lat": 45.5049,
     "lng": -122.4784,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4238.075471190582!2d-122.47843924056484!3d45.50492539672088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549598a2248cd031%3A0x212dc4d3aaf758ce!2sPub%20181!5e1!3m2!1sen!2sus!4v1725340404406!5m2!1sen!2sus",
@@ -65,7 +74,7 @@
   {
     "name": "108 Bar N Grill",
     "address": "10845 NE Halsey St, Portland, OR 97220",
-	"details": "Number of boards: 2",
+	  "details": "Number of boards: 2",
     "lat": 45.5337,
     "lng": -122.5531,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4235.909463593384!2d-122.55310158707155!3d45.53368957095454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495a17ba6221a39%3A0xbece4de4ac38f648!2s108%20Bar%20N%20Grill!5e1!3m2!1sen!2sus!4v1725340525240!5m2!1sen!2sus",
@@ -74,7 +83,7 @@
   {
     "name": "Yazzi's",
     "address": "2500 NE 238th Dr, Wood Village, OR 97060",
-	"details": "Number of boards: 3",
+	  "details": "Number of boards: 3",
     "lat": 45.5411,
     "lng": -122.4195,
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4235.350434518532!2d-122.41952468707126!3d45.541111070954635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495a2b0df4571ad%3A0x2269480e75366fb8!2sYazzi%27s!5e1!3m2!1sen!2sus!4v1725340586749!5m2!1sen!2sus",
