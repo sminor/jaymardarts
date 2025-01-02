@@ -182,5 +182,107 @@
     "location": "Silver Star Saloon",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, January 3rd",
+    "formattedDate": "2025-01-03",
+    "eventName": "All Cricket",
+    "eventGames": "Cricket",
+    "drawType": "Parity Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, January 10th",
+    "formattedDate": "2025-01-10",
+    "eventName": "MPRT Shoot",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person",
+    "specialIndicator": "MPRT"
+  },
+  {
+    "date": "Friday, January 17th",
+    "formattedDate": "2025-01-17",
+    "eventName": "20 Point Bring",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "20 Point Bring Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, January 24th",
+    "formattedDate": "2025-01-24",
+    "eventName": "A/B Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, January 31st",
+    "formattedDate": "2025-01-24",
+    "eventName": "Wildcard Cricket",
+    "eventGames": "501/Wilcard Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, January 4th",
+    "formattedDate": "2025-01-04",
+    "eventName": "Low Player Pick",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Low Player Pick Handicapped",
+    "location": "Legends",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, January 11th",
+    "formattedDate": "2025-01-11",
+    "eventName": "All 501",
+    "eventGames": "501",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Legends",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, January 18th",
+    "formattedDate": "2025-01-18",
+    "eventName": "Laddies Choice",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Ladies Pick (Random Order) - Remaining players will be A/B Draw",
+    "location": "Legends",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, January 25th",
+    "formattedDate": "2025-01-25",
+    "eventName": "MPRT Shoot",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Legends",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person",
+    "specialIndicator": "MPRT"
+  },
+  {
+    "date": "Saturday, February 1st",
+    "formattedDate": "2025-02-01",
+    "eventName": "Parity Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Parity Draw Handicapped",
+    "location": "Legends",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
   }
 ]
