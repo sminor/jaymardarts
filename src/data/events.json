@@ -257,16 +257,6 @@
   {
     "date": "Saturday, January 18th",
     "formattedDate": "2025-01-18",
-    "eventName": "Laddies Choice",
-    "eventGames": "501/Cricket/Choice",
-    "drawType": "Ladies Pick (Random Order) - Remaining players will be A/B Draw",
-    "location": "Legends",
-    "signupTime": "6:30 - 7:00 pm",
-    "entryFee": "$10 per person"
-  },
-  {
-    "date": "Saturday, January 25th",
-    "formattedDate": "2025-01-25",
     "eventName": "MPRT Shoot",
     "eventGames": "501/Cricket/Choice",
     "drawType": "A/B Draw Handicapped",
@@ -274,6 +264,16 @@
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person",
     "specialIndicator": "MPRT"
+  },
+  {
+    "date": "Saturday, January 25th",
+    "formattedDate": "2025-01-25",
+    "eventName": "Ladies Pick",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Ladies Pick (Random Order) - Remaining players will be A/B Draw",
+    "location": "Peppermill Lounge",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
   },
   {
     "date": "Saturday, February 1st",
