@@ -1,7 +1,31 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { DndProvider } from 'react-dnd';
+import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import TournamentHelper from '../TournamentHelper';
+
+const ItemType = 'PLAYER';
+
+const PlayerCard = ({ player, index, swapPlayers, listType, statValue }) => {
+  const [, ref] = useDrag({
+    type: ItemType,
+    item: { index, listType },
+  });
+
+  const [, drop] = useDrop({
+    accept: ItemType,
+    drop(item) {
+      if (item.index !== index || item.listType !== listType) {
+        swapPlayers(item.index, index, item.listType, listType);
+      }
+    },
+  });
+
+  return (
+    <li ref={(node) => ref(drop(node))} className="player-card" title={statValue.toFixed(2)}>
+      {player.name}
+    </li>
+  );
+};
 
 const Parity = ({ tournamentPlayers }) => {
   const [selectedStat, setSelectedStat] = useState(() => {
@@ -29,7 +53,6 @@ const Parity = ({ tournamentPlayers }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Save state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('selectedStat', selectedStat);
     localStorage.setItem('aPlayers', JSON.stringify(aPlayers));
@@ -38,7 +61,6 @@ const Parity = ({ tournamentPlayers }) => {
     localStorage.setItem('pairedPlayers', JSON.stringify(pairedPlayers));
   }, [selectedStat, aPlayers, bPlayers, teamNames, pairedPlayers]);
 
-  // Calculate the stat value based on the selected stat
   const getPlayerStat = useCallback((player) => {
     switch (selectedStat) {
       case 'combo':
@@ -52,9 +74,7 @@ const Parity = ({ tournamentPlayers }) => {
     }
   }, [selectedStat]);
 
-  // Pair players: best with lowest, second best with second lowest, etc.
   const generateTeams = useCallback(() => {
-    // Sort players by selected stat
     const sortedPlayers = [...tournamentPlayers].sort((a, b) => {
       const statA = getPlayerStat(a);
       const statB = getPlayerStat(b);
@@ -62,8 +82,8 @@ const Parity = ({ tournamentPlayers }) => {
     });
 
     const middleIndex = Math.ceil(sortedPlayers.length / 2);
-    const newAPlayers = sortedPlayers.slice(0, middleIndex); // Best players
-    const newBPlayers = sortedPlayers.slice(middleIndex).reverse(); // Lowest players
+    const newAPlayers = sortedPlayers.slice(0, middleIndex);
+    const newBPlayers = sortedPlayers.slice(middleIndex).reverse();
 
     setAPlayers(newAPlayers);
     setBPlayers(newBPlayers);
@@ -71,7 +91,6 @@ const Parity = ({ tournamentPlayers }) => {
     generatePairedPlayers(newAPlayers, newBPlayers);
   }, [tournamentPlayers, getPlayerStat]);
 
-  // Generate team names: best player with lowest player
   const generateTeamNames = (aPlayersList, bPlayersList) => {
     const teams = aPlayersList.map((aPlayer, index) => {
       const aFirstName = aPlayer.name.split(' ')[0];
@@ -81,13 +100,32 @@ const Parity = ({ tournamentPlayers }) => {
     setTeamNames(teams);
   };
 
-  // Pair players: match best with lowest
   const generatePairedPlayers = (aPlayersList, bPlayersList) => {
     const pairs = aPlayersList.map((aPlayer, index) => {
       const bPlayer = bPlayersList[index] || { name: '' };
       return [aPlayer.name, bPlayer.name];
     });
     setPairedPlayers(pairs);
+  };
+
+  const swapPlayers = (fromIndex, toIndex, fromListType, toListType) => {
+    let updatedAPlayers = [...aPlayers];
+    let updatedBPlayers = [...bPlayers];
+
+    if (fromListType === toListType) {
+      const players = fromListType === 'aPlayers' ? updatedAPlayers : updatedBPlayers;
+      [players[fromIndex], players[toIndex]] = [players[toIndex], players[fromIndex]];
+    } else {
+      const fromPlayers = fromListType === 'aPlayers' ? updatedAPlayers : updatedBPlayers;
+      const toPlayers = toListType === 'aPlayers' ? updatedAPlayers : updatedBPlayers;
+
+      [toPlayers[toIndex], fromPlayers[fromIndex]] = [fromPlayers[fromIndex], toPlayers[toIndex]];
+    }
+
+    setAPlayers([...updatedAPlayers]);
+    setBPlayers([...updatedBPlayers]);
+    generateTeamNames(updatedAPlayers, updatedBPlayers);
+    generatePairedPlayers(updatedAPlayers, updatedBPlayers);
   };
 
   const clearTeams = () => {
@@ -99,7 +137,6 @@ const Parity = ({ tournamentPlayers }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      {/* Stat selection */}
       <div className="radio-container">
         <label>Stat to Use:</label>
         <input
@@ -128,31 +165,38 @@ const Parity = ({ tournamentPlayers }) => {
       <button onClick={generateTeams}>Generate Teams</button>
 
       <div className="players-group">
-        {/* Player 1 List */}
         <div>
           <h4>Player 1</h4>
-          <ul>
+          <ul className="droppable-area">
             {aPlayers.map((player, index) => (
-              <li key={player.name} title={getPlayerStat(player).toFixed(2)}>
-                {player.name}
-              </li>
+              <PlayerCard
+                key={player.name}
+                player={player}
+                index={index}
+                swapPlayers={swapPlayers}
+                listType="aPlayers"
+                statValue={getPlayerStat(player)}
+              />
             ))}
           </ul>
         </div>
 
-        {/* Player 2 List */}
         <div>
           <h4>Player 2</h4>
-          <ul>
+          <ul className="droppable-area">
             {bPlayers.map((player, index) => (
-              <li key={player.name} title={getPlayerStat(player).toFixed(2)}>
-                {player.name}
-              </li>
+              <PlayerCard
+                key={player.name}
+                player={player}
+                index={index}
+                swapPlayers={swapPlayers}
+                listType="bPlayers"
+                statValue={getPlayerStat(player)}
+              />
             ))}
           </ul>
         </div>
 
-        {/* Team Names */}
         <div>
           <h4>Teams</h4>
           <ul>
@@ -165,9 +209,9 @@ const Parity = ({ tournamentPlayers }) => {
       </div>
 
       <TournamentHelper 
-        teamData={{
-          teams: teamNames,
-          players: pairedPlayers
+        teamData={{ 
+          teams: teamNames, 
+          players: pairedPlayers 
         }} 
       />
     </DndProvider>
