@@ -199,13 +199,27 @@ return (
                 <img src={logo} className="App-logo" alt="JayMar Darts Logo" />
                 {/* Informational Block */}
                 <section id="announcement" className="App-section App-section-no-min-height">
-                <div className="info-announcement">
-                  <p className="info-announcement-title">
-                  </p>
-                  <p className="info-announcement-body">  
-                    Get your teams together for NDA Team Dart 2025! Team names and team fees are due no later than January 31st. Click <a href="https://ndadarts.com/events/team-dart-2/">here</a> for all your NDA information.
-                  </p>
-                </div>
+                  <div className="info-announcement">
+                    <p className="info-announcement-title">
+                      <strong>Get Your Teams Ready for NDA Team Dart 2025!</strong>
+                    </p>
+                    <p className="info-announcement-body">
+                      ⏰ The clock is ticking! Team names and fees <strong>must be submitted by January 31st</strong> to secure your spot in the tournament. Don't wait until the last minute—get everything squared away today!
+                    </p>
+                    <br />
+                    <p className="info-announcement-body">
+                      🔗 Need NDA Information? <br />
+                      We've got you covered! Click <a href="https://ndadarts.com/events/team-dart-2/" target="_blank" rel="noopener noreferrer">here</a> to find all the details you need to stay informed and compliant.
+                    </p>
+                    <br />
+                    <p className="info-announcement-body">
+                      🎯 Let's make this tournament one to remember—get your team ready now!
+                    </p>
+                    <br />
+                    <p className="info-announcement-body">
+                      👕 Need to order a custom jersey for your team? Contact Mike Minor for all your custom jersey needs!
+                    </p>
+                  </div>
                 </section>
                 <div className="arrow-container">
                   <div className="arrows">
