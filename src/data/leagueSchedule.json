@@ -4458,65 +4458,65 @@
             {
                 "week": 11,
                 "date": "01/23/2025",
-                "home_team": "Stupendous",
+                "home_team": "Projectile Disfunct",
                 "away_team": "Flight Club",
-                "location": "TBD"
+                "location": "The Shang Sports Bar"
             },
             {
                 "week": 11,
                 "date": "01/23/2025",
-                "home_team": "No Bulls Hit",
+                "home_team": "Mischief Managed",
                 "away_team": "Brodacious",
                 "location": "TBD"
             },
             {
                 "week": 11,
                 "date": "01/23/2025",
-                "home_team": "Mischief Managed",
-                "away_team": "Projectile Disfunct",
+                "home_team": "No Bulls Hit",
+                "away_team": "Stupendous",
                 "location": "TBD"
             },
             {
                 "week": 12,
                 "date": "01/30/2025",
                 "home_team": "Flight Club",
+                "away_team": "Brodacious",
+                "location": "TBD"
+            },
+            {
+                "week": 12,
+                "date": "01/30/2025",
+                "home_team": "Mischief Managed",
                 "away_team": "No Bulls Hit",
                 "location": "TBD"
             },
             {
                 "week": 12,
                 "date": "01/30/2025",
-                "home_team": "Stupendous",
-                "away_team": "Mischief Managed",
-                "location": "TBD"
-            },
-            {
-                "week": 12,
-                "date": "01/30/2025",
                 "home_team": "Projectile Disfunct",
-                "away_team": "Brodacious",
+                "away_team": "Stupendous",
                 "location": "The Shang Sports Bar"
             },
             {
                 "week": 13,
                 "date": "02/06/2025",
-                "home_team": "No Bulls Hit",
-                "away_team": "Projectile Disfunct",
+                "home_team": "Stupendous",
+                "away_team": "Flight Club",
                 "location": "TBD"
             },
             {
                 "week": 13,
                 "date": "02/06/2025",
-                "home_team": "Mischief Managed",
-                "away_team": "Brodacious",
+                "home_team": "Brodacious",
+                "away_team": "No Bulls Hit",
                 "location": "TBD"
             },
             {
                 "week": 13,
                 "date": "02/06/2025",
-                "home_team": "Flight Club",
-                "away_team": "Stupendous",
-                "location": "TBD"
+                "home_team": "Projectile Disfunct",
+                "away_team": "Mischief Managed",
+                "location": "The Shang Sports Bar"
             },
             {
                 "week": 14,
@@ -4529,35 +4529,35 @@
                 "week": 14,
                 "date": "02/13/2025",
                 "home_team": "Stupendous",
-                "away_team": "Projectile Disfunct",
+                "away_team": "Mischief Managed",
                 "location": "TBD"
             },
             {
                 "week": 14,
                 "date": "02/13/2025",
-                "home_team": "Flight Club",
-                "away_team": "Mischief Managed",
+                "home_team": "Brodacious",
+                "away_team": "Projectile Disfunct",
                 "location": "TBD"
             },
             {
                 "week": 15,
                 "date": "02/20/2025",
-                "home_team": "Projectile Disfunct",
-                "away_team": "Flight Club",
-                "location": "The Shang Sports Bar"
-            },
-            {
-                "week": 15,
-                "date": "02/20/2025",
                 "home_team": "Mischief Managed",
-                "away_team": "Brodacious",
+                "away_team": "Flight Club",
                 "location": "TBD"
             },
             {
                 "week": 15,
                 "date": "02/20/2025",
                 "home_team": "No Bulls Hit",
-                "away_team": "Stupendous",
+                "away_team": "Projectile Disfunct",
+                "location": "TBD"
+            },
+            {
+                "week": 15,
+                "date": "02/20/2025",
+                "home_team": "Stupendous",
+                "away_team": "Brodacious",
                 "location": "TBD"
             }
             ]
