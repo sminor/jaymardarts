@@ -4561,6 +4561,462 @@
                 "location": "TBD"
             }
             ]
-        }    
+        },
+        {
+            "flight": "LW Singles - Flight A",
+            "day": "Tuesday",
+            "time": "7:00 PM",
+            "reportlink": "https://www.leagueleader.net/sharedreport.php?operatorid=1635&code=85a5042d-f45b-4d55-9379-9466dba007a1",
+            "teams": [
+            {
+                "team_name": "Ambree Richter",
+                "players": ["Ambree Richter"],
+                "location": "The Last Lap"
+            },
+            {
+                "team_name": "Bill Teel",
+                "players": ["Bill Teel"],
+                "location": "The Last Lap"
+            },
+            {
+                "team_name": "Rachelle Hunsperger",
+                "players": ["Rachelle Hunsperger"],
+                "location": "The Last Lap"
+            },
+            {
+                "team_name": "Roy Salisbury",
+                "players": ["Roy Salisbury"],
+                "location": "Peppermill Lounge"
+            }
+            ],
+            "matches": [
+            {
+                "week": 1,
+                "date": "1/07/2025",
+                "home_team": "Rachelle Hunsperger",
+                "away_team": "Roy Salisbury",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 1,
+                "date": "1/07/2025",
+                "home_team": "Bill Teel",
+                "away_team": "Ambree Richter",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 2,
+                "date": "1/14/2025",
+                "home_team": "Bill Teel",
+                "away_team": "Rachelle Hunsperger",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 2,
+                "date": "1/14/2025",
+                "home_team": "Ambree Richter",
+                "away_team": "Roy Salisbury",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 3,
+                "date": "1/21/2025",
+                "home_team": "Rachelle Hunsperger",
+                "away_team": "Ambree Richter",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 3,
+                "date": "1/21/2025",
+                "home_team": "Roy Salisbury",
+                "away_team": "Bill Teel",
+                "location": "Peppermill Lounge"
+            },
+            {
+                "week": 4,
+                "date": "1/28/2025",
+                "home_team": "Roy Salisbury",
+                "away_team": "Rachelle Hunsperger",
+                "location": "Peppermill Lounge"
+            },
+            {
+                "week": 4,
+                "date": "1/28/2025",
+                "home_team": "Ambree Richter",
+                "away_team": "Bill Teel",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 5,
+                "date": "2/04/2025",
+                "home_team": "Rachelle Hunsperger",
+                "away_team": "Bill Teel",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 5,
+                "date": "2/04/2025",
+                "home_team": "Roy Salisbury",
+                "away_team": "Ambree Richter",
+                "location": "Peppermill Lounge"
+            },
+            {
+                "week": 6,
+                "date": "2/11/2025",
+                "home_team": "Ambree Richter",
+                "away_team": "Rachelle Hunsperger",
+                "location": "The Last Lap"
+            },
+            {
+                "week": 6,
+                "date": "2/11/2025",
+                "home_team": "Bill Teel",
+                "away_team": "Roy Salisbury",
+                "location": "The Last Lap"
+            }
+            ]
+        },
+        {
+            "flight": "LW Singles - Flight B",
+            "day": "Tuesday",
+            "time": "7:00 PM",
+            "reportlink": "https://www.leagueleader.net/sharedreport.php?operatorid=1635&code=83ded617-689a-45b1-b1a5-affd5c376868",
+            "teams": [
+                {
+                    "team_name": "Ken Texley",
+                    "players": ["Ken Texley"],
+                    "location": "Silver Star"
+                },
+                {
+                    "team_name": "Eddie Farness",
+                    "players": ["Eddie Farness"],
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "team_name": "Darren Trent",
+                    "players": ["Darren Trent"],
+                    "location": "Dr Feelgoods Pub"
+                },
+                {
+                    "team_name": "Tom Sondenaa",
+                    "players": ["Tom Sondenaa"],
+                    "location": "Pub 181"
+                }
+            ],
+            "matches": [
+                {
+                    "week": 1,
+                    "date": "1/07/2025",
+                    "home_team": "Ken Texley",
+                    "away_team": "Eddie Farness",
+                    "location": "Silver Star"
+                },
+                {
+                    "week": 1,
+                    "date": "1/07/2025",
+                    "home_team": "Darren Trent",
+                    "away_team": "Tom Sondenaa",
+                    "location": "Dr Feelgoods Pub"
+                },
+                {
+                    "week": 2,
+                    "date": "1/14/2025",
+                    "home_team": "Darren Trent",
+                    "away_team": "Ken Texley",
+                    "location": "Dr Feelgoods Pub"
+                },
+                {
+                    "week": 2,
+                    "date": "1/14/2025",
+                    "home_team": "Tom Sondenaa",
+                    "away_team": "Eddie Farness",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 3,
+                    "date": "1/21/2025",
+                    "home_team": "Ken Texley",
+                    "away_team": "Tom Sondenaa",
+                    "location": "Silver Star"
+                },
+                {
+                    "week": 3,
+                    "date": "1/21/2025",
+                    "home_team": "Eddie Farness",
+                    "away_team": "Darren Trent",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 4,
+                    "date": "1/28/2025",
+                    "home_team": "Eddie Farness",
+                    "away_team": "Ken Texley",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 4,
+                    "date": "1/28/2025",
+                    "home_team": "Tom Sondenaa",
+                    "away_team": "Darren Trent",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 5,
+                    "date": "2/04/2025",
+                    "home_team": "Ken Texley",
+                    "away_team": "Darren Trent",
+                    "location": "Silver Star"
+                },
+                {
+                    "week": 5,
+                    "date": "2/04/2025",
+                    "home_team": "Eddie Farness",
+                    "away_team": "Tom Sondenaa",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 6,
+                    "date": "2/11/2025",
+                    "home_team": "Tom Sondenaa",
+                    "away_team": "Ken Texley",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 6,
+                    "date": "2/11/2025",
+                    "home_team": "Darren Trent",
+                    "away_team": "Eddie Farness",
+                    "location": "Dr Feelgoods Pub"
+                }
+            ]
+        },
+        {
+            "flight": "FW Singles",
+            "day": "Tuesday",
+            "time": "7:00 PM",
+            "reportlink": "https://www.leagueleader.net/sharedreport.php?operatorid=1635&code=ee74b008-2b5d-4e6d-9093-73abebcf37ba",
+            "teams": [
+                {
+                    "team_name": "Cailyn Farness",
+                    "players": ["Cailyn Farness"],
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "team_name": "Dollie Sondenaa",
+                    "players": ["Dollie Sondenaa"],
+                    "location": "Pub 181"
+                },
+                {
+                    "team_name": "Phylicia Salisbury",
+                    "players": ["Phylicia Salisbury"],
+                    "location": "Peppermill Lounge"
+                },
+                {
+                    "team_name": "Taylor Farness",
+                    "players": ["Taylor Farness"],
+                    "location": "Yazzi's Bar Grill"
+                }
+            ],
+            "matches": [
+                {
+                    "week": 1,
+                    "date": "1/07/2025",
+                    "home_team": "Cailyn Farness",
+                    "away_team": "Dollie Sondenaa",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 1,
+                    "date": "1/07/2025",
+                    "home_team": "Phylicia Salisbury",
+                    "away_team": "Taylor Farness",
+                    "location": "Peppermill Lounge"
+                },
+                {
+                    "week": 2,
+                    "date": "1/14/2025",
+                    "home_team": "Phylicia Salisbury",
+                    "away_team": "Cailyn Farness",
+                    "location": "Peppermill Lounge"
+                },
+                {
+                    "week": 2,
+                    "date": "1/14/2025",
+                    "home_team": "Taylor Farness",
+                    "away_team": "Dollie Sondenaa",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 3,
+                    "date": "1/21/2025",
+                    "home_team": "Cailyn Farness",
+                    "away_team": "Taylor Farness",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 3,
+                    "date": "1/21/2025",
+                    "home_team": "Dollie Sondenaa",
+                    "away_team": "Phylicia Salisbury",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 4,
+                    "date": "1/28/2025",
+                    "home_team": "Dollie Sondenaa",
+                    "away_team": "Cailyn Farness",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 4,
+                    "date": "1/28/2025",
+                    "home_team": "Taylor Farness",
+                    "away_team": "Phylicia Salisbury",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 5,
+                    "date": "2/04/2025",
+                    "home_team": "Cailyn Farness",
+                    "away_team": "Phylicia Salisbury",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 5,
+                    "date": "2/04/2025",
+                    "home_team": "Dollie Sondenaa",
+                    "away_team": "Taylor Farness",
+                    "location": "Pub 181"
+                },
+                {
+                    "week": 6,
+                    "date": "2/11/2025",
+                    "home_team": "Taylor Farness",
+                    "away_team": "Cailyn Farness",
+                    "location": "Yazzi's Bar Grill"
+                },
+                {
+                    "week": 6,
+                    "date": "2/11/2025",
+                    "home_team": "Phylicia Salisbury",
+                    "away_team": "Dollie Sondenaa",
+                    "location": "Peppermill Lounge"
+                }
+            ]
+        },
+        {
+            "flight": "MW Singles",
+            "day": "Tuesday",
+            "time": "7:00 PM",
+            "reportlink": "https://www.leagueleader.net/sharedreport.php?operatorid=1635&code=9314c2e2-c289-49cf-b0d9-b23f3d7843ad",
+            "teams": [
+                {
+                    "team_name": "Doyle Foster",
+                    "players": ["Doyle Foster"],
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "team_name": "Jason Snelson",
+                    "players": ["Jason Snelson"],
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "team_name": "Shannon Alvarez",
+                    "players": ["Shannon Alvarez"],
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "team_name": "Javi Martinez",
+                    "players": ["Javi Martinez"],
+                    "location": "The Shang Sports Bar"
+                }
+            ],
+            "matches": [
+                {
+                    "week": 1,
+                    "date": "1/07/2025",
+                    "home_team": "Doyle Foster",
+                    "away_team": "Jason Snelson",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 1,
+                    "date": "1/07/2025",
+                    "home_team": "Shannon Alvarez",
+                    "away_team": "Javi Martinez",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 2,
+                    "date": "1/14/2025",
+                    "home_team": "Shannon Alvarez",
+                    "away_team": "Doyle Foster",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 2,
+                    "date": "1/14/2025",
+                    "home_team": "Javi Martinez",
+                    "away_team": "Jason Snelson",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 3,
+                    "date": "1/21/2025",
+                    "home_team": "Doyle Foster",
+                    "away_team": "Javi Martinez",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 3,
+                    "date": "1/21/2025",
+                    "home_team": "Jason Snelson",
+                    "away_team": "Shannon Alvarez",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 4,
+                    "date": "1/28/2025",
+                    "home_team": "Jason Snelson",
+                    "away_team": "Doyle Foster",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 4,
+                    "date": "1/28/2025",
+                    "home_team": "Javi Martinez",
+                    "away_team": "Shannon Alvarez",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 5,
+                    "date": "2/04/2025",
+                    "home_team": "Doyle Foster",
+                    "away_team": "Shannon Alvarez",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 5,
+                    "date": "2/04/2025",
+                    "home_team": "Jason Snelson",
+                    "away_team": "Javi Martinez",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 6,
+                    "date": "2/11/2025",
+                    "home_team": "Javi Martinez",
+                    "away_team": "Doyle Foster",
+                    "location": "The Shang Sports Bar"
+                },
+                {
+                    "week": 6,
+                    "date": "2/11/2025",
+                    "home_team": "Shannon Alvarez",
+                    "away_team": "Jason Snelson",
+                    "location": "The Shang Sports Bar"
+                }
+            ]
+        }        
     ]
 }
