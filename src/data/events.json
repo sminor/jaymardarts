@@ -284,5 +284,85 @@
     "location": "Legends",
     "signupTime": "6:30 - 7:00 pm",
     "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, February 8th",
+    "formattedDate": "2025-02-08",
+    "eventName": "Wildcard Cricket",
+    "eventGames": "501/Wilcard Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Peppermill Lounge",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, February 15th",
+    "formattedDate": "2025-02-15",
+    "eventName": "A/B Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Peppermill Lounge",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, February 22nd",
+    "formattedDate": "2025-02-22",
+    "eventName": "All Cricket",
+    "eventGames": "Cricket",
+    "drawType": "A/B Draw Handicapped",
+    "location": "Peppermill Lounge",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Saturday, March 1st",
+    "formattedDate": "2025-03-01",
+    "eventName": "Blind Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Blind Draw",
+    "location": "Peppermill Lounge",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, February 7th",
+    "formattedDate": "2025-02-07",
+    "eventName": "Parity Draw",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Parity Draw",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, February 14th",
+    "formattedDate": "2025-02-14",
+    "eventName": "20 Point Bring",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "20 Point Bring Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, February 21st",
+    "formattedDate": "2025-02-21",
+    "eventName": "A/B/C Trios",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "A/B/C Draw Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
+  },
+  {
+    "date": "Friday, February 28th",
+    "formattedDate": "2025-02-28",
+    "eventName": "Low Player Pick",
+    "eventGames": "501/Cricket/Choice",
+    "drawType": "Low Player Pick Handicapped",
+    "location": "Silver Star Saloon",
+    "signupTime": "6:30 - 7:00 pm",
+    "entryFee": "$10 per person"
   }
 ]
