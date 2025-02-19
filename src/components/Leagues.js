@@ -267,34 +267,29 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
         );
 
 
-      case 'news':
-        return (
-          <>
-            <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
-            <h3 className="league-heading">The Fall 2024 League is Underway!</h3>
-            <p>With the weather outside getting colder, the competition on the dartboards is heating up! We've got 75 teams across 14 flights and 6 divisions battling it out for top honors.</p>
-            <p>Matches are in full swing, and the excitement is building with each passing week. Make sure to stay on top of your game by checking your schedule and standings regularly.</p>
-            <p>
-              Head over to the <strong style={{color: 'var(--highlight-color)'}}>"Schedules & Standings"</strong> tab to view your matchups and the latest standings for your flight.
-            </p>
-            <p>Whether you're fighting for the top spot or making your way up the rankings, every match counts. The camaraderie, thrill of competition, and the community spirit make this season truly special.</p>
-      
-            <p>And don't forget, by playing in our league, you'll qualify for events in organizations such as:</p>
-            <ul>
-              <li>
-                <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>
-              </li>
-              <li>
-                <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>
-              </li>
-              <li>
-                <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>
-              </li>
-            </ul>
-      
-            <p>Keep up the energy and let’s make this one of our best seasons yet!</p>
-          </>
-        );
+        case 'news':
+          return (
+            <>
+              <img src="/action-dart-logo.png" alt="Action Dart League Logo" style={{ width: '200px', height: 'auto', display: 'block', marginBottom: '20px' }} />
+              <h3 className="league-heading">Spring 2025 League is Here!</h3>
+              <p>The new season is upon us, and it's time to sharpen those skills and bring your A-game to the dartboard! We're excited to kick off the Spring 2025 League.</p>
+              <p>Whether you're a returning champion or a fresh face in the league, this season promises thrilling matches, tight competition, and loads of fun.</p>
+              <p>Every match is a chance to rise through the ranks and make your mark. Bring your best, enjoy the camaraderie, and soak in the community spirit that makes our league truly special.</p>
+              <p>As a league participant, you'll qualify for events with organizations like:</p>
+              <ul>
+                <li>
+                  <a href="http://www.actiondartleague.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">Action Dart League (ADL)</a>
+                </li>
+                <li>
+                  <a href="https://www.ndadarts.com/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">National Dart Association (NDA)</a>
+                </li>
+                <li>
+                  <a href="https://www.nado.net/" className="qualified-orgs" target="_blank" rel="noopener noreferrer">North American Dart Organization (NADO)</a>
+                </li>
+              </ul>
+              <p>Let's make this Spring 2025 season our best one yet—good luck and shoot well!</p>
+            </>
+          );
 
       case 'signup':
         return (
@@ -303,13 +298,8 @@ const Leagues = ({ isMobile, accordionOpen, toggleAccordion, activeTab, handleTa
             <p>Ready to join one of the most exciting dart leagues? Choose your preferred sign-up method below:</p>
             <ul>
               <li>
-                <a href="/jaymar-fall-adl-signup.jpg" target="_blank" rel="noopener noreferrer" className="sign-up-link">
-                  <strong>Fall 2024 ADL Sign-up Form (Printable Form)</strong>
-                </a>
-              </li>
-              <li>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSddRe3f9NtdgFtbHksuwZx4ZKFygXZZd6gM7ABOeVPprBwHgA/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
-                  <strong>Fall 2024 ADL Sign-up (Google Form)</strong>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeewJgE286xZwP9MIWO9UbqzFFtnJAiroVyUK98EaOGWsf4Og/viewform" target="_blank" rel="noopener noreferrer" className="sign-up-link">
+                  <strong>Spring 2025 ADL Sign-up (Google Form)</strong>
                 </a>
               </li>
             </ul>
