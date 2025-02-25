@@ -74,19 +74,19 @@ const LocationsPage = () => {
                 <div className="container max-w-screen-xl mx-auto">
                     <LocationsMap locations={locations} selectedLocation={selectedLocation} />
                     <div className="flex justify-center mt-4 space-x-4">
-                        <button 
+                        <div 
                             onClick={findClosestLocation}
-                            className="px-6 py-2 bg-button-background hover:bg-button-hover text-button-text font-semibold rounded-lg shadow-md transition-colors border-2 border-border-highlight"
+                            className="flex items-center justify-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md"
                         >
                             Find Closest Location
-                        </button>
+                        </div>
                         {selectedLocation && (
-                            <button 
+                            <div 
                                 onClick={showAllLocations}
-                                className="px-6 py-2 bg-button-background hover:bg-button-hover text-button-text font-semibold rounded-lg shadow-md transition-colors border-2 border-border-highlight"
+                                className="flex items-center justify-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md"
                             >
                                 Show All Locations
-                            </button>
+                            </div>
                         )}
                     </div>
                 </div>
