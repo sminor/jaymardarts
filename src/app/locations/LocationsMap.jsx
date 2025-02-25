@@ -23,6 +23,7 @@ const LocationsMap = ({ locations, selectedLocation }) => {
     const [infoWindowPosition, setInfoWindowPosition] = useState(null);
     const [infoWindowData, setInfoWindowData] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(null);
+    const [infoWindowVisible, setInfoWindowVisible] = useState(false);
 
     const fetchLocationPhoto = (location) => {
         if (mapRef.current && window.google && window.google.maps.places) {
@@ -51,11 +52,21 @@ const LocationsMap = ({ locations, selectedLocation }) => {
                 const lat = parseFloat(selectedLocation.latitude);
                 const lng = parseFloat(selectedLocation.longitude);
                 if (!isNaN(lat) && !isNaN(lng)) {
+                    setInfoWindowVisible(false);
                     mapRef.current.panTo({ lat, lng });
                     mapRef.current.setZoom(14);
-                    setInfoWindowPosition({ lat, lng });
-                    setInfoWindowData(selectedLocation);
-                    fetchLocationPhoto(selectedLocation);
+
+                    // Add a small delay to ensure the map pans before displaying the info window
+                    setTimeout(() => {
+                        const mapHeight = mapRef.current.getDiv().offsetHeight;
+                        const panY = mapHeight * -0.2;
+                        mapRef.current.panBy(0, panY);
+
+                        setInfoWindowPosition({ lat, lng });
+                        setInfoWindowData(selectedLocation);
+                        fetchLocationPhoto(selectedLocation);
+                        setInfoWindowVisible(true);
+                    }, 300);
                 }
             } else {
                 const bounds = new window.google.maps.LatLngBounds();
@@ -67,10 +78,8 @@ const LocationsMap = ({ locations, selectedLocation }) => {
                     }
                 });
                 mapRef.current.fitBounds(bounds);
-                setTimeout(() => {
-                    mapRef.current.fitBounds(bounds);
-                }, 100);
                 setInfoWindowPosition(null);
+                setInfoWindowVisible(false);
             }
         }
     }, [selectedLocation, locations]);
@@ -99,6 +108,7 @@ const LocationsMap = ({ locations, selectedLocation }) => {
                                     setInfoWindowPosition({ lat, lng });
                                     setInfoWindowData(location);
                                     fetchLocationPhoto(location);
+                                    setInfoWindowVisible(true);
                                 }}
                             />
                         );
@@ -106,10 +116,10 @@ const LocationsMap = ({ locations, selectedLocation }) => {
                     return null;
                 })}
 
-                {infoWindowPosition && infoWindowData && (
+                {infoWindowPosition && infoWindowData && infoWindowVisible && (
                     <InfoWindowF
                         position={infoWindowPosition}
-                        onCloseClick={() => setInfoWindowPosition(null)}
+                        onCloseClick={() => setInfoWindowVisible(false)}
                     >
                         <div className="info-window bg-white text-black p-2 rounded-md">
                             <h3 className="text-lg font-medium mb-1 mt-0">{infoWindowData.name}</h3>
