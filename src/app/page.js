@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { supabase } from '../../lib/supabaseClient';
 import { Card } from '@/components/ui/Card';
 import { CardContent } from '@/components/ui/CardContent';
@@ -95,8 +96,13 @@ const HomePage = () => {
             <section className="p-4 bg-background-header shadow-md">
                 <div className="container max-w-screen-xl mx-auto">
                     <div className="grid grid-cols-2 gap-4">
+                        <Link href="/locations" passHref>
+                            <div className="flex flex-col items-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md">
+                                <FaMapMarkerAlt size={32} />
+                                <span className="mt-2">Locations</span>
+                            </div>
+                        </Link>
                         {[
-                            { icon: FaMapMarkerAlt, label: 'Locations' },
                             { icon: FaCalendarAlt, label: 'Events' },
                             { icon: FaUsers, label: 'Leagues' },
                             { icon: FaChartBar, label: 'Stats' }
