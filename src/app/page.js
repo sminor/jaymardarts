@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/Card';
 import { CardContent } from '@/components/ui/CardContent';
 import { Button } from '@/components/ui/Button';
 import Footer from '@/components/Footer';
-import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaChartBar, FaEnvelope, FaFacebook, FaLock } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaChartBar } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -41,7 +41,7 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
             {/* Header */}
-            <header className="bg-background-header shadow-md p-4 flex justify-center items-center">
+            <header className="bg-background-header-dark shadow-md p-4 flex justify-center items-center">
                 <div className="container max-w-screen-xl mx-auto flex justify-center">
                     <div className="relative h-48 md:h-72 lg:h-96 xl:h-120 w-48 md:w-72 lg:w-96 xl:w-120">
                         <Image
@@ -88,7 +88,6 @@ const HomePage = () => {
                         </Swiper>
                     )}
 
-                    {/* Custom Pagination Container */}
                     <div className="swiper-pagination-custom flex justify-center mt-2"></div>
                 </div>
             </section>
@@ -120,7 +119,6 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Footer */}
             <Footer />
         </div>
     );
