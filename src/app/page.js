@@ -41,7 +41,7 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
             {/* Header */}
-            <header className="bg-background-header-dark shadow-md p-4 flex justify-center items-center">
+            <header className="bg-background-header-dark p-4 flex justify-center items-center">
                 <div className="container max-w-screen-xl mx-auto flex justify-center">
                     <div className="relative h-48 md:h-72 lg:h-96 xl:h-120 w-48 md:w-72 lg:w-96 xl:w-120">
                         <Image
@@ -56,7 +56,7 @@ const HomePage = () => {
             </header>
 
             {/* Announcements Section */}
-            <section className="p-4 bg-background-header relative">
+            <section className="p-4 bg-background-header-dark relative">
                 <div className="container max-w-screen-xl mx-auto">
                     {message ? (
                         <p className="text-center text-text-default">{message}</p>
