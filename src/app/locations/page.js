@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
 import LocationCard from './LocationCard';
 import LocationsMap from './LocationsMap';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
-import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const LocationsPage = () => {
     const [locations, setLocations] = useState([]);
     const [selectedLocation, setSelectedLocation] = useState(null);
+    const mapContainerRef = useRef(null);
 
     useEffect(() => {
         const fetchLocations = async () => {
@@ -27,6 +27,14 @@ const LocationsPage = () => {
 
     const handleLocationClick = (location) => {
         setSelectedLocation(location);
+
+        // Scroll to the map section smoothly
+        if (mapContainerRef.current) {
+            window.scrollTo({
+                top: mapContainerRef.current.offsetTop - 80, // Adjust the offset as needed
+                behavior: 'smooth',
+            });
+        }
     };
 
     const findClosestLocation = () => {
@@ -49,6 +57,12 @@ const LocationsPage = () => {
                 if (closestLocation) {
                     console.log('Closest location found:', closestLocation);
                     setSelectedLocation(closestLocation);
+                    if (mapContainerRef.current) {
+                        window.scrollTo({
+                            top: mapContainerRef.current.offsetTop - 80,
+                            behavior: 'smooth',
+                        });
+                    }
                 }
             }, (error) => {
                 console.error('Error getting geolocation:', error);
@@ -65,7 +79,6 @@ const LocationsPage = () => {
 
     return (
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
-            {/* Add the NavBar at the top of the page */}
             <NavBar currentPage="Locations" />
 
             <div className="container max-w-screen-xl mx-auto p-4">
@@ -74,7 +87,8 @@ const LocationsPage = () => {
                     With 10 locations around the Portland metro area, JayMar Darts offers convenient spots for you to join the excitement of dart games, leagues, and tournaments. Click on a location to explore more!
                 </p>
             </div>
-            <section className="p-4 bg-background-header relative">
+
+            <section className="p-4 bg-background-header relative" ref={mapContainerRef}>
                 <div className="container max-w-screen-xl mx-auto">
                     <LocationsMap locations={locations} selectedLocation={selectedLocation} />
                     <div className="flex justify-center mt-4 space-x-4">
@@ -95,6 +109,7 @@ const LocationsPage = () => {
                     </div>
                 </div>
             </section>
+
             <section className="p-4 bg-background-main">
                 <div className="container max-w-screen-xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
