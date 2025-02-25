@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
 import LocationCard from './LocationCard';
 import LocationsMap from './LocationsMap';
+import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
@@ -64,6 +65,9 @@ const LocationsPage = () => {
 
     return (
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
+            {/* Add the NavBar at the top of the page */}
+            <NavBar currentPage="Locations" />
+
             <div className="container max-w-screen-xl mx-auto p-4">
                 <h1 className="text-3xl font-bold mb-4 text-center text-text-highlight">Our Locations</h1>
                 <p className="text-center mb-6 text-text-card">
