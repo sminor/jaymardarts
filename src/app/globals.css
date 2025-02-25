@@ -1,21 +1,52 @@
+/* src/app/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Background Colors */
+  --background-main: #1e1e1e;
+  --background-header: #2a2a2a;
+  --background-card: #f2f2f2;
+  --background-footer: #444444;
+  --background-button: #3a3a3a;
+  --background-button-hover: #b3882d;
+  --background-announcement: #f2f2f2;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Text Colors */
+  --text-default: #ffffff;
+  --text-muted: #666666;
+  --text-card: #3a3a3a;
+  --text-highlight: #c99f40;
+
+  /* Button Styles */
+  --button-border: #c99f40;
+  --button-text: #ffffff;
+
+  /* Pagination */
+  --pagination-active: #c99f40;
+  --pagination-inactive: #666666;
+
+  /* Border Colors */
+  --border-highlight: #c99f40;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text-default);
+  background: var(--background-main);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Swiper Pagination Styles */
+.swiper-pagination-bullet {
+    background-color: var(--pagination-inactive) !important;
+    opacity: 0.7;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--pagination-active) !important;
+    opacity: 1;
+    transform: scale(1.2);
 }

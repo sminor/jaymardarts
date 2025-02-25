@@ -1,101 +1,122 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from 'react';
+import Image from 'next/image';
+import { Card } from '@/components/ui/Card';
+import { CardContent } from '@/components/ui/CardContent';
+import { Button } from '@/components/ui/Button';
+import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaChartBar, FaEnvelope, FaFacebook, FaLock } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const HomePage = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
+      {/* Header */}
+      <header className="bg-background-header shadow-md p-4 flex justify-center items-center">
+        <div className="container max-w-screen-xl mx-auto flex justify-center">
+          <div className="relative h-48 md:h-72 lg:h-96 xl:h-120 w-48 md:w-72 lg:w-96 xl:w-120">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/logo.png"
+              alt="Jaymar Darts Logo"
+              fill
+              className="object-contain"
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Announcements Section */}
+      <section className="p-4 bg-background-header relative">
+        <div className="container max-w-screen-xl mx-auto">
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{ delay: 5000 }}
+            pagination={{
+              clickable: true,
+              el: '.swiper-pagination-custom',
+            }}
+            modules={[Autoplay, Pagination]}
+            className="relative pb-10"
+          >
+            <SwiperSlide>
+              <Card className="bg-background-card border-2 border-border-highlight shadow-md">
+                <CardContent>
+                  <h3 className="text-lg font-medium text-text-highlight">Upcoming Tournament!</h3>
+                  <p className="text-text-card">Join us for the Summer Darts Tournament on August 12th. This is a great opportunity to meet fellow players, compete for prizes, and enjoy a fun day of darts!</p>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card className="bg-background-card border-2 border-border-highlight shadow-md">
+                <CardContent>
+                  <h3 className="text-lg font-medium text-text-highlight">New League Season</h3>
+                  <p className="text-text-card">Registration for the Fall League is now open. Sign up today to secure your spot and compete with the best in town!</p>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card className="bg-background-card border-2 border-border-highlight shadow-md">
+                <CardContent>
+                  <h3 className="text-lg font-medium text-text-highlight">Weekly Darts Meetup</h3>
+                  <p className="text-text-card">Every Thursday at 7 PM. Come to our weekly meetup for casual games, practice, and community fun. All skill levels welcome!</p>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+          </Swiper>
+
+          {/* Custom Pagination Container */}
+          <div className="swiper-pagination-custom flex justify-center mt-2"></div>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="p-4 bg-background-header shadow-md">
+        <div className="container max-w-screen-xl mx-auto">
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { icon: FaMapMarkerAlt, label: 'Locations' },
+              { icon: FaCalendarAlt, label: 'Events' },
+              { icon: FaUsers, label: 'Leagues' },
+              { icon: FaChartBar, label: 'Stats' }
+            ].map(({ icon: Icon, label }, index) => (
+              <Button
+                key={index}
+                className="flex flex-col items-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors"
+              >
+                <Icon size={32} />
+                <span className="mt-2">{label}</span>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="p-4 bg-background-footer text-text-default text-center mt-auto">
+        <div className="container max-w-screen-xl mx-auto">
+          <div className="flex justify-center space-x-6 mb-2 text-sm">
+            {[
+              { href: '#', icon: FaEnvelope, label: 'Contact Us' },
+              { href: 'https://facebook.com', icon: FaFacebook, label: 'Facebook' },
+              { href: '#', icon: FaLock, label: 'Admin Login' }
+            ].map(({ href, icon: Icon, label }, index) => (
+              <a key={index} href={href} target="_blank" className="flex items-center space-x-1 text-text-default hover:text-text-highlight">
+                <Icon size={14} />
+                <span>{label}</span>
+              </a>
+            ))}
+          </div>
+          &copy; 2025 Jaymar Darts. All rights reserved.
+        </div>
       </footer>
     </div>
   );
-}
+};
+
+export default HomePage;
