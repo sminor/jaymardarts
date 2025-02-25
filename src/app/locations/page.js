@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
 import LocationCard from './LocationCard';
 import LocationsMap from './LocationsMap';
+import Footer from '@/components/Footer';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const LocationsPage = () => {
@@ -103,11 +104,8 @@ const LocationsPage = () => {
                     </div>
                 </div>
             </section>
-            <footer className="p-4 bg-background-footer text-text-default text-center mt-auto">
-                <div className="container max-w-screen-xl mx-auto">
-                    &copy; 2025 Jaymar Darts. All rights reserved.
-                </div>
-            </footer>
+            
+            <Footer />
         </div>
     );
 };

@@ -50,3 +50,8 @@ body {
     opacity: 1;
     transform: scale(1.2);
 }
+
+a:focus {
+    outline: none;
+    box-shadow: none;
+}

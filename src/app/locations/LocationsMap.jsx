@@ -48,7 +48,6 @@ const LocationsMap = ({ locations, selectedLocation }) => {
     useEffect(() => {
         if (mapRef.current) {
             if (selectedLocation) {
-                // Zoom to the selected location
                 const lat = parseFloat(selectedLocation.latitude);
                 const lng = parseFloat(selectedLocation.longitude);
                 if (!isNaN(lat) && !isNaN(lng)) {
@@ -59,7 +58,6 @@ const LocationsMap = ({ locations, selectedLocation }) => {
                     fetchLocationPhoto(selectedLocation);
                 }
             } else {
-                // Show all locations on the map by fitting bounds
                 const bounds = new window.google.maps.LatLngBounds();
                 locations.forEach((location) => {
                     const lat = parseFloat(location.latitude);
@@ -69,6 +67,9 @@ const LocationsMap = ({ locations, selectedLocation }) => {
                     }
                 });
                 mapRef.current.fitBounds(bounds);
+                setTimeout(() => {
+                    mapRef.current.fitBounds(bounds);
+                }, 100);
                 setInfoWindowPosition(null);
             }
         }
