@@ -3,28 +3,31 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { supabase } from '../../lib/supabaseClient';
-import { Card } from '@/components/ui/Card';
-import { CardContent } from '@/components/ui/CardContent';
-import { Button } from '@/components/ui/Button';
-import Footer from '@/components/Footer';
-import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaChartBar } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaChartBar } from 'react-icons/fa';
+
+import { supabase } from '@/lib/supabaseClient';
+import Footer from '@/components/Footer';
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 const HomePage = () => {
+    // State for managing announcements and loading message
     const [announcements, setAnnouncements] = useState([]);
     const [message, setMessage] = useState('Loading announcements...');
 
+    // Fetch announcements from Supabase on component mount
     useEffect(() => {
         const fetchAnnouncements = async () => {
+            // Retrieve announcements from the database, ordered by creation date (newest first)
             const { data, error } = await supabase
                 .from('announcements')
                 .select('*')
                 .order('created_at', { ascending: false });
 
+            // Handle errors or set announcements if successful
             if (error) {
                 setMessage(`Error: ${error.message}`);
             } else if (data.length === 0) {
@@ -41,7 +44,7 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
             {/* Header */}
-            <header className="bg-background-header-dark p-4 flex justify-center items-center">
+            <header className="p-4 flex justify-center items-center">
                 <div className="container max-w-screen-xl mx-auto flex justify-center">
                     <div className="relative h-48 md:h-72 lg:h-96 xl:h-120 w-48 md:w-72 lg:w-96 xl:w-120">
                         <Image
@@ -56,7 +59,7 @@ const HomePage = () => {
             </header>
 
             {/* Announcements Section */}
-            <section className="p-4 bg-background-header-dark relative">
+            <section className="p-8 mt-4 relative bg-background-secondary rounded-lg">
                 <div className="container max-w-screen-xl mx-auto">
                     {message ? (
                         <p className="text-center text-text-default">{message}</p>
@@ -71,58 +74,56 @@ const HomePage = () => {
                                 el: '.swiper-pagination-custom',
                             }}
                             modules={[Autoplay, Pagination]}
-                            className="relative pb-10"
+                            className="relative pb-10 flex p-4 rounded-lg"
                         >
                             {announcements.map((announcement) => (
                                 <SwiperSlide key={announcement.id}>
-                                    <Card className="bg-background-card border-2 border-border-highlight shadow-md">
-                                        <CardContent>
-                                            <h3 className="text-lg font-medium text-text-highlight">
-                                                {announcement.title}
-                                            </h3>
-                                            <p
-                                                className="text-text-card whitespace-pre-line"
-                                                dangerouslySetInnerHTML={{ __html: announcement.content.replace(/\n/g, '<br>') }}
-                                            ></p>
-                                        </CardContent>
-                                    </Card>
+                                    <div className="bg-background-announcement p-4">
+                                        <h3 className="text-lg font-medium text-text-highlight pb-2">
+                                            {announcement.title}
+                                        </h3>
+                                        <p
+                                            className="text-text-default whitespace-pre-line announcement-content"
+                                            dangerouslySetInnerHTML={{ __html: announcement.content.replace(/\n/g, '<br>') }}
+                                        ></p>
+                                    </div>
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     )}
 
-                    <div className="swiper-pagination-custom flex justify-center mt-2"></div>
+                    <div className="swiper-pagination-custom"></div>
                 </div>
             </section>
 
             {/* Quick Links */}
-            <section className="p-4 bg-background-header shadow-md">
+            <section className="p-4 bg-background-secondary">
                 <div className="container max-w-screen-xl mx-auto">
                     <div className="grid grid-cols-2 gap-4">
                         <Link href="/locations" passHref>
-                            <div className="flex flex-col items-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md">
-                                <FaMapMarkerAlt size={32} />
-                                <span className="mt-2">Locations</span>
+                            <div className="button-style flex-col">
+                                <FaMapMarkerAlt className="button-style-icon" size={32} />
+                                <span className="button-style-text">Locations</span>
                             </div>
                         </Link>
                         <Link href="/events" passHref>
-                            <div className="flex flex-col items-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md">
-                                <FaCalendarAlt size={32} />
-                                <span className="mt-2">Events</span>
+                            <div className="button-style flex-col">
+                                <FaCalendarAlt className="button-style-icon" size={32} />
+                                <span className="button-style-text">Events</span>
                             </div>
                         </Link>
-                        {[
-                            { icon: FaUsers, label: 'Leagues' },
-                            { icon: FaChartBar, label: 'Stats' }
-                        ].map(({ icon: Icon, label }, index) => (
-                            <Button
-                                key={index}
-                                className="flex flex-col items-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors"
-                            >
-                                <Icon size={32} />
-                                <span className="mt-2">{label}</span>
-                            </Button>
-                        ))}
+                        <Link href="/leagues" passHref>
+                        <div className="button-style flex-col">
+                                <FaUsers className="button-style-icon" size={32} />
+                                <span className="button-style-text">Leagues</span>
+                            </div>
+                        </Link>
+                        <Link href="/stats" passHref>
+                            <div className="button-style flex-col">
+                                <FaChartBar className="button-style-icon" size={32} />
+                                <span className="button-style-text">Stats</span>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </section>

@@ -1,7 +1,5 @@
-"use client";
-
 import React from 'react';
-import { FaEnvelope, FaFacebook, FaLock } from 'react-icons/fa';
+import { FaEnvelope, FaFacebookSquare, FaLock } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -10,7 +8,7 @@ const Footer = () => {
                 <div className="flex justify-center space-x-6 mb-2 text-sm">
                     {[
                         { href: '#', icon: FaEnvelope, label: 'Contact Us' },
-                        { href: 'https://www.facebook.com/jaymardarts', icon: FaFacebook, label: 'Facebook' },
+                        { href: 'https://www.facebook.com/jaymardarts', icon: FaFacebookSquare, label: 'Facebook' },
                         { href: '#', icon: FaLock, label: 'Admin Login' }
                     ].map(({ href, icon: Icon, label }, index) => (
                         <a

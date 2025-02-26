@@ -1,57 +1,60 @@
-/* src/app/globals.css */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Colors */
 :root {
   /* Background Colors */
-  --background-main: #1e1e1e;
-  --background-header: #2a2a2a;
-  --background-card: #2e2e2e;
-  --background-footer: #444444;
-  --background-button: #3a3a3a;
-  --background-button-hover: #b3882d;
-  --background-announcement: #f2f2f2;
+  --background-main: #1E1E1E;         /* Main Dark Gray Background */
+  --background-secondary: #2A2A2A;    /* Lighter Dark Gray Background */
+  --background-announcement: #252525; /* Announcement Card Background*/
+  --background-card: #252525;         /* Card Background*/
+  --background-heading: #252525;      /* Header Background */
+  --background-footer: #333333;       /* Footer Background */
 
   /* Text Colors */
-  --text-default: #ffffff;
-  --text-muted: #666666;
-  --text-card: #f2f2f2;
-  --text-highlight: #c99f40;
+  --text-default: #EEEEEE;            /* Very light gray text */
+  --text-highlight: #C99F40;          /* Golden Highlight Color */
+  --text-link: #6FA2C8;               /* Default link color */
 
-  /* Button Styles */
-  --button-border: #c99f40;
-  --button-text: #ffffff;
+  /* Button Colors */
+  --button-background: #3A3A3A;       /* Button Background */
 
-  /* Pagination */
-  --pagination-active: #c99f40;
-  --pagination-inactive: #666666;
+  /* Badge Colors */
+  --badge-new: #CE5B45;               /* New badge color */
 
   /* Border Colors */
-  --border-highlight: #c99f40;
+  --border-highlight: #C99F40;        /* Golden Highlight Border Color */
 }
 
 body {
-  color: var(--text-default);
   background: var(--background-main);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-default);
 }
 
-/* Swiper Pagination Styles */
-.swiper-pagination-bullet {
-    background-color: var(--pagination-inactive) !important;
-    opacity: 0.7;
-    transition: background-color 0.3s, transform 0.2s;
+/* Custom Button Styles */
+.button-style {
+  @apply flex items-center justify-center p-4 bg-button-background border-2 border-border-highlight text-text-default hover:bg-text-highlight hover:text-background-main transition-colors cursor-pointer rounded-lg shadow-md;
 }
 
-.swiper-pagination-bullet-active {
-    background-color: var(--pagination-active) !important;
-    opacity: 1;
-    transform: scale(1.2);
+.button-style-icon {
+  @apply mr-2
+}
+
+.button-style-text {
+  @apply mt-2 text-sm
+}
+
+/* Custom Link Styles */
+.link-style {
+  @apply text-text-link hover:underline;
+}
+
+.announcement-content a {
+  @apply text-text-link hover:underline;
 }
 
 a:focus {
-    outline: none;
-    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }

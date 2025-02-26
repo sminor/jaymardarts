@@ -1,30 +1,36 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { supabase } from '../../../lib/supabaseClient';
-import LocationCard from './LocationCard';
-import LocationsMap from './LocationsMap';
+
+import { supabase } from '@/lib/supabaseClient';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import LocationCard from './LocationCard';
+import LocationsMap from './LocationsMap';
 
 const LocationsPage = () => {
+    // State for managing locations and selected location
     const [locations, setLocations] = useState([]);
     const [selectedLocation, setSelectedLocation] = useState(null);
+
+    // Reference to the map container for scrolling
     const mapContainerRef = useRef(null);
 
+    // Fetch locations from Supabase on component mount
     useEffect(() => {
         const fetchLocations = async () => {
+            // Retrieve locations from the database
             const { data, error } = await supabase.from('locations').select('*');
             if (error) {
                 console.error('Error fetching locations:', error);
             } else {
-                console.log('Fetched locations data:', data);
                 setLocations(data);
             }
         };
         fetchLocations();
     }, []);
 
+    // Handle a location being clicked on
     const handleLocationClick = (location) => {
         setSelectedLocation(location);
 
@@ -37,6 +43,7 @@ const LocationsPage = () => {
         }
     };
 
+    // Find the closest location to the user
     const findClosestLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -55,7 +62,6 @@ const LocationsPage = () => {
                 });
 
                 if (closestLocation) {
-                    console.log('Closest location found:', closestLocation);
                     setSelectedLocation(closestLocation);
                     if (mapContainerRef.current) {
                         window.scrollTo({
@@ -73,35 +79,41 @@ const LocationsPage = () => {
         }
     };
 
+    // Show all locations on the map
     const showAllLocations = () => {
         setSelectedLocation(null);
     };
 
     return (
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
+            {/* Navigation Bar */}
             <NavBar currentPage="Locations" />
 
-            <div className="container max-w-screen-xl mx-auto p-4">
-                <h1 className="text-3xl font-bold mb-4 text-center text-text-highlight">Our Locations</h1>
-                <p className="text-center mb-6 text-text-card">
-                    With 10 locations around the Portland metro area, JayMar Darts offers convenient spots for you to join the excitement of dart games, leagues, and tournaments. Click on a location to explore more!
-                </p>
-            </div>
+            {/* Our Locations Title */}
+            <section className="bg-background-secondary">
+                <div className="container max-w-screen-xl mx-auto p-4 bg-background-heading rounded-lg mt-4">
+                    <h1 className="text-3xl font-bold mb-4 text-center text-text-highlight">Our Locations</h1>
+                    <p className="text-center mb-6">
+                        With 10 locations around the Portland metro area, JayMar Darts offers convenient spots for you to join the excitement of dart games, leagues, and tournaments. Click on a location to explore more!
+                    </p>
+                </div>
+            </section>
 
-            <section className="p-4 bg-background-header relative" ref={mapContainerRef}>
+            {/* Map Section */}
+            <section className="p-4 bg-background-secondary relative" ref={mapContainerRef}>
                 <div className="container max-w-screen-xl mx-auto">
                     <LocationsMap locations={locations} selectedLocation={selectedLocation} />
                     <div className="flex justify-center mt-4 space-x-4">
-                        <div 
+                        <div
                             onClick={findClosestLocation}
-                            className="flex items-center justify-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md"
+                            className="button-style"
                         >
                             Find Closest Location
                         </div>
                         {selectedLocation && (
-                            <div 
+                            <div
                                 onClick={showAllLocations}
-                                className="flex items-center justify-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md"
+                                className="button-style"
                             >
                                 Show All Locations
                             </div>
@@ -110,20 +122,21 @@ const LocationsPage = () => {
                 </div>
             </section>
 
-            <section className="p-4 bg-background-main">
+            {/* Location Cards */}
+            <section className="p-4 bg-background-secondary">
                 <div className="container max-w-screen-xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {locations.map((location) => (
-                            <LocationCard 
-                                key={location.id} 
-                                location={{ ...location, isNew: location.is_new }} 
-                                onClick={handleLocationClick} 
+                            <LocationCard
+                                key={location.id}
+                                location={{ ...location, isNew: location.is_new }}
+                                onClick={handleLocationClick}
                             />
                         ))}
                     </div>
                 </div>
             </section>
-            
+
             <Footer />
         </div>
     );
