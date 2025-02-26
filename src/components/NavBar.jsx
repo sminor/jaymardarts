@@ -7,6 +7,7 @@ import { FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaChartBar, FaHome } from "reac
 const NavBar = ({ currentPage }) => {
     const navLinks = [
         { href: "/", label: "Home", icon: FaHome },
+        { href: "/locations", label: "Locations", icon: FaMapMarkerAlt },
         { href: "/events", label: "Events", icon: FaCalendarAlt },
         { href: "/leagues", label: "Leagues", icon: FaUsers },
         { href: "/stats", label: "Stats", icon: FaChartBar },
