@@ -80,7 +80,10 @@ const HomePage = () => {
                                             <h3 className="text-lg font-medium text-text-highlight">
                                                 {announcement.title}
                                             </h3>
-                                            <p className="text-text-card">{announcement.content}</p>
+                                            <p
+                                                className="text-text-card whitespace-pre-line"
+                                                dangerouslySetInnerHTML={{ __html: announcement.content.replace(/\n/g, '<br>') }}
+                                            ></p>
                                         </CardContent>
                                     </Card>
                                 </SwiperSlide>
