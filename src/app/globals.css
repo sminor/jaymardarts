@@ -38,11 +38,11 @@ body {
 }
 
 .button-style-icon {
-  @apply mr-2
+  @apply text-text-default hover:text-text-highlight transition-colors;
 }
 
 .button-style-text {
-  @apply mt-2 text-sm
+  @apply mt-2 text-xs font-normal;
 }
 
 /* Custom Link Styles */

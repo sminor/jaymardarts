@@ -23,9 +23,11 @@ const NavBar = ({ currentPage }) => {
                         return (
                             <Link href={href} passHref key={label}>
                                 <div
-                                    className="button-style flex-col h-full"
+                                    className="button-style flex flex-col items-center justify-center h-full"
                                 >
-                                    <Icon className="button-style-icon" size={32} />
+                                    <div className="flex justify-center">
+                                      <Icon className="button-style-icon" size={32} />
+                                    </div>
                                     <span className="button-style-text">{label}</span>
                                 </div>
                             </Link>
