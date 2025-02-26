@@ -102,8 +102,13 @@ const HomePage = () => {
                                 <span className="mt-2">Locations</span>
                             </div>
                         </Link>
+                        <Link href="/events" passHref>
+                            <div className="flex flex-col items-center p-4 bg-background-button border-2 border-button-border text-button-text hover:bg-background-button-hover transition-colors cursor-pointer rounded-lg shadow-md">
+                                <FaCalendarAlt size={32} />
+                                <span className="mt-2">Events</span>
+                            </div>
+                        </Link>
                         {[
-                            { icon: FaCalendarAlt, label: 'Events' },
                             { icon: FaUsers, label: 'Leagues' },
                             { icon: FaChartBar, label: 'Stats' }
                         ].map(({ icon: Icon, label }, index) => (
