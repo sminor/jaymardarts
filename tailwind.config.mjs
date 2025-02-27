@@ -10,16 +10,31 @@ const config = {
       colors: {
         'background-main': 'var(--background-main)',
         'background-secondary': 'var(--background-secondary)',
-        'background-footer': 'var(--background-footer)',
+        'background-announcement': 'var(--background-announcement)',
         'background-card': 'var(--background-card)',
         'background-heading': 'var(--background-heading)',
-        'background-announcement': 'var(--background-announcement)',
+        'background-footer': 'var(--background-footer)',
+
         'text-default': 'var(--text-default)',
         'text-highlight': 'var(--text-highlight)',
-        'button-background': 'var(--button-background)',
         'text-link': 'var(--text-link)',
+
+        'button-background': 'var(--button-background)',
+
         'badge-new': 'var(--badge-new)',
+        'badge-today': 'var(--badge-today)',
+        'badge-special': 'var(--badge-special)',
+
         'border-highlight': 'var(--border-highlight)',
+
+        'select-background': 'var(--select-background)',
+        'select-text': 'var(--select-text)',
+        'select-border': 'var(--select-border)',
+        'select-focus-outline': 'var(--select-focus-outline)',
+
+        'past-event-text': 'var(--past-event-text)',
+        'past-event-badge': 'var(--past-event-badge)',
+        'past-event-background': 'var(--past-event-background)',
       },
     },
   },

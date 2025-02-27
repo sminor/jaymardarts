@@ -2,29 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Colors */
+/* Base Colors */
 :root {
+  --color1: #1E1E1E;
+  --color2: #2A2A2A;
+  --color3: #252525;
+  --color4: #333333;
+  --color5: #EEEEEE;
+  --color6: #C99F40;
+  --color7: #6FA2C8;
+  --color8: #3A3A3A;
+  --color9: #CE5B45;
+  --color10: #666666;
+  --color11: #999999;
+  --color12: #f1f1f1;
+
   /* Background Colors */
-  --background-main: #1E1E1E;         /* Main Dark Gray Background */
-  --background-secondary: #2A2A2A;    /* Lighter Dark Gray Background */
-  --background-announcement: #252525; /* Announcement Card Background*/
-  --background-card: #252525;         /* Card Background*/
-  --background-heading: #252525;      /* Header Background */
-  --background-footer: #333333;       /* Footer Background */
+  --background-main: var(--color1);           /* Main Background */
+  --background-secondary: var(--color2);      /* Secondary Background */
+  --background-announcement: var(--color3);   /* Announcement Card Background */
+  --background-card: var(--color3);           /* Card Background */
+  --background-heading: var(--color3);        /* Header Background */
+  --background-footer: var(--color4);         /* Footer Background */
 
   /* Text Colors */
-  --text-default: #EEEEEE;            /* Very light gray text */
-  --text-highlight: #C99F40;          /* Golden Highlight Color */
-  --text-link: #6FA2C8;               /* Default link color */
+  --text-default: var(--color5);              /* Default text */
+  --text-highlight: var(--color6);            /* Highlight color */
+  --text-link: var(--color7);                 /* Link color */
 
   /* Button Colors */
-  --button-background: #3A3A3A;       /* Button Background */
+  --button-background: var(--color8);         /* Button Background */
 
   /* Badge Colors */
-  --badge-new: #CE5B45;               /* New badge color */
+  --badge-new: var(--color9);                 /* New badge color */
+  --badge-today: var(--color7);               /* Today badge */
+  --badge-special: var(--color9);             /* Special Event badge */
 
   /* Border Colors */
-  --border-highlight: #C99F40;        /* Golden Highlight Border Color */
+  --border-highlight: var(--color6);          /* Highlight Border Color */
+
+  /* Select Box Colors */
+  --select-background: var(--color8);         /* Background */
+  --select-text: var(--color5);               /* Text */
+  --select-border: var(--color5);             /* Border */
+  --select-focus-outline: var(--color6);      /* Outline when focused */
+
+  /* Checkbox Colors */
+  --checkbox-checkmark: var(--color6);
+
+  /* Past Event Colors */
+  --past-event-text: var(--color10);          /* Text color */
+  --past-event-badge: var(--color11);         /* Badge color */
+  --past-event-background: var(--color12);    /* Background */
 }
 
 body {
@@ -57,4 +86,16 @@ body {
 a:focus {
   outline: none;
   box-shadow: none;
+}
+/* Custom Select Box */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+}
+
+/* checkbox checkmark */
+input[type="checkbox"]:checked {
+  accent-color: var(--checkbox-checkmark);
 }
