@@ -25,6 +25,7 @@ const HomePage = () => {
             const { data, error } = await supabase
                 .from('announcements')
                 .select('*')
+                .eq('page', 'home') // Only get home page announcements
                 .order('created_at', { ascending: false });
 
             // Handle errors or set announcements if successful
@@ -82,10 +83,10 @@ const HomePage = () => {
                                         <h3 className="text-lg font-medium text-text-highlight pb-2">
                                             {announcement.title}
                                         </h3>
-                                        <p
-                                            className="text-text-default whitespace-pre-line announcement-content"
-                                            dangerouslySetInnerHTML={{ __html: announcement.content.replace(/\n/g, '<br>') }}
-                                        ></p>
+                                        <div
+                                            className="text-text-default announcement-content"
+                                            dangerouslySetInnerHTML={{ __html: announcement.content }}
+                                        />
                                     </div>
                                 </SwiperSlide>
                             ))}
@@ -113,7 +114,7 @@ const HomePage = () => {
                             </div>
                         </Link>
                         <Link href="/leagues" passHref>
-                        <div className="button-style flex-col">
+                            <div className="button-style flex-col">
                                 <FaUsers className="button-style-icon" size={32} />
                                 <span className="button-style-text">Leagues</span>
                             </div>

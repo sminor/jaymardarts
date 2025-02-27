@@ -79,6 +79,21 @@ body {
   @apply text-text-link hover:underline;
 }
 
+/*Announcement styling*/
+.announcement-content p {
+  margin-bottom: 1em;
+}
+
+.announcement-content ul {
+    list-style-type: disc; /* Add bullet points */
+    margin-left: 20px; /* Add left margin for list indentation */
+    margin-bottom: 1em;
+}
+
+.announcement-content li {
+  margin-bottom: 0.5em;
+}
+
 .announcement-content a {
   @apply text-text-link hover:underline;
 }
@@ -98,4 +113,12 @@ select {
 /* checkbox checkmark */
 input[type="checkbox"]:checked {
   accent-color: var(--checkbox-checkmark);
+}
+
+/*swiper styling*/
+.swiper-pagination-custom {
+    @apply text-center; /* Center the dots */
+}
+.swiper-pagination-bullet-active {
+    background-color: var(--text-highlight) !important; /* Set active dot color to gold */
 }
