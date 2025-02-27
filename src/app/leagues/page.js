@@ -39,6 +39,7 @@ const LeaguesPage = () => {
         <div className="min-h-screen bg-background-main text-text-default flex flex-col justify-between">
             <NavBar currentPage="Leagues" />
 
+            {/* Heading Section */}
             <section className="bg-background-secondary">
                 <div className="container max-w-screen-xl mx-auto p-4 bg-background-heading rounded-lg mt-4">
                     <h1 className="text-3xl font-bold mb-4 text-center text-text-highlight">Leagues</h1>
@@ -48,7 +49,10 @@ const LeaguesPage = () => {
                 </div>
             </section>
 
-            <section className="p-8 mt-4 relative bg-background-secondary rounded-lg">
+            {/* Announcement Section - Modifications here */}
+            {/* Removed mt-4 here to remove the gap */}
+            <section className="p-8 relative bg-background-secondary rounded-lg">
+                {/* Added this div to wrap the content */}
                 <div className="container max-w-screen-xl mx-auto">
                     {message ? (
                         <p className="text-center text-text-default">{message}</p>
@@ -63,11 +67,13 @@ const LeaguesPage = () => {
                                 el: '.swiper-pagination-custom',
                             }}
                             modules={[Autoplay, Pagination]}
-                            className="relative pb-10 flex p-4 rounded-lg"
+                            // Added the bg-background-announcement here to match the header color
+                            className="relative pb-10 flex p-4 rounded-lg bg-background-announcement"
                         >
                             {announcements.map((announcement) => (
                                 <SwiperSlide key={announcement.id}>
-                                    <div className="bg-background-announcement p-4">
+                                    {/* removed the background from here */}
+                                    <div className="p-4">
                                         <h3 className="text-lg font-medium text-text-highlight pb-2">
                                             {announcement.title}
                                         </h3>
